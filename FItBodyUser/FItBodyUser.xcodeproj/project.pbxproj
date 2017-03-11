@@ -7,25 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8FD533C02720F25CA9E09D9D /* libPods-FItBodyUser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B285C9AA5078F9A9B857F3 /* libPods-FItBodyUser.a */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
-		B5B4FA511E6BF7DD0020D9B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA501E6BF7DD0020D9B6 /* AppDelegate.m */; };
-		B5B4FA541E6BF7DD0020D9B6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA531E6BF7DD0020D9B6 /* ViewController.m */; };
-		B5B4FA571E6BF7DD0020D9B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA551E6BF7DD0020D9B6 /* Main.storyboard */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
+		B5B4FA801E73FC540020D9B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA7B1E73FC540020D9B6 /* AppDelegate.m */; };
+		B5B4FA841E7402BE0020D9B6 /* ZZQBaseTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA831E7402BE0020D9B6 /* ZZQBaseTabBar.m */; };
+		B5B4FA891E74063D0020D9B6 /* FZLTH.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA861E74063D0020D9B6 /* FZLTH.TTF */; };
+		B5B4FA8A1E74063D0020D9B6 /* FZLTXH.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA871E74063D0020D9B6 /* FZLTXH.TTF */; };
+		B5B4FA8B1E74063D0020D9B6 /* Songti-SC-Black.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA881E74063D0020D9B6 /* Songti-SC-Black.TTF */; };
+		B5B4FA8E1E7407000020D9B6 /* ZZQTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA8D1E7407000020D9B6 /* ZZQTabBarViewController.m */; };
+		B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA901E74070F0020D9B6 /* ZZQBaseViewController.m */; };
+		B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA931E740BD40020D9B6 /* ZZQBaseNavViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F1F185F020DF61A801B4B71 /* Pods-FItBodyUser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FItBodyUser.release.xcconfig"; path = "Pods/Target Support Files/Pods-FItBodyUser/Pods-FItBodyUser.release.xcconfig"; sourceTree = "<group>"; };
+		56BB214572E1F85A4E0DB7D8 /* Pods-FItBodyUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FItBodyUser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FItBodyUser/Pods-FItBodyUser.debug.xcconfig"; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B5B4FA4F1E6BF7DD0020D9B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B5B4FA501E6BF7DD0020D9B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B5B4FA521E6BF7DD0020D9B6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B5B4FA531E6BF7DD0020D9B6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		B5B4FA561E6BF7DD0020D9B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5B4FA5B1E6BF7DD0020D9B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5B4FA5D1E6BF7DD0020D9B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5B4FA7A1E73FC540020D9B6 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B5B4FA7B1E73FC540020D9B6 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B5B4FA811E73FCAA0020D9B6 /* ZZQPCH.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQPCH.pch; sourceTree = "<group>"; };
+		B5B4FA821E7402BE0020D9B6 /* ZZQBaseTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQBaseTabBar.h; sourceTree = "<group>"; };
+		B5B4FA831E7402BE0020D9B6 /* ZZQBaseTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQBaseTabBar.m; sourceTree = "<group>"; };
+		B5B4FA861E74063D0020D9B6 /* FZLTH.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZLTH.TTF; sourceTree = "<group>"; };
+		B5B4FA871E74063D0020D9B6 /* FZLTXH.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZLTXH.TTF; sourceTree = "<group>"; };
+		B5B4FA881E74063D0020D9B6 /* Songti-SC-Black.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Songti-SC-Black.TTF"; sourceTree = "<group>"; };
+		B5B4FA8C1E7407000020D9B6 /* ZZQTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQTabBarViewController.h; sourceTree = "<group>"; };
+		B5B4FA8D1E7407000020D9B6 /* ZZQTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQTabBarViewController.m; sourceTree = "<group>"; };
+		B5B4FA8F1E74070F0020D9B6 /* ZZQBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQBaseViewController.h; sourceTree = "<group>"; };
+		B5B4FA901E74070F0020D9B6 /* ZZQBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQBaseViewController.m; sourceTree = "<group>"; };
+		B5B4FA921E740BD40020D9B6 /* ZZQBaseNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQBaseNavViewController.h; sourceTree = "<group>"; };
+		B5B4FA931E740BD40020D9B6 /* ZZQBaseNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQBaseNavViewController.m; sourceTree = "<group>"; };
+		B9B285C9AA5078F9A9B857F3 /* libPods-FItBodyUser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FItBodyUser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +51,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FD533C02720F25CA9E09D9D /* libPods-FItBodyUser.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AAE052A31B417F8D21329C1C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9B285C9AA5078F9A9B857F3 /* libPods-FItBodyUser.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B5B4FA401E6BF7DD0020D9B6 = {
 			isa = PBXGroup;
 			children = (
 				B5B4FA4B1E6BF7DD0020D9B6 /* FItBodyUser */,
 				B5B4FA4A1E6BF7DD0020D9B6 /* Products */,
+				BC9BFE4589B913D3F814E413 /* Pods */,
+				AAE052A31B417F8D21329C1C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +87,13 @@
 		B5B4FA4B1E6BF7DD0020D9B6 /* FItBodyUser */ = {
 			isa = PBXGroup;
 			children = (
-				B5B4FA4F1E6BF7DD0020D9B6 /* AppDelegate.h */,
-				B5B4FA501E6BF7DD0020D9B6 /* AppDelegate.m */,
-				B5B4FA521E6BF7DD0020D9B6 /* ViewController.h */,
-				B5B4FA531E6BF7DD0020D9B6 /* ViewController.m */,
-				B5B4FA551E6BF7DD0020D9B6 /* Main.storyboard */,
+				B5B4FA631E73FC540020D9B6 /* Base */,
+				B5B4FA661E73FC540020D9B6 /* Home */,
+				B5B4FA6A1E73FC540020D9B6 /* Me */,
+				B5B4FA6E1E73FC540020D9B6 /* NetWork */,
+				B5B4FA751E73FC540020D9B6 /* Order */,
+				B5B4FA791E73FC540020D9B6 /* Other */,
 				B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */,
-				B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */,
 				B5B4FA5D1E6BF7DD0020D9B6 /* Info.plist */,
 				B5B4FA4C1E6BF7DD0020D9B6 /* Supporting Files */,
 			);
@@ -74,9 +103,155 @@
 		B5B4FA4C1E6BF7DD0020D9B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B5B4FA851E74063D0020D9B6 /* fonts */,
 				B5B4FA4D1E6BF7DD0020D9B6 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5B4FA631E73FC540020D9B6 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B5B4FA821E7402BE0020D9B6 /* ZZQBaseTabBar.h */,
+				B5B4FA831E7402BE0020D9B6 /* ZZQBaseTabBar.m */,
+				B5B4FA8C1E7407000020D9B6 /* ZZQTabBarViewController.h */,
+				B5B4FA8D1E7407000020D9B6 /* ZZQTabBarViewController.m */,
+				B5B4FA8F1E74070F0020D9B6 /* ZZQBaseViewController.h */,
+				B5B4FA901E74070F0020D9B6 /* ZZQBaseViewController.m */,
+				B5B4FA921E740BD40020D9B6 /* ZZQBaseNavViewController.h */,
+				B5B4FA931E740BD40020D9B6 /* ZZQBaseNavViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B5B4FA661E73FC540020D9B6 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B5B4FA671E73FC540020D9B6 /* Controllers */,
+				B5B4FA681E73FC540020D9B6 /* Models */,
+				B5B4FA691E73FC540020D9B6 /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		B5B4FA671E73FC540020D9B6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B5B4FA681E73FC540020D9B6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B5B4FA691E73FC540020D9B6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B5B4FA6A1E73FC540020D9B6 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				B5B4FA6B1E73FC540020D9B6 /* Controllers */,
+				B5B4FA6C1E73FC540020D9B6 /* Models */,
+				B5B4FA6D1E73FC540020D9B6 /* Views */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		B5B4FA6B1E73FC540020D9B6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B5B4FA6C1E73FC540020D9B6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B5B4FA6D1E73FC540020D9B6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B5B4FA6E1E73FC540020D9B6 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
+		B5B4FA751E73FC540020D9B6 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				B5B4FA761E73FC540020D9B6 /* Controllers */,
+				B5B4FA771E73FC540020D9B6 /* Models */,
+				B5B4FA781E73FC540020D9B6 /* Views */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		B5B4FA761E73FC540020D9B6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B5B4FA771E73FC540020D9B6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B5B4FA781E73FC540020D9B6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B5B4FA791E73FC540020D9B6 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */,
+				B5B4FA7A1E73FC540020D9B6 /* AppDelegate.h */,
+				B5B4FA7B1E73FC540020D9B6 /* AppDelegate.m */,
+				B5B4FA811E73FCAA0020D9B6 /* ZZQPCH.pch */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		B5B4FA851E74063D0020D9B6 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B5B4FA861E74063D0020D9B6 /* FZLTH.TTF */,
+				B5B4FA871E74063D0020D9B6 /* FZLTXH.TTF */,
+				B5B4FA881E74063D0020D9B6 /* Songti-SC-Black.TTF */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		BC9BFE4589B913D3F814E413 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				56BB214572E1F85A4E0DB7D8 /* Pods-FItBodyUser.debug.xcconfig */,
+				2F1F185F020DF61A801B4B71 /* Pods-FItBodyUser.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,9 +261,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5B4FA601E6BF7DD0020D9B6 /* Build configuration list for PBXNativeTarget "FItBodyUser" */;
 			buildPhases = (
+				5C446338FAD58C351AD94D6F /* [CP] Check Pods Manifest.lock */,
 				B5B4FA451E6BF7DD0020D9B6 /* Sources */,
 				B5B4FA461E6BF7DD0020D9B6 /* Frameworks */,
 				B5B4FA471E6BF7DD0020D9B6 /* Resources */,
+				1F9678CE185F0283A058B152 /* [CP] Embed Pods Frameworks */,
+				143C649230EF93C6E55DFFA4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -105,6 +283,7 @@
 		B5B4FA411E6BF7DD0020D9B6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = ZZQ;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "张增强";
 				TargetAttributes = {
@@ -138,21 +317,74 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5B4FA8B1E74063D0020D9B6 /* Songti-SC-Black.TTF in Resources */,
 				B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */,
+				B5B4FA891E74063D0020D9B6 /* FZLTH.TTF in Resources */,
 				B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */,
-				B5B4FA571E6BF7DD0020D9B6 /* Main.storyboard in Resources */,
+				B5B4FA8A1E74063D0020D9B6 /* FZLTXH.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		143C649230EF93C6E55DFFA4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FItBodyUser/Pods-FItBodyUser-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F9678CE185F0283A058B152 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FItBodyUser/Pods-FItBodyUser-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C446338FAD58C351AD94D6F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B5B4FA451E6BF7DD0020D9B6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5B4FA541E6BF7DD0020D9B6 /* ViewController.m in Sources */,
-				B5B4FA511E6BF7DD0020D9B6 /* AppDelegate.m in Sources */,
+				B5B4FA8E1E7407000020D9B6 /* ZZQTabBarViewController.m in Sources */,
+				B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */,
+				B5B4FA841E7402BE0020D9B6 /* ZZQBaseTabBar.m in Sources */,
+				B5B4FA801E73FC540020D9B6 /* AppDelegate.m in Sources */,
+				B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */,
 				B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,20 +392,13 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B5B4FA551E6BF7DD0020D9B6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B5B4FA561E6BF7DD0020D9B6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B5B4FA5B1E6BF7DD0020D9B6 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -271,9 +496,11 @@
 		};
 		B5B4FA611E6BF7DD0020D9B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56BB214572E1F85A4E0DB7D8 /* Pods-FItBodyUser.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P28THB67HH;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/FitBodyUser/Other/ZZQPCH.pch";
 				INFOPLIST_FILE = FItBodyUser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ben.FItBodyUser;
@@ -283,9 +510,11 @@
 		};
 		B5B4FA621E6BF7DD0020D9B6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F1F185F020DF61A801B4B71 /* Pods-FItBodyUser.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P28THB67HH;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/FitBodyUser/Other/ZZQPCH.pch";
 				INFOPLIST_FILE = FItBodyUser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ben.FItBodyUser;
@@ -312,6 +541,7 @@
 				B5B4FA621E6BF7DD0020D9B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
