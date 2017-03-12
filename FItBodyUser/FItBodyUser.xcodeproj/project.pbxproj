@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8FD533C02720F25CA9E09D9D /* libPods-FItBodyUser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B285C9AA5078F9A9B857F3 /* libPods-FItBodyUser.a */; };
+		B506AE4F1E7534C800B39731 /* ZZQCityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B506AE4E1E7534C800B39731 /* ZZQCityButton.m */; };
+		B506AE521E75472200B39731 /* ZZQNetAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B506AE511E75472200B39731 /* ZZQNetAlertView.m */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -27,6 +29,10 @@
 /* Begin PBXFileReference section */
 		2F1F185F020DF61A801B4B71 /* Pods-FItBodyUser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FItBodyUser.release.xcconfig"; path = "Pods/Target Support Files/Pods-FItBodyUser/Pods-FItBodyUser.release.xcconfig"; sourceTree = "<group>"; };
 		56BB214572E1F85A4E0DB7D8 /* Pods-FItBodyUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FItBodyUser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FItBodyUser/Pods-FItBodyUser.debug.xcconfig"; sourceTree = "<group>"; };
+		B506AE4D1E7534C800B39731 /* ZZQCityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQCityButton.h; sourceTree = "<group>"; };
+		B506AE4E1E7534C800B39731 /* ZZQCityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQCityButton.m; sourceTree = "<group>"; };
+		B506AE501E75472200B39731 /* ZZQNetAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQNetAlertView.h; sourceTree = "<group>"; };
+		B506AE511E75472200B39731 /* ZZQNetAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQNetAlertView.m; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,6 +79,77 @@
 				B9B285C9AA5078F9A9B857F3 /* libPods-FItBodyUser.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B506AE441E75331C00B39731 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				B506AE451E75331C00B39731 /* Citys */,
+				B506AE491E75331C00B39731 /* Search */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		B506AE451E75331C00B39731 /* Citys */ = {
+			isa = PBXGroup;
+			children = (
+				B506AE461E75331C00B39731 /* Controller */,
+				B506AE471E75331C00B39731 /* Models */,
+				B506AE481E75331C00B39731 /* Views */,
+			);
+			path = Citys;
+			sourceTree = "<group>";
+		};
+		B506AE461E75331C00B39731 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B506AE471E75331C00B39731 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B506AE481E75331C00B39731 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B506AE491E75331C00B39731 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B506AE4A1E75331C00B39731 /* Controller */,
+				B506AE4B1E75331C00B39731 /* Models */,
+				B506AE4C1E75331C00B39731 /* Views */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		B506AE4A1E75331C00B39731 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B506AE4B1E75331C00B39731 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B506AE4C1E75331C00B39731 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B5B4FA401E6BF7DD0020D9B6 = {
@@ -129,6 +206,8 @@
 				B5B4FA901E74070F0020D9B6 /* ZZQBaseViewController.m */,
 				B5B4FA921E740BD40020D9B6 /* ZZQBaseNavViewController.h */,
 				B5B4FA931E740BD40020D9B6 /* ZZQBaseNavViewController.m */,
+				B506AE501E75472200B39731 /* ZZQNetAlertView.h */,
+				B506AE511E75472200B39731 /* ZZQNetAlertView.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -136,6 +215,7 @@
 		B5B4FA661E73FC540020D9B6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B506AE441E75331C00B39731 /* Class */,
 				B5B4FA671E73FC540020D9B6 /* Controllers */,
 				B5B4FA681E73FC540020D9B6 /* Models */,
 				B5B4FA691E73FC540020D9B6 /* Views */,
@@ -162,6 +242,8 @@
 		B5B4FA691E73FC540020D9B6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B506AE4D1E7534C800B39731 /* ZZQCityButton.h */,
+				B506AE4E1E7534C800B39731 /* ZZQCityButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -395,6 +477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B506AE4F1E7534C800B39731 /* ZZQCityButton.m in Sources */,
 				B5B4FA8E1E7407000020D9B6 /* ZZQTabBarViewController.m in Sources */,
 				B5B4FA9D1E74D5360020D9B6 /* ZZQOrderViewController.m in Sources */,
 				B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */,
@@ -402,6 +485,7 @@
 				B5B4FA801E73FC540020D9B6 /* AppDelegate.m in Sources */,
 				B5B4FA971E74D50A0020D9B6 /* ZZQHomeViewController.m in Sources */,
 				B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */,
+				B506AE521E75472200B39731 /* ZZQNetAlertView.m in Sources */,
 				B5B4FA9A1E74D51A0020D9B6 /* ZZQMeViewController.m in Sources */,
 				B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */,
 			);
