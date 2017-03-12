@@ -7,16 +7,71 @@
 //
 
 #import "ZZQTabBarViewController.h"
+#import "ZZQBaseNavViewController.h"
+#import "ZZQBaseTabBar.h"
+#import "ZZQBaseViewController.h"
 
-@interface ZZQTabBarViewController ()
+@interface ZZQTabBarViewController ()<ZZQTabBarDelegate>
+
+/**
+ * 设置tabbar的控制器
+ */
+@property(nonatomic, strong)NSArray * controllerArray;
+/**
+ * 设置tabBar内容
+ */
+@property(nonatomic, strong)ZZQBaseTabBar * zzqTabBar;
 
 @end
 
 @implementation ZZQTabBarViewController
 
+#pragma 
+#pragma ============== 懒加载
+
+- (ZZQBaseTabBar *)zzqTabBar{
+    if(!_zzqTabBar){
+        _zzqTabBar = [[ZZQBaseTabBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 49)];
+        _zzqTabBar.delegate = self;
+    }
+    return _zzqTabBar;
+}
+
+- (NSArray *)controllerArray{
+    if(!_controllerArray){
+        _controllerArray = [NSArray arrayWithObjects:@"ZZQHomeViewController", @"ZZQOrderViewController", @"ZZQMeViewController", nil];
+    }
+    return _controllerArray;
+}
+
+#pragma 
+#pragma ============== 设置
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    //设置controllers
+    [self initControllers];
+    //设置tabbar样式
+    [[UITabBar appearance] setShadowImage:[UIImage new]];
+    [[UITabBar appearance] setBackgroundImage:[UIImage new]];
+    [self.tabBar addSubview:self.zzqTabBar];
+    
+    
+}
+
+- (void)initControllers{
+    NSMutableArray * controllers = [NSMutableArray array];
+    for(NSUInteger i = 0; i < self.controllerArray.count; i++){
+        ZZQBaseViewController * VC = [[NSClassFromString(self.controllerArray[i]) alloc] init];
+        ZZQBaseNavViewController * NVC = [[ZZQBaseNavViewController alloc] initWithRootViewController:VC];
+        [controllers addObject:NVC];
+    }
+    self.viewControllers = controllers;
+}
+
+#pragma 
+#pragma ============= 代理
+- (void)zzqTabBar:(ZZQBaseTabBar *)tabBar clickButton:(ZZQItemType)idx{
+    self.selectedIndex = idx - ZZQItemTypeHOME;
 }
 
 - (void)didReceiveMemoryWarning {

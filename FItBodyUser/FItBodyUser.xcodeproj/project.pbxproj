@@ -19,6 +19,9 @@
 		B5B4FA8E1E7407000020D9B6 /* ZZQTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA8D1E7407000020D9B6 /* ZZQTabBarViewController.m */; };
 		B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA901E74070F0020D9B6 /* ZZQBaseViewController.m */; };
 		B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA931E740BD40020D9B6 /* ZZQBaseNavViewController.m */; };
+		B5B4FA971E74D50A0020D9B6 /* ZZQHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA961E74D50A0020D9B6 /* ZZQHomeViewController.m */; };
+		B5B4FA9A1E74D51A0020D9B6 /* ZZQMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA991E74D51A0020D9B6 /* ZZQMeViewController.m */; };
+		B5B4FA9D1E74D5360020D9B6 /* ZZQOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA9C1E74D5360020D9B6 /* ZZQOrderViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,12 @@
 		B5B4FA901E74070F0020D9B6 /* ZZQBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQBaseViewController.m; sourceTree = "<group>"; };
 		B5B4FA921E740BD40020D9B6 /* ZZQBaseNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQBaseNavViewController.h; sourceTree = "<group>"; };
 		B5B4FA931E740BD40020D9B6 /* ZZQBaseNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQBaseNavViewController.m; sourceTree = "<group>"; };
+		B5B4FA951E74D50A0020D9B6 /* ZZQHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQHomeViewController.h; sourceTree = "<group>"; };
+		B5B4FA961E74D50A0020D9B6 /* ZZQHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQHomeViewController.m; sourceTree = "<group>"; };
+		B5B4FA981E74D51A0020D9B6 /* ZZQMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQMeViewController.h; sourceTree = "<group>"; };
+		B5B4FA991E74D51A0020D9B6 /* ZZQMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMeViewController.m; sourceTree = "<group>"; };
+		B5B4FA9B1E74D5360020D9B6 /* ZZQOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQOrderViewController.h; sourceTree = "<group>"; };
+		B5B4FA9C1E74D5360020D9B6 /* ZZQOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQOrderViewController.m; sourceTree = "<group>"; };
 		B9B285C9AA5078F9A9B857F3 /* libPods-FItBodyUser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FItBodyUser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -137,6 +146,8 @@
 		B5B4FA671E73FC540020D9B6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5B4FA951E74D50A0020D9B6 /* ZZQHomeViewController.h */,
+				B5B4FA961E74D50A0020D9B6 /* ZZQHomeViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -168,6 +179,8 @@
 		B5B4FA6B1E73FC540020D9B6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5B4FA981E74D51A0020D9B6 /* ZZQMeViewController.h */,
+				B5B4FA991E74D51A0020D9B6 /* ZZQMeViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -206,6 +219,8 @@
 		B5B4FA761E73FC540020D9B6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5B4FA9B1E74D5360020D9B6 /* ZZQOrderViewController.h */,
+				B5B4FA9C1E74D5360020D9B6 /* ZZQOrderViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -381,10 +396,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5B4FA8E1E7407000020D9B6 /* ZZQTabBarViewController.m in Sources */,
+				B5B4FA9D1E74D5360020D9B6 /* ZZQOrderViewController.m in Sources */,
 				B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */,
 				B5B4FA841E7402BE0020D9B6 /* ZZQBaseTabBar.m in Sources */,
 				B5B4FA801E73FC540020D9B6 /* AppDelegate.m in Sources */,
+				B5B4FA971E74D50A0020D9B6 /* ZZQHomeViewController.m in Sources */,
 				B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */,
+				B5B4FA9A1E74D51A0020D9B6 /* ZZQMeViewController.m in Sources */,
 				B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
