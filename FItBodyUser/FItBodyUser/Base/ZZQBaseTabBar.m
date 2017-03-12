@@ -59,6 +59,7 @@
             [_item setAdjustsImageWhenHighlighted:NO];
             [_item setImage:[UIImage imageNamed:self.tabBarNorArray[i]] forState:UIControlStateNormal];
             [_item setImage:[UIImage imageNamed:self.tabBarSelArray[i]] forState:UIControlStateSelected];
+            [_item setImage:[UIImage imageNamed:self.tabBarNorArray[i]] forState:UIControlStateHighlighted];
             _item.tag = ZZQItemTypeHOME + i;
             [_item addTarget:self action:@selector(clickItem:) forControlEvents:UIControlEventTouchUpInside];
             if(0 == i){
@@ -80,23 +81,21 @@
     !self.block?:self.block(self, btn.tag);
 
     //动画效果
-    if(btn.tag != _lastItem.tag){
-        [_lastItem setSelected:NO];
-        [btn setSelected:YES];
-        _lastItem = btn;
-        //设置button动画
+    [_lastItem setSelected:NO];
+    [btn setSelected:YES];
+    _lastItem = btn;
+    //设置button动画
+    [UIView animateWithDuration:0.2 animations:^{
+        btn.transform = CGAffineTransformMakeScale(1.2, 1.2);
+    }completion:^(BOOL finished) {
         [UIView animateWithDuration:0.2 animations:^{
-            btn.transform = CGAffineTransformMakeScale(1.2, 1.2);
-        }completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.2 animations:^{
-                btn.transform = CGAffineTransformIdentity;
-            }];
+            btn.transform = CGAffineTransformIdentity;
         }];
-    }
+    }];
     
 }
 
-#pragma 
+#pragma
 #pragma ================= 设置位置
 -(void)layoutSubviews{
     [super layoutSubviews];
