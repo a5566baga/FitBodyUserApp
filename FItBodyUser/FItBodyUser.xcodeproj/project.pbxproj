@@ -10,6 +10,8 @@
 		8FD533C02720F25CA9E09D9D /* libPods-FItBodyUser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B285C9AA5078F9A9B857F3 /* libPods-FItBodyUser.a */; };
 		B506AE4F1E7534C800B39731 /* ZZQCityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B506AE4E1E7534C800B39731 /* ZZQCityButton.m */; };
 		B506AE521E75472200B39731 /* ZZQNetAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B506AE511E75472200B39731 /* ZZQNetAlertView.m */; };
+		B56D8ACD1E755B97000085E6 /* ZZQNoOnlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8ACC1E755B97000085E6 /* ZZQNoOnlineView.m */; };
+		B56D8AD01E755BA8000085E6 /* ZZQNoNetView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8ACF1E755BA8000085E6 /* ZZQNoNetView.m */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -33,6 +35,10 @@
 		B506AE4E1E7534C800B39731 /* ZZQCityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQCityButton.m; sourceTree = "<group>"; };
 		B506AE501E75472200B39731 /* ZZQNetAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQNetAlertView.h; sourceTree = "<group>"; };
 		B506AE511E75472200B39731 /* ZZQNetAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQNetAlertView.m; sourceTree = "<group>"; };
+		B56D8ACB1E755B97000085E6 /* ZZQNoOnlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQNoOnlineView.h; sourceTree = "<group>"; };
+		B56D8ACC1E755B97000085E6 /* ZZQNoOnlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQNoOnlineView.m; sourceTree = "<group>"; };
+		B56D8ACE1E755BA8000085E6 /* ZZQNoNetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQNoNetView.h; sourceTree = "<group>"; };
+		B56D8ACF1E755BA8000085E6 /* ZZQNoNetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQNoNetView.m; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -244,6 +250,10 @@
 			children = (
 				B506AE4D1E7534C800B39731 /* ZZQCityButton.h */,
 				B506AE4E1E7534C800B39731 /* ZZQCityButton.m */,
+				B56D8ACB1E755B97000085E6 /* ZZQNoOnlineView.h */,
+				B56D8ACC1E755B97000085E6 /* ZZQNoOnlineView.m */,
+				B56D8ACE1E755BA8000085E6 /* ZZQNoNetView.h */,
+				B56D8ACF1E755BA8000085E6 /* ZZQNoNetView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -483,6 +493,8 @@
 				B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */,
 				B5B4FA841E7402BE0020D9B6 /* ZZQBaseTabBar.m in Sources */,
 				B5B4FA801E73FC540020D9B6 /* AppDelegate.m in Sources */,
+				B56D8ACD1E755B97000085E6 /* ZZQNoOnlineView.m in Sources */,
+				B56D8AD01E755BA8000085E6 /* ZZQNoNetView.m in Sources */,
 				B5B4FA971E74D50A0020D9B6 /* ZZQHomeViewController.m in Sources */,
 				B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */,
 				B506AE521E75472200B39731 /* ZZQNetAlertView.m in Sources */,

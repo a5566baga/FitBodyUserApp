@@ -8,8 +8,10 @@
 
 #import "ZZQHomeViewController.h"
 #import "ZZQCityButton.h"
+#import "ZZQNoOnlineView.h"
+#import "ZZQNoNetView.h"
 
-@interface ZZQHomeViewController ()
+@interface ZZQHomeViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 //选择城市按钮
 @property(nonatomic, strong)ZZQCityButton * cityBtn;
@@ -17,6 +19,17 @@
 //搜索按钮
 @property(nonatomic, strong)UIBarButtonItem * searchItem;
 @property(nonatomic, strong)UIButton * searchBtn;
+//有数据的时候加载的tableview
+@property(nonatomic, strong)UITableView * tableView;
+//无数据的时候加载的背景提示图
+@property(nonatomic, strong)ZZQNoOnlineView * noOnlineView;
+//无网络的时候错误提示图
+@property(nonatomic, strong)ZZQNoNetView * noNetView;
+//model模型
+//模型数组
+@property(nonatomic, strong)NSMutableArray * dataListArray;
+//url参数
+@property(nonatomic, strong)NSMutableDictionary * paramsDic;
 
 @end
 
@@ -49,17 +62,20 @@
 #pragma ============= 加载视图
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor redColor];
-    
     //设置nav
     [self initNavView];
+    //初始化数据
+    [self initForData];
     
     //设置tableview
     [self initTableView];
+    
+    //设置错误页面
+    [self initForNoOnlineView];
 }
 
-#pragma 
+#pragma
 #pragma ============== 设置nav
 - (void)initNavView{
     [self.navigationItem setLeftBarButtonItem:self.cityItem];
@@ -67,10 +83,41 @@
 }
 
 #pragma 
+#pragma ============== 初始化数据
+//TODO:初始化数据的模型还未完成
+- (void)initForData{
+    //model模型，通过回调加载tableview还是errorView
+}
+//下拉加载调用
+- (void)initForNewData{
+    
+}
+
+#pragma
+#pragma ============== 错误页面设置
+- (void)initForNoOnlineView{
+    _noOnlineView = [[ZZQNoOnlineView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49)];
+    [self.view addSubview:_noOnlineView];
+}
+- (void)initForNoNetView{
+    
+}
+
+#pragma 
 #pragma ============== 设置tableview
 - (void)initTableView{
     
 }
+
+#pragma 
+#pragma ============== 上拉刷新，下拉加载(创建完tableview之后调用)
+- (void)initRefush{
+    
+}
+
+#pragma 
+#pragma ============== 代理
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
