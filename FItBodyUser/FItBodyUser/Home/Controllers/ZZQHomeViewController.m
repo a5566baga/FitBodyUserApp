@@ -25,6 +25,7 @@
 @property(nonatomic, strong)ZZQNoOnlineView * noOnlineView;
 //无网络的时候错误提示图
 @property(nonatomic, strong)ZZQNoNetView * noNetView;
+@property(nonatomic, strong)UITapGestureRecognizer * tapToReflush;
 //model模型
 //模型数组
 @property(nonatomic, strong)NSMutableArray * dataListArray;
@@ -62,7 +63,7 @@
 #pragma ============= 加载视图
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
+//    self.view.backgroundColor = [UIColor redColor];
     //设置nav
     [self initNavView];
     //初始化数据
@@ -71,8 +72,11 @@
     //设置tableview
     [self initTableView];
     
-    //设置错误页面
-    [self initForNoOnlineView];
+    //设置未开通错误页面
+//    [self initForNoOnlineView];
+    
+    //设置无网络错误页面
+    [self initForNoNetView];
 }
 
 #pragma
@@ -96,11 +100,17 @@
 #pragma
 #pragma ============== 错误页面设置
 - (void)initForNoOnlineView{
-    _noOnlineView = [[ZZQNoOnlineView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49)];
+    _noOnlineView = [[ZZQNoOnlineView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [self.view addSubview:_noOnlineView];
 }
 - (void)initForNoNetView{
-    
+    _noNetView = [[ZZQNoNetView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    [self.view addSubview:_noNetView];
+    _tapToReflush = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+       //重新加载页面
+        [self initForData];
+    }];
+    [_noNetView addGestureRecognizer:_tapToReflush];
 }
 
 #pragma 
