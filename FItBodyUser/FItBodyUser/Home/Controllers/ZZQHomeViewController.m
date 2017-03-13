@@ -31,6 +31,8 @@
 @property(nonatomic, strong)NSMutableArray * dataListArray;
 //url参数
 @property(nonatomic, strong)NSMutableDictionary * paramsDic;
+//下拉刷新图片数组
+@property(nonatomic, strong)NSMutableArray * picArray;
 
 @end
 
@@ -76,7 +78,7 @@
 //    [self initForNoOnlineView];
     
     //设置无网络错误页面
-    [self initForNoNetView];
+//    [self initForNoNetView];
 }
 
 #pragma
@@ -84,6 +86,7 @@
 - (void)initNavView{
     [self.navigationItem setLeftBarButtonItem:self.cityItem];
     [self.navigationItem setRightBarButtonItem:self.searchItem];
+    [self setAutomaticallyAdjustsScrollViewInsets:NO];
 }
 
 #pragma 
@@ -91,10 +94,12 @@
 //TODO:初始化数据的模型还未完成
 - (void)initForData{
     //model模型，通过回调加载tableview还是errorView
+    
+    [_tableView reloadData];
 }
 //下拉加载调用
 - (void)initForNewData{
-    
+    [_tableView reloadData];
 }
 
 #pragma
@@ -116,13 +121,35 @@
 #pragma 
 #pragma ============== 设置tableview
 - (void)initTableView{
-    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49) style:UITableViewStyleGrouped];
+    [self.view addSubview:_tableView];
+    [self initRefush];
 }
 
 #pragma 
 #pragma ============== 上拉刷新，下拉加载(创建完tableview之后调用)
 - (void)initRefush{
+    _picArray = [NSMutableArray array];
+    for (NSUInteger i = 0; i <= 11; i++) {
+        UIImage * img = [UIImage imageNamed:[NSString stringWithFormat:@"%@%.2lu",@"loading_small_0", (unsigned long)i]];
+        [_picArray addObject:img];
+    }
+    MJRefreshGifHeader * header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        [self initForData];
+    }];
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    [header setImages:_picArray forState:MJRefreshStateRefreshing];
+    _tableView.mj_header = header;
     
+    MJRefreshAutoNormalFooter * footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [self initForNewData];
+    }];
+    _tableView.mj_footer = footer;
+    footer.center = CGPointMake(self.view.centerX, 0);
+    [footer setRefreshingTitleHidden:YES];
+    footer.stateLabel.hidden = YES;
+    footer.labelLeftInset = 0;
 }
 
 #pragma 

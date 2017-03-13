@@ -1,13 +1,13 @@
 //
-//  ZZQMeViewController.h
+//  ZZQSearchViewController.h
 //  FItBodyUser
 //
-//  Created by ben on 17/3/12.
+//  Created by ben on 17/3/13.
 //  Copyright © 2017年 张增强. All rights reserved.
 //
 
 #import "ZZQBaseViewController.h"
 
-@interface ZZQMeViewController : ZZQBaseViewController
+@interface ZZQSearchViewController : ZZQBaseViewController
 
 @end

@@ -12,6 +12,8 @@
 		B506AE521E75472200B39731 /* ZZQNetAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B506AE511E75472200B39731 /* ZZQNetAlertView.m */; };
 		B56D8ACD1E755B97000085E6 /* ZZQNoOnlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8ACC1E755B97000085E6 /* ZZQNoOnlineView.m */; };
 		B56D8AD01E755BA8000085E6 /* ZZQNoNetView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8ACF1E755BA8000085E6 /* ZZQNoNetView.m */; };
+		B56D8AD31E76E230000085E6 /* ZZQCitysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AD21E76E230000085E6 /* ZZQCitysViewController.m */; };
+		B56D8AD61E76E336000085E6 /* ZZQSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AD51E76E336000085E6 /* ZZQSearchViewController.m */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -39,6 +41,10 @@
 		B56D8ACC1E755B97000085E6 /* ZZQNoOnlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQNoOnlineView.m; sourceTree = "<group>"; };
 		B56D8ACE1E755BA8000085E6 /* ZZQNoNetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQNoNetView.h; sourceTree = "<group>"; };
 		B56D8ACF1E755BA8000085E6 /* ZZQNoNetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQNoNetView.m; sourceTree = "<group>"; };
+		B56D8AD11E76E230000085E6 /* ZZQCitysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQCitysViewController.h; sourceTree = "<group>"; };
+		B56D8AD21E76E230000085E6 /* ZZQCitysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQCitysViewController.m; sourceTree = "<group>"; };
+		B56D8AD41E76E336000085E6 /* ZZQSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQSearchViewController.h; sourceTree = "<group>"; };
+		B56D8AD51E76E336000085E6 /* ZZQSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQSearchViewController.m; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,6 +115,8 @@
 		B506AE461E75331C00B39731 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B56D8AD11E76E230000085E6 /* ZZQCitysViewController.h */,
+				B56D8AD21E76E230000085E6 /* ZZQCitysViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -140,6 +148,8 @@
 		B506AE4A1E75331C00B39731 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B56D8AD41E76E336000085E6 /* ZZQSearchViewController.h */,
+				B56D8AD51E76E336000085E6 /* ZZQSearchViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -490,12 +500,14 @@
 				B506AE4F1E7534C800B39731 /* ZZQCityButton.m in Sources */,
 				B5B4FA8E1E7407000020D9B6 /* ZZQTabBarViewController.m in Sources */,
 				B5B4FA9D1E74D5360020D9B6 /* ZZQOrderViewController.m in Sources */,
+				B56D8AD31E76E230000085E6 /* ZZQCitysViewController.m in Sources */,
 				B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */,
 				B5B4FA841E7402BE0020D9B6 /* ZZQBaseTabBar.m in Sources */,
 				B5B4FA801E73FC540020D9B6 /* AppDelegate.m in Sources */,
 				B56D8ACD1E755B97000085E6 /* ZZQNoOnlineView.m in Sources */,
 				B56D8AD01E755BA8000085E6 /* ZZQNoNetView.m in Sources */,
 				B5B4FA971E74D50A0020D9B6 /* ZZQHomeViewController.m in Sources */,
+				B56D8AD61E76E336000085E6 /* ZZQSearchViewController.m in Sources */,
 				B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */,
 				B506AE521E75472200B39731 /* ZZQNetAlertView.m in Sources */,
 				B5B4FA9A1E74D51A0020D9B6 /* ZZQMeViewController.m in Sources */,
