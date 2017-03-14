@@ -15,10 +15,7 @@
 		B56D8AD31E76E230000085E6 /* ZZQCitysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AD21E76E230000085E6 /* ZZQCitysViewController.m */; };
 		B56D8AD61E76E336000085E6 /* ZZQSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AD51E76E336000085E6 /* ZZQSearchViewController.m */; };
 		B56D8AD91E78062E000085E6 /* ZZQHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AD81E78062E000085E6 /* ZZQHeaderView.m */; };
-		B56D8AE31E78111A000085E6 /* DINMittelschrift-Alternate.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8ADF1E78111A000085E6 /* DINMittelschrift-Alternate.ttf */; };
-		B56D8AE41E78111A000085E6 /* FZLTH.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AE01E78111A000085E6 /* FZLTH.ttf */; };
-		B56D8AE51E78111A000085E6 /* FZLTXH.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AE11E78111A000085E6 /* FZLTXH.ttf */; };
-		B56D8AE61E78111A000085E6 /* Songti-SC-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AE21E78111A000085E6 /* Songti-SC-Black.ttf */; };
+		B56D8AE81E7814D1000085E6 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AE71E7814D1000085E6 /* fonts */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -49,10 +46,7 @@
 		B56D8AD51E76E336000085E6 /* ZZQSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQSearchViewController.m; sourceTree = "<group>"; };
 		B56D8AD71E78062E000085E6 /* ZZQHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQHeaderView.h; sourceTree = "<group>"; };
 		B56D8AD81E78062E000085E6 /* ZZQHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQHeaderView.m; sourceTree = "<group>"; };
-		B56D8ADF1E78111A000085E6 /* DINMittelschrift-Alternate.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINMittelschrift-Alternate.ttf"; sourceTree = "<group>"; };
-		B56D8AE01E78111A000085E6 /* FZLTH.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZLTH.ttf; sourceTree = "<group>"; };
-		B56D8AE11E78111A000085E6 /* FZLTXH.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZLTXH.ttf; sourceTree = "<group>"; };
-		B56D8AE21E78111A000085E6 /* Songti-SC-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Songti-SC-Black.ttf"; sourceTree = "<group>"; };
+		B56D8AE71E7814D1000085E6 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -173,17 +167,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		B56D8ADE1E78111A000085E6 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				B56D8ADF1E78111A000085E6 /* DINMittelschrift-Alternate.ttf */,
-				B56D8AE01E78111A000085E6 /* FZLTH.ttf */,
-				B56D8AE11E78111A000085E6 /* FZLTXH.ttf */,
-				B56D8AE21E78111A000085E6 /* Songti-SC-Black.ttf */,
-			);
-			path = fonts;
-			sourceTree = "<group>";
-		};
 		B5B4FA401E6BF7DD0020D9B6 = {
 			isa = PBXGroup;
 			children = (
@@ -221,7 +204,7 @@
 		B5B4FA4C1E6BF7DD0020D9B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B56D8ADE1E78111A000085E6 /* fonts */,
+				B56D8AE71E7814D1000085E6 /* fonts */,
 				B5B4FA4D1E6BF7DD0020D9B6 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -442,11 +425,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B56D8AE61E78111A000085E6 /* Songti-SC-Black.ttf in Resources */,
+				B56D8AE81E7814D1000085E6 /* fonts in Resources */,
 				B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */,
-				B56D8AE41E78111A000085E6 /* FZLTH.ttf in Resources */,
-				B56D8AE31E78111A000085E6 /* DINMittelschrift-Alternate.ttf in Resources */,
-				B56D8AE51E78111A000085E6 /* FZLTXH.ttf in Resources */,
 				B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

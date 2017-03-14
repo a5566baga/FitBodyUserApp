@@ -28,7 +28,7 @@
         CGFloat margin = 20;
         CGFloat imgWidth = 80;
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin, 0, self.width-2*margin-imgWidth, 60)];
-        _titleLabel.font = [UIFont fontWithName:@"KhmerSangamMN" size:30];
+        _titleLabel.font = [UIFont fontWithName:TITLE_FONT size:30];
         _titleLabel.textColor = [UIColor blackColor];
         _titleLabel.text = @"未登录";
         [self addSubview:_titleLabel];

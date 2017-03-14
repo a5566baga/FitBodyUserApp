@@ -24,10 +24,13 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>DINMittelschrift-Alternate.ttf</string>
-		<string>FZLTH.ttf</string>
-		<string>Songti-SC-Black.ttf</string>
-		<string>FZLTXH.TTF</string>
+		<string>DINSchrift.ttf</string>
+		<string>华文宋体 Block.ttf</string>
+		<string>汉仪中秀体简.ttf</string>
+		<string>方正兰亭纤黑简体.TTF</string>
+		<string>汉仪劲楷简.ttf</string>
+		<string>汉仪清雅体简.ttf</string>
+		<string>汉仪全唐诗简.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
