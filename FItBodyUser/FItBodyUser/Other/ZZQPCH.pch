@@ -21,8 +21,8 @@
 
 //字体名字
 #define TITLE_FONT @"Songti SC"
-#define CONTENT_FONT @"汉仪清雅体简"
-#define LITTER_TITLE_FONT @"汉仪全唐诗简"
+#define CONTENT_FONT @"HYQingYaTiJ"
+#define LITTER_TITLE_FONT @"HYQuanTangShiJ"
 #define BLOD_ENG @"DINSchrift"
 
 //宽高

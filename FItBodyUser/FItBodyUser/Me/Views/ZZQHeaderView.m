@@ -16,6 +16,8 @@
 @property(nonatomic, strong)UILabel * smallLabel;
 //头像
 @property(nonatomic, strong)UIImageView * headImgView;
+//底部的线
+@property(nonatomic, strong)UILabel * lineLabel;
 
 @end
 
@@ -26,12 +28,28 @@
     self = [super initWithFrame:frame];
     if (self) {
         CGFloat margin = 20;
-        CGFloat imgWidth = 80;
+        CGFloat imgWidth = 60;
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin, 0, self.width-2*margin-imgWidth, 60)];
         _titleLabel.font = [UIFont fontWithName:TITLE_FONT size:30];
         _titleLabel.textColor = [UIColor blackColor];
         _titleLabel.text = @"未登录";
         [self addSubview:_titleLabel];
+        
+        _smallLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin, 60, self.width-2*margin-imgWidth, 20)];
+        _smallLabel.font = [UIFont fontWithName:LITTER_TITLE_FONT size:17];
+        _smallLabel.textColor = [UIColor grayColor];
+        _smallLabel.text = @"点击登录 创造更好的身材吧";
+        [self addSubview:_smallLabel];
+        
+        _headImgView = [[UIImageView alloc] initWithFrame:CGRectMake(self.width-margin-imgWidth, margin, imgWidth, imgWidth)];
+        [_headImgView setImage:[UIImage imageNamed:@"ic_user_header_small"]];
+        _headImgView.clipsToBounds = YES;
+        _headImgView.layer.cornerRadius = imgWidth/2;
+        [self addSubview:_headImgView];
+        
+        _lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin-5, self.height-1, self.width-2*(margin-5), 1)];
+        _lineLabel.backgroundColor = [UIColor grayColor];
+//        [self addSubview:_lineLabel];
     }
     return self;
 }

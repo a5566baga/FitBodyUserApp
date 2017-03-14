@@ -15,7 +15,18 @@
 		B56D8AD31E76E230000085E6 /* ZZQCitysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AD21E76E230000085E6 /* ZZQCitysViewController.m */; };
 		B56D8AD61E76E336000085E6 /* ZZQSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AD51E76E336000085E6 /* ZZQSearchViewController.m */; };
 		B56D8AD91E78062E000085E6 /* ZZQHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AD81E78062E000085E6 /* ZZQHeaderView.m */; };
-		B56D8AE81E7814D1000085E6 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AE71E7814D1000085E6 /* fonts */; };
+		B56D8AF11E7816E1000085E6 /* DINSchrift.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AEA1E7816E1000085E6 /* DINSchrift.ttf */; };
+		B56D8AF21E7816E1000085E6 /* 华文宋体 Block.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AEB1E7816E1000085E6 /* 华文宋体 Block.ttf */; };
+		B56D8AF31E7816E1000085E6 /* 方正兰亭纤黑简体.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AEC1E7816E1000085E6 /* 方正兰亭纤黑简体.TTF */; };
+		B56D8AF41E7816E1000085E6 /* 汉仪中秀体简.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AED1E7816E1000085E6 /* 汉仪中秀体简.ttf */; };
+		B56D8AF51E7816E1000085E6 /* 汉仪全唐诗简.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AEE1E7816E1000085E6 /* 汉仪全唐诗简.ttf */; };
+		B56D8AF61E7816E1000085E6 /* 汉仪劲楷简.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AEF1E7816E1000085E6 /* 汉仪劲楷简.ttf */; };
+		B56D8AF71E7816E1000085E6 /* 汉仪清雅体简.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AF01E7816E1000085E6 /* 汉仪清雅体简.ttf */; };
+		B56D8AFA1E781EEA000085E6 /* ZZQMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AF91E781EEA000085E6 /* ZZQMeTableViewCell.m */; };
+		B56D8AFD1E7830F5000085E6 /* ZZQMeCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AFC1E7830F5000085E6 /* ZZQMeCellButton.m */; };
+		B56D8B041E7844B7000085E6 /* ZZQDoingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B031E7844B7000085E6 /* ZZQDoingViewController.m */; };
+		B56D8B071E7844CD000085E6 /* ZZQNoCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B061E7844CD000085E6 /* ZZQNoCommentsViewController.m */; };
+		B56D8B0A1E7844DB000085E6 /* ZZQAlreadyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B091E7844DB000085E6 /* ZZQAlreadyViewController.m */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -46,7 +57,23 @@
 		B56D8AD51E76E336000085E6 /* ZZQSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQSearchViewController.m; sourceTree = "<group>"; };
 		B56D8AD71E78062E000085E6 /* ZZQHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQHeaderView.h; sourceTree = "<group>"; };
 		B56D8AD81E78062E000085E6 /* ZZQHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQHeaderView.m; sourceTree = "<group>"; };
-		B56D8AE71E7814D1000085E6 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		B56D8AEA1E7816E1000085E6 /* DINSchrift.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DINSchrift.ttf; sourceTree = "<group>"; };
+		B56D8AEB1E7816E1000085E6 /* 华文宋体 Block.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文宋体 Block.ttf"; sourceTree = "<group>"; };
+		B56D8AEC1E7816E1000085E6 /* 方正兰亭纤黑简体.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "方正兰亭纤黑简体.TTF"; sourceTree = "<group>"; };
+		B56D8AED1E7816E1000085E6 /* 汉仪中秀体简.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "汉仪中秀体简.ttf"; sourceTree = "<group>"; };
+		B56D8AEE1E7816E1000085E6 /* 汉仪全唐诗简.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "汉仪全唐诗简.ttf"; sourceTree = "<group>"; };
+		B56D8AEF1E7816E1000085E6 /* 汉仪劲楷简.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "汉仪劲楷简.ttf"; sourceTree = "<group>"; };
+		B56D8AF01E7816E1000085E6 /* 汉仪清雅体简.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "汉仪清雅体简.ttf"; sourceTree = "<group>"; };
+		B56D8AF81E781EEA000085E6 /* ZZQMeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQMeTableViewCell.h; sourceTree = "<group>"; };
+		B56D8AF91E781EEA000085E6 /* ZZQMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMeTableViewCell.m; sourceTree = "<group>"; };
+		B56D8AFB1E7830F5000085E6 /* ZZQMeCellButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQMeCellButton.h; sourceTree = "<group>"; };
+		B56D8AFC1E7830F5000085E6 /* ZZQMeCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMeCellButton.m; sourceTree = "<group>"; };
+		B56D8B021E7844B7000085E6 /* ZZQDoingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQDoingViewController.h; sourceTree = "<group>"; };
+		B56D8B031E7844B7000085E6 /* ZZQDoingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQDoingViewController.m; sourceTree = "<group>"; };
+		B56D8B051E7844CD000085E6 /* ZZQNoCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQNoCommentsViewController.h; sourceTree = "<group>"; };
+		B56D8B061E7844CD000085E6 /* ZZQNoCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQNoCommentsViewController.m; sourceTree = "<group>"; };
+		B56D8B081E7844DB000085E6 /* ZZQAlreadyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAlreadyViewController.h; sourceTree = "<group>"; };
+		B56D8B091E7844DB000085E6 /* ZZQAlreadyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAlreadyViewController.m; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -167,6 +194,57 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B56D8AE91E7816E1000085E6 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B56D8AEA1E7816E1000085E6 /* DINSchrift.ttf */,
+				B56D8AEB1E7816E1000085E6 /* 华文宋体 Block.ttf */,
+				B56D8AEC1E7816E1000085E6 /* 方正兰亭纤黑简体.TTF */,
+				B56D8AED1E7816E1000085E6 /* 汉仪中秀体简.ttf */,
+				B56D8AEE1E7816E1000085E6 /* 汉仪全唐诗简.ttf */,
+				B56D8AEF1E7816E1000085E6 /* 汉仪劲楷简.ttf */,
+				B56D8AF01E7816E1000085E6 /* 汉仪清雅体简.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		B56D8AFE1E784497000085E6 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				B56D8AFF1E784497000085E6 /* Controllers */,
+				B56D8B001E784497000085E6 /* Models */,
+				B56D8B011E784497000085E6 /* Views */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		B56D8AFF1E784497000085E6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B56D8B021E7844B7000085E6 /* ZZQDoingViewController.h */,
+				B56D8B031E7844B7000085E6 /* ZZQDoingViewController.m */,
+				B56D8B051E7844CD000085E6 /* ZZQNoCommentsViewController.h */,
+				B56D8B061E7844CD000085E6 /* ZZQNoCommentsViewController.m */,
+				B56D8B081E7844DB000085E6 /* ZZQAlreadyViewController.h */,
+				B56D8B091E7844DB000085E6 /* ZZQAlreadyViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B56D8B001E784497000085E6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B56D8B011E784497000085E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B5B4FA401E6BF7DD0020D9B6 = {
 			isa = PBXGroup;
 			children = (
@@ -204,7 +282,7 @@
 		B5B4FA4C1E6BF7DD0020D9B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B56D8AE71E7814D1000085E6 /* fonts */,
+				B56D8AE91E7816E1000085E6 /* fonts */,
 				B5B4FA4D1E6BF7DD0020D9B6 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -270,6 +348,7 @@
 		B5B4FA6A1E73FC540020D9B6 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				B56D8AFE1E784497000085E6 /* Class */,
 				B5B4FA6B1E73FC540020D9B6 /* Controllers */,
 				B5B4FA6C1E73FC540020D9B6 /* Models */,
 				B5B4FA6D1E73FC540020D9B6 /* Views */,
@@ -298,6 +377,10 @@
 			children = (
 				B56D8AD71E78062E000085E6 /* ZZQHeaderView.h */,
 				B56D8AD81E78062E000085E6 /* ZZQHeaderView.m */,
+				B56D8AF81E781EEA000085E6 /* ZZQMeTableViewCell.h */,
+				B56D8AF91E781EEA000085E6 /* ZZQMeTableViewCell.m */,
+				B56D8AFB1E7830F5000085E6 /* ZZQMeCellButton.h */,
+				B56D8AFC1E7830F5000085E6 /* ZZQMeCellButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -425,9 +508,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B56D8AE81E7814D1000085E6 /* fonts in Resources */,
+				B56D8AF71E7816E1000085E6 /* 汉仪清雅体简.ttf in Resources */,
+				B56D8AF21E7816E1000085E6 /* 华文宋体 Block.ttf in Resources */,
+				B56D8AF61E7816E1000085E6 /* 汉仪劲楷简.ttf in Resources */,
+				B56D8AF11E7816E1000085E6 /* DINSchrift.ttf in Resources */,
 				B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */,
+				B56D8AF31E7816E1000085E6 /* 方正兰亭纤黑简体.TTF in Resources */,
 				B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */,
+				B56D8AF41E7816E1000085E6 /* 汉仪中秀体简.ttf in Resources */,
+				B56D8AF51E7816E1000085E6 /* 汉仪全唐诗简.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,19 +576,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				B506AE4F1E7534C800B39731 /* ZZQCityButton.m in Sources */,
+				B56D8B0A1E7844DB000085E6 /* ZZQAlreadyViewController.m in Sources */,
 				B5B4FA8E1E7407000020D9B6 /* ZZQTabBarViewController.m in Sources */,
 				B5B4FA9D1E74D5360020D9B6 /* ZZQOrderViewController.m in Sources */,
 				B56D8AD91E78062E000085E6 /* ZZQHeaderView.m in Sources */,
 				B56D8AD31E76E230000085E6 /* ZZQCitysViewController.m in Sources */,
 				B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */,
 				B5B4FA841E7402BE0020D9B6 /* ZZQBaseTabBar.m in Sources */,
+				B56D8B071E7844CD000085E6 /* ZZQNoCommentsViewController.m in Sources */,
 				B5B4FA801E73FC540020D9B6 /* AppDelegate.m in Sources */,
 				B56D8ACD1E755B97000085E6 /* ZZQNoOnlineView.m in Sources */,
 				B56D8AD01E755BA8000085E6 /* ZZQNoNetView.m in Sources */,
 				B5B4FA971E74D50A0020D9B6 /* ZZQHomeViewController.m in Sources */,
+				B56D8AFD1E7830F5000085E6 /* ZZQMeCellButton.m in Sources */,
 				B56D8AD61E76E336000085E6 /* ZZQSearchViewController.m in Sources */,
 				B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */,
+				B56D8AFA1E781EEA000085E6 /* ZZQMeTableViewCell.m in Sources */,
 				B506AE521E75472200B39731 /* ZZQNetAlertView.m in Sources */,
+				B56D8B041E7844B7000085E6 /* ZZQDoingViewController.m in Sources */,
 				B5B4FA9A1E74D51A0020D9B6 /* ZZQMeViewController.m in Sources */,
 				B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */,
 			);
