@@ -38,8 +38,8 @@
 
 @implementation ZZQHomeViewController
 
-#pragma 
-#pragma ============= 懒加载
+#pragma mark
+#pragma mark ============= 懒加载
 - (UIBarButtonItem *)cityItem{
     if(!_cityItem){
         _cityBtn = [[ZZQCityButton alloc] initWithFrame:CGRectMake(0, 0, 80, 16)];
@@ -61,8 +61,8 @@
     return _searchItem;
 }
 
-#pragma 
-#pragma ============= 加载视图
+#pragma mark
+#pragma mark ============= 加载视图
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    self.view.backgroundColor = [UIColor redColor];
@@ -81,16 +81,16 @@
 //    [self initForNoNetView];
 }
 
-#pragma
-#pragma ============== 设置nav
+#pragma mark
+#pragma mark ============== 设置nav
 - (void)initNavView{
     [self.navigationItem setLeftBarButtonItem:self.cityItem];
     [self.navigationItem setRightBarButtonItem:self.searchItem];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
 }
 
-#pragma 
-#pragma ============== 初始化数据
+#pragma mark
+#pragma mark ============== 初始化数据
 //TODO:初始化数据的模型还未完成
 - (void)initForData{
     //model模型，通过回调加载tableview还是errorView
@@ -102,8 +102,8 @@
     [_tableView reloadData];
 }
 
-#pragma
-#pragma ============== 错误页面设置
+#pragma mark
+#pragma mark ============== 错误页面设置
 - (void)initForNoOnlineView{
     _noOnlineView = [[ZZQNoOnlineView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [self.view addSubview:_noOnlineView];
@@ -118,16 +118,16 @@
     [_noNetView addGestureRecognizer:_tapToReflush];
 }
 
-#pragma 
-#pragma ============== 设置tableview
+#pragma mark
+#pragma mark ============== 设置tableview
 - (void)initTableView{
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49) style:UITableViewStyleGrouped];
     [self.view addSubview:_tableView];
     [self initRefush];
 }
 
-#pragma 
-#pragma ============== 上拉刷新，下拉加载(创建完tableview之后调用)
+#pragma mark
+#pragma mark ============== 上拉刷新，下拉加载(创建完tableview之后调用)
 - (void)initRefush{
     _picArray = [NSMutableArray array];
     for (NSUInteger i = 0; i <= 11; i++) {
@@ -152,8 +152,8 @@
     footer.labelLeftInset = 0;
 }
 
-#pragma 
-#pragma ============== 代理
+#pragma mark
+#pragma mark ============== 代理
 
 
 - (void)didReceiveMemoryWarning {

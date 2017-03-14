@@ -14,14 +14,16 @@
 		B56D8AD01E755BA8000085E6 /* ZZQNoNetView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8ACF1E755BA8000085E6 /* ZZQNoNetView.m */; };
 		B56D8AD31E76E230000085E6 /* ZZQCitysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AD21E76E230000085E6 /* ZZQCitysViewController.m */; };
 		B56D8AD61E76E336000085E6 /* ZZQSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AD51E76E336000085E6 /* ZZQSearchViewController.m */; };
+		B56D8AD91E78062E000085E6 /* ZZQHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AD81E78062E000085E6 /* ZZQHeaderView.m */; };
+		B56D8AE31E78111A000085E6 /* DINMittelschrift-Alternate.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8ADF1E78111A000085E6 /* DINMittelschrift-Alternate.ttf */; };
+		B56D8AE41E78111A000085E6 /* FZLTH.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AE01E78111A000085E6 /* FZLTH.ttf */; };
+		B56D8AE51E78111A000085E6 /* FZLTXH.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AE11E78111A000085E6 /* FZLTXH.ttf */; };
+		B56D8AE61E78111A000085E6 /* Songti-SC-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B56D8AE21E78111A000085E6 /* Songti-SC-Black.ttf */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
 		B5B4FA801E73FC540020D9B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA7B1E73FC540020D9B6 /* AppDelegate.m */; };
 		B5B4FA841E7402BE0020D9B6 /* ZZQBaseTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA831E7402BE0020D9B6 /* ZZQBaseTabBar.m */; };
-		B5B4FA891E74063D0020D9B6 /* FZLTH.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA861E74063D0020D9B6 /* FZLTH.TTF */; };
-		B5B4FA8A1E74063D0020D9B6 /* FZLTXH.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA871E74063D0020D9B6 /* FZLTXH.TTF */; };
-		B5B4FA8B1E74063D0020D9B6 /* Songti-SC-Black.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA881E74063D0020D9B6 /* Songti-SC-Black.TTF */; };
 		B5B4FA8E1E7407000020D9B6 /* ZZQTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA8D1E7407000020D9B6 /* ZZQTabBarViewController.m */; };
 		B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA901E74070F0020D9B6 /* ZZQBaseViewController.m */; };
 		B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA931E740BD40020D9B6 /* ZZQBaseNavViewController.m */; };
@@ -45,6 +47,12 @@
 		B56D8AD21E76E230000085E6 /* ZZQCitysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQCitysViewController.m; sourceTree = "<group>"; };
 		B56D8AD41E76E336000085E6 /* ZZQSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQSearchViewController.h; sourceTree = "<group>"; };
 		B56D8AD51E76E336000085E6 /* ZZQSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQSearchViewController.m; sourceTree = "<group>"; };
+		B56D8AD71E78062E000085E6 /* ZZQHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQHeaderView.h; sourceTree = "<group>"; };
+		B56D8AD81E78062E000085E6 /* ZZQHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQHeaderView.m; sourceTree = "<group>"; };
+		B56D8ADF1E78111A000085E6 /* DINMittelschrift-Alternate.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINMittelschrift-Alternate.ttf"; sourceTree = "<group>"; };
+		B56D8AE01E78111A000085E6 /* FZLTH.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZLTH.ttf; sourceTree = "<group>"; };
+		B56D8AE11E78111A000085E6 /* FZLTXH.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZLTXH.ttf; sourceTree = "<group>"; };
+		B56D8AE21E78111A000085E6 /* Songti-SC-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Songti-SC-Black.ttf"; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,9 +63,6 @@
 		B5B4FA811E73FCAA0020D9B6 /* ZZQPCH.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQPCH.pch; sourceTree = "<group>"; };
 		B5B4FA821E7402BE0020D9B6 /* ZZQBaseTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQBaseTabBar.h; sourceTree = "<group>"; };
 		B5B4FA831E7402BE0020D9B6 /* ZZQBaseTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQBaseTabBar.m; sourceTree = "<group>"; };
-		B5B4FA861E74063D0020D9B6 /* FZLTH.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZLTH.TTF; sourceTree = "<group>"; };
-		B5B4FA871E74063D0020D9B6 /* FZLTXH.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FZLTXH.TTF; sourceTree = "<group>"; };
-		B5B4FA881E74063D0020D9B6 /* Songti-SC-Black.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Songti-SC-Black.TTF"; sourceTree = "<group>"; };
 		B5B4FA8C1E7407000020D9B6 /* ZZQTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQTabBarViewController.h; sourceTree = "<group>"; };
 		B5B4FA8D1E7407000020D9B6 /* ZZQTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQTabBarViewController.m; sourceTree = "<group>"; };
 		B5B4FA8F1E74070F0020D9B6 /* ZZQBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQBaseViewController.h; sourceTree = "<group>"; };
@@ -168,6 +173,17 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B56D8ADE1E78111A000085E6 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B56D8ADF1E78111A000085E6 /* DINMittelschrift-Alternate.ttf */,
+				B56D8AE01E78111A000085E6 /* FZLTH.ttf */,
+				B56D8AE11E78111A000085E6 /* FZLTXH.ttf */,
+				B56D8AE21E78111A000085E6 /* Songti-SC-Black.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		B5B4FA401E6BF7DD0020D9B6 = {
 			isa = PBXGroup;
 			children = (
@@ -205,7 +221,7 @@
 		B5B4FA4C1E6BF7DD0020D9B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B5B4FA851E74063D0020D9B6 /* fonts */,
+				B56D8ADE1E78111A000085E6 /* fonts */,
 				B5B4FA4D1E6BF7DD0020D9B6 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -297,6 +313,8 @@
 		B5B4FA6D1E73FC540020D9B6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B56D8AD71E78062E000085E6 /* ZZQHeaderView.h */,
+				B56D8AD81E78062E000085E6 /* ZZQHeaderView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -350,16 +368,6 @@
 				B5B4FA811E73FCAA0020D9B6 /* ZZQPCH.pch */,
 			);
 			path = Other;
-			sourceTree = "<group>";
-		};
-		B5B4FA851E74063D0020D9B6 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				B5B4FA861E74063D0020D9B6 /* FZLTH.TTF */,
-				B5B4FA871E74063D0020D9B6 /* FZLTXH.TTF */,
-				B5B4FA881E74063D0020D9B6 /* Songti-SC-Black.TTF */,
-			);
-			path = fonts;
 			sourceTree = "<group>";
 		};
 		BC9BFE4589B913D3F814E413 /* Pods */ = {
@@ -434,11 +442,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5B4FA8B1E74063D0020D9B6 /* Songti-SC-Black.TTF in Resources */,
+				B56D8AE61E78111A000085E6 /* Songti-SC-Black.ttf in Resources */,
 				B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */,
-				B5B4FA891E74063D0020D9B6 /* FZLTH.TTF in Resources */,
+				B56D8AE41E78111A000085E6 /* FZLTH.ttf in Resources */,
+				B56D8AE31E78111A000085E6 /* DINMittelschrift-Alternate.ttf in Resources */,
+				B56D8AE51E78111A000085E6 /* FZLTXH.ttf in Resources */,
 				B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */,
-				B5B4FA8A1E74063D0020D9B6 /* FZLTXH.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +509,7 @@
 				B506AE4F1E7534C800B39731 /* ZZQCityButton.m in Sources */,
 				B5B4FA8E1E7407000020D9B6 /* ZZQTabBarViewController.m in Sources */,
 				B5B4FA9D1E74D5360020D9B6 /* ZZQOrderViewController.m in Sources */,
+				B56D8AD91E78062E000085E6 /* ZZQHeaderView.m in Sources */,
 				B56D8AD31E76E230000085E6 /* ZZQCitysViewController.m in Sources */,
 				B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */,
 				B5B4FA841E7402BE0020D9B6 /* ZZQBaseTabBar.m in Sources */,

@@ -24,8 +24,9 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>FZLTH.TTF</string>
-		<string>Songti-SC-Black.TTF</string>
+		<string>DINMittelschrift-Alternate.ttf</string>
+		<string>FZLTH.ttf</string>
+		<string>Songti-SC-Black.ttf</string>
 		<string>FZLTXH.TTF</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
