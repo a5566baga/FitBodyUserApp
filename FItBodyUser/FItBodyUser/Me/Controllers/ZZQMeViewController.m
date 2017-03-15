@@ -12,6 +12,9 @@
 #import "ZZQDoingViewController.h"
 #import "ZZQNoCommentsViewController.h"
 #import "ZZQAlreadyViewController.h"
+#import "ZZQEditMeViewController.h"
+#import "ZZQLoginViewController.h"
+#import "ZZQClearCacheView.h"
 
 #define CELL_ID @"meCell"
 
@@ -28,6 +31,10 @@
 @property(nonatomic, strong)NSMutableArray * titleArray;
 //自定义的cell
 @property(nonatomic, strong)ZZQMeTableViewCell * cell;
+//个人设置页面
+@property(nonatomic, strong)ZZQEditMeViewController * editViewController;
+//登录页面
+@property(nonatomic, strong)ZZQLoginViewController * loginViewController;
 
 @end
 
@@ -42,7 +49,22 @@
     [self initNavView];
     //设置tableview
     [self initTableView];
-    
+}
+
+#pragma mark
+#pragma mark ========= 懒加载控制器
+- (ZZQEditMeViewController *)editViewController{
+    if(!_editViewController){
+        _editViewController = [[ZZQEditMeViewController alloc] init];
+    }
+    return _editViewController;
+}
+
+- (ZZQLoginViewController *)loginViewController{
+    if(!_loginViewController){
+        _loginViewController = [[ZZQLoginViewController alloc] init];
+    }
+    return _loginViewController;
 }
 
 #pragma mark
@@ -59,6 +81,9 @@
 
 - (void)editMyself:(UIButton *)btn{
     //视图层跳转
+    ZZQEditMeViewController * editVC = [[ZZQEditMeViewController alloc] init];
+    [self.navigationController pushViewController:editVC animated:YES];
+    
 }
 
 #pragma mark
@@ -102,10 +127,28 @@
     return 100;
 }
 
+//TODO:判断是否登录，跳转不同页面，一个登录页面，一个个人设置页面
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    __weak typeof(self) myself = self;
     //TODO:判断是否登录
-    self.navigationController.title = @"未登录";
-//    [self.headerView setTitleName:@"" smallTitle:@"" headImgUrl:@""];
+    BOOL flag = NO;
+    if(!flag){
+        //创建点击事件,未登录
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+            [myself.navigationController pushViewController:self.loginViewController animated:YES];
+        }];
+        [myself.headerView addGestureRecognizer:tap];
+        myself.navigationItem.title = @"未登录";
+    }else{
+        //登录
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+            [myself.navigationController pushViewController:self.editViewController animated:YES];
+        //    [self.headerView setTitleName:@"" smallTitle:@"" headImgUrl:@""];
+            [myself.headerView addGestureRecognizer:tap];
+        }];
+    }
+    
+    
     return self.headerView;
 }
 
@@ -135,6 +178,8 @@
         }];
     }else{
         _cell = [[ZZQMeTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
+        
+        
         [_cell setOtherCellStyle:self.titleArray[indexPath.row-1] index:indexPath.row];
         
     }
@@ -164,12 +209,37 @@
             break;
         case 4:
             NSLog(@"缓存");
+            ZZQClearCacheView * clearCacheView = [[ZZQClearCacheView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 30)];
+            clearCacheView.center = CGPointMake(self.view.centerX, self.view.centerY*1.5);
+            float cache = [[SDImageCache sharedImageCache]getSize]/1000/1000;
+            [clearCacheView setClearCacheViewWithTitle:@"清理缓存 " cacheNum:cache];
+            [[SDImageCache sharedImageCache] clearDisk];
+            clearCacheView.alpha = 0;
+            [self setViewAnimal:clearCacheView];
+            [self.view addSubview:clearCacheView];
             break;
-            
-        default:
-            break;
+//        default:
+//            break;
     }
 }
+
+- (void)setViewAnimal:(UIView *)view{
+    [UIView animateWithDuration:0.6 animations:^{
+        [view setAlpha:1];
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.8 delay:0.8 options:UIViewAnimationOptionLayoutSubviews animations:^{
+            [view setAlpha:0];
+        } completion:^(BOOL finished) {
+            [view removeFromSuperview];
+        }];
+    }];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+        [self.tabBarController.tabBar setHidden:NO];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

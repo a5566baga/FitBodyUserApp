@@ -1,24 +1,22 @@
 //
-//  ZZQNoCommentsViewController.m
+//  ZZQCheckCodeViewController.m
 //  FItBodyUser
 //
-//  Created by ben on 17/3/14.
+//  Created by ben on 17/3/15.
 //  Copyright © 2017年 张增强. All rights reserved.
 //
 
-#import "ZZQNoCommentsViewController.h"
+#import "ZZQCheckCodeViewController.h"
 
-@interface ZZQNoCommentsViewController ()
+@interface ZZQCheckCodeViewController ()
 
 @end
 
-@implementation ZZQNoCommentsViewController
+@implementation ZZQCheckCodeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = @"待评论";
 }
 
 - (void)viewWillAppear:(BOOL)animated{

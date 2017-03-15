@@ -1,24 +1,23 @@
 //
-//  ZZQNoCommentsViewController.m
+//  ZZQLoginViewController.m
 //  FItBodyUser
 //
-//  Created by ben on 17/3/14.
+//  Created by ben on 17/3/15.
 //  Copyright © 2017年 张增强. All rights reserved.
 //
 
-#import "ZZQNoCommentsViewController.h"
+#import "ZZQLoginViewController.h"
 
-@interface ZZQNoCommentsViewController ()
+@interface ZZQLoginViewController ()
 
 @end
 
-@implementation ZZQNoCommentsViewController
+@implementation ZZQLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = @"待评论";
+    self.navigationItem.title = @"登录页面";
 }
 
 - (void)viewWillAppear:(BOOL)animated{

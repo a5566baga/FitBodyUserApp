@@ -116,6 +116,10 @@
     [super layoutSubviews];
     CGFloat margin = 20;
     
+    for (UIView * view in [self.contentView subviews]) {
+        [view removeFromSuperview];
+    }
+    
     if(_index == 0){
         //第一个cell
         [self initForFirstCell];

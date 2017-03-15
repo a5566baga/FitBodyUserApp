@@ -54,8 +54,6 @@
     [[UITabBar appearance] setShadowImage:[UIImage new]];
     [[UITabBar appearance] setBackgroundImage:[UIImage new]];
     [self.tabBar addSubview:self.zzqTabBar];
-    
-    
 }
 
 - (void)initControllers{

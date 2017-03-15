@@ -14,11 +14,34 @@
 
 @implementation ZZQBaseNavViewController
 
++ (void)initialize{
+//    UINavigationBar *bar = [UINavigationBar appearance];
+//    [bar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
+//    [bar setShadowImage:[UIImage new]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+}
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    [super pushViewController:viewController animated:animated];
+    if(self.childViewControllers.count>1){
+        UIButton * backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 33, 33)];
+        [backBtn setImage:[UIImage imageNamed:@"back_black"] forState:UIControlStateNormal];
+        [backBtn setImage:[UIImage imageNamed:@"back_white"] forState:UIControlStateHighlighted];
+        [backBtn addTarget:self action:@selector(backAction:vc:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIBarButtonItem * backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+        viewController.navigationItem.leftBarButtonItem = backItem;
+        [viewController.navigationController.navigationBar.backItem setHidesBackButton:YES];
+    }
+}
+
+- (void)backAction:(UIButton *)btn vc:(UIViewController *)vc{
+    [self popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

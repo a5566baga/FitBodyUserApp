@@ -1,24 +1,23 @@
 //
-//  ZZQNoCommentsViewController.m
+//  ZZQEditMeViewController.m
 //  FItBodyUser
 //
-//  Created by ben on 17/3/14.
+//  Created by ben on 17/3/15.
 //  Copyright © 2017年 张增强. All rights reserved.
 //
 
-#import "ZZQNoCommentsViewController.h"
+#import "ZZQEditMeViewController.h"
 
-@interface ZZQNoCommentsViewController ()
+@interface ZZQEditMeViewController ()
 
 @end
 
-@implementation ZZQNoCommentsViewController
+@implementation ZZQEditMeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = @"待评论";
+    self.navigationItem.title = @"个人设置";
 }
 
 - (void)viewWillAppear:(BOOL)animated{
