@@ -135,14 +135,14 @@
     if(!flag){
         //创建点击事件,未登录
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-            [myself.navigationController pushViewController:self.loginViewController animated:YES];
+            [myself.navigationController pushViewController:self.loginViewController animated:NO];
         }];
         [myself.headerView addGestureRecognizer:tap];
         myself.navigationItem.title = @"未登录";
     }else{
-        //登录
+        //登录状态
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-            [myself.navigationController pushViewController:self.editViewController animated:YES];
+            [myself.navigationController pushViewController:self.editViewController animated:NO];
         //    [self.headerView setTitleName:@"" smallTitle:@"" headImgUrl:@""];
             [myself.headerView addGestureRecognizer:tap];
         }];
@@ -237,7 +237,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-        [self.tabBarController.tabBar setHidden:NO];
+    [self.tabBarController.tabBar setHidden:NO];
 }
 
 

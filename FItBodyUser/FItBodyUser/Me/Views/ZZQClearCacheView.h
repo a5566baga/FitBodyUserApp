@@ -12,4 +12,6 @@
 
 - (void)setClearCacheViewWithTitle:(NSString *)title cacheNum:(float)cacheNum;
 
+- (void)setMessageErrorWithMsg:(NSString *)msg;
+
 @end

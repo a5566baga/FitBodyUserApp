@@ -29,8 +29,16 @@
 		B56D8B0A1E7844DB000085E6 /* ZZQAlreadyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B091E7844DB000085E6 /* ZZQAlreadyViewController.m */; };
 		B56D8B0D1E794F8F000085E6 /* ZZQEditMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B0C1E794F8F000085E6 /* ZZQEditMeViewController.m */; };
 		B56D8B171E7961F9000085E6 /* ZZQLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B161E7961F9000085E6 /* ZZQLoginViewController.m */; };
-		B56D8B1A1E796211000085E6 /* ZZQCheckCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B191E796211000085E6 /* ZZQCheckCodeViewController.m */; };
 		B56D8B1D1E7965E7000085E6 /* ZZQClearCacheView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B1C1E7965E7000085E6 /* ZZQClearCacheView.m */; };
+		B56D8B231E797BEC000085E6 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56D8B201E797BEC000085E6 /* MOBFoundation.framework */; };
+		B56D8B241E797BEC000085E6 /* MOBFoundationEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56D8B211E797BEC000085E6 /* MOBFoundationEx.framework */; };
+		B56D8B251E797BEC000085E6 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56D8B221E797BEC000085E6 /* SMS_SDK.framework */; };
+		B56D8B271E797DD3000085E6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B56D8B261E797DD3000085E6 /* libz.tbd */; };
+		B56D8B291E797E14000085E6 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B56D8B281E797E14000085E6 /* libicucore.tbd */; };
+		B56D8B2B1E797E22000085E6 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56D8B2A1E797E22000085E6 /* MessageUI.framework */; };
+		B56D8B2D1E797E2E000085E6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56D8B2C1E797E2E000085E6 /* JavaScriptCore.framework */; };
+		B56D8B2F1E797E3C000085E6 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B56D8B2E1E797E3C000085E6 /* libstdc++.tbd */; };
+		B56D8B321E79827B000085E6 /* ZZQPwdLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B311E79827B000085E6 /* ZZQPwdLoginViewController.m */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -82,10 +90,18 @@
 		B56D8B0C1E794F8F000085E6 /* ZZQEditMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQEditMeViewController.m; sourceTree = "<group>"; };
 		B56D8B151E7961F9000085E6 /* ZZQLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQLoginViewController.h; sourceTree = "<group>"; };
 		B56D8B161E7961F9000085E6 /* ZZQLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQLoginViewController.m; sourceTree = "<group>"; };
-		B56D8B181E796211000085E6 /* ZZQCheckCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQCheckCodeViewController.h; sourceTree = "<group>"; };
-		B56D8B191E796211000085E6 /* ZZQCheckCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQCheckCodeViewController.m; sourceTree = "<group>"; };
 		B56D8B1B1E7965E7000085E6 /* ZZQClearCacheView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQClearCacheView.h; sourceTree = "<group>"; };
 		B56D8B1C1E7965E7000085E6 /* ZZQClearCacheView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQClearCacheView.m; sourceTree = "<group>"; };
+		B56D8B201E797BEC000085E6 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
+		B56D8B211E797BEC000085E6 /* MOBFoundationEx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundationEx.framework; sourceTree = "<group>"; };
+		B56D8B221E797BEC000085E6 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
+		B56D8B261E797DD3000085E6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		B56D8B281E797E14000085E6 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		B56D8B2A1E797E22000085E6 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B56D8B2C1E797E2E000085E6 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		B56D8B2E1E797E3C000085E6 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		B56D8B301E79827B000085E6 /* ZZQPwdLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQPwdLoginViewController.h; sourceTree = "<group>"; };
+		B56D8B311E79827B000085E6 /* ZZQPwdLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQPwdLoginViewController.m; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,7 +132,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B56D8B2F1E797E3C000085E6 /* libstdc++.tbd in Frameworks */,
+				B56D8B2D1E797E2E000085E6 /* JavaScriptCore.framework in Frameworks */,
+				B56D8B2B1E797E22000085E6 /* MessageUI.framework in Frameworks */,
+				B56D8B291E797E14000085E6 /* libicucore.tbd in Frameworks */,
+				B56D8B271E797DD3000085E6 /* libz.tbd in Frameworks */,
+				B56D8B231E797BEC000085E6 /* MOBFoundation.framework in Frameworks */,
+				B56D8B251E797BEC000085E6 /* SMS_SDK.framework in Frameworks */,
 				8FD533C02720F25CA9E09D9D /* libPods-FItBodyUser.a in Frameworks */,
+				B56D8B241E797BEC000085E6 /* MOBFoundationEx.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +150,11 @@
 		AAE052A31B417F8D21329C1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B56D8B2E1E797E3C000085E6 /* libstdc++.tbd */,
+				B56D8B2C1E797E2E000085E6 /* JavaScriptCore.framework */,
+				B56D8B2A1E797E22000085E6 /* MessageUI.framework */,
+				B56D8B281E797E14000085E6 /* libicucore.tbd */,
+				B56D8B261E797DD3000085E6 /* libz.tbd */,
 				B9B285C9AA5078F9A9B857F3 /* libPods-FItBodyUser.a */,
 			);
 			name = Frameworks;
@@ -275,8 +304,8 @@
 			children = (
 				B56D8B151E7961F9000085E6 /* ZZQLoginViewController.h */,
 				B56D8B161E7961F9000085E6 /* ZZQLoginViewController.m */,
-				B56D8B181E796211000085E6 /* ZZQCheckCodeViewController.h */,
-				B56D8B191E796211000085E6 /* ZZQCheckCodeViewController.m */,
+				B56D8B301E79827B000085E6 /* ZZQPwdLoginViewController.h */,
+				B56D8B311E79827B000085E6 /* ZZQPwdLoginViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -293,6 +322,16 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B56D8B1F1E797BEC000085E6 /* SMS_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				B56D8B201E797BEC000085E6 /* MOBFoundation.framework */,
+				B56D8B211E797BEC000085E6 /* MOBFoundationEx.framework */,
+				B56D8B221E797BEC000085E6 /* SMS_SDK.framework */,
+			);
+			path = SMS_SDK;
 			sourceTree = "<group>";
 		};
 		B5B4FA401E6BF7DD0020D9B6 = {
@@ -333,6 +372,7 @@
 		B5B4FA4C1E6BF7DD0020D9B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B56D8B1F1E797BEC000085E6 /* SMS_SDK */,
 				B56D8AE91E7816E1000085E6 /* fonts */,
 				B5B4FA4D1E6BF7DD0020D9B6 /* main.m */,
 			);
@@ -508,8 +548,8 @@
 				5C446338FAD58C351AD94D6F /* [CP] Check Pods Manifest.lock */,
 				B5B4FA451E6BF7DD0020D9B6 /* Sources */,
 				B5B4FA461E6BF7DD0020D9B6 /* Frameworks */,
-				B5B4FA471E6BF7DD0020D9B6 /* Resources */,
 				1F9678CE185F0283A058B152 /* [CP] Embed Pods Frameworks */,
+				B5B4FA471E6BF7DD0020D9B6 /* Resources */,
 				143C649230EF93C6E55DFFA4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -636,12 +676,12 @@
 				B5B4FA9D1E74D5360020D9B6 /* ZZQOrderViewController.m in Sources */,
 				B56D8AD91E78062E000085E6 /* ZZQHeaderView.m in Sources */,
 				B56D8AD31E76E230000085E6 /* ZZQCitysViewController.m in Sources */,
+				B56D8B321E79827B000085E6 /* ZZQPwdLoginViewController.m in Sources */,
 				B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */,
 				B5B4FA841E7402BE0020D9B6 /* ZZQBaseTabBar.m in Sources */,
 				B56D8B071E7844CD000085E6 /* ZZQNoCommentsViewController.m in Sources */,
 				B5B4FA801E73FC540020D9B6 /* AppDelegate.m in Sources */,
 				B56D8ACD1E755B97000085E6 /* ZZQNoOnlineView.m in Sources */,
-				B56D8B1A1E796211000085E6 /* ZZQCheckCodeViewController.m in Sources */,
 				B56D8AD01E755BA8000085E6 /* ZZQNoNetView.m in Sources */,
 				B5B4FA971E74D50A0020D9B6 /* ZZQHomeViewController.m in Sources */,
 				B56D8AFD1E7830F5000085E6 /* ZZQMeCellButton.m in Sources */,
@@ -767,6 +807,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P28THB67HH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FItBodyUser/SMS_SDK",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FitBodyUser/Other/ZZQPCH.pch";
 				INFOPLIST_FILE = FItBodyUser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -781,6 +825,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P28THB67HH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FItBodyUser/SMS_SDK",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FitBodyUser/Other/ZZQPCH.pch";
 				INFOPLIST_FILE = FItBodyUser/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

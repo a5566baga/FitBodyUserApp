@@ -23,11 +23,12 @@
     self.window = [[UIWindow alloc] init];
     [self initNetTest];
     [self changeController];
+    [self initThirdSDK];
     return YES;
 }
 
 #pragma 
-#pragma =============== 网络验证
+#pragma mark =============== 网络验证
 - (void)initNetTest{
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
@@ -51,13 +52,19 @@
 }
 
 #pragma
-#pragma =============== 控制器转换
+#pragma mark =============== 控制器转换
 - (void)changeController{
     ZZQTabBarViewController * tabBarVC = [[ZZQTabBarViewController alloc] init];
     self.window.rootViewController = tabBarVC;
     self.window.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+}
+
+#pragma mark
+#pragma mark ===========第三方内容
+- (void)initThirdSDK{
+    [SMSSDK registerApp:@"1c1f152fc5012" withSecret:@"84f696da3ae6856a957d43ca7f62c461"];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

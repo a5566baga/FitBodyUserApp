@@ -36,4 +36,8 @@
     _titleLabel.text = [NSString stringWithFormat:@"%@%.2lf MB", title, cacheNum];
 }
 
+- (void)setMessageErrorWithMsg:(NSString *)msg{
+    _titleLabel.text = msg;
+}
+
 @end
