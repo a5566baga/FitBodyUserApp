@@ -7,7 +7,13 @@
 //
 
 #import "ZZQBaseViewController.h"
+#import "ZZQPwdLoginViewController.h"
 
 @interface ZZQLoginViewController : ZZQBaseViewController
+
+//密码登录控制视图
+@property(nonatomic, strong)ZZQPwdLoginViewController * pwdLoginVC;
+@property(nonatomic, copy)void(^LoginBlock)(NSString * phone);
+
 
 @end

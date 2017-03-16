@@ -39,6 +39,8 @@
 		B56D8B2D1E797E2E000085E6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56D8B2C1E797E2E000085E6 /* JavaScriptCore.framework */; };
 		B56D8B2F1E797E3C000085E6 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B56D8B2E1E797E3C000085E6 /* libstdc++.tbd */; };
 		B56D8B321E79827B000085E6 /* ZZQPwdLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B311E79827B000085E6 /* ZZQPwdLoginViewController.m */; };
+		B56D8B351E7AD3CA000085E6 /* ZZQHeaderPicView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B341E7AD3CA000085E6 /* ZZQHeaderPicView.m */; };
+		B56D8B381E7ADE14000085E6 /* ZZQEditMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B371E7ADE14000085E6 /* ZZQEditMeTableViewCell.m */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -102,6 +104,10 @@
 		B56D8B2E1E797E3C000085E6 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		B56D8B301E79827B000085E6 /* ZZQPwdLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQPwdLoginViewController.h; sourceTree = "<group>"; };
 		B56D8B311E79827B000085E6 /* ZZQPwdLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQPwdLoginViewController.m; sourceTree = "<group>"; };
+		B56D8B331E7AD3CA000085E6 /* ZZQHeaderPicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQHeaderPicView.h; sourceTree = "<group>"; };
+		B56D8B341E7AD3CA000085E6 /* ZZQHeaderPicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQHeaderPicView.m; sourceTree = "<group>"; };
+		B56D8B361E7ADE14000085E6 /* ZZQEditMeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQEditMeTableViewCell.h; sourceTree = "<group>"; };
+		B56D8B371E7ADE14000085E6 /* ZZQEditMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQEditMeTableViewCell.m; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -284,6 +290,10 @@
 		B56D8B011E784497000085E6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B56D8B331E7AD3CA000085E6 /* ZZQHeaderPicView.h */,
+				B56D8B341E7AD3CA000085E6 /* ZZQHeaderPicView.m */,
+				B56D8B361E7ADE14000085E6 /* ZZQEditMeTableViewCell.h */,
+				B56D8B371E7ADE14000085E6 /* ZZQEditMeTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -675,6 +685,7 @@
 				B56D8B1D1E7965E7000085E6 /* ZZQClearCacheView.m in Sources */,
 				B5B4FA9D1E74D5360020D9B6 /* ZZQOrderViewController.m in Sources */,
 				B56D8AD91E78062E000085E6 /* ZZQHeaderView.m in Sources */,
+				B56D8B381E7ADE14000085E6 /* ZZQEditMeTableViewCell.m in Sources */,
 				B56D8AD31E76E230000085E6 /* ZZQCitysViewController.m in Sources */,
 				B56D8B321E79827B000085E6 /* ZZQPwdLoginViewController.m in Sources */,
 				B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */,
@@ -692,6 +703,7 @@
 				B56D8B0D1E794F8F000085E6 /* ZZQEditMeViewController.m in Sources */,
 				B56D8B041E7844B7000085E6 /* ZZQDoingViewController.m in Sources */,
 				B5B4FA9A1E74D51A0020D9B6 /* ZZQMeViewController.m in Sources */,
+				B56D8B351E7AD3CA000085E6 /* ZZQHeaderPicView.m in Sources */,
 				B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

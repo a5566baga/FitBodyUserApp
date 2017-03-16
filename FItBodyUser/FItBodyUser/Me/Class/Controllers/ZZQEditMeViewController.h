@@ -10,4 +10,9 @@
 
 @interface ZZQEditMeViewController : ZZQBaseViewController
 
+/**
+ * 传用户名，查询出来
+ */
+- (void)setUserName:(NSString *)userName;
+
 @end

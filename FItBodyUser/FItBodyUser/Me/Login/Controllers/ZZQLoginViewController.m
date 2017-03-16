@@ -7,7 +7,6 @@
 //  短信登录
 
 #import "ZZQLoginViewController.h"
-#import "ZZQPwdLoginViewController.h"
 #import "ZZQClearCacheView.h"
 
 @interface ZZQLoginViewController ()
@@ -22,8 +21,6 @@
 @property(nonatomic, strong)UIButton * loginBtn;
 //切换密码登录按钮
 @property(nonatomic, strong)UIButton * changePwdLoginBtn;
-//密码登录控制视图
-@property(nonatomic, strong)ZZQPwdLoginViewController * pwdLoginVC;
 
 @end
 
@@ -51,9 +48,11 @@
     CGFloat height = 30;
     _phoneNumField = [[UITextField alloc] initWithFrame:CGRectMake(margin, top, SCREEN_WIDTH-2*margin, height)];
     [self setTextFieldStyle:@"请输入电话号码" textField:_phoneNumField];
+    _phoneNumField.text = @"";
     [self.view addSubview:_phoneNumField];
     
     _codeField = [[UITextField alloc] initWithFrame:CGRectMake(margin, CGRectGetMaxY(_phoneNumField.frame)+30, SCREEN_WIDTH-2*margin-80, height)];
+    _codeField.text = @"";
     [self setTextFieldStyle:@"请输入验证码" textField:_codeField];
     [self.view addSubview:_codeField];
     
@@ -71,7 +70,7 @@
     UIImageView * line1 = [[UIImageView alloc] initWithFrame:CGRectMake(margin, CGRectGetMaxY(_phoneNumField.frame)+13, CGRectGetWidth(_phoneNumField.frame), 2)];
     [line1 setImage:[UIImage imageNamed:@"comment_share_line"]];
     [self.view addSubview:line1];
-    UIImageView * line2 = [[UIImageView alloc] initWithFrame:CGRectMake(margin, CGRectGetMaxY(_codeField.frame)+13, CGRectGetWidth(_phoneNumField.frame), 2)];
+    UIImageView * line2 = [[UIImageView alloc] initWithFrame:CGRectMake(margin, CGRectGetMaxY(_sendCodeBtn.frame)+13, CGRectGetWidth(_phoneNumField.frame), 2)];
     [line2 setImage:[UIImage imageNamed:@"comment_share_line"]];
     [self.view addSubview:line2];
     
@@ -93,22 +92,25 @@
                 [alertView setMessageErrorWithMsg:@"短信请求失败"];
                 [myself.view addSubview:alertView];
                 [myself setAlertViewAnimal:alertView];
+                btn.userInteractionEnabled = YES;
+                [btn setTitle:@"重新获取" forState:UIControlStateNormal];
+            }else{
+                //开始倒计时
+                __block NSUInteger time = 60;
+                [NSTimer scheduledTimerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
+                    if(time > 0){
+                        time--;
+                        [btn setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)time] forState:UIControlStateNormal];
+                        btn.userInteractionEnabled = NO;
+                    }else{
+                        [timer setFireDate:[NSDate distantFuture]];
+                        btn.userInteractionEnabled = YES;
+                        [btn setTitle:@"重新获取" forState:UIControlStateNormal];
+                    }
+                } repeats:YES];
             }
         }];
         
-        //开始倒计时
-        __block NSUInteger time = 60;
-        [NSTimer scheduledTimerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
-            if(time > 0){
-                time--;
-                [btn setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)time] forState:UIControlStateNormal];
-                btn.userInteractionEnabled = NO;
-            }else{
-                [timer setFireDate:[NSDate distantFuture]];
-                btn.userInteractionEnabled = YES;
-                [btn setTitle:@"重新获取" forState:UIControlStateNormal];
-            }
-        } repeats:YES];
     }
 }
 //设置textfield的方法
@@ -135,6 +137,14 @@
     _loginBtn.layer.masksToBounds = YES;
     [self.view addSubview:_loginBtn];
     [_loginBtn addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _changePwdLoginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _changePwdLoginBtn.frame = CGRectMake(SCREEN_WIDTH/3, SCREEN_HEIGHT-120, SCREEN_WIDTH/3, 40);
+    [_changePwdLoginBtn setTitle:@"切换密码登录" forState:UIControlStateNormal];
+    [_changePwdLoginBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    _changePwdLoginBtn.adjustsImageWhenHighlighted = NO;
+    [self.view addSubview:_changePwdLoginBtn];
+    [_changePwdLoginBtn addTarget:self action:@selector(changLoginAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)loginAction:(UIButton *)btn{
@@ -153,9 +163,22 @@
             if(error){
                 [myself.view addSubview:alertView];
                 [myself setAlertViewAnimal:alertView];
+            }else{
+                //TODO:查询数据库，发送请求，返回需要更改成为字典
+                myself.LoginBlock(_phoneNumField.text);
+                [myself.navigationController popViewControllerAnimated:YES];
             }
         }];
     }
+}
+
+- (void)changLoginAction:(UIButton *)btn{
+    ZZQPwdLoginViewController * pwdLoginVC = [[ZZQPwdLoginViewController alloc] init];
+    __weak typeof(self)myself = self;
+    [pwdLoginVC setLoginBlock:^(NSString * name) {
+        myself.LoginBlock(name);
+    }];
+    [self.navigationController pushViewController:pwdLoginVC animated:YES];
 }
 
 

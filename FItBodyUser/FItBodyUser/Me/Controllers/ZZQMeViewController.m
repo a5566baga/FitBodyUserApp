@@ -15,6 +15,7 @@
 #import "ZZQEditMeViewController.h"
 #import "ZZQLoginViewController.h"
 #import "ZZQClearCacheView.h"
+#import "ZZQPwdLoginViewController.h"
 
 #define CELL_ID @"meCell"
 
@@ -80,9 +81,21 @@
 }
 
 - (void)editMyself:(UIButton *)btn{
-    //视图层跳转
-    ZZQEditMeViewController * editVC = [[ZZQEditMeViewController alloc] init];
-    [self.navigationController pushViewController:editVC animated:YES];
+    
+    BOOL flag = YES;
+    
+    if(flag){
+        //视图层跳转,登录状态
+        ZZQEditMeViewController * editVC = [[ZZQEditMeViewController alloc] init];
+        [self.navigationController pushViewController:editVC animated:YES];
+    }else{
+        ZZQClearCacheView * noLoginView = [[ZZQClearCacheView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 30)];
+        noLoginView.center = CGPointMake(self.view.centerX, self.view.centerY*1.5);
+        [noLoginView setMessageErrorWithMsg:@"请先登录"];
+        [noLoginView setAlpha:0];
+        [self.view addSubview:noLoginView];
+        [self setViewAnimal:noLoginView];
+    }
     
 }
 
@@ -131,23 +144,28 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     __weak typeof(self) myself = self;
     //TODO:判断是否登录
-    BOOL flag = NO;
+    BOOL flag = YES;
     if(!flag){
         //创建点击事件,未登录
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-            [myself.navigationController pushViewController:self.loginViewController animated:NO];
+            [myself.navigationController pushViewController:myself.loginViewController animated:YES];
+            [myself.loginViewController setLoginBlock:^(NSString * phone) {
+                [myself.headerView setTitleName:[NSString stringWithFormat:@"%@",phone] smallTitle:@"点击编辑个人信息" headImgUrl:@""];
+            }];
+            [myself.loginViewController.pwdLoginVC setLoginBlock:^(NSString * name) {
+                [myself.headerView setTitleName:[NSString stringWithFormat:@"%@",name] smallTitle:@"点击编辑个人信息" headImgUrl:@""];
+            }];
         }];
         [myself.headerView addGestureRecognizer:tap];
         myself.navigationItem.title = @"未登录";
     }else{
         //登录状态
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-            [myself.navigationController pushViewController:self.editViewController animated:NO];
+            [myself.navigationController pushViewController:myself.editViewController animated:YES];
         //    [self.headerView setTitleName:@"" smallTitle:@"" headImgUrl:@""];
             [myself.headerView addGestureRecognizer:tap];
         }];
     }
-    
     
     return self.headerView;
 }

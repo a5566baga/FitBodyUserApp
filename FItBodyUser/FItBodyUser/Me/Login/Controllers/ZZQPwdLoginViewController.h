@@ -10,4 +10,6 @@
 
 @interface ZZQPwdLoginViewController : ZZQBaseViewController
 
+@property(nonatomic, copy)void(^LoginBlock)(NSString * name);
+
 @end
