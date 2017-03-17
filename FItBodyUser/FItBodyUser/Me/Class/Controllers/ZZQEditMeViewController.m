@@ -11,7 +11,7 @@
 #import "ZZQEditMeTableViewCell.h"
 
 #define CELL_ID @"Cell_ID"
-@interface ZZQEditMeViewController ()
+@interface ZZQEditMeViewController ()<UITableViewDelegate, UITableViewDataSource>
 //头像视图
 @property(nonatomic, strong)ZZQHeaderPicView * headerView;
 //tableView视图
@@ -33,12 +33,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.navigationItem.title = @"个人设置";
-    
-    
+    [self initForNav];
+    [self initForTableView];
 }
-
 
 #pragma mark
 #pragma mark ======== 懒加载
@@ -47,7 +45,7 @@
     if(!_headerView){
         _headerView = [[ZZQHeaderPicView alloc] initWithFrame:CGRectMake(0, 80, SCREEN_WIDTH, 125)];
         [_headerView initViewWithPicUrl:nil];
-        _headerView.backgroundColor = [UIColor orangeColor];
+//        _headerView.backgroundColor = [UIColor orangeColor];
         _headerView.userInteractionEnabled = NO;
     }
     return _headerView;
@@ -63,6 +61,69 @@
 //查询条件
 - (void)setUserName:(NSString *)userName{
     _userName = userName;
+}
+
+//设置nav保存按钮
+- (void)initForNav{
+    _saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_saveBtn setTitle:@"保存" forState:UIControlStateNormal];
+    [_saveBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [_saveBtn.titleLabel setFont:[UIFont fontWithName:CONTENT_FONT size:14]];
+    [_saveBtn addTarget:self action:@selector(savaAction:) forControlEvents:UIControlEventTouchUpInside];
+    _saveBtn.frame = CGRectMake(0, 0, 60, 30);
+}
+//保存操作
+- (void)savaAction:(UIButton *)btn{
+    //添加到数据库，头像和昵称传值
+    [self.navigationController popViewControllerAnimated:YES];
+}
+#pragma mark
+#pragma mark ============= 添加tableview
+- (void)initForTableView{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64) style:UITableViewStyleGrouped];
+    _tableView.showsVerticalScrollIndicator = NO;
+    _tableView.bounces = NO;
+    [self.view addSubview:_tableView];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    
+}
+
+#pragma mark
+#pragma mark ============= tableView的代理方法
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.titlesArray.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    _cell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
+    if(_cell == nil){
+        _cell = [[ZZQEditMeTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
+    }
+    return _cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+        return 50;
+}
+//TODO:设置头像内容，尚未完成
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    __weak typeof(self)myself = self;
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        //打开图库
+    }];
+    [self.headerView addGestureRecognizer:tap];
+    return self.headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 125;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView clearSelectedRowsAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

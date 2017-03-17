@@ -36,6 +36,7 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
+    self.backgroundColor = [UIColor whiteColor];
     CGFloat width = 60;
     [_headerBtn setFrame:CGRectMake((SCREEN_WIDTH-width)/2, width/3, width, width)];
     _headerBtn.layer.cornerRadius = width/2;
