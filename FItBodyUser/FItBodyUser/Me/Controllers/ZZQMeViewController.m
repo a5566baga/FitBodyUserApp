@@ -145,7 +145,14 @@
     __weak typeof(self) myself = self;
     //TODO:判断是否登录
     BOOL flag = YES;
-    if(!flag){
+    if(flag){
+        //登录状态
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+            [myself.navigationController pushViewController:myself.editViewController animated:YES];
+            //    [self.headerView setTitleName:@"" smallTitle:@"" headImgUrl:@""];
+        }];
+        [myself.headerView addGestureRecognizer:tap];
+    }else{
         //创建点击事件,未登录
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
             [myself.navigationController pushViewController:myself.loginViewController animated:YES];
@@ -158,13 +165,6 @@
         }];
         [myself.headerView addGestureRecognizer:tap];
         myself.navigationItem.title = @"未登录";
-    }else{
-        //登录状态
-        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-            [myself.navigationController pushViewController:myself.editViewController animated:YES];
-        //    [self.headerView setTitleName:@"" smallTitle:@"" headImgUrl:@""];
-            [myself.headerView addGestureRecognizer:tap];
-        }];
     }
     
     return self.headerView;

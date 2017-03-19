@@ -26,6 +26,8 @@
 //model模型
 //cell
 @property(nonatomic, strong)ZZQEditMeTableViewCell * cell;
+//登出按钮
+@property(nonatomic, strong)UIButton * logoutBtn;
 
 @end
 
@@ -73,6 +75,7 @@
     _saveBtn.frame = CGRectMake(0, 0, 60, 30);
 }
 //保存操作
+//TODO:保存操作，提交到远程数据，保存到本地
 - (void)savaAction:(UIButton *)btn{
     //添加到数据库，头像和昵称传值
     [self.navigationController popViewControllerAnimated:YES];
@@ -87,6 +90,13 @@
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    
+//    _logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    _logoutBtn.frame = CGRectMake(0, 0, SCREEN_WIDTH/3, 45);
+//    [_logoutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
+//    [_logoutBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+//    _logoutBtn.adjustsImageWhenHighlighted = NO;
+//    _tableView.tableFooterView = _logoutBtn;
     
 }
 
@@ -103,6 +113,39 @@
     if(_cell == nil){
         _cell = [[ZZQEditMeTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
     }
+    [_cell setCellNormalStateWithTitle:self.titlesArray[indexPath.row]];
+    __weak typeof(self)myself = self;
+    switch (indexPath.row) {
+        case 0:
+            //设置昵称
+            [_cell setCellTextState];
+            [_cell setTextBlock:^(NSString * title) {
+                
+            }];
+            break;
+        case 1:
+            //设置性别
+            
+            break;
+        case 2:
+            //设置年龄段
+            break;
+        case 3:
+            //设置手机号
+            break;
+        case 4:
+            //健身目标
+            break;
+        case 5:
+            //卡路里自动计算
+            break;
+        case 6:
+            //登录密码
+            break;
+        default:
+            break;
+    }
+    
     return _cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -118,12 +161,36 @@
     return self.headerView;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    _logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_logoutBtn setBackgroundColor:[UIColor whiteColor]];
+    _logoutBtn.center = CGPointMake(self.view.centerX, 0);
+    [_logoutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
+    [_logoutBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    _logoutBtn.adjustsImageWhenHighlighted = NO;
+    [_logoutBtn addTarget:self action:@selector(logOutAction:) forControlEvents:UIControlEventTouchUpInside];
+    return _logoutBtn;
+}
+
+- (void)logOutAction:(UIButton *)btn{
+    //TODO:登出操作，删除数据库，pop到页面
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 125;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 45;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView clearSelectedRowsAnimated:YES];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
