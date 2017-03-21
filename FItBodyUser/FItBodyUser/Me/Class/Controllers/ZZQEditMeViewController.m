@@ -9,8 +9,9 @@
 #import "ZZQEditMeViewController.h"
 #import "ZZQHeaderPicView.h"
 #import "ZZQEditMeTableViewCell.h"
+#import "ZZQSettingSexView.h"
 
-#define CELL_ID @"Cell_ID"
+#define Edit_CELL_ID @"EditME_Cell_ID"
 @interface ZZQEditMeViewController ()<UITableViewDelegate, UITableViewDataSource>
 //头像视图
 @property(nonatomic, strong)ZZQHeaderPicView * headerView;
@@ -28,6 +29,8 @@
 @property(nonatomic, strong)ZZQEditMeTableViewCell * cell;
 //登出按钮
 @property(nonatomic, strong)UIButton * logoutBtn;
+//性别设置视图
+@property(nonatomic, strong)ZZQSettingSexView * sexView;
 
 @end
 
@@ -87,17 +90,9 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64) style:UITableViewStyleGrouped];
     _tableView.showsVerticalScrollIndicator = NO;
     _tableView.bounces = NO;
-    [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    
-//    _logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    _logoutBtn.frame = CGRectMake(0, 0, SCREEN_WIDTH/3, 45);
-//    [_logoutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
-//    [_logoutBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-//    _logoutBtn.adjustsImageWhenHighlighted = NO;
-//    _tableView.tableFooterView = _logoutBtn;
-    
+    [self.view addSubview:_tableView];
 }
 
 #pragma mark
@@ -109,23 +104,28 @@
     return self.titlesArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    _cell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
+    _cell = [tableView dequeueReusableCellWithIdentifier:Edit_CELL_ID];
     if(_cell == nil){
-        _cell = [[ZZQEditMeTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
+        _cell = [[ZZQEditMeTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:Edit_CELL_ID];
     }
-    [_cell setCellNormalStateWithTitle:self.titlesArray[indexPath.row]];
+
+//    [_cell setCellNormalStateWithTitle:self.titlesArray[indexPath.row]];
+    return _cell;
+    
+     /*
     __weak typeof(self)myself = self;
     switch (indexPath.row) {
         case 0:
             //设置昵称
             [_cell setCellTextState];
             [_cell setTextBlock:^(NSString * title) {
-                
+                NSLog(@"%@",title);
             }];
             break;
         case 1:
             //设置性别
-            
+//            _sexView = [[ZZQSettingSexView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height)];
+//            [self.view addSubview:_sexView];
             break;
         case 2:
             //设置年龄段
@@ -144,9 +144,8 @@
             break;
         default:
             break;
-    }
+    }*/
     
-    return _cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
         return 50;
@@ -185,12 +184,10 @@
     return 45;
 }
 
+//TODO:这是选中状态
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView clearSelectedRowsAnimated:YES];
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
+    NSLog(@"666666666666");
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -202,15 +199,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end
