@@ -108,44 +108,9 @@
     if(_cell == nil){
         _cell = [[ZZQEditMeTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:Edit_CELL_ID];
     }
-
-//    [_cell setCellNormalStateWithTitle:self.titlesArray[indexPath.row]];
+    [_cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    [_cell setTitleLabelValue:self.titlesArray[indexPath.row]];
     return _cell;
-    
-     /*
-    __weak typeof(self)myself = self;
-    switch (indexPath.row) {
-        case 0:
-            //设置昵称
-            [_cell setCellTextState];
-            [_cell setTextBlock:^(NSString * title) {
-                NSLog(@"%@",title);
-            }];
-            break;
-        case 1:
-            //设置性别
-//            _sexView = [[ZZQSettingSexView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height)];
-//            [self.view addSubview:_sexView];
-            break;
-        case 2:
-            //设置年龄段
-            break;
-        case 3:
-            //设置手机号
-            break;
-        case 4:
-            //健身目标
-            break;
-        case 5:
-            //卡路里自动计算
-            break;
-        case 6:
-            //登录密码
-            break;
-        default:
-            break;
-    }*/
-    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
         return 50;
@@ -187,7 +152,36 @@
 //TODO:这是选中状态
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView clearSelectedRowsAnimated:YES];
-    NSLog(@"666666666666");
+    CGFloat height = SCREEN_WIDTH/2+60;
+    __weak typeof(self)myself = self;
+    switch (indexPath.row) {
+        case 0:
+            //设置昵称
+            
+            break;
+        case 1:
+            //设置性别
+            _sexView = [[ZZQSettingSexView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height)];
+            [self.view addSubview:_sexView];
+            break;
+        case 2:
+            //设置年龄段
+            break;
+        case 3:
+            //设置手机号
+            break;
+        case 4:
+            //健身目标
+            break;
+        case 5:
+            //卡路里自动计算
+            break;
+        case 6:
+            //登录密码
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{

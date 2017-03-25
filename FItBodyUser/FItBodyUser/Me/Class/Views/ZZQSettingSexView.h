@@ -10,4 +10,6 @@
 
 @interface ZZQSettingSexView : UIView
 
+@property(nonatomic, copy)void(^Block)(NSString * string);
+
 @end
