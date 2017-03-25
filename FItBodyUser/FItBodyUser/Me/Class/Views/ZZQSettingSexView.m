@@ -43,8 +43,8 @@
     _titleLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_titleLabel];
     
-    _maleBtn = [ZZQSexBtn buttonWithType:UIButtonTypeCustom];
     CGFloat width = SCREEN_WIDTH/2;
+    _maleBtn = [ZZQSexBtn buttonWithType:UIButtonTypeCustom];
     _maleBtn.frame = CGRectMake(0, 20, width, width);
     [_maleBtn setImage:[UIImage imageNamed:@"ic_male_normal"] forState:UIControlStateNormal];
     [_maleBtn setImage:[UIImage imageNamed:@"ic_male_pressed"] forState:UIControlStateHighlighted];
