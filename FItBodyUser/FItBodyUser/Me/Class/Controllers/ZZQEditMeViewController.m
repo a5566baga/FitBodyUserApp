@@ -9,7 +9,10 @@
 #import "ZZQEditMeViewController.h"
 #import "ZZQHeaderPicView.h"
 #import "ZZQEditMeTableViewCell.h"
+//具体设置细节的视图导入
+#import "ZZQNickNameView.h"
 #import "ZZQSettingSexView.h"
+#import "ZZQAgeGroup.h"
 
 #define Edit_CELL_ID @"EditME_Cell_ID"
 @interface ZZQEditMeViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -29,8 +32,12 @@
 @property(nonatomic, strong)ZZQEditMeTableViewCell * cell;
 //登出按钮
 @property(nonatomic, strong)UIButton * logoutBtn;
+//设置姓名视图
+@property(nonatomic, strong)ZZQNickNameView * nickView;
 //性别设置视图
 @property(nonatomic, strong)ZZQSettingSexView * sexView;
+//年龄段视图
+@property(nonatomic, strong)ZZQAgeGroup * ageGroipView;
 
 @end
 
@@ -41,8 +48,49 @@
     self.navigationItem.title = @"个人设置";
     [self initForNav];
     [self initForTableView];
+    
+    //增加监听，当键盘出现或改变时收出消息
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    //增加监听，当键退出时收出消息
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 }
-
+//键盘弹出时调用
+- (void)keyboardWillShow:(NSNotification *)aNotification
+{
+    NSDictionary *userInfo = [aNotification userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    int height = keyboardRect.size.height;
+    //根据不同的view，改变不同frame
+    CGRect viewRect = _nickView.frame;//修改昵称的
+    __weak typeof(self)myself = self;
+    //昵称的
+    if (_nickView != nil) {
+        [UIView animateWithDuration:0.6 animations:^{
+            myself.nickView.frame = CGRectMake(viewRect.origin.x, myself.view.height-height-viewRect.size.height, viewRect.size.width, viewRect.size.height);
+        }];
+    }
+}
+//当键退出时调用
+- (void)keyboardWillHide:(NSNotification *)aNotification
+{
+    //根据不同的view，改变不同frame
+    CGRect viewRect = _nickView.frame;//修改昵称的
+    __weak typeof(self)myself = self;
+    //昵称的
+    if (_nickView != nil) {
+        [UIView animateWithDuration:0.6 animations:^{
+            myself.nickView.frame = CGRectMake(viewRect.origin.x, myself.view.height-viewRect.size.height, viewRect.size.width, viewRect.size.height);
+        }];
+    }
+}
 #pragma mark
 #pragma mark ======== 懒加载
 //头像视图
@@ -152,30 +200,54 @@
 //TODO:这是选中状态
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView clearSelectedRowsAnimated:YES];
+    self.cell = [tableView cellForRowAtIndexPath:indexPath];
+
     
     UIView * bgView = [[UIView alloc] initWithFrame:self.view.bounds];
     bgView.backgroundColor = [UIColor colorWithRed:0.17 green:0.17 blue:0.17 alpha:0.2];
     [self.view addSubview:bgView];
+    bgView.alpha = 0;
     CGFloat height = SCREEN_WIDTH/2+60;
     __weak typeof(self)myself = self;
     if(0 == indexPath.row){
         //设置昵称
+        _nickView = [[ZZQNickNameView alloc] initWithFrame:CGRectMake(0, self.view.height-80, self.view.width, 80)];
+        [bgView addSubview:_nickView];
+        [self showDetailViewAnimal:bgView];
+        
+        [_nickView setNickNameBlock:^(NSString * nickName) {
+            if (![nickName isEqualToString:@""]) {
+                [myself.cell setContentLabelString:nickName];
+            }
+            [myself delDetailViewAnimal:bgView];
+        }];
         
     }else if (1 == indexPath.row){
         //设置性别
         _sexView = [[ZZQSettingSexView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height)];
         [bgView addSubview:_sexView];
+        
+        [self showDetailViewAnimal:bgView];
         [_sexView setBlock:^(NSString * str) {
             if (![str isEqualToString:@"关闭"]) {
                 //保存性别
-                myself.cell = [tableView cellForRowAtIndexPath:indexPath];
                 [myself.cell setContentLabelString:str];
             }
-            [myself.sexView removeFromSuperview];
-            [bgView removeFromSuperview];
+            [myself delDetailViewAnimal:bgView];
         }];
         
     }else if (2 == indexPath.row){
+        //设置年龄段
+        _ageGroipView = [[ZZQAgeGroup alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-330, self.view.width, 330) style:UITableViewStylePlain];
+        _ageGroipView.bounces = NO;
+        [bgView addSubview:_ageGroipView];
+        [self showDetailViewAnimal:bgView];
+        [_ageGroipView setAgeGroupBlack:^(NSString * string) {
+            if(![string isEqualToString:@"关闭"]){
+                [myself.cell setContentLabelString:string];
+            }
+            [myself delDetailViewAnimal:bgView];
+        }];
         
     }else if (3 == indexPath.row){
         
@@ -187,7 +259,21 @@
 }
 
 #pragma mark
-#pragma mark =============== cell中跳转的视图懒加载
+#pragma mark =============== cell中设置视图的动画
+- (void)showDetailViewAnimal:(UIView *)bgView{
+    [UIView animateWithDuration:0.6 animations:^{
+        bgView.alpha = 1;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+- (void)delDetailViewAnimal:(UIView *)bgView{
+    [UIView animateWithDuration:0.6 animations:^{
+        bgView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [bgView removeFromSuperview];
+    }];
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tabBarController.tabBar setHidden:YES];

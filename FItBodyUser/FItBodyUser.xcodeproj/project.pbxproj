@@ -43,6 +43,9 @@
 		B56D8B381E7ADE14000085E6 /* ZZQEditMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B371E7ADE14000085E6 /* ZZQEditMeTableViewCell.m */; };
 		B56D8B3B1E814A92000085E6 /* ZZQSettingSexView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B3A1E814A92000085E6 /* ZZQSettingSexView.m */; };
 		B56D8B3E1E814C5C000085E6 /* ZZQSexBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8B3D1E814C5C000085E6 /* ZZQSexBtn.m */; };
+		B57070A41E864AAB003DE3F8 /* ZZQNickNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57070A31E864AAB003DE3F8 /* ZZQNickNameView.m */; };
+		B57070AA1E865D3A003DE3F8 /* ZZQAgeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = B57070A91E865D3A003DE3F8 /* ZZQAgeGroup.m */; };
+		B57070AD1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B57070AC1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -114,6 +117,12 @@
 		B56D8B3A1E814A92000085E6 /* ZZQSettingSexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQSettingSexView.m; sourceTree = "<group>"; };
 		B56D8B3C1E814C5C000085E6 /* ZZQSexBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQSexBtn.h; sourceTree = "<group>"; };
 		B56D8B3D1E814C5C000085E6 /* ZZQSexBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQSexBtn.m; sourceTree = "<group>"; };
+		B57070A21E864AAB003DE3F8 /* ZZQNickNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQNickNameView.h; sourceTree = "<group>"; };
+		B57070A31E864AAB003DE3F8 /* ZZQNickNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQNickNameView.m; sourceTree = "<group>"; };
+		B57070A81E865D3A003DE3F8 /* ZZQAgeGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAgeGroup.h; sourceTree = "<group>"; };
+		B57070A91E865D3A003DE3F8 /* ZZQAgeGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAgeGroup.m; sourceTree = "<group>"; };
+		B57070AB1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAgeGroupTableViewCell.h; sourceTree = "<group>"; };
+		B57070AC1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAgeGroupTableViewCell.m; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -304,6 +313,12 @@
 				B56D8B3A1E814A92000085E6 /* ZZQSettingSexView.m */,
 				B56D8B3C1E814C5C000085E6 /* ZZQSexBtn.h */,
 				B56D8B3D1E814C5C000085E6 /* ZZQSexBtn.m */,
+				B57070A21E864AAB003DE3F8 /* ZZQNickNameView.h */,
+				B57070A31E864AAB003DE3F8 /* ZZQNickNameView.m */,
+				B57070A81E865D3A003DE3F8 /* ZZQAgeGroup.h */,
+				B57070A91E865D3A003DE3F8 /* ZZQAgeGroup.m */,
+				B57070AB1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.h */,
+				B57070AC1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -706,14 +721,17 @@
 				B56D8AD01E755BA8000085E6 /* ZZQNoNetView.m in Sources */,
 				B5B4FA971E74D50A0020D9B6 /* ZZQHomeViewController.m in Sources */,
 				B56D8AFD1E7830F5000085E6 /* ZZQMeCellButton.m in Sources */,
+				B57070A41E864AAB003DE3F8 /* ZZQNickNameView.m in Sources */,
 				B56D8AD61E76E336000085E6 /* ZZQSearchViewController.m in Sources */,
 				B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */,
 				B56D8B3E1E814C5C000085E6 /* ZZQSexBtn.m in Sources */,
 				B56D8B3B1E814A92000085E6 /* ZZQSettingSexView.m in Sources */,
+				B57070AD1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m in Sources */,
 				B56D8AFA1E781EEA000085E6 /* ZZQMeTableViewCell.m in Sources */,
 				B506AE521E75472200B39731 /* ZZQNetAlertView.m in Sources */,
 				B56D8B0D1E794F8F000085E6 /* ZZQEditMeViewController.m in Sources */,
 				B56D8B041E7844B7000085E6 /* ZZQDoingViewController.m in Sources */,
+				B57070AA1E865D3A003DE3F8 /* ZZQAgeGroup.m in Sources */,
 				B5B4FA9A1E74D51A0020D9B6 /* ZZQMeViewController.m in Sources */,
 				B56D8B351E7AD3CA000085E6 /* ZZQHeaderPicView.m in Sources */,
 				B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */,

@@ -78,17 +78,14 @@
 
 - (void)maleAction:(UIButton *)btn{
     self.Block(@"男");
-    NSLog(@"男");
 }
 
 - (void)famaleAction:(UIButton *)btn{
     self.Block(@"女");
-    NSLog(@"女");
 }
 
 - (void)closeBtn:(UIButton *)btn{
     self.Block(@"关闭");
-    NSLog(@"关闭");
 }
 
 - (void)layoutSubviews{
