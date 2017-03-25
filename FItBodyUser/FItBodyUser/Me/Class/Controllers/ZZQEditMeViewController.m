@@ -152,38 +152,42 @@
 //TODO:这是选中状态
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView clearSelectedRowsAnimated:YES];
+    
+    UIView * bgView = [[UIView alloc] initWithFrame:self.view.bounds];
+    bgView.backgroundColor = [UIColor colorWithRed:0.17 green:0.17 blue:0.17 alpha:0.2];
+    [self.view addSubview:bgView];
     CGFloat height = SCREEN_WIDTH/2+60;
     __weak typeof(self)myself = self;
-    switch (indexPath.row) {
-        case 0:
-            //设置昵称
-            
-            break;
-        case 1:
-            //设置性别
-            _sexView = [[ZZQSettingSexView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height)];
-            [self.view addSubview:_sexView];
-            break;
-        case 2:
-            //设置年龄段
-            break;
-        case 3:
-            //设置手机号
-            break;
-        case 4:
-            //健身目标
-            break;
-        case 5:
-            //卡路里自动计算
-            break;
-        case 6:
-            //登录密码
-            break;
-        default:
-            break;
+    if(0 == indexPath.row){
+        //设置昵称
+        
+    }else if (1 == indexPath.row){
+        //设置性别
+        _sexView = [[ZZQSettingSexView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height)];
+        [bgView addSubview:_sexView];
+        [_sexView setBlock:^(NSString * str) {
+            if (![str isEqualToString:@"关闭"]) {
+                //保存性别
+                myself.cell = [tableView cellForRowAtIndexPath:indexPath];
+                [myself.cell setContentLabelString:str];
+            }
+            [myself.sexView removeFromSuperview];
+            [bgView removeFromSuperview];
+        }];
+        
+    }else if (2 == indexPath.row){
+        
+    }else if (3 == indexPath.row){
+        
+    }else if (4 == indexPath.row){
+        
+    }else if (5 == indexPath.row){
+        
     }
 }
 
+#pragma mark
+#pragma mark =============== cell中跳转的视图懒加载
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tabBarController.tabBar setHidden:YES];

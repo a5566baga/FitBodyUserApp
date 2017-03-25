@@ -71,6 +71,7 @@
     [_closeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     _closeBtn.titleLabel.font = [UIFont fontWithName:LITTER_TITLE_FONT size:20];
     [self addSubview:_closeBtn];
+    [_closeBtn addTarget:self action:@selector(closeBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     self.backgroundColor = [UIColor whiteColor];
 }
@@ -83,6 +84,11 @@
 - (void)famaleAction:(UIButton *)btn{
     self.Block(@"女");
     NSLog(@"女");
+}
+
+- (void)closeBtn:(UIButton *)btn{
+    self.Block(@"关闭");
+    NSLog(@"关闭");
 }
 
 - (void)layoutSubviews{
