@@ -46,6 +46,12 @@
 		B57070A41E864AAB003DE3F8 /* ZZQNickNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57070A31E864AAB003DE3F8 /* ZZQNickNameView.m */; };
 		B57070AA1E865D3A003DE3F8 /* ZZQAgeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = B57070A91E865D3A003DE3F8 /* ZZQAgeGroup.m */; };
 		B57070AD1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B57070AC1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m */; };
+		B570724C1E9398A1003DE3F8 /* ZZQHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B570724B1E9398A1003DE3F8 /* ZZQHomeHeaderView.m */; };
+		B570724F1E9398B3003DE3F8 /* ZZQHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B570724E1E9398B3003DE3F8 /* ZZQHomeTableViewCell.m */; };
+		B57072521E9398F9003DE3F8 /* ZZQMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072511E9398F9003DE3F8 /* ZZQMenu.m */; };
+		B57072551E93990A003DE3F8 /* ZZQHot.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072541E93990A003DE3F8 /* ZZQHot.m */; };
+		B570725B1E939B63003DE3F8 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B57072581E939B63003DE3F8 /* ProgressHUD.bundle */; };
+		B570725C1E939B63003DE3F8 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B570725A1E939B63003DE3F8 /* ProgressHUD.m */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -123,6 +129,17 @@
 		B57070A91E865D3A003DE3F8 /* ZZQAgeGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAgeGroup.m; sourceTree = "<group>"; };
 		B57070AB1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAgeGroupTableViewCell.h; sourceTree = "<group>"; };
 		B57070AC1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAgeGroupTableViewCell.m; sourceTree = "<group>"; };
+		B570724A1E9398A1003DE3F8 /* ZZQHomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQHomeHeaderView.h; sourceTree = "<group>"; };
+		B570724B1E9398A1003DE3F8 /* ZZQHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQHomeHeaderView.m; sourceTree = "<group>"; };
+		B570724D1E9398B3003DE3F8 /* ZZQHomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQHomeTableViewCell.h; sourceTree = "<group>"; };
+		B570724E1E9398B3003DE3F8 /* ZZQHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQHomeTableViewCell.m; sourceTree = "<group>"; };
+		B57072501E9398F9003DE3F8 /* ZZQMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQMenu.h; sourceTree = "<group>"; };
+		B57072511E9398F9003DE3F8 /* ZZQMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMenu.m; sourceTree = "<group>"; };
+		B57072531E93990A003DE3F8 /* ZZQHot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQHot.h; sourceTree = "<group>"; };
+		B57072541E93990A003DE3F8 /* ZZQHot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQHot.m; sourceTree = "<group>"; };
+		B57072581E939B63003DE3F8 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		B57072591E939B63003DE3F8 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		B570725A1E939B63003DE3F8 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -369,6 +386,24 @@
 			path = SMS_SDK;
 			sourceTree = "<group>";
 		};
+		B57072561E939B63003DE3F8 /* thirdKit */ = {
+			isa = PBXGroup;
+			children = (
+				B57072571E939B63003DE3F8 /* ProgressHUD */,
+			);
+			path = thirdKit;
+			sourceTree = "<group>";
+		};
+		B57072571E939B63003DE3F8 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				B57072581E939B63003DE3F8 /* ProgressHUD.bundle */,
+				B57072591E939B63003DE3F8 /* ProgressHUD.h */,
+				B570725A1E939B63003DE3F8 /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
 		B5B4FA401E6BF7DD0020D9B6 = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +432,7 @@
 				B56D8B111E79618C000085E6 /* Login */,
 				B5B4FA6E1E73FC540020D9B6 /* NetWork */,
 				B5B4FA791E73FC540020D9B6 /* Other */,
+				B57072561E939B63003DE3F8 /* thirdKit */,
 				B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */,
 				B5B4FA5D1E6BF7DD0020D9B6 /* Info.plist */,
 				B5B4FA4C1E6BF7DD0020D9B6 /* Supporting Files */,
@@ -434,10 +470,10 @@
 		B5B4FA661E73FC540020D9B6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B506AE441E75331C00B39731 /* Class */,
 				B5B4FA671E73FC540020D9B6 /* Controllers */,
 				B5B4FA681E73FC540020D9B6 /* Models */,
 				B5B4FA691E73FC540020D9B6 /* Views */,
+				B506AE441E75331C00B39731 /* Class */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -454,6 +490,10 @@
 		B5B4FA681E73FC540020D9B6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B57072501E9398F9003DE3F8 /* ZZQMenu.h */,
+				B57072511E9398F9003DE3F8 /* ZZQMenu.m */,
+				B57072531E93990A003DE3F8 /* ZZQHot.h */,
+				B57072541E93990A003DE3F8 /* ZZQHot.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -467,6 +507,10 @@
 				B56D8ACC1E755B97000085E6 /* ZZQNoOnlineView.m */,
 				B56D8ACE1E755BA8000085E6 /* ZZQNoNetView.h */,
 				B56D8ACF1E755BA8000085E6 /* ZZQNoNetView.m */,
+				B570724A1E9398A1003DE3F8 /* ZZQHomeHeaderView.h */,
+				B570724B1E9398A1003DE3F8 /* ZZQHomeHeaderView.m */,
+				B570724D1E9398B3003DE3F8 /* ZZQHomeTableViewCell.h */,
+				B570724E1E9398B3003DE3F8 /* ZZQHomeTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -644,6 +688,7 @@
 				B56D8AF31E7816E1000085E6 /* 方正兰亭纤黑简体.TTF in Resources */,
 				B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */,
 				B56D8AF41E7816E1000085E6 /* 汉仪中秀体简.ttf in Resources */,
+				B570725B1E939B63003DE3F8 /* ProgressHUD.bundle in Resources */,
 				B56D8AF51E7816E1000085E6 /* 汉仪全唐诗简.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,12 +749,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B506AE4F1E7534C800B39731 /* ZZQCityButton.m in Sources */,
+				B570724C1E9398A1003DE3F8 /* ZZQHomeHeaderView.m in Sources */,
 				B56D8B171E7961F9000085E6 /* ZZQLoginViewController.m in Sources */,
 				B56D8B0A1E7844DB000085E6 /* ZZQAlreadyViewController.m in Sources */,
 				B5B4FA8E1E7407000020D9B6 /* ZZQTabBarViewController.m in Sources */,
 				B56D8B1D1E7965E7000085E6 /* ZZQClearCacheView.m in Sources */,
 				B5B4FA9D1E74D5360020D9B6 /* ZZQOrderViewController.m in Sources */,
 				B56D8AD91E78062E000085E6 /* ZZQHeaderView.m in Sources */,
+				B570725C1E939B63003DE3F8 /* ProgressHUD.m in Sources */,
 				B56D8B381E7ADE14000085E6 /* ZZQEditMeTableViewCell.m in Sources */,
 				B56D8AD31E76E230000085E6 /* ZZQCitysViewController.m in Sources */,
 				B56D8B321E79827B000085E6 /* ZZQPwdLoginViewController.m in Sources */,
@@ -724,15 +771,18 @@
 				B57070A41E864AAB003DE3F8 /* ZZQNickNameView.m in Sources */,
 				B56D8AD61E76E336000085E6 /* ZZQSearchViewController.m in Sources */,
 				B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */,
+				B570724F1E9398B3003DE3F8 /* ZZQHomeTableViewCell.m in Sources */,
 				B56D8B3E1E814C5C000085E6 /* ZZQSexBtn.m in Sources */,
 				B56D8B3B1E814A92000085E6 /* ZZQSettingSexView.m in Sources */,
 				B57070AD1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m in Sources */,
 				B56D8AFA1E781EEA000085E6 /* ZZQMeTableViewCell.m in Sources */,
+				B57072551E93990A003DE3F8 /* ZZQHot.m in Sources */,
 				B506AE521E75472200B39731 /* ZZQNetAlertView.m in Sources */,
 				B56D8B0D1E794F8F000085E6 /* ZZQEditMeViewController.m in Sources */,
 				B56D8B041E7844B7000085E6 /* ZZQDoingViewController.m in Sources */,
 				B57070AA1E865D3A003DE3F8 /* ZZQAgeGroup.m in Sources */,
 				B5B4FA9A1E74D51A0020D9B6 /* ZZQMeViewController.m in Sources */,
+				B57072521E9398F9003DE3F8 /* ZZQMenu.m in Sources */,
 				B56D8B351E7AD3CA000085E6 /* ZZQHeaderPicView.m in Sources */,
 				B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */,
 			);

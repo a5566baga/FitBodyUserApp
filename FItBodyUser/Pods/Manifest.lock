@@ -14,9 +14,31 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AVOSCloud (3.6.0)
+  - AVOSCloudCrashReporting (3.6.0):
+    - AVOSCloud (= 3.6.0)
+    - AVOSCloudCrashReporting/_ARC (= 3.6.0)
+    - AVOSCloudCrashReporting/_NOARC (= 3.6.0)
+  - AVOSCloudCrashReporting/_ARC (3.6.0):
+    - AVOSCloud (= 3.6.0)
+    - AVOSCloudCrashReporting/_NOARC (= 3.6.0)
+  - AVOSCloudCrashReporting/_NOARC (3.6.0):
+    - AVOSCloud (= 3.6.0)
+  - AVOSCloudIM (3.6.0):
+    - AVOSCloud (= 3.6.0)
+    - AVOSCloudIM/_ARC (= 3.6.0)
+    - AVOSCloudIM/_NOARC (= 3.6.0)
+  - AVOSCloudIM/_ARC (3.6.0):
+    - AVOSCloud (= 3.6.0)
+    - AVOSCloudIM/_NOARC (= 3.6.0)
+  - AVOSCloudIM/_NOARC (3.6.0):
+    - AVOSCloud (= 3.6.0)
+  - CTAssetsPickerController (3.3.1):
+    - PureLayout (~> 3.0.0)
   - Masonry (1.0.2)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
+  - PureLayout (3.0.2)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -26,6 +48,10 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - AVOSCloud
+  - AVOSCloudCrashReporting
+  - AVOSCloudIM
+  - CTAssetsPickerController (~> 3.3.0)
   - Masonry (~> 1.0.2)
   - MJExtension (~> 3.0.13)
   - MJRefresh (~> 3.1.12)
@@ -34,12 +60,17 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AVOSCloud: be838e80e13c3247abf24d95e325b3fd515f9d12
+  AVOSCloudCrashReporting: 0fe2705407f431c0d84465d72ba25b11a62b8dd6
+  AVOSCloudIM: 7044ffb9c883fedb8d9055db12e4f28c5160795d
+  CTAssetsPickerController: b1d1d50ab87cf6b8b13531de5f4530482e7e53ed
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: b90a2cd9a88c394d4e8e6c8c2d6c16a64622a447
+PODFILE CHECKSUM: 3a4944f12abacf6382afbc0c9623130cbd29ae1d
 
 COCOAPODS: 1.1.0.rc.2

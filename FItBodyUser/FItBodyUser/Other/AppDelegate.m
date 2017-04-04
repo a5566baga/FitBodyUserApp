@@ -20,6 +20,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [AVOSCloud setApplicationId:@"xqDPunJj8jQcQk8exktvw5UB-gzGzoHsz" clientKey:@"YqkYVhUj2pWRx4r7hQ3gmv1v"];
     self.window = [[UIWindow alloc] init];
     [self initNetTest];
     [self changeController];

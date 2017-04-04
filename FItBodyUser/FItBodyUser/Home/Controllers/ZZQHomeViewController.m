@@ -10,7 +10,11 @@
 #import "ZZQCityButton.h"
 #import "ZZQNoOnlineView.h"
 #import "ZZQNoNetView.h"
+#import "ZZQHomeHeaderView.h"
+#import "ZZQHomeTableViewCell.h"
+#import "ZZQMenu.h"
 
+#define CELL_ID @"homeCell"
 @interface ZZQHomeViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 //选择城市按钮
@@ -27,12 +31,17 @@
 @property(nonatomic, strong)ZZQNoNetView * noNetView;
 @property(nonatomic, strong)UITapGestureRecognizer * tapToReflush;
 //model模型
+@property(nonatomic, strong)ZZQMenu * menu;
 //模型数组
-@property(nonatomic, strong)NSMutableArray * dataListArray;
+@property(nonatomic, strong)NSMutableArray<ZZQMenu *> * dataListArray;
 //url参数
 @property(nonatomic, strong)NSMutableDictionary * paramsDic;
 //下拉刷新图片数组
 @property(nonatomic, strong)NSMutableArray * picArray;
+//cell
+@property(nonatomic, strong)ZZQHomeTableViewCell * cell;
+//头视图
+@property(nonatomic, strong)ZZQHomeHeaderView * headerView;
 
 @end
 
@@ -44,6 +53,7 @@
     if(!_cityItem){
         _cityBtn = [[ZZQCityButton alloc] initWithFrame:CGRectMake(0, 0, 80, 16)];
         [_cityBtn setTitle:@"请选择" forState:UIControlStateNormal];
+        _cityBtn.titleLabel.font = [UIFont fontWithName:CONTENT_FONT size:12];
         [_cityBtn setImage:[UIImage imageNamed:@"hj_home_item_location_new"] forState:UIControlStateNormal];
         [_cityBtn setImage:[UIImage imageNamed:@"hj_home_item_location_new"] forState:UIControlStateHighlighted];
         _cityItem = [[UIBarButtonItem alloc] initWithCustomView:_cityBtn];
@@ -59,6 +69,13 @@
         _searchItem = [[UIBarButtonItem alloc] initWithCustomView:_searchBtn];
     }
     return _searchItem;
+}
+
+- (NSMutableArray *)dataListArray{
+    if (!_dataListArray) {
+        _dataListArray = [NSMutableArray array];
+    }
+    return _dataListArray;
 }
 
 #pragma mark
@@ -91,13 +108,36 @@
 
 #pragma mark
 #pragma mark ============== 初始化数据
-//TODO:初始化数据的模型还未完成
+//下拉刷新
 - (void)initForData{
     //model模型，通过回调加载tableview还是errorView
-    
-    [_tableView reloadData];
+    AVQuery * queryMenus = [AVQuery queryWithClassName:@"Menus"];
+    [queryMenus findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"================");
+            NSLog(@"%@", error);
+        }else{
+            _dataListArray = [NSMutableArray array];
+            for (AVObject * obj in objects) {
+                _menu = [[ZZQMenu alloc] init];
+                _menu.name = obj[@"name"];
+                _menu.calorie = obj[@"calorie"];
+                AVFile * file = obj[@"portrait"];
+                _menu.portrait = [file getData];
+//                [file getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+//                    if (!error) {
+//                    }else{
+//                        _menu.portrait = nil;
+//                    }
+//                }];
+                [self.dataListArray addObject:_menu];
+            }
+            [_tableView reloadData];
+            [_tableView.mj_header endRefreshing];
+        }
+    }];
 }
-//下拉加载调用
+//上拉加载调用
 - (void)initForNewData{
     [_tableView reloadData];
 }
@@ -122,6 +162,8 @@
 #pragma mark ============== 设置tableview
 - (void)initTableView{
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49) style:UITableViewStyleGrouped];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
     [self.view addSubview:_tableView];
     [self initRefush];
 }
@@ -154,21 +196,43 @@
 
 #pragma mark
 #pragma mark ============== 代理
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.dataListArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    _cell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
+    if (_cell == nil) {
+        _cell = [[ZZQHomeTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_ID];
+    }
+    _cell.textLabel.text = self.dataListArray[indexPath.row].name;
+    _cell.detailTextLabel.text = self.dataListArray[indexPath.row].calorie;
+    _cell.imageView.image = [UIImage imageWithData:self.dataListArray[indexPath.row].portrait];
+    return _cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    _headerView = [[ZZQHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
+    _headerView.backgroundColor = [UIColor orangeColor];
+    return _headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 200;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.1;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
