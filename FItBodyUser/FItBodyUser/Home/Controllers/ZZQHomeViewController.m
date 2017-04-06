@@ -12,9 +12,10 @@
 #import "ZZQNoNetView.h"
 #import "ZZQHomeHeaderView.h"
 #import "ZZQHomeTableViewCell.h"
-#import "ZZQMenu.h"
+#import "ZZQMerchant.h"
 
 #define CELL_ID @"homeCell"
+#define LIMIT 10
 @interface ZZQHomeViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 //选择城市按钮
@@ -31,9 +32,9 @@
 @property(nonatomic, strong)ZZQNoNetView * noNetView;
 @property(nonatomic, strong)UITapGestureRecognizer * tapToReflush;
 //model模型
-@property(nonatomic, strong)ZZQMenu * menu;
+@property(nonatomic, strong)ZZQMerchant * merchant;
 //模型数组
-@property(nonatomic, strong)NSMutableArray<ZZQMenu *> * dataListArray;
+@property(nonatomic, strong)NSMutableArray<ZZQMerchant *> * dataListArray;
 //url参数
 @property(nonatomic, strong)NSMutableDictionary * paramsDic;
 //下拉刷新图片数组
@@ -42,6 +43,7 @@
 @property(nonatomic, strong)ZZQHomeTableViewCell * cell;
 //头视图
 @property(nonatomic, strong)ZZQHomeHeaderView * headerView;
+@property(nonatomic, assign)NSUInteger limitNum;
 
 @end
 
@@ -110,36 +112,57 @@
 #pragma mark ============== 初始化数据
 //下拉刷新
 - (void)initForData{
+    _limitNum = LIMIT;
     //model模型，通过回调加载tableview还是errorView
-    AVQuery * queryMenus = [AVQuery queryWithClassName:@"Menus"];
-    [queryMenus findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+    AVQuery * queryMerchants = [AVQuery queryWithClassName:@"Merchants"];
+    queryMerchants.limit = _limitNum;
+    [queryMerchants findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (error) {
             NSLog(@"================");
             NSLog(@"%@", error);
+            [self initForNoNetView];
         }else{
             _dataListArray = [NSMutableArray array];
             for (AVObject * obj in objects) {
-                _menu = [[ZZQMenu alloc] init];
-                _menu.name = obj[@"name"];
-                _menu.calorie = obj[@"calorie"];
-                AVFile * file = obj[@"portrait"];
-                _menu.portrait = [file getData];
-//                [file getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
-//                    if (!error) {
-//                    }else{
-//                        _menu.portrait = nil;
-//                    }
-//                }];
-                [self.dataListArray addObject:_menu];
+                _merchant = [[ZZQMerchant alloc] init];
+                _merchant = [_merchant setMerchantDetail:obj];
+                [self.dataListArray addObject:_merchant];
             }
-            [_tableView reloadData];
+            if (self.dataListArray.count == 0) {
+                [self initForNoOnlineView];
+            }else{
+                [_tableView reloadData];
+                _limitNum += LIMIT;
+            }
             [_tableView.mj_header endRefreshing];
         }
     }];
 }
 //上拉加载调用
 - (void)initForNewData{
-    [_tableView reloadData];
+    AVQuery * queryMerchants = [AVQuery queryWithClassName:@"Merchants"];
+    queryMerchants.limit = LIMIT;
+    queryMerchants.skip = _limitNum;
+    [queryMerchants findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"================");
+            NSLog(@"%@", error);
+            [self initForNoNetView];
+        }else{
+            for (AVObject * obj in objects) {
+                _merchant = [[ZZQMerchant alloc] init];
+                _merchant = [_merchant setMerchantDetail:obj];
+                [self.dataListArray addObject:_merchant];
+            }
+            if (self.dataListArray.count == 0) {
+                [self initForNoOnlineView];
+            }else{
+                [_tableView reloadData];
+                _limitNum += LIMIT;
+            }
+            [_tableView.mj_footer endRefreshing];
+        }
+    }];
 }
 
 #pragma mark
@@ -204,14 +227,16 @@
     return self.dataListArray.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 120;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     _cell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
     if (_cell == nil) {
         _cell = [[ZZQHomeTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_ID];
     }
-    _cell.textLabel.text = self.dataListArray[indexPath.row].name;
-    _cell.detailTextLabel.text = self.dataListArray[indexPath.row].calorie;
-    _cell.imageView.image = [UIImage imageWithData:self.dataListArray[indexPath.row].portrait];
+    [_cell setCellModel:self.dataListArray[indexPath.row]];
     return _cell;
 }
 
@@ -219,6 +244,12 @@
     _headerView = [[ZZQHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
     _headerView.backgroundColor = [UIColor orangeColor];
     return _headerView;
+}
+
+//cell选中操作
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView clearSelectedRowsAnimated:YES];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

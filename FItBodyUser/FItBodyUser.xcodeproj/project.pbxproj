@@ -52,6 +52,7 @@
 		B57072551E93990A003DE3F8 /* ZZQHot.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072541E93990A003DE3F8 /* ZZQHot.m */; };
 		B570725B1E939B63003DE3F8 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B57072581E939B63003DE3F8 /* ProgressHUD.bundle */; };
 		B570725C1E939B63003DE3F8 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B570725A1E939B63003DE3F8 /* ProgressHUD.m */; };
+		B570725F1E96684E003DE3F8 /* ZZQMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = B570725E1E96684E003DE3F8 /* ZZQMerchant.m */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -140,6 +141,8 @@
 		B57072581E939B63003DE3F8 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		B57072591E939B63003DE3F8 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		B570725A1E939B63003DE3F8 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		B570725D1E96684E003DE3F8 /* ZZQMerchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQMerchant.h; sourceTree = "<group>"; };
+		B570725E1E96684E003DE3F8 /* ZZQMerchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMerchant.m; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -494,6 +497,8 @@
 				B57072511E9398F9003DE3F8 /* ZZQMenu.m */,
 				B57072531E93990A003DE3F8 /* ZZQHot.h */,
 				B57072541E93990A003DE3F8 /* ZZQHot.m */,
+				B570725D1E96684E003DE3F8 /* ZZQMerchant.h */,
+				B570725E1E96684E003DE3F8 /* ZZQMerchant.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -767,6 +772,7 @@
 				B56D8ACD1E755B97000085E6 /* ZZQNoOnlineView.m in Sources */,
 				B56D8AD01E755BA8000085E6 /* ZZQNoNetView.m in Sources */,
 				B5B4FA971E74D50A0020D9B6 /* ZZQHomeViewController.m in Sources */,
+				B570725F1E96684E003DE3F8 /* ZZQMerchant.m in Sources */,
 				B56D8AFD1E7830F5000085E6 /* ZZQMeCellButton.m in Sources */,
 				B57070A41E864AAB003DE3F8 /* ZZQNickNameView.m in Sources */,
 				B56D8AD61E76E336000085E6 /* ZZQSearchViewController.m in Sources */,

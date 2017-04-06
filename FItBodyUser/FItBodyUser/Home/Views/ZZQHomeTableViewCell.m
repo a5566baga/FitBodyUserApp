@@ -8,7 +8,41 @@
 
 #import "ZZQHomeTableViewCell.h"
 
+@interface ZZQHomeTableViewCell ()
+
+
+
+@end
+
 @implementation ZZQHomeTableViewCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self initCellView];
+    }
+    return self;
+}
+
+//初始化页面样式
+- (void)initCellView{
+    
+}
+
+//赋值
+- (void)setCellModel:(ZZQMerchant *)merchant{
+    
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    for (UIView *view in [self.contentView subviews]) {
+        [view removeFromSuperview];
+    }
+    //设置样式
+    
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
