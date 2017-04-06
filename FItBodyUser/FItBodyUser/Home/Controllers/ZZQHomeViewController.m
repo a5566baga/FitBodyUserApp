@@ -168,14 +168,17 @@
 #pragma mark
 #pragma mark ============== 错误页面设置
 - (void)initForNoOnlineView{
+    [self.tableView removeFromSuperview];
     _noOnlineView = [[ZZQNoOnlineView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [self.view addSubview:_noOnlineView];
 }
 - (void)initForNoNetView{
+    [self.tableView removeFromSuperview];
     _noNetView = [[ZZQNoNetView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [self.view addSubview:_noNetView];
     _tapToReflush = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
        //重新加载页面
+        [self initTableView];
         [self initForData];
     }];
     [_noNetView addGestureRecognizer:_tapToReflush];
@@ -187,6 +190,8 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.showsVerticalScrollIndicator = NO;
+    _tableView.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:_tableView];
     [self initRefush];
 }
@@ -228,7 +233,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 120;
+    return 210;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
