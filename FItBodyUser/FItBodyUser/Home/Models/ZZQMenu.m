@@ -10,4 +10,9 @@
 
 @implementation ZZQMenu
 
+- (void)getMenuWithObject:(AVObject *)obj{
+    ZZQMenu * menu = [[ZZQMenu alloc] init];
+    
+}
+
 @end

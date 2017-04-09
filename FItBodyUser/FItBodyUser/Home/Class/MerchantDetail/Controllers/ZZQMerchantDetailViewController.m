@@ -60,10 +60,11 @@
     _tableview.showsHorizontalScrollIndicator = NO;
     _tableview.delegate = self;
     _tableview.dataSource = self;
+    _tableview.bounces = NO;
     [self.view addSubview:_tableview];
-    [self initRefrush];
     
     _merchantHeader = [[ZZQMerchantHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+    [_merchantHeader setMerchatModel:_merchant];
     _tableview.tableHeaderView = _merchantHeader;
     _merchantHeader.backgroundColor = [UIColor blackColor];
 }
@@ -79,8 +80,8 @@
 }
 
 #pragma mark
-#pragma mark ============== 下拉刷新和上拉加载
-- (void)initRefrush{
+#pragma mark ============== 无网络
+- (void)initNoNetView{
     
 }
 
@@ -89,7 +90,6 @@
 - (void)initForFooterView{
     CGFloat footerHeight = 40;
     _footerView = [[ZZQFooterView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-footerHeight, SCREEN_WIDTH, footerHeight)];
-    _footerView.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:_footerView];
 }
 
@@ -113,7 +113,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return self.dataListArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     _cell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];

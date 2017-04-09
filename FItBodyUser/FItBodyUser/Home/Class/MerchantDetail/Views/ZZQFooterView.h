@@ -10,4 +10,8 @@
 
 @interface ZZQFooterView : UIView
 
+- (void)setFavNum:(NSString *)favNum;
+
+- (void)setMenuWithMenuName:(NSString *)menuName price:(NSString *)price;
+
 @end

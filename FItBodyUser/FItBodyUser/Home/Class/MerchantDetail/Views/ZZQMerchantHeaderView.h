@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZQMerchant.h"
 
 @interface ZZQMerchantHeaderView : UIView
+
+- (void)setMerchatModel:(ZZQMerchant *)merchant;
 
 @end

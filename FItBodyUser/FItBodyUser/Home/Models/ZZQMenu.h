@@ -29,5 +29,6 @@
 //收藏人数
 @property(nonatomic, copy)NSString * favNum;
 
+- (void)getMenuWithObject:(AVObject *)obj;
 
 @end
