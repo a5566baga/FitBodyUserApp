@@ -53,6 +53,11 @@
 		B570725B1E939B63003DE3F8 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B57072581E939B63003DE3F8 /* ProgressHUD.bundle */; };
 		B570725C1E939B63003DE3F8 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B570725A1E939B63003DE3F8 /* ProgressHUD.m */; };
 		B570725F1E96684E003DE3F8 /* ZZQMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = B570725E1E96684E003DE3F8 /* ZZQMerchant.m */; };
+		B570726A1E99C3B1003DE3F8 /* ZZQMerchantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072691E99C3B1003DE3F8 /* ZZQMerchantDetailViewController.m */; };
+		B570726D1E99D086003DE3F8 /* ZZQMerchantDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B570726C1E99D086003DE3F8 /* ZZQMerchantDetailTableViewCell.m */; };
+		B57072701E99D702003DE3F8 /* ZZQSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B570726F1E99D702003DE3F8 /* ZZQSectionHeaderView.m */; };
+		B57072731E99D711003DE3F8 /* ZZQMerchantHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072721E99D711003DE3F8 /* ZZQMerchantHeaderView.m */; };
+		B57072761E99EC51003DE3F8 /* ZZQFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072751E99EC51003DE3F8 /* ZZQFooterView.m */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -134,8 +139,8 @@
 		B570724B1E9398A1003DE3F8 /* ZZQHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQHomeHeaderView.m; sourceTree = "<group>"; };
 		B570724D1E9398B3003DE3F8 /* ZZQHomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQHomeTableViewCell.h; sourceTree = "<group>"; };
 		B570724E1E9398B3003DE3F8 /* ZZQHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQHomeTableViewCell.m; sourceTree = "<group>"; };
-		B57072501E9398F9003DE3F8 /* ZZQMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQMenu.h; sourceTree = "<group>"; };
-		B57072511E9398F9003DE3F8 /* ZZQMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMenu.m; sourceTree = "<group>"; };
+		B57072501E9398F9003DE3F8 /* ZZQMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZQMenu.h; path = ../../../Models/ZZQMenu.h; sourceTree = "<group>"; };
+		B57072511E9398F9003DE3F8 /* ZZQMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQMenu.m; path = ../../../Models/ZZQMenu.m; sourceTree = "<group>"; };
 		B57072531E93990A003DE3F8 /* ZZQHot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQHot.h; sourceTree = "<group>"; };
 		B57072541E93990A003DE3F8 /* ZZQHot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQHot.m; sourceTree = "<group>"; };
 		B57072581E939B63003DE3F8 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
@@ -143,6 +148,16 @@
 		B570725A1E939B63003DE3F8 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		B570725D1E96684E003DE3F8 /* ZZQMerchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQMerchant.h; sourceTree = "<group>"; };
 		B570725E1E96684E003DE3F8 /* ZZQMerchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMerchant.m; sourceTree = "<group>"; };
+		B57072681E99C3B1003DE3F8 /* ZZQMerchantDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQMerchantDetailViewController.h; sourceTree = "<group>"; };
+		B57072691E99C3B1003DE3F8 /* ZZQMerchantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMerchantDetailViewController.m; sourceTree = "<group>"; };
+		B570726B1E99D086003DE3F8 /* ZZQMerchantDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQMerchantDetailTableViewCell.h; sourceTree = "<group>"; };
+		B570726C1E99D086003DE3F8 /* ZZQMerchantDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMerchantDetailTableViewCell.m; sourceTree = "<group>"; };
+		B570726E1E99D702003DE3F8 /* ZZQSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQSectionHeaderView.h; sourceTree = "<group>"; };
+		B570726F1E99D702003DE3F8 /* ZZQSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQSectionHeaderView.m; sourceTree = "<group>"; };
+		B57072711E99D711003DE3F8 /* ZZQMerchantHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQMerchantHeaderView.h; sourceTree = "<group>"; };
+		B57072721E99D711003DE3F8 /* ZZQMerchantHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMerchantHeaderView.m; sourceTree = "<group>"; };
+		B57072741E99EC51003DE3F8 /* ZZQFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQFooterView.h; sourceTree = "<group>"; };
+		B57072751E99EC51003DE3F8 /* ZZQFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFooterView.m; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -204,6 +219,8 @@
 		B506AE441E75331C00B39731 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				B57072601E99C395003DE3F8 /* MenuDetail */,
+				B57072641E99C395003DE3F8 /* MerchantDetail */,
 				B506AE451E75331C00B39731 /* Citys */,
 				B506AE491E75331C00B39731 /* Search */,
 			);
@@ -407,6 +424,80 @@
 			path = ProgressHUD;
 			sourceTree = "<group>";
 		};
+		B57072601E99C395003DE3F8 /* MenuDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B57072611E99C395003DE3F8 /* Controllers */,
+				B57072621E99C395003DE3F8 /* Models */,
+				B57072631E99C395003DE3F8 /* Views */,
+			);
+			path = MenuDetail;
+			sourceTree = "<group>";
+		};
+		B57072611E99C395003DE3F8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B57072621E99C395003DE3F8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B57072631E99C395003DE3F8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B57072641E99C395003DE3F8 /* MerchantDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B57072651E99C395003DE3F8 /* Controllers */,
+				B57072661E99C395003DE3F8 /* Models */,
+				B57072671E99C395003DE3F8 /* Views */,
+			);
+			path = MerchantDetail;
+			sourceTree = "<group>";
+		};
+		B57072651E99C395003DE3F8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B57072681E99C3B1003DE3F8 /* ZZQMerchantDetailViewController.h */,
+				B57072691E99C3B1003DE3F8 /* ZZQMerchantDetailViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B57072661E99C395003DE3F8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B57072501E9398F9003DE3F8 /* ZZQMenu.h */,
+				B57072511E9398F9003DE3F8 /* ZZQMenu.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B57072671E99C395003DE3F8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B570726B1E99D086003DE3F8 /* ZZQMerchantDetailTableViewCell.h */,
+				B570726C1E99D086003DE3F8 /* ZZQMerchantDetailTableViewCell.m */,
+				B570726E1E99D702003DE3F8 /* ZZQSectionHeaderView.h */,
+				B570726F1E99D702003DE3F8 /* ZZQSectionHeaderView.m */,
+				B57072711E99D711003DE3F8 /* ZZQMerchantHeaderView.h */,
+				B57072721E99D711003DE3F8 /* ZZQMerchantHeaderView.m */,
+				B57072741E99EC51003DE3F8 /* ZZQFooterView.h */,
+				B57072751E99EC51003DE3F8 /* ZZQFooterView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B5B4FA401E6BF7DD0020D9B6 = {
 			isa = PBXGroup;
 			children = (
@@ -493,8 +584,6 @@
 		B5B4FA681E73FC540020D9B6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B57072501E9398F9003DE3F8 /* ZZQMenu.h */,
-				B57072511E9398F9003DE3F8 /* ZZQMenu.m */,
 				B57072531E93990A003DE3F8 /* ZZQHot.h */,
 				B57072541E93990A003DE3F8 /* ZZQHot.m */,
 				B570725D1E96684E003DE3F8 /* ZZQMerchant.h */,
@@ -761,7 +850,9 @@
 				B56D8B1D1E7965E7000085E6 /* ZZQClearCacheView.m in Sources */,
 				B5B4FA9D1E74D5360020D9B6 /* ZZQOrderViewController.m in Sources */,
 				B56D8AD91E78062E000085E6 /* ZZQHeaderView.m in Sources */,
+				B570726D1E99D086003DE3F8 /* ZZQMerchantDetailTableViewCell.m in Sources */,
 				B570725C1E939B63003DE3F8 /* ProgressHUD.m in Sources */,
+				B57072701E99D702003DE3F8 /* ZZQSectionHeaderView.m in Sources */,
 				B56D8B381E7ADE14000085E6 /* ZZQEditMeTableViewCell.m in Sources */,
 				B56D8AD31E76E230000085E6 /* ZZQCitysViewController.m in Sources */,
 				B56D8B321E79827B000085E6 /* ZZQPwdLoginViewController.m in Sources */,
@@ -771,6 +862,7 @@
 				B5B4FA801E73FC540020D9B6 /* AppDelegate.m in Sources */,
 				B56D8ACD1E755B97000085E6 /* ZZQNoOnlineView.m in Sources */,
 				B56D8AD01E755BA8000085E6 /* ZZQNoNetView.m in Sources */,
+				B570726A1E99C3B1003DE3F8 /* ZZQMerchantDetailViewController.m in Sources */,
 				B5B4FA971E74D50A0020D9B6 /* ZZQHomeViewController.m in Sources */,
 				B570725F1E96684E003DE3F8 /* ZZQMerchant.m in Sources */,
 				B56D8AFD1E7830F5000085E6 /* ZZQMeCellButton.m in Sources */,
@@ -788,7 +880,9 @@
 				B56D8B041E7844B7000085E6 /* ZZQDoingViewController.m in Sources */,
 				B57070AA1E865D3A003DE3F8 /* ZZQAgeGroup.m in Sources */,
 				B5B4FA9A1E74D51A0020D9B6 /* ZZQMeViewController.m in Sources */,
+				B57072761E99EC51003DE3F8 /* ZZQFooterView.m in Sources */,
 				B57072521E9398F9003DE3F8 /* ZZQMenu.m in Sources */,
+				B57072731E99D711003DE3F8 /* ZZQMerchantHeaderView.m in Sources */,
 				B56D8B351E7AD3CA000085E6 /* ZZQHeaderPicView.m in Sources */,
 				B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */,
 			);

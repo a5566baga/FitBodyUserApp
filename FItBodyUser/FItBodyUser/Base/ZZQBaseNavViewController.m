@@ -29,7 +29,7 @@
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     [super pushViewController:viewController animated:animated];
     if(self.childViewControllers.count>1){
-        UIButton * backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 33, 33)];
+        UIButton * backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 22, 22)];
         [backBtn setImage:[UIImage imageNamed:@"back_black"] forState:UIControlStateNormal];
         [backBtn setImage:[UIImage imageNamed:@"back_white"] forState:UIControlStateHighlighted];
         [backBtn addTarget:self action:@selector(backAction:vc:) forControlEvents:UIControlEventTouchUpInside];

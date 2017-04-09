@@ -26,6 +26,8 @@
 @property(nonatomic, copy)NSString * type;
 //简介
 @property(nonatomic, copy)NSString * context;
+//收藏人数
+@property(nonatomic, copy)NSString * favNum;
 
 
 @end

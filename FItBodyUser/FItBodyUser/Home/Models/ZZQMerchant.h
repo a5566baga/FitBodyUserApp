@@ -30,6 +30,8 @@
 @property(nonatomic, copy)NSString * totalOrdered;
 //平均价格
 @property(nonatomic, copy)NSString * avePrice;
+//收藏人数
+@property(nonatomic, copy)NSString * favNum;
 
 /**
  * 设置对象内容

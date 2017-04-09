@@ -22,6 +22,7 @@
     merchant.location = [obj objectForKey:@"location"];
     merchant.totalOrdered = [obj objectForKey:@"totalOrdered"];
     merchant.avePrice = [obj objectForKey:@"avePrice"];
+    merchant.favNum = [obj objectForKey:@"favouriteNum"];
     return merchant;
 }
 

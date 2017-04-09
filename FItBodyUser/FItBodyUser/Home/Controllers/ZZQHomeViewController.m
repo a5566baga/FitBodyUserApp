@@ -13,6 +13,7 @@
 #import "ZZQHomeHeaderView.h"
 #import "ZZQHomeTableViewCell.h"
 #import "ZZQMerchant.h"
+#import "ZZQMerchantDetailViewController.h"
 
 #define CELL_ID @"homeCell"
 #define LIMIT 10
@@ -254,7 +255,10 @@
 //cell选中操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView clearSelectedRowsAnimated:YES];
-    
+    //选中cell
+    ZZQMerchantDetailViewController * merchantDetailVC = [[ZZQMerchantDetailViewController alloc] init];
+    [merchantDetailVC setStoreName:self.dataListArray[indexPath.row]];
+    [self.navigationController pushViewController:merchantDetailVC animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
