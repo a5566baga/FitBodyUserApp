@@ -23,6 +23,11 @@
     merchant.totalOrdered = [obj objectForKey:@"totalOrdered"];
     merchant.avePrice = [obj objectForKey:@"avePrice"];
     merchant.favNum = [obj objectForKey:@"favouriteNum"];
+    merchant.canMess = [obj objectForKey:@"canMess"];
+    merchant.canTakeOut = [obj objectForKey:@"canTakeOut"];
+    merchant.canTakeSelf = [obj objectForKey:@"canTakeSelf"];
+    merchant.logoData = [[obj objectForKey:@"logo"] getData];
+    merchant.broadcastMsg = [obj objectForKey:@"broadcastMsg"];
     return merchant;
 }
 

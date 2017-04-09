@@ -32,6 +32,16 @@
 @property(nonatomic, copy)NSString * avePrice;
 //收藏人数
 @property(nonatomic, copy)NSString * favNum;
+//能否外卖
+@property(nonatomic, copy)NSString * canTakeOut;
+//能否食堂
+@property(nonatomic, copy)NSString * canMess;
+//能否自提
+@property(nonatomic, copy)NSString * canTakeSelf;
+//店铺页面展示的logo
+@property(nonatomic, strong)NSData * logoData;
+//广播内容
+@property(nonatomic, copy)NSString * broadcastMsg;
 
 /**
  * 设置对象内容

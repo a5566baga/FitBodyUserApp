@@ -63,19 +63,14 @@
     _tableview.bounces = NO;
     [self.view addSubview:_tableview];
     
-    _merchantHeader = [[ZZQMerchantHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+    _merchantHeader = [[ZZQMerchantHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 500)];
     [_merchantHeader setMerchatModel:_merchant];
     _tableview.tableHeaderView = _merchantHeader;
-    _merchantHeader.backgroundColor = [UIColor blackColor];
 }
 
 #pragma mark
 #pragma mark ============== 数据下载
 - (void)initForData{
-    
-}
-//上拉加载
-- (void)initForNewData{
     
 }
 
@@ -113,7 +108,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.dataListArray.count;
+//    return self.dataListArray.count;
+    return 10;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     _cell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
@@ -140,28 +136,24 @@
 
 //scrollview的代理
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    double left = scrollView.contentOffset.y;
-    float height = _merchantHeader.height;
-    NSLog(@"%lf", left);
-    if (left < (height-64) && left > 0) {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-        self.navigationItem.title = @"";
-//        self.tableview.origin = CGPointMake(0, (height-64)-left);
-        self.tableview.frame = CGRectMake(0, left-(height-64), SCREEN_WIDTH, SCREEN_HEIGHT-left);
-    }else if (left > (height-64) & left < height){
-//        self.tableview.origin = CGPointMake(0, left-(height-64));
-        self.tableview.frame = CGRectMake(0, left-(height-64), SCREEN_WIDTH, SCREEN_HEIGHT-left);
-    }else if(left > height){
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
-        self.navigationItem.title = _merchant.name;
-//        self.tableview.origin = CGPointMake(0, 64);
-        self.tableview.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-40);
-    }else{
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-        self.navigationItem.title = @"";
-//        self.tableview.origin = CGPointMake(0, 0);
-        self.tableview.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-40);
-    }
+//    double left = scrollView.contentOffset.y;
+//    float height = _merchantHeader.height;
+//    NSLog(@"%lf", left);
+//    if (left < (height-64) && left > 0) {
+//        [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//        self.navigationItem.title = @"";
+//        self.tableview.frame = CGRectMake(0, left-(height-64), SCREEN_WIDTH, SCREEN_HEIGHT-left);
+//    }else if (left > (height-64) & left < height){
+//        self.tableview.frame = CGRectMake(0, left-(height-64), SCREEN_WIDTH, SCREEN_HEIGHT-left);
+//    }else if(left > height){
+//        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
+//        self.navigationItem.title = _merchant.name;
+//        self.tableview.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-40);
+//    }else{
+//        [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//        self.navigationItem.title = @"";
+//        self.tableview.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-40);
+//    }
 }
 
 - (void)setStoreName:(ZZQMerchant *)merchant{
@@ -172,15 +164,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

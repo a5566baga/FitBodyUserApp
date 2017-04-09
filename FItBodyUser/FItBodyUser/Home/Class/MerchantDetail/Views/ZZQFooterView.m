@@ -21,7 +21,7 @@
 //购物车按钮
 @property(nonatomic, strong)UIButton * cartBtn;
 //购物车数量label
-@property(nonatomic, strong)UILabel * cartLabel;
+@property(nonatomic, strong)UIButton * cartLabel;
 
 @end
 
@@ -85,16 +85,15 @@
 //购物车数量和价格视图设置
 - (void)setCartLabelAndPriceLabel{
     CGFloat cartLabelWidth = 20;
-    _cartLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_cartBtn.frame)-13, CGRectGetMinY(_cartBtn.frame), cartLabelWidth, cartLabelWidth)];
+    _cartLabel = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_cartBtn.frame)-13, CGRectGetMinY(_cartBtn.frame), cartLabelWidth, cartLabelWidth)];
     _cartLabel.layer.masksToBounds = YES;
-    _cartLabel.layer.backgroundColor = [UIColor colorWithRed:0.93 green:0.35 blue:0.32 alpha:1.00].CGColor;
     _cartLabel.layer.cornerRadius = cartLabelWidth/2;
-    _cartLabel.layer.borderColor = [UIColor whiteColor].CGColor;
-    _cartLabel.layer.borderWidth = 1;
-    _cartLabel.textAlignment = NSTextAlignmentCenter;
-    _cartLabel.font = [UIFont systemFontOfSize:10];
-    _cartLabel.textColor = [UIColor whiteColor];
-    _cartLabel.text = @"1";
+    [_cartLabel setBackgroundImage:[UIImage imageNamed:@"shopping_view_number"] forState:UIControlStateNormal];
+    _cartLabel.adjustsImageWhenHighlighted = NO;
+    _cartLabel.contentHorizontalAlignment = NSTextLayoutOrientationHorizontal;
+    _cartLabel.titleLabel.font = [UIFont systemFontOfSize:10];
+    _cartLabel.titleLabel.textColor = [UIColor whiteColor];
+    [_cartLabel setTitle:@"1" forState:UIControlStateNormal];
     [self addSubview:_cartLabel];
     
     _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_cartBtn.frame)-120, 10, 100, 20)];
