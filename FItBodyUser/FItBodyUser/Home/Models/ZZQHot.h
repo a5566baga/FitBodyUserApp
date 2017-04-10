@@ -10,4 +10,7 @@
 
 @interface ZZQHot : NSObject
 
+
+- (ZZQHot *)setHotWithObj:(AVObject *)obj;
+
 @end

@@ -58,6 +58,8 @@
 		B57072701E99D702003DE3F8 /* ZZQSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B570726F1E99D702003DE3F8 /* ZZQSectionHeaderView.m */; };
 		B57072731E99D711003DE3F8 /* ZZQMerchantHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072721E99D711003DE3F8 /* ZZQMerchantHeaderView.m */; };
 		B57072761E99EC51003DE3F8 /* ZZQFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072751E99EC51003DE3F8 /* ZZQFooterView.m */; };
+		B57072791E9BCB28003DE3F8 /* ZZQComments.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072781E9BCB28003DE3F8 /* ZZQComments.m */; };
+		B570727C1E9BD133003DE3F8 /* ZZQCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B570727B1E9BD133003DE3F8 /* ZZQCommentsTableViewCell.m */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -158,6 +160,10 @@
 		B57072721E99D711003DE3F8 /* ZZQMerchantHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMerchantHeaderView.m; sourceTree = "<group>"; };
 		B57072741E99EC51003DE3F8 /* ZZQFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQFooterView.h; sourceTree = "<group>"; };
 		B57072751E99EC51003DE3F8 /* ZZQFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFooterView.m; sourceTree = "<group>"; };
+		B57072771E9BCB28003DE3F8 /* ZZQComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQComments.h; sourceTree = "<group>"; };
+		B57072781E9BCB28003DE3F8 /* ZZQComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQComments.m; sourceTree = "<group>"; };
+		B570727A1E9BD133003DE3F8 /* ZZQCommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQCommentsTableViewCell.h; sourceTree = "<group>"; };
+		B570727B1E9BD133003DE3F8 /* ZZQCommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQCommentsTableViewCell.m; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -219,8 +225,8 @@
 		B506AE441E75331C00B39731 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				B57072601E99C395003DE3F8 /* MenuDetail */,
 				B57072641E99C395003DE3F8 /* MerchantDetail */,
+				B57072601E99C395003DE3F8 /* MenuDetail */,
 				B506AE451E75331C00B39731 /* Citys */,
 				B506AE491E75331C00B39731 /* Search */,
 			);
@@ -479,6 +485,8 @@
 			children = (
 				B57072501E9398F9003DE3F8 /* ZZQMenu.h */,
 				B57072511E9398F9003DE3F8 /* ZZQMenu.m */,
+				B57072771E9BCB28003DE3F8 /* ZZQComments.h */,
+				B57072781E9BCB28003DE3F8 /* ZZQComments.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -488,6 +496,8 @@
 			children = (
 				B570726B1E99D086003DE3F8 /* ZZQMerchantDetailTableViewCell.h */,
 				B570726C1E99D086003DE3F8 /* ZZQMerchantDetailTableViewCell.m */,
+				B570727A1E9BD133003DE3F8 /* ZZQCommentsTableViewCell.h */,
+				B570727B1E9BD133003DE3F8 /* ZZQCommentsTableViewCell.m */,
 				B570726E1E99D702003DE3F8 /* ZZQSectionHeaderView.h */,
 				B570726F1E99D702003DE3F8 /* ZZQSectionHeaderView.m */,
 				B57072711E99D711003DE3F8 /* ZZQMerchantHeaderView.h */,
@@ -853,6 +863,8 @@
 				B570726D1E99D086003DE3F8 /* ZZQMerchantDetailTableViewCell.m in Sources */,
 				B570725C1E939B63003DE3F8 /* ProgressHUD.m in Sources */,
 				B57072701E99D702003DE3F8 /* ZZQSectionHeaderView.m in Sources */,
+				B57072791E9BCB28003DE3F8 /* ZZQComments.m in Sources */,
+				B570727C1E9BD133003DE3F8 /* ZZQCommentsTableViewCell.m in Sources */,
 				B56D8B381E7ADE14000085E6 /* ZZQEditMeTableViewCell.m in Sources */,
 				B56D8AD31E76E230000085E6 /* ZZQCitysViewController.m in Sources */,
 				B56D8B321E79827B000085E6 /* ZZQPwdLoginViewController.m in Sources */,

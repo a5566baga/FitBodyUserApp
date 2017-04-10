@@ -10,4 +10,8 @@
 
 @interface ZZQSectionHeaderView : UIView
 
+@property(nonatomic, copy)void(^HomeBlock)(NSString * title);
+
+- (void)setCommentCounts:(NSString *)counts;
+
 @end

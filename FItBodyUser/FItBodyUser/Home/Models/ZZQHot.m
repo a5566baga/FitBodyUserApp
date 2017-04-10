@@ -10,4 +10,9 @@
 
 @implementation ZZQHot
 
+- (ZZQHot *)setHotWithObj:(AVObject *)obj{
+    ZZQHot * hot = [[ZZQHot alloc] init];
+    return hot;
+}
+
 @end

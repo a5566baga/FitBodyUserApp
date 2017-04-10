@@ -10,9 +10,18 @@
 
 @implementation ZZQMenu
 
-- (void)getMenuWithObject:(AVObject *)obj{
+- (ZZQMenu *)getMenuWithObject:(AVObject *)obj{
     ZZQMenu * menu = [[ZZQMenu alloc] init];
-    
+    menu.name = [obj objectForKey:@"name"];
+    menu.calorie = [obj objectForKey:@"calorie"];
+    menu.price = [obj objectForKey:@"price"];
+    menu.portrait = [obj objectForKey:@"portrait"];
+    menu.left = [obj objectForKey:@"left"];
+    menu.orderedNum = [obj objectForKey:@"orderedNum"];
+    menu.type = [obj objectForKey:@"type"];
+    menu.context = [obj objectForKey:@"context"];
+    menu.favNum = [obj objectForKey:@"favouriteNum"];
+    return menu;
 }
 
 @end

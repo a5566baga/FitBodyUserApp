@@ -65,7 +65,7 @@
     _bgView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_bgView];
     
-    _cardBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(_protriorImageView.frame)-80, SCREEN_WIDTH-40, _bgView.height)];
+    _cardBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_protriorImageView.frame)-80, SCREEN_WIDTH-30, 160)];
     _cardBgImageView.image = [UIImage imageNamed:@"timg-2"];
     _cardBgImageView.layer.cornerRadius = 10;
     _cardBgImageView.layer.masksToBounds = YES;
@@ -95,6 +95,49 @@
     
     _locationImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_main_home_item_left_location"]];
     [_cardBgImageView addSubview:_locationImageView];
+    
+    CGFloat startWidth = 100;
+    _startBgView = [[UIView alloc] initWithFrame:CGRectMake((_cardBgImageView.width-startWidth)/2, CGRectGetMaxY(_storeNameLabel.frame)+20, startWidth, startWidth/5/4.3*3)];
+    [_cardBgImageView addSubview:_startBgView];
+    
+    CGFloat top = CGRectGetMaxY(_cardBgImageView.frame)-CGRectGetMinY(_bgView.frame)+15;
+    CGFloat picMargin = 20;
+    CGFloat picWid = 25;
+    _canTakeOutPic = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMinX(_cardBgImageView.frame)+10, top, picWid, picWid)];
+    [_bgView addSubview:_canTakeOutPic];
+    
+    _canTakeSelfPic = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_canTakeOutPic.frame)+picMargin, top, picWid, picWid)];
+    [_bgView addSubview:_canTakeSelfPic];
+    
+    _canMessPic = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_canTakeSelfPic.frame)+picMargin, top, picWid, picWid)];
+    [_bgView addSubview:_canMessPic];
+    
+    _lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_cardBgImageView.frame), CGRectGetMaxY(_canMessPic.frame)+picMargin/2, _cardBgImageView.width, 0.5)];
+    _lineLabel.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.00];
+    [_bgView addSubview:_lineLabel];
+    
+    _messageImageView = [[UIImageView alloc] initWithFrame:CGRectMake(_lineLabel.mj_x, CGRectGetMaxY(_lineLabel.frame)+picMargin/2, 15, 15)];
+    _messageImageView.image = [UIImage imageNamed:@"icon_kitchen_detail_broadcast"];
+    [_bgView addSubview:_messageImageView];
+    
+    _messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_messageImageView.frame)+15, _messageImageView.mj_y, _cardBgImageView.width*0.8, 15)];
+    _messageLabel.textAlignment = NSTextAlignmentLeft;
+    _messageLabel.font = [UIFont fontWithName:CONTENT_FONT size:14];
+    [_bgView addSubview:_messageLabel];
+}
+
+- (void)setStartView:(NSUInteger)num{
+    NSInteger startNum = 5;
+    CGFloat width = _startBgView.width/startNum;
+    for (NSInteger i=0; i<startNum; i++) {
+        UIImageView * start = [[UIImageView alloc] initWithFrame:CGRectMake(i*width, 0, width, _startBgView.height)];
+        if (num > i) {
+            start.image = [UIImage imageNamed:@"icon_star_sel"];
+        }else{
+            start.image = [UIImage imageNamed:@"icon_star_nol"];
+        }
+        [_startBgView addSubview:start];
+    }
 }
 
 - (void)setMerchatModel:(ZZQMerchant *)merchant{
@@ -110,6 +153,8 @@
     CGSize size =[_merchant.location sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:CONTENT_FONT size:14]}];
     _locationLabel.frame = CGRectMake((_cardBgImageView.width-size.width)/2, CGRectGetMaxY(_storeNameLabel.frame), size.width, 20);
     _locationImageView.frame = CGRectMake(CGRectGetMinX(_locationLabel.frame)-25, CGRectGetMinY(_locationLabel.frame), 20, 20);
+    
+    [self setStartView:[_merchant.startsNum integerValue]];
     
     if ([[_merchant canTakeOut] isEqualToString:@"TRUE"]) {
         _canTakeOutPic.image = [UIImage imageNamed:@"hj_kitchen_detail_send_sel"];

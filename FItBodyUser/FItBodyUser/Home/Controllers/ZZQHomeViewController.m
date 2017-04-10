@@ -85,7 +85,7 @@
 #pragma mark ============= 加载视图
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.view.backgroundColor = [UIColor redColor];
+    [SVProgressHUD show];
     //设置nav
     [self initNavView];
     //初始化数据
@@ -118,6 +118,7 @@
     AVQuery * queryMerchants = [AVQuery queryWithClassName:@"Merchants"];
     queryMerchants.limit = _limitNum;
     [queryMerchants findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        [SVProgressHUD dismiss];
         if (error) {
             NSLog(@"================");
             NSLog(@"%@", error);

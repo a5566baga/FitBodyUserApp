@@ -8,27 +8,38 @@
 
 #import "ZZQMerchantDetailViewController.h"
 #import "ZZQMenu.h"
+#import "ZZQComments.h"
 #import "ZZQMerchantDetailTableViewCell.h"
 #import "ZZQSectionHeaderView.h"
 #import "ZZQMerchantHeaderView.h"
 #import "ZZQFooterView.h"
+#import "ZZQCommentsTableViewCell.h"
 
 #define CELL_ID @"MERCHANT_CELL"
 @interface ZZQMerchantDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property(nonatomic, strong)ZZQMerchant * merchant;
 @property(nonatomic, strong)ZZQMenu * menu;
+@property(nonatomic, strong)ZZQComments * comment;
 @property(nonatomic, strong)NSMutableArray * dataListArray;
 //tableview
 @property(nonatomic, strong)UITableView * tableview;
-//cell
+//菜单cell
 @property(nonatomic, strong)ZZQMerchantDetailTableViewCell * cell;
+//评论cell
+@property(nonatomic, strong)ZZQCommentsTableViewCell * commentCell;
 //sectionheader显示切换内容
 @property(nonatomic, strong)ZZQSectionHeaderView * sectionHeader;
 //头视图
 @property(nonatomic, strong)ZZQMerchantHeaderView * merchantHeader;
 //购物车底部视图
 @property(nonatomic, strong)ZZQFooterView * footerView;
+//判断是哪个btn调用数据
+@property(nonatomic, copy)NSString * btnAction;
+//评论的cell高度
+@property(nonatomic, strong)NSMutableArray<NSNumber *> * commentsHeightArray;
+//菜品的cell高度
+@property(nonatomic, strong)NSMutableArray<NSNumber *> * menuHeightArray;
 
 @end
 
@@ -36,7 +47,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [SVProgressHUD show];
     self.view.backgroundColor = [UIColor whiteColor];
+    _btnAction = @"健康食谱";
     [self initForData];
     [self initForTableView];
     [self initForFooterView];
@@ -63,21 +76,58 @@
     _tableview.bounces = NO;
     [self.view addSubview:_tableview];
     
-    _merchantHeader = [[ZZQMerchantHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 500)];
+    _merchantHeader = [[ZZQMerchantHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 440)];
     [_merchantHeader setMerchatModel:_merchant];
     _tableview.tableHeaderView = _merchantHeader;
 }
 
 #pragma mark
 #pragma mark ============== 数据下载
+//食谱数据
 - (void)initForData{
-    
+    self.dataListArray = [NSMutableArray array];
+    AVQuery * query = [AVQuery queryWithClassName:@"Menus"];
+    [query whereKey:@"owner" equalTo:_merchant.owner];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (error) {
+            //加载无数据视图
+            [self initNoNetView];
+        }else{
+            for (AVObject * obj in objects) {
+                _menu = [[ZZQMenu alloc] init];
+                _menu = [_menu getMenuWithObject:obj];
+                [self.dataListArray addObject:_menu];
+                [_tableview reloadData];
+            }
+        }
+        [SVProgressHUD dismiss];
+    }];
+}
+//评论数据
+- (void)initForCommentData{
+    self.dataListArray = [NSMutableArray array];
+    AVQuery * query = [AVQuery queryWithClassName:@"Comments"];
+    [query whereKey:@"storeName" equalTo:_merchant.name];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (error) {
+            //加载无数据视图
+            [self initNoNetView];
+        }else{
+            for (AVObject * obj in objects) {
+                _comment = [[ZZQComments alloc] init];
+                _comment = [_comment setCommentWithObj:obj];
+                [self.dataListArray addObject:_comment];
+                [_tableview reloadData];
+            }
+        }
+        [SVProgressHUD dismiss];
+    }];
 }
 
 #pragma mark
 #pragma mark ============== 无网络
 - (void)initNoNetView{
-    
+#warning 视图没写
 }
 
 #pragma mark
@@ -108,26 +158,64 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return self.dataListArray.count;
-    return 10;
+    NSLog(@"%lu",(unsigned long)self.dataListArray.count);
+    return self.dataListArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    _cell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
-    if (_cell == nil) {
-        _cell = [[ZZQMerchantDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
+    if ([_btnAction isEqualToString:@"健康食谱"]) {
+        _cell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
+        if (_cell == nil) {
+            _cell = [[ZZQMerchantDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
+        }
+        
+        return _cell;
+    }else{
+        _commentCell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
+        if (_commentCell == nil) {
+            _commentCell = [[ZZQCommentsTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
+        }
+        return _commentCell;
     }
-    _cell.textLabel.text = @"1";
-    return _cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if ([_btnAction isEqualToString:@"健康食谱"]) {
+//        return [self.menuHeightArray[indexPath.row] doubleValue];
+//    }else{
+//        return [self.commentsHeightArray[indexPath.row] doubleValue];
+//    }
+    return 40;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    _sectionHeader = [[ZZQSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
-    _sectionHeader.backgroundColor = [UIColor blueColor];
+    __weak typeof(self)myself = self;
+    _sectionHeader = [[ZZQSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+    AVQuery *query = [AVQuery queryWithClassName:@"Comments"];
+    [query whereKey:@"storeName" equalTo:_merchant.name];
+    [query countObjectsInBackgroundWithBlock:^(NSInteger number, NSError *error) {
+        if (!error) {
+            if (number < 99) {
+                [_sectionHeader setCommentCounts:[NSString stringWithFormat:@"%ld", (long)number]];
+            }else{
+                [_sectionHeader setCommentCounts:@"99+"];
+            }
+        } else {
+            [_sectionHeader setCommentCounts:@"0"];
+        }
+    }];
+    [_sectionHeader setHomeBlock:^(NSString * title) {
+        myself.btnAction = title;
+        if ([title isEqualToString:@"健康食谱"]) {
+            [myself initForData];
+        }else{
+            [myself initForCommentData];
+        }
+    }];
     return _sectionHeader;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 50;
+    return 40;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{

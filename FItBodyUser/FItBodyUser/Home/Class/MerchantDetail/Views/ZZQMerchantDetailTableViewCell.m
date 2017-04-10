@@ -8,17 +8,31 @@
 
 #import "ZZQMerchantDetailTableViewCell.h"
 
+
 @implementation ZZQMerchantDetailTableViewCell
+
+- (void)initForCell{
+    
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    for (UIView * view in [self.contentView subviews]) {
+        [view removeFromSuperview];
+    }
+    [self initForCell];
+}
+
+- (void)setCellModelMenu:(ZZQMenu *)menu{
+    
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

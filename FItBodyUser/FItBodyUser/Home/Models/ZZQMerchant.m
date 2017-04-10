@@ -28,6 +28,8 @@
     merchant.canTakeSelf = [obj objectForKey:@"canTakeSelf"];
     merchant.logoData = [[obj objectForKey:@"logo"] getData];
     merchant.broadcastMsg = [obj objectForKey:@"broadcastMsg"];
+    merchant.startsNum = [obj objectForKey:@"startsNum"];
+    merchant.owner = [obj objectForKey:@"owner"];
     return merchant;
 }
 

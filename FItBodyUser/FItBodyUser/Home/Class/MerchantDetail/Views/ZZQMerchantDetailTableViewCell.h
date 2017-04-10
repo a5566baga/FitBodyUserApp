@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZQMenu.h"
 
 @interface ZZQMerchantDetailTableViewCell : UITableViewCell
+
+- (void)setCellModelMenu:(ZZQMenu *)menu;
 
 @end

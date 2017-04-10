@@ -42,6 +42,8 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - SVProgressHUD (2.0.3)
+  - UITableView+FDTemplateLayoutCell (1.5.beta)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -56,6 +58,8 @@ DEPENDENCIES:
   - MJExtension (~> 3.0.13)
   - MJRefresh (~> 3.1.12)
   - SDWebImage (~> 3.8.1)
+  - SVProgressHUD
+  - UITableView+FDTemplateLayoutCell (~> 1.5.beta)
   - YYKit (~> 1.0.9)
 
 SPEC CHECKSUMS:
@@ -69,8 +73,10 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  UITableView+FDTemplateLayoutCell: 02b508ab1cb4cea16a8c17ac83d2cd1fd72124f9
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 3a4944f12abacf6382afbc0c9623130cbd29ae1d
+PODFILE CHECKSUM: 7878376dd12079946085283497c369b4baaf6960
 
 COCOAPODS: 1.1.0.rc.2

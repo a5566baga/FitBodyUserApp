@@ -23,6 +23,8 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import "ProgressHUD.h"
 #import "CTAssetsPickerController.h"
+#import "SVProgressHUD.h"
+#import <UITableView+FDTemplateLayoutCell.h>
 
 //字体名字
 #define TITLE_FONT @"Songti SC"

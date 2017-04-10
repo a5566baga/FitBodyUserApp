@@ -42,6 +42,10 @@
 @property(nonatomic, strong)NSData * logoData;
 //广播内容
 @property(nonatomic, copy)NSString * broadcastMsg;
+//星级
+@property(nonatomic, copy)NSString * startsNum;
+//所属用户
+@property(nonatomic, strong)AVUser * owner;
 
 /**
  * 设置对象内容
