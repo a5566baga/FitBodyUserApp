@@ -15,12 +15,13 @@
     menu.name = [obj objectForKey:@"name"];
     menu.calorie = [obj objectForKey:@"calorie"];
     menu.price = [obj objectForKey:@"price"];
-    menu.portrait = [obj objectForKey:@"portrait"];
+    menu.portrait = [[obj objectForKey:@"portrait"] getData];
     menu.left = [obj objectForKey:@"left"];
     menu.orderedNum = [obj objectForKey:@"orderedNum"];
     menu.type = [obj objectForKey:@"type"];
     menu.context = [obj objectForKey:@"context"];
     menu.favNum = [obj objectForKey:@"favouriteNum"];
+    menu.menuID = [obj objectForKey:@"objectId"];
     return menu;
 }
 

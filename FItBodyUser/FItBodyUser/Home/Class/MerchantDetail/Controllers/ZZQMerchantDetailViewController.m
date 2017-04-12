@@ -97,10 +97,30 @@
                 _menu = [[ZZQMenu alloc] init];
                 _menu = [_menu getMenuWithObject:obj];
                 [self.dataListArray addObject:_menu];
-                [_tableview reloadData];
             }
+            [_tableview reloadData];
+            [SVProgressHUD dismiss];
         }
-        [SVProgressHUD dismiss];
+    }];
+}
+- (void)initForMenuData{
+    self.dataListArray = [NSMutableArray array];
+    AVQuery * query = [AVQuery queryWithClassName:@"Menus"];
+    [query whereKey:@"owner" equalTo:_merchant.owner];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (error) {
+            //加载无数据视图
+            [self initNoNetView];
+        }else{
+            for (AVObject * obj in objects) {
+                _menu = [[ZZQMenu alloc] init];
+                _menu = [_menu getMenuWithObject:obj];
+                [self.dataListArray addObject:_menu];
+            }
+            [_tableview reloadData];
+            [_tableview setContentOffset:CGPointMake(0, _merchantHeader.height) animated:YES];
+            [SVProgressHUD dismiss];
+        }
     }];
 }
 //评论数据
@@ -117,10 +137,10 @@
                 _comment = [[ZZQComments alloc] init];
                 _comment = [_comment setCommentWithObj:obj];
                 [self.dataListArray addObject:_comment];
-                [_tableview reloadData];
             }
         }
-        [SVProgressHUD dismiss];
+        [_tableview reloadData];
+        [_tableview setContentOffset:CGPointMake(0, _merchantHeader.height) animated:YES];
     }];
 }
 
@@ -135,6 +155,7 @@
 - (void)initForFooterView{
     CGFloat footerHeight = 40;
     _footerView = [[ZZQFooterView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-footerHeight, SCREEN_WIDTH, footerHeight)];
+    [_footerView setFavNum:_merchant.favNum];
     [self.view addSubview:_footerView];
 }
 
@@ -158,7 +179,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"%lu",(unsigned long)self.dataListArray.count);
     return self.dataListArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -167,7 +187,7 @@
         if (_cell == nil) {
             _cell = [[ZZQMerchantDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
         }
-        
+        [_cell setCellModelMenu:self.dataListArray[indexPath.row]];
         return _cell;
     }else{
         _commentCell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
@@ -184,12 +204,16 @@
 //    }else{
 //        return [self.commentsHeightArray[indexPath.row] doubleValue];
 //    }
-    return 40;
+    CGFloat menuHeight = (SCREEN_WIDTH - 20) / 4 * 2.5 + 100;
+    return menuHeight;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     __weak typeof(self)myself = self;
-    _sectionHeader = [[ZZQSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+    if (_sectionHeader == nil) {
+        _sectionHeader = [[ZZQSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+        _sectionHeader.backgroundColor = [UIColor whiteColor];
+    }
     AVQuery *query = [AVQuery queryWithClassName:@"Comments"];
     [query whereKey:@"storeName" equalTo:_merchant.name];
     [query countObjectsInBackgroundWithBlock:^(NSInteger number, NSError *error) {
@@ -206,7 +230,7 @@
     [_sectionHeader setHomeBlock:^(NSString * title) {
         myself.btnAction = title;
         if ([title isEqualToString:@"健康食谱"]) {
-            [myself initForData];
+            [myself initForMenuData];
         }else{
             [myself initForCommentData];
         }
@@ -222,26 +246,24 @@
     return  0.1;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 //scrollview的代理
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    double left = scrollView.contentOffset.y;
-//    float height = _merchantHeader.height;
-//    NSLog(@"%lf", left);
-//    if (left < (height-64) && left > 0) {
-//        [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-//        self.navigationItem.title = @"";
-//        self.tableview.frame = CGRectMake(0, left-(height-64), SCREEN_WIDTH, SCREEN_HEIGHT-left);
-//    }else if (left > (height-64) & left < height){
-//        self.tableview.frame = CGRectMake(0, left-(height-64), SCREEN_WIDTH, SCREEN_HEIGHT-left);
-//    }else if(left > height){
-//        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
-//        self.navigationItem.title = _merchant.name;
-//        self.tableview.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-40);
-//    }else{
-//        [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-//        self.navigationItem.title = @"";
-//        self.tableview.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-40);
-//    }
+    double left = scrollView.contentOffset.y;
+    float height = _merchantHeader.height;
+    NSLog(@"%lf", left);
+    if (left < (height-64)) {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+        self.navigationItem.title = @"";
+        self.tableview.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-40);
+    }else{
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
+        self.navigationItem.title = _merchant.name;
+        self.tableview.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-40);
+    }
 }
 
 - (void)setStoreName:(ZZQMerchant *)merchant{

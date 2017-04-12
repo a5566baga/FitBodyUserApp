@@ -144,8 +144,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     __weak typeof(self) myself = self;
     //TODO:判断是否登录
-    BOOL flag = YES;
-    if(flag){
+    if([AVUser currentUser]){
         //登录状态
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
             [myself.navigationController pushViewController:myself.editViewController animated:YES];

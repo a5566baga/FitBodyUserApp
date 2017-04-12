@@ -30,6 +30,7 @@
 #define TITLE_FONT @"Songti SC"
 #define CONTENT_FONT @"HYQingYaTiJ"
 #define LITTER_TITLE_FONT @"HYQuanTangShiJ"
+#define FANGZHENG_FONT @"FZLanTingHeiS-EL-GB"
 #define BLOD_ENG @"DINSchrift"
 
 //宽高

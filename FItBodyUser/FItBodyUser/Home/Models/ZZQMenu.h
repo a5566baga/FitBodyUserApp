@@ -28,6 +28,8 @@
 @property(nonatomic, copy)NSString * context;
 //收藏人数
 @property(nonatomic, copy)NSString * favNum;
+//菜单id
+@property(nonatomic, copy)NSString * menuID;
 
 - (ZZQMenu *)getMenuWithObject:(AVObject *)obj;
 

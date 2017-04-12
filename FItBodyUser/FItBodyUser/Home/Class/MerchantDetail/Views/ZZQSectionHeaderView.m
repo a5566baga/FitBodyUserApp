@@ -16,6 +16,8 @@
 @property(nonatomic, strong)UILabel * underLine;
 //评论button
 @property(nonatomic, strong)UIButton * commentBtn;
+//选中的title
+@property(nonatomic, strong)NSString * selectTitle;
 
 @end
 
@@ -76,7 +78,6 @@
     for (UIView * view in [self subviews]) {
         [view removeFromSuperview];
     }
-    
     [self initForSectionView];
 }
 

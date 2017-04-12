@@ -7,11 +7,181 @@
 //
 
 #import "ZZQMerchantDetailTableViewCell.h"
+#import "ZZQFavouriteBtn.h"
+
+@interface ZZQMerchantDetailTableViewCell ()
+
+//展示图片
+@property(nonatomic, strong)UIImageView * imagePic;
+//收藏按钮
+@property(nonatomic, strong)ZZQFavouriteBtn * favBtn;
+//菜名label
+@property(nonatomic, strong)UILabel * menuLabel;
+//剩余份数label
+//点单次数label
+@property(nonatomic, strong)UILabel * leftAndOrderedLabel;
+//价格label
+@property(nonatomic, strong)UILabel * priceLabel;
+//卡路里label
+@property(nonatomic, strong)UILabel * calorieLabel;
+//数量view
+@property(nonatomic, strong)UIView * menuAddOrLessView;
+//添加按钮
+@property(nonatomic, strong)UIButton * addBtn;
+//中间的数量label
+@property(nonatomic, strong)UILabel * menuNumLabel;
+//减少按钮
+@property(nonatomic, strong)UIButton * lessBtn;
+//引号图片
+@property(nonatomic, strong)UIImageView * iconPic;
+//内容label
+@property(nonatomic, strong)UILabel * contextLabel;
+//卡路里label
+
+@property(nonatomic, strong)ZZQMenu * menu;
+
+@end
 
 
 @implementation ZZQMerchantDetailTableViewCell
 
 - (void)initForCell{
+//    __weak typeof(self) myself= self;
+    CGFloat margin = 10;
+    _imagePic = [[UIImageView alloc] initWithFrame:CGRectMake(margin, margin, SCREEN_WIDTH-2*margin, (SCREEN_WIDTH-2*margin)/4*2.5)];
+    _imagePic.layer.cornerRadius = 10;
+    _imagePic.layer.masksToBounds = YES;
+    _imagePic.image = [UIImage imageWithData:_menu.portrait];
+    [_imagePic setUserInteractionEnabled:YES];
+    [self.contentView addSubview:_imagePic];
+    
+    _favBtn = [[ZZQFavouriteBtn alloc] initWithFrame:CGRectMake(_imagePic.width-20-margin, _imagePic.height-55, 20, 45)];
+    [_favBtn setTitle:_menu.favNum forState:UIControlStateNormal];
+    [_favBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _favBtn.titleLabel.font = [UIFont fontWithName:CONTENT_FONT size:14];
+    //查询当前用户是否收藏本菜品
+    [self checkUseFav:_menu.menuID];
+    [_favBtn setImage:[UIImage imageNamed:@"btn_kitchen_detail_star_nol"] forState:UIControlStateNormal];
+    [_favBtn setImage:[UIImage imageNamed:@"btn_kitchen_detail_star_sel"] forState:UIControlStateSelected];
+    _favBtn.adjustsImageWhenHighlighted = NO;
+    [_favBtn addTarget:self action:@selector(favoutiteAction:) forControlEvents:UIControlEventTouchUpInside];
+    [_imagePic addSubview:_favBtn];
+    
+    _menuLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin*1.5, CGRectGetMaxY(_imagePic.frame)+margin/2, _imagePic.width, 30)];
+    _menuLabel.font = [UIFont fontWithName:FANGZHENG_FONT size:18];
+    _menuLabel.textColor = [UIColor blackColor];
+    _menuLabel.textAlignment = NSTextAlignmentLeft;
+    _menuLabel.text = _menu.name;
+    [self.contentView addSubview:_menuLabel];
+    
+    _leftAndOrderedLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin*1.5, CGRectGetMaxY(_menuLabel.frame), SCREEN_WIDTH/2, 10)];
+    _leftAndOrderedLabel.textAlignment = NSTextAlignmentLeft;
+    _leftAndOrderedLabel.textColor = [UIColor grayColor];
+    _leftAndOrderedLabel.font = [UIFont systemFontOfSize:11];
+    _leftAndOrderedLabel.text = [NSString stringWithFormat:@"还剩%@份 · %@人品尝过",_menu.left, _menu.orderedNum];
+    [self.contentView addSubview:_leftAndOrderedLabel];
+    
+    _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin*1.5, CGRectGetMaxY(_leftAndOrderedLabel.frame)+margin*0.5, 60, 20)];
+    _priceLabel.textColor = [UIColor redColor];
+    _priceLabel.font = [UIFont fontWithName:BLOD_ENG size:15];
+    _priceLabel.text = [NSString stringWithFormat:@"￥%@", _menu.price];
+    [self.contentView addSubview:_priceLabel];
+    
+    _calorieLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-margin-120, CGRectGetMaxY(_imagePic.frame)+margin/2, 120, 30)];
+    _calorieLabel.textColor = [UIColor colorWithRed:0.15 green:0.59 blue:0.13 alpha:1.00];
+    _calorieLabel.textAlignment = NSTextAlignmentCenter;
+    _calorieLabel.font = [UIFont fontWithName:LITTER_TITLE_FONT size:18];
+    _calorieLabel.text = _menu.calorie;
+    [self.contentView addSubview:_calorieLabel];
+    
+    [self initForAddOrLessView];
+    
+    _contextLabel = [[UILabel alloc] init];
+}
+
+- (void)favoutiteAction:(UIButton *)btn{
+    btn.selected = !btn.selected;
+    [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
+        btn.imageView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+    } completion:^(BOOL finished) {
+        btn.imageView.transform = CGAffineTransformIdentity;
+        NSInteger favNum = [_menu.favNum integerValue];
+        if (btn.selected) {
+            favNum += 1;
+        }else{
+            favNum -= 1;
+        }
+        AVObject * menuObj = [AVObject objectWithClassName:@"Menus" objectId:_menu.menuID];
+        [menuObj setObject:[NSString stringWithFormat:@"%ld", (long)favNum] forKey:@"favouriteNum"];
+        [menuObj saveInBackground];
+        AVUser * user = [AVUser currentUser];
+        if (user != nil) {
+            AVObject * favObj = [AVObject objectWithClassName:@"FavoutiteMenus"];
+            [favObj setObject:@"userId" forKey:user.objectId];
+            [favObj setObject:@"menuId" forKey:_menu.menuID];
+            [favObj saveInBackground];
+        }
+        _menu.favNum = [NSString stringWithFormat:@"%ld", (long)favNum];
+        [btn setTitle:[NSString stringWithFormat:@"%ld", (long)favNum] forState:UIControlStateNormal];
+    }];
+}
+
+//检查本菜品用户是否收藏了
+- (void)checkUseFav:(NSString *)menuId{
+    AVUser * user = [AVUser currentUser];
+    if (user != nil) {
+        AVQuery * query = [AVQuery queryWithClassName:@"FavoutiteMenus"];
+        [query whereKey:@"menuId" equalTo:menuId];
+        [query whereKey:@"userId" equalTo:user.objectId];
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (objects.count != 0) {
+                _favBtn.selected = YES;
+            }
+        }];
+    }
+}
+
+//添加到购物车动作的view
+- (void)initForAddOrLessView{
+    CGFloat margin = 10;
+    CGFloat width = 80;
+    CGFloat height = 25;
+    
+    _menuAddOrLessView = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-margin-width, CGRectGetMinY(_priceLabel.frame), width, height)];
+    [self.contentView addSubview:_menuAddOrLessView];
+    
+    _addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _addBtn.layer.cornerRadius = height/2;
+    _addBtn.layer.masksToBounds = YES;
+    [_addBtn setImage:[UIImage imageNamed:@"btn_add_nol"] forState:UIControlStateNormal];
+    [_addBtn setImage:[UIImage imageNamed:@"btn_add_sel"] forState:UIControlStateHighlighted];
+    _addBtn.adjustsImageWhenHighlighted = NO;
+    _addBtn.frame = CGRectMake(_menuAddOrLessView.width-height, 0, height, height);
+    [_menuAddOrLessView addSubview:_addBtn];
+    
+    _lessBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _lessBtn.layer.cornerRadius = height/2;
+    _lessBtn.layer.masksToBounds = YES;
+    [_lessBtn setImage:[UIImage imageNamed:@"btn_minus_nol"] forState:UIControlStateNormal];
+    [_lessBtn setImage:[UIImage imageNamed:@"btn_minus_sel"] forState:UIControlStateHighlighted];
+    _lessBtn.adjustsImageWhenHighlighted = NO;
+    _lessBtn.frame = CGRectMake(0, 0, height, height);
+    [_menuAddOrLessView addSubview:_lessBtn];
+    
+    _menuNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(height, 0, _menuAddOrLessView.width-2*height, height)];
+    _menuNumLabel.textColor = [UIColor redColor];
+    _menuNumLabel.textAlignment = NSTextAlignmentCenter;
+    _menuNumLabel.font = [UIFont fontWithName:LITTER_TITLE_FONT size:16];
+    _menuNumLabel.text = @"1";
+    [_menuAddOrLessView addSubview:_menuNumLabel];
+}
+//TODO:想怎么暂时存储对应的菜品和数量
+//添加一个菜品的
+- (void)orderAddAction:(UIButton *)btn{
+    
+}
+//减少数量
+- (void)orderLessAction:(UIButton *)btn{
     
 }
 
@@ -24,7 +194,7 @@
 }
 
 - (void)setCellModelMenu:(ZZQMenu *)menu{
-    
+    _menu = menu;
 }
 
 - (void)awakeFromNib {
