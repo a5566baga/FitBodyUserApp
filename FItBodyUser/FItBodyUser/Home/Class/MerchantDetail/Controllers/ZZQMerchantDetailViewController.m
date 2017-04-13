@@ -16,6 +16,7 @@
 #import "ZZQCommentsTableViewCell.h"
 
 #define CELL_ID @"MERCHANT_CELL"
+#define COMMENT_CELL_ID @"COMMENT_CELL"
 @interface ZZQMerchantDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property(nonatomic, strong)ZZQMerchant * merchant;
@@ -64,6 +65,20 @@
     return _dataListArray;
 }
 
+- (NSMutableArray<NSNumber *> *)menuHeightArray{
+    if (!_menuHeightArray) {
+        _menuHeightArray = [NSMutableArray array];
+    }
+    return _menuHeightArray;
+}
+
+- (NSMutableArray<NSNumber *> *)commentsHeightArray{
+    if (!_commentsHeightArray) {
+        _commentsHeightArray = [NSMutableArray array];
+    }
+    return _commentsHeightArray;
+}
+
 #pragma mark
 #pragma mark ============== 创建tableview
 - (void)initForTableView{
@@ -86,6 +101,7 @@
 //食谱数据
 - (void)initForData{
     self.dataListArray = [NSMutableArray array];
+    self.menuHeightArray = [NSMutableArray array];
     AVQuery * query = [AVQuery queryWithClassName:@"Menus"];
     [query whereKey:@"owner" equalTo:_merchant.owner];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
@@ -97,6 +113,9 @@
                 _menu = [[ZZQMenu alloc] init];
                 _menu = [_menu getMenuWithObject:obj];
                 [self.dataListArray addObject:_menu];
+                float labelHeight = [self rowHeightByString:[_menu context] font:[UIFont systemFontOfSize:14] width:SCREEN_WIDTH - 62];
+                CGFloat menuHeight = (SCREEN_WIDTH - 20) / 4 * 2.5 + 105 + labelHeight;
+                [self.menuHeightArray addObject:[NSNumber numberWithFloat:menuHeight]];
             }
             [_tableview reloadData];
             [SVProgressHUD dismiss];
@@ -116,6 +135,9 @@
                 _menu = [[ZZQMenu alloc] init];
                 _menu = [_menu getMenuWithObject:obj];
                 [self.dataListArray addObject:_menu];
+                float labelHeight = [self rowHeightByString:[_menu context] font:[UIFont systemFontOfSize:14] width:SCREEN_WIDTH - 62];
+                CGFloat menuHeight = (SCREEN_WIDTH - 20) / 4 * 2.5 + 105 + labelHeight;
+                [self.menuHeightArray addObject:[NSNumber numberWithFloat:menuHeight]];
             }
             [_tableview reloadData];
             [_tableview setContentOffset:CGPointMake(0, _merchantHeader.height) animated:YES];
@@ -137,6 +159,9 @@
                 _comment = [[ZZQComments alloc] init];
                 _comment = [_comment setCommentWithObj:obj];
                 [self.dataListArray addObject:_comment];
+                
+                //评论高度
+                //TODO:评论高度
             }
         }
         [_tableview reloadData];
@@ -190,22 +215,20 @@
         [_cell setCellModelMenu:self.dataListArray[indexPath.row]];
         return _cell;
     }else{
-        _commentCell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
+        _commentCell = [tableView dequeueReusableCellWithIdentifier:COMMENT_CELL_ID];
         if (_commentCell == nil) {
-            _commentCell = [[ZZQCommentsTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
+            _commentCell = [[ZZQCommentsTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:COMMENT_CELL_ID];
         }
         return _commentCell;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if ([_btnAction isEqualToString:@"健康食谱"]) {
-//        return [self.menuHeightArray[indexPath.row] doubleValue];
-//    }else{
-//        return [self.commentsHeightArray[indexPath.row] doubleValue];
-//    }
-    CGFloat menuHeight = (SCREEN_WIDTH - 20) / 4 * 2.5 + 100;
-    return menuHeight;
+    if ([_btnAction isEqualToString:@"健康食谱"]) {
+        return [self.menuHeightArray[indexPath.row] floatValue];
+    }else{
+        return 100;
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -254,7 +277,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     double left = scrollView.contentOffset.y;
     float height = _merchantHeader.height;
-    NSLog(@"%lf", left);
     if (left < (height-64)) {
         [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
         self.navigationItem.title = @"";
@@ -268,6 +290,13 @@
 
 - (void)setStoreName:(ZZQMerchant *)merchant{
     _merchant = merchant;
+}
+
+//工具，自动计算高度
+-(float)rowHeightByString:(NSString *)content font:(UIFont *)font width:(CGFloat)width{
+    CGSize mySize = CGSizeMake(width, CGFLOAT_MAX);
+    CGSize size = [content boundingRectWithSize:mySize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
+    return size.height;
 }
 
 - (void)didReceiveMemoryWarning {

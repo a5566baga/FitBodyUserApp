@@ -69,20 +69,20 @@
     
     _menuLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin*1.5, CGRectGetMaxY(_imagePic.frame)+margin/2, _imagePic.width, 30)];
     _menuLabel.font = [UIFont fontWithName:FANGZHENG_FONT size:18];
-    _menuLabel.textColor = [UIColor blackColor];
+    _menuLabel.textColor = [UIColor colorWithRed:0.58 green:0.58 blue:0.58 alpha:1.00];
     _menuLabel.textAlignment = NSTextAlignmentLeft;
     _menuLabel.text = _menu.name;
     [self.contentView addSubview:_menuLabel];
     
     _leftAndOrderedLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin*1.5, CGRectGetMaxY(_menuLabel.frame), SCREEN_WIDTH/2, 10)];
     _leftAndOrderedLabel.textAlignment = NSTextAlignmentLeft;
-    _leftAndOrderedLabel.textColor = [UIColor grayColor];
+    _leftAndOrderedLabel.textColor = [UIColor colorWithRed:0.73 green:0.73 blue:0.73 alpha:1.00];
     _leftAndOrderedLabel.font = [UIFont systemFontOfSize:11];
     _leftAndOrderedLabel.text = [NSString stringWithFormat:@"还剩%@份 · %@人品尝过",_menu.left, _menu.orderedNum];
     [self.contentView addSubview:_leftAndOrderedLabel];
     
     _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin*1.5, CGRectGetMaxY(_leftAndOrderedLabel.frame)+margin*0.5, 60, 20)];
-    _priceLabel.textColor = [UIColor redColor];
+    _priceLabel.textColor = [UIColor colorWithRed:0.92 green:0.04 blue:0.01 alpha:1.00];
     _priceLabel.font = [UIFont fontWithName:BLOD_ENG size:15];
     _priceLabel.text = [NSString stringWithFormat:@"￥%@", _menu.price];
     [self.contentView addSubview:_priceLabel];
@@ -96,7 +96,18 @@
     
     [self initForAddOrLessView];
     
-    _contextLabel = [[UILabel alloc] init];
+    _iconPic = [[UIImageView alloc] initWithFrame:CGRectMake(2*margin, CGRectGetMaxY(_priceLabel.frame)+margin, 36*0.6, 42*0.6)];
+    _iconPic.image = [UIImage imageNamed:@"icon_yinhao_left"];
+    [self.contentView addSubview:_iconPic];
+    
+    float labelWidth = SCREEN_WIDTH-CGRectGetMaxX(_iconPic.frame)-2*margin;
+    float labelHeight = [self rowHeightByString:_menu.context font:[UIFont systemFontOfSize:14] width:labelWidth];
+    _contextLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_iconPic.frame)+margin, CGRectGetMinY(_iconPic.frame), labelWidth, labelHeight)];
+    _contextLabel.textColor = [UIColor colorWithRed:0.63 green:0.63 blue:0.63 alpha:1.00];
+    _contextLabel.numberOfLines = 0;
+    _contextLabel.text = _menu.context;
+    _contextLabel.font = [UIFont systemFontOfSize:13];
+    [self.contentView addSubview:_contextLabel];
 }
 
 - (void)favoutiteAction:(UIButton *)btn{
@@ -195,6 +206,13 @@
 
 - (void)setCellModelMenu:(ZZQMenu *)menu{
     _menu = menu;
+}
+
+//工具，自动计算高度
+-(float)rowHeightByString:(NSString *)content font:(UIFont *)font width:(CGFloat)width{
+    CGSize mySize = CGSizeMake(width, CGFLOAT_MAX);
+    CGSize size = [content boundingRectWithSize:mySize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
+    return size.height;
 }
 
 - (void)awakeFromNib {
