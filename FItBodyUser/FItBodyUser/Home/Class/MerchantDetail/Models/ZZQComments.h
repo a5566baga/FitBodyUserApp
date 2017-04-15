@@ -20,12 +20,15 @@
 @property(nonatomic, copy)NSString * storeName;
 //用户名
 @property(nonatomic, copy)NSString * userName;
+//用户评论
+@property(nonatomic, copy)NSString * userComment;
 //菜品的objID
 @property(nonatomic, copy)NSString * menuObjId;
 //评论时间
 @property(nonatomic, strong)NSDate * createDate;
 //商家回复时间
 @property(nonatomic, strong)NSDate * updateDate;
+@property(nonatomic, copy)NSString * menuNames;
 
 - (ZZQComments *)setCommentWithObj:(AVObject *)obj;
 

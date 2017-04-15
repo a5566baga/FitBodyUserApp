@@ -22,6 +22,7 @@
     comment.menuObjId = [obj objectForKey:@"menuId"];
     comment.createDate = [obj objectForKey:@"createdAt"];
     comment.updateDate = [obj objectForKey:@"updatedAt"];
+    comment.userComment = [obj objectForKey:@"userComment"];
     return comment;
 }
 

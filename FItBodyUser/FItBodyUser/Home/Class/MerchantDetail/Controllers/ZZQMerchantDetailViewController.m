@@ -140,7 +140,9 @@
                 [self.menuHeightArray addObject:[NSNumber numberWithFloat:menuHeight]];
             }
             [_tableview reloadData];
-            [_tableview setContentOffset:CGPointMake(0, _merchantHeader.height) animated:YES];
+            [UIView animateWithDuration:0.8 animations:^{
+                [_tableview setContentOffset:CGPointMake(0, _merchantHeader.height)];
+            }];
             [SVProgressHUD dismiss];
         }
     }];
@@ -158,14 +160,39 @@
             for (AVObject * obj in objects) {
                 _comment = [[ZZQComments alloc] init];
                 _comment = [_comment setCommentWithObj:obj];
+                
+                NSArray * menuNameArr = [_comment.menuObjId componentsSeparatedByString:@"\n"];
+                NSMutableString * menuName = [NSMutableString string];
+                for (NSString * str in menuNameArr) {
+                    AVQuery * menuQuery = [[AVQuery alloc] initWithClassName:@"Menus"];
+                    [menuQuery whereKey:@"objectId" equalTo:str];
+                    [menuName appendFormat:@"%@", [NSString stringWithFormat:@"%@  ", [[menuQuery findObjects][0] objectForKey:@"name"]]];
+                }
+                _comment.menuNames = menuName;
                 [self.dataListArray addObject:_comment];
                 
                 //评论高度
                 //TODO:评论高度
+                UIFont * font = [UIFont systemFontOfSize:15];
+                CGFloat height = [self rowHeightByString:_comment.userComment font:font width:SCREEN_WIDTH-90];
+                height += [self rowHeightByString:_comment.menuNames font:font width:SCREEN_WIDTH-120];
+                height += [self rowHeightByString:_comment.storeReturn font:font width:SCREEN_WIDTH-90];
+                height += 150;
+                [self.commentsHeightArray addObject:[NSNumber numberWithFloat:height]];
             }
         }
-        [_tableview reloadData];
-        [_tableview setContentOffset:CGPointMake(0, _merchantHeader.height) animated:YES];
+        if (self.dataListArray.count > 5) {
+            [_tableview reloadData];
+            [UIView animateWithDuration:0.8 animations:^{
+                [_tableview setContentOffset:CGPointMake(0, _merchantHeader.height)];
+            }];
+        }else{
+            [UIView animateWithDuration:0.8 animations:^{
+                [_tableview setContentOffset:CGPointMake(0, 0)];
+            }completion:^(BOOL finished) {
+                [_tableview reloadData];
+            }];
+        }
     }];
 }
 
@@ -219,6 +246,7 @@
         if (_commentCell == nil) {
             _commentCell = [[ZZQCommentsTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:COMMENT_CELL_ID];
         }
+        [_commentCell setCommentModel:self.dataListArray[indexPath.row]];
         return _commentCell;
     }
 }
@@ -227,7 +255,7 @@
     if ([_btnAction isEqualToString:@"健康食谱"]) {
         return [self.menuHeightArray[indexPath.row] floatValue];
     }else{
-        return 100;
+        return [self.commentsHeightArray[indexPath.row] floatValue];
     }
 }
 

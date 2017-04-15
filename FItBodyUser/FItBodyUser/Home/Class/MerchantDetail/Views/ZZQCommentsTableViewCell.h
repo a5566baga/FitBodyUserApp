@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZQComments.h"
 
 @interface ZZQCommentsTableViewCell : UITableViewCell
+
+- (void)setCommentModel:(ZZQComments *)comment;
 
 @end
