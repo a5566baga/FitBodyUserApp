@@ -11,7 +11,6 @@
 @interface ZZQAddNewAddressBtnView ()
 
 @property(nonatomic, strong)UIImageView * addImageView;
-@property(nonatomic, strong)UILabel * addLabel;
 
 @end
 
@@ -19,7 +18,9 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    
+    _addImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-15, 5, 30, 30)];
+    _addImageView.image = [UIImage imageNamed:@"icon_add_address_nol"];
+    [self addSubview:_addImageView];
 }
 
 @end

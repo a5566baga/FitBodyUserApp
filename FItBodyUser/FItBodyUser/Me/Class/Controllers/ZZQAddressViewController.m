@@ -40,7 +40,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"我的收货地址";
     //设置管理按钮
-    [self initForNavItem];
+//    [self initForNavItem];
     //设置tableview
     [self initForTableView];
     //设置footer
@@ -108,7 +108,7 @@
         [myself.navigationController pushViewController:addNewAddressVC animated:YES];
     }];
     _addNewAddressView = [[ZZQAddNewAddressBtnView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-40, SCREEN_WIDTH, 40)];
-    _addNewAddressView.backgroundColor =[UIColor whiteColor];
+//    _addNewAddressView.backgroundColor =[UIColor whiteColor];
     [_addNewAddressView addGestureRecognizer:tap];
     
     [self.view addSubview:_addNewAddressView];
