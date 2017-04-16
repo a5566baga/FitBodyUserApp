@@ -97,20 +97,22 @@
 }
 //登录事件
 - (void)loginAction:(UIButton *)btn{
-    BOOL flag = YES;
-    if(flag){
-        //登录成功
-        //TODO:查询数据库，发送请求，返回需要更改成为字典
-        self.LoginBlock(_userNameTextField.text);
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }else{
-        ZZQClearCacheView * loginFailedView = [[ZZQClearCacheView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 25)];
-        loginFailedView.center = CGPointMake(self.view.centerX, self.view.centerY*1.1);
-        [loginFailedView setMessageErrorWithMsg:@"登录失败"];
-        loginFailedView.alpha = 0;
-        [self setAlertViewAnimal:loginFailedView];
-        [self.view addSubview:loginFailedView];
-    }
+    __weak typeof(self) myself = self;
+    [AVUser logInWithUsernameInBackground:_userNameTextField.text password:_passwordTextField.text block:^(AVUser * _Nullable user, NSError * _Nullable error) {
+        if(!error){
+            //登录成功
+            //TODO:查询数据库，发送请求，返回需要更改成为字典
+            myself.LoginBlock(_userNameTextField.text);
+            [myself.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+            ZZQClearCacheView * loginFailedView = [[ZZQClearCacheView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 25)];
+            loginFailedView.center = CGPointMake(myself.view.centerX, myself.view.centerY*1.1);
+            [loginFailedView setMessageErrorWithMsg:@"登录失败"];
+            loginFailedView.alpha = 0;
+            [myself setAlertViewAnimal:loginFailedView];
+            [myself.view addSubview:loginFailedView];
+        }
+    }];
 }
 //改变登录方式
 - (void)changLoginAction:(UIButton *)btn{

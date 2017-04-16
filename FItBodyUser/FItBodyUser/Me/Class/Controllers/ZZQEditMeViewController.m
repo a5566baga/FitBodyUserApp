@@ -168,6 +168,7 @@
     __weak typeof(self)myself = self;
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
         //打开图库
+        
     }];
     [self.headerView addGestureRecognizer:tap];
     return self.headerView;
@@ -186,6 +187,7 @@
 
 - (void)logOutAction:(UIButton *)btn{
     //TODO:登出操作，删除数据库，pop到页面
+    [AVUser logOut];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

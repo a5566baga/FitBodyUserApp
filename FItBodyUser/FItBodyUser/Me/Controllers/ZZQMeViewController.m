@@ -16,6 +16,9 @@
 #import "ZZQLoginViewController.h"
 #import "ZZQClearCacheView.h"
 #import "ZZQPwdLoginViewController.h"
+#import "ZZQAddressViewController.h"
+#import "ZZQFavouriteViewController.h"
+#import "ZZQCommentViewController.h"
 
 #define CELL_ID @"meCell"
 
@@ -82,11 +85,10 @@
 
 - (void)editMyself:(UIButton *)btn{
     
-    BOOL flag = YES;
-    
-    if(flag){
+    if([AVUser currentUser]){
         //视图层跳转,登录状态
         ZZQEditMeViewController * editVC = [[ZZQEditMeViewController alloc] init];
+        [editVC setUserName:[AVUser currentUser].objectId];
         [self.navigationController pushViewController:editVC animated:YES];
     }else{
         ZZQClearCacheView * noLoginView = [[ZZQClearCacheView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 30)];
@@ -148,7 +150,9 @@
         //登录状态
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
             [myself.navigationController pushViewController:myself.editViewController animated:YES];
-            //    [self.headerView setTitleName:@"" smallTitle:@"" headImgUrl:@""];
+            //TODO:显示信息
+//            [myself.headerView setTitleName:@"" smallTitle:@"" headImgUrl:@""];
+            
         }];
         [myself.headerView addGestureRecognizer:tap];
     }else{
@@ -177,25 +181,26 @@
         [_cell setFirstCellStyle:indexPath.row];
         //不同的状态进入不同的控制器
         //TODO:未完成
-        __weak typeof(self)weakself = self;
-        [_cell setBlock:^(NSString * title) {
-            if([title isEqualToString:@"进行中"]){
-                NSLog(@"%@", title);
-                ZZQDoingViewController * doingVC = [[ZZQDoingViewController alloc] init];
-                [weakself.navigationController pushViewController:doingVC animated:YES];
-            }else if([title isEqualToString:@"待评论"]){
-                 NSLog(@"%@", title);
-                ZZQNoCommentsViewController * noCommentVC = [[ZZQNoCommentsViewController alloc] init];
-                [weakself.navigationController pushViewController:noCommentVC animated:YES];
-            }else if([title isEqualToString:@"已完成"]){
-                 NSLog(@"%@", title);
-                ZZQAlreadyViewController * alreayVC = [[ZZQAlreadyViewController alloc] init];
-                [weakself.navigationController pushViewController:alreayVC animated:YES];
-            }
-        }];
+        if ([AVUser currentUser]) {
+            __weak typeof(self)weakself = self;
+            [weakself.cell setBlock:^(NSString * title) {
+                if([title isEqualToString:@"进行中"]){
+                    NSLog(@"%@", title);
+                    ZZQDoingViewController * doingVC = [[ZZQDoingViewController alloc] init];
+                    [weakself.navigationController pushViewController:doingVC animated:YES];
+                }else if([title isEqualToString:@"待评论"]){
+                    NSLog(@"%@", title);
+                    ZZQNoCommentsViewController * noCommentVC = [[ZZQNoCommentsViewController alloc] init];
+                    [weakself.navigationController pushViewController:noCommentVC animated:YES];
+                }else if([title isEqualToString:@"已完成"]){
+                    NSLog(@"%@", title);
+                    ZZQAlreadyViewController * alreayVC = [[ZZQAlreadyViewController alloc] init];
+                    [weakself.navigationController pushViewController:alreayVC animated:YES];
+                }
+            }];
+        }
     }else{
         _cell = [[ZZQMeTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
-        
         
         [_cell setOtherCellStyle:self.titleArray[indexPath.row-1] index:indexPath.row];
         
@@ -212,32 +217,35 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView clearSelectedRowsAnimated:YES];
-    //下面操作
-    //TODO:未完成
-    switch (indexPath.row) {
-        case 1:
+    if ([AVUser currentUser]) {
+        //下面操作
+        //TODO:未完成
+        if (1 == indexPath.row) {
             NSLog(@"地址");
-            break;
-        case 2:
+            ZZQAddressViewController * addressVC = [[ZZQAddressViewController alloc] init];
+            [self.navigationController pushViewController:addressVC animated:YES];
+        }else if (2 == indexPath.row){
             NSLog(@"收藏");
-            break;
-        case 3:
+            ZZQFavouriteViewController * favouriteVC = [[ZZQFavouriteViewController alloc] init];
+            [self.navigationController pushViewController:favouriteVC animated:YES];
+        }else if (3 == indexPath.row){
             NSLog(@"评价");
-            break;
-        case 4:
-            NSLog(@"缓存");
-            ZZQClearCacheView * clearCacheView = [[ZZQClearCacheView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 30)];
-            clearCacheView.center = CGPointMake(self.view.centerX, self.view.centerY*1.5);
-            float cache = [[SDImageCache sharedImageCache]getSize]/1000/1000;
-            [clearCacheView setClearCacheViewWithTitle:@"清理缓存 " cacheNum:cache];
-            [[SDImageCache sharedImageCache] clearDisk];
-            clearCacheView.alpha = 0;
-            [self setViewAnimal:clearCacheView];
-            [self.view addSubview:clearCacheView];
-            break;
-//        default:
-//            break;
+            ZZQCommentViewController * commentVC = [[ZZQCommentViewController alloc] init];
+            [self.navigationController pushViewController:commentVC animated:YES];
+        }
     }
+    if (4 == indexPath.row){
+        NSLog(@"缓存");
+        ZZQClearCacheView * clearCacheView = [[ZZQClearCacheView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 30)];
+        clearCacheView.center = CGPointMake(self.view.centerX, self.view.centerY*1.5);
+        float cache = [[SDImageCache sharedImageCache]getSize]/1000/1000;
+        [clearCacheView setClearCacheViewWithTitle:@"清理缓存 " cacheNum:cache];
+        [[SDImageCache sharedImageCache] clearDisk];
+        clearCacheView.alpha = 0;
+        [self setViewAnimal:clearCacheView];
+        [self.view addSubview:clearCacheView];
+    }
+
 }
 
 - (void)setViewAnimal:(UIView *)view{

@@ -52,15 +52,21 @@
 
 //进行中按钮相应事件
 - (void)processAction:(UIButton *)btn{
-    self.Block(btn.currentTitle);
+    if ([AVUser currentUser]) {
+        self.Block(btn.currentTitle);
+    }
 }
 
 - (void)noCommentAction:(UIButton *)btn{
-    self.Block(btn.currentTitle);
+    if ([AVUser currentUser ]) {
+        self.Block(btn.currentTitle);
+    }
 }
 
 - (void)alreadyAction:(UIButton *)btn{
-    self.Block(btn.currentTitle);
+    if ([AVUser currentUser ]) {
+        self.Block(btn.currentTitle);
+    }
 }
 
 - (void)initForFirstCell{

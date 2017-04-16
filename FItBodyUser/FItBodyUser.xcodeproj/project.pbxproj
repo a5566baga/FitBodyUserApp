@@ -61,6 +61,13 @@
 		B57072791E9BCB28003DE3F8 /* ZZQComments.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072781E9BCB28003DE3F8 /* ZZQComments.m */; };
 		B570727C1E9BD133003DE3F8 /* ZZQCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B570727B1E9BD133003DE3F8 /* ZZQCommentsTableViewCell.m */; };
 		B570727F1E9E5ACE003DE3F8 /* ZZQFavouriteBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B570727E1E9E5ACE003DE3F8 /* ZZQFavouriteBtn.m */; };
+		B57072821EA35238003DE3F8 /* ZZQAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072811EA35238003DE3F8 /* ZZQAddressViewController.m */; };
+		B57072851EA35253003DE3F8 /* ZZQFavouriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072841EA35253003DE3F8 /* ZZQFavouriteViewController.m */; };
+		B57072881EA35267003DE3F8 /* ZZQCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072871EA35267003DE3F8 /* ZZQCommentViewController.m */; };
+		B570728B1EA38F90003DE3F8 /* ZZQAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B570728A1EA38F8F003DE3F8 /* ZZQAddressTableViewCell.m */; };
+		B570728E1EA3901A003DE3F8 /* ZZQAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = B570728D1EA3901A003DE3F8 /* ZZQAddress.m */; };
+		B57072911EA3AAFA003DE3F8 /* ZZQAddNewAddressBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072901EA3AAFA003DE3F8 /* ZZQAddNewAddressBtnView.m */; };
+		B57072941EA3B1C9003DE3F8 /* ZZQAddNewAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072931EA3B1C9003DE3F8 /* ZZQAddNewAddressViewController.m */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -167,6 +174,20 @@
 		B570727B1E9BD133003DE3F8 /* ZZQCommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQCommentsTableViewCell.m; sourceTree = "<group>"; };
 		B570727D1E9E5ACE003DE3F8 /* ZZQFavouriteBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQFavouriteBtn.h; sourceTree = "<group>"; };
 		B570727E1E9E5ACE003DE3F8 /* ZZQFavouriteBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFavouriteBtn.m; sourceTree = "<group>"; };
+		B57072801EA35238003DE3F8 /* ZZQAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAddressViewController.h; sourceTree = "<group>"; };
+		B57072811EA35238003DE3F8 /* ZZQAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAddressViewController.m; sourceTree = "<group>"; };
+		B57072831EA35253003DE3F8 /* ZZQFavouriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQFavouriteViewController.h; sourceTree = "<group>"; };
+		B57072841EA35253003DE3F8 /* ZZQFavouriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFavouriteViewController.m; sourceTree = "<group>"; };
+		B57072861EA35267003DE3F8 /* ZZQCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQCommentViewController.h; sourceTree = "<group>"; };
+		B57072871EA35267003DE3F8 /* ZZQCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQCommentViewController.m; sourceTree = "<group>"; };
+		B57072891EA38F8F003DE3F8 /* ZZQAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAddressTableViewCell.h; sourceTree = "<group>"; };
+		B570728A1EA38F8F003DE3F8 /* ZZQAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAddressTableViewCell.m; sourceTree = "<group>"; };
+		B570728C1EA3901A003DE3F8 /* ZZQAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAddress.h; sourceTree = "<group>"; };
+		B570728D1EA3901A003DE3F8 /* ZZQAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAddress.m; sourceTree = "<group>"; };
+		B570728F1EA3AAFA003DE3F8 /* ZZQAddNewAddressBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAddNewAddressBtnView.h; sourceTree = "<group>"; };
+		B57072901EA3AAFA003DE3F8 /* ZZQAddNewAddressBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAddNewAddressBtnView.m; sourceTree = "<group>"; };
+		B57072921EA3B1C9003DE3F8 /* ZZQAddNewAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAddNewAddressViewController.h; sourceTree = "<group>"; };
+		B57072931EA3B1C9003DE3F8 /* ZZQAddNewAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAddNewAddressViewController.m; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -337,6 +358,14 @@
 				B56D8B091E7844DB000085E6 /* ZZQAlreadyViewController.m */,
 				B56D8B0B1E794F8F000085E6 /* ZZQEditMeViewController.h */,
 				B56D8B0C1E794F8F000085E6 /* ZZQEditMeViewController.m */,
+				B57072801EA35238003DE3F8 /* ZZQAddressViewController.h */,
+				B57072811EA35238003DE3F8 /* ZZQAddressViewController.m */,
+				B57072831EA35253003DE3F8 /* ZZQFavouriteViewController.h */,
+				B57072841EA35253003DE3F8 /* ZZQFavouriteViewController.m */,
+				B57072861EA35267003DE3F8 /* ZZQCommentViewController.h */,
+				B57072871EA35267003DE3F8 /* ZZQCommentViewController.m */,
+				B57072921EA3B1C9003DE3F8 /* ZZQAddNewAddressViewController.h */,
+				B57072931EA3B1C9003DE3F8 /* ZZQAddNewAddressViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -344,6 +373,8 @@
 		B56D8B001E784497000085E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B570728C1EA3901A003DE3F8 /* ZZQAddress.h */,
+				B570728D1EA3901A003DE3F8 /* ZZQAddress.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -365,6 +396,10 @@
 				B57070A91E865D3A003DE3F8 /* ZZQAgeGroup.m */,
 				B57070AB1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.h */,
 				B57070AC1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m */,
+				B57072891EA38F8F003DE3F8 /* ZZQAddressTableViewCell.h */,
+				B570728A1EA38F8F003DE3F8 /* ZZQAddressTableViewCell.m */,
+				B570728F1EA3AAFA003DE3F8 /* ZZQAddNewAddressBtnView.h */,
+				B57072901EA3AAFA003DE3F8 /* ZZQAddNewAddressBtnView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -865,6 +900,8 @@
 				B56D8B1D1E7965E7000085E6 /* ZZQClearCacheView.m in Sources */,
 				B5B4FA9D1E74D5360020D9B6 /* ZZQOrderViewController.m in Sources */,
 				B56D8AD91E78062E000085E6 /* ZZQHeaderView.m in Sources */,
+				B570728E1EA3901A003DE3F8 /* ZZQAddress.m in Sources */,
+				B570728B1EA38F90003DE3F8 /* ZZQAddressTableViewCell.m in Sources */,
 				B570726D1E99D086003DE3F8 /* ZZQMerchantDetailTableViewCell.m in Sources */,
 				B570725C1E939B63003DE3F8 /* ProgressHUD.m in Sources */,
 				B57072701E99D702003DE3F8 /* ZZQSectionHeaderView.m in Sources */,
@@ -875,6 +912,7 @@
 				B56D8B321E79827B000085E6 /* ZZQPwdLoginViewController.m in Sources */,
 				B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */,
 				B5B4FA841E7402BE0020D9B6 /* ZZQBaseTabBar.m in Sources */,
+				B57072821EA35238003DE3F8 /* ZZQAddressViewController.m in Sources */,
 				B56D8B071E7844CD000085E6 /* ZZQNoCommentsViewController.m in Sources */,
 				B5B4FA801E73FC540020D9B6 /* AppDelegate.m in Sources */,
 				B56D8ACD1E755B97000085E6 /* ZZQNoOnlineView.m in Sources */,
@@ -888,10 +926,14 @@
 				B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */,
 				B570724F1E9398B3003DE3F8 /* ZZQHomeTableViewCell.m in Sources */,
 				B56D8B3E1E814C5C000085E6 /* ZZQSexBtn.m in Sources */,
+				B57072881EA35267003DE3F8 /* ZZQCommentViewController.m in Sources */,
+				B57072851EA35253003DE3F8 /* ZZQFavouriteViewController.m in Sources */,
 				B56D8B3B1E814A92000085E6 /* ZZQSettingSexView.m in Sources */,
+				B57072911EA3AAFA003DE3F8 /* ZZQAddNewAddressBtnView.m in Sources */,
 				B57070AD1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m in Sources */,
 				B56D8AFA1E781EEA000085E6 /* ZZQMeTableViewCell.m in Sources */,
 				B570727F1E9E5ACE003DE3F8 /* ZZQFavouriteBtn.m in Sources */,
+				B57072941EA3B1C9003DE3F8 /* ZZQAddNewAddressViewController.m in Sources */,
 				B57072551E93990A003DE3F8 /* ZZQHot.m in Sources */,
 				B506AE521E75472200B39731 /* ZZQNetAlertView.m in Sources */,
 				B56D8B0D1E794F8F000085E6 /* ZZQEditMeViewController.m in Sources */,

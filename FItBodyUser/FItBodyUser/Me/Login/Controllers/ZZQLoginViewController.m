@@ -167,6 +167,7 @@
                 //TODO:查询数据库，发送请求，返回需要更改成为字典
                 myself.LoginBlock(_phoneNumField.text);
                 [myself.navigationController popViewControllerAnimated:YES];
+                
             }
         }];
     }
