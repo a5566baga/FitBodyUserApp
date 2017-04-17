@@ -11,6 +11,10 @@
 
 @interface ZZQAddressTableViewCell : UITableViewCell
 
+@property(nonatomic, copy)void(^editBlock)(ZZQAddress * address);
+@property(nonatomic, copy)void(^deleteBlock)(NSIndexPath * index);
+
 - (void)setCellForModle:(ZZQAddress *)address;
+- (void)setCellIndex:(NSIndexPath*)index;
 
 @end

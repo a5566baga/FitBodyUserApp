@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZQAddress.h"
 
 @interface ZZQAddNewAddressViewController : UIViewController
+
+- (void)setAddress:(ZZQAddress *)address;
 
 @end

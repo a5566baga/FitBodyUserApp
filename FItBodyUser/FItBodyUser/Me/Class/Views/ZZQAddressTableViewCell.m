@@ -19,6 +19,7 @@
 @property(nonatomic, strong)UIView * editView;
 @property(nonatomic, strong)UIButton * editBtn;
 @property(nonatomic, strong)UIButton * deleBtn;
+@property(nonatomic, strong)NSIndexPath * index;
 
 @end
 
@@ -47,7 +48,6 @@
 
 - (void)initForEditView{
     
-    
     _editView = [[UIView alloc] initWithFrame:CGRectMake(15+_addressLabel.width, 30, (SCREEN_WIDTH-30)*0.25, 20)];
     [self.contentView addSubview:_editView];
     
@@ -58,6 +58,7 @@
     [_editBtn setImage:[UIImage imageNamed:@"icon_modify_my_address_nol"] forState:UIControlStateNormal];
     [_editBtn setImage:[UIImage imageNamed:@"icon_modify_my_address_sel"] forState:UIControlStateHighlighted];
     [_editBtn setShowsTouchWhenHighlighted:NO];
+    [_editBtn addTarget:self action:@selector(editAction:) forControlEvents:UIControlEventTouchUpInside];
     [_editView addSubview:_editBtn];
     
     _deleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -65,7 +66,22 @@
     [_deleBtn setImage:[UIImage imageNamed:@"icon_search_clear_content_nol"] forState:UIControlStateNormal];
     [_deleBtn setImage:[UIImage imageNamed:@"icon_search_clear_content_sel"] forState:UIControlStateHighlighted];
     [_deleBtn setShowsTouchWhenHighlighted:NO];
+    [_deleBtn addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
     [_editView addSubview:_deleBtn];
+}
+
+- (void)setCellIndex:(NSIndexPath *)index{
+    _index = index;
+}
+
+//编辑按钮
+- (void)editAction:(UIButton *)btn{
+    self.editBlock(_address);
+}
+
+//删除按钮
+- (void)deleteAction:(UIButton *)btn{
+    self.deleteBlock(_index);
 }
 
 - (void)layoutSubviews{

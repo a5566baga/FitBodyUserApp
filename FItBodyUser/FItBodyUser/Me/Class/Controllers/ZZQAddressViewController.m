@@ -134,6 +134,21 @@
         _cell = [[ZZQAddressTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
     }
     [_cell setCellForModle:_dataList[indexPath.row]];
+    [_cell setCellIndex:indexPath];
+    
+    __weak typeof(self)myself = self;
+    [_cell setEditBlock:^(ZZQAddress * address) {
+        ZZQAddNewAddressViewController * editAddress = [[ZZQAddNewAddressViewController alloc] init];
+        [editAddress setAddress:address];
+        [myself.navigationController pushViewController:editAddress animated:YES];
+    }];
+    
+    
+    [_cell setDeleteBlock:^(NSIndexPath * index) {
+        [myself.dataList removeObjectAtIndex:indexPath.row];
+        [myself.tableView reloadData];
+    }];
+    
     return _cell;
 }
 
