@@ -21,8 +21,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.title = @"选择城市";
+    [self initForCityData];
+    [self initForTableView];
 }
+
+#pragma mark
+#pragma mark =========== 请求数据
+- (void)initForCityData{
+    _dataArray = [[NSMutableArray alloc] init];
+    AVQuery * query = [AVQuery queryWithClassName:@"Citys"];
+    
+}
+
+#pragma mark
+#pragma mark =========== 刷新加载
+- (void)refrush{
+    
+}
+
+#pragma mark
+#pragma mark =========== 初始化tableview
+- (void)initForTableView{
+    
+}
+
+#pragma mark
+#pragma mark =========== 代理
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

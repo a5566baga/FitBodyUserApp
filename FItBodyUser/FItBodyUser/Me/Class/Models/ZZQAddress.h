@@ -18,6 +18,8 @@
 @property(nonatomic, copy)NSString * consigneePhone;
 /**联系人姓名*/
 @property(nonatomic, copy)NSString * consigneeName;
+/**id*/
+@property(nonatomic, copy)NSString * objId;
 
 - (ZZQAddress *)setModleForObject:(AVObject *)obj;
 

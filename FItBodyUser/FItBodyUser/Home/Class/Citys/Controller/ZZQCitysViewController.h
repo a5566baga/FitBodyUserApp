@@ -10,4 +10,6 @@
 
 @interface ZZQCitysViewController : ZZQBaseViewController
 
+@property(nonatomic, weak)void(^cityBlock)(NSString * city);
+
 @end

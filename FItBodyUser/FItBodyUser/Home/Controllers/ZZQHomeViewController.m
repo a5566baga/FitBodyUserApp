@@ -14,6 +14,8 @@
 #import "ZZQHomeTableViewCell.h"
 #import "ZZQMerchant.h"
 #import "ZZQMerchantDetailViewController.h"
+#import "ZZQCitysViewController.h"
+#import "ZZQSearchViewController.h"
 
 #define CELL_ID @"homeCell"
 #define LIMIT 10
@@ -45,6 +47,8 @@
 //头视图
 @property(nonatomic, strong)ZZQHomeHeaderView * headerView;
 @property(nonatomic, assign)NSUInteger limitNum;
+//城市名
+@property(nonatomic, copy)NSString * cityName;
 
 @end
 
@@ -85,6 +89,7 @@
 #pragma mark ============= 加载视图
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initForLocation];
     [SVProgressHUD show];
     //设置nav
     [self initNavView];
@@ -100,13 +105,34 @@
     //设置无网络错误页面
 //    [self initForNoNetView];
 }
-
+#pragma mark
+#pragma mark ============== 定位
+- (void)initForLocation{
+    _cityName = @"济南";
+}
 #pragma mark
 #pragma mark ============== 设置nav
 - (void)initNavView{
     [self.navigationItem setLeftBarButtonItem:self.cityItem];
     [self.navigationItem setRightBarButtonItem:self.searchItem];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
+    [_cityBtn addTarget:self action:@selector(cityAction:) forControlEvents:UIControlEventTouchUpInside];
+    [_searchBtn addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
+}
+- (void)cityAction:(UIButton *)btn{
+    __weak typeof(self)myself = self;
+    ZZQCitysViewController * cityVC = [[ZZQCitysViewController alloc] init];
+    [self.navigationController pushViewController:cityVC animated:YES];
+    [cityVC setCityBlock:^(NSString * cityName) {
+        [myself.cityBtn setTitle:cityName forState:UIControlStateNormal];
+        myself.cityName = cityName;
+        [myself initForData];
+    }];
+}
+
+- (void)searchAction:(UIButton *)btn{
+    ZZQSearchViewController * searchVC = [[ZZQSearchViewController alloc] init];
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
 #pragma mark
@@ -116,12 +142,11 @@
     _limitNum = LIMIT;
     //model模型，通过回调加载tableview还是errorView
     AVQuery * queryMerchants = [AVQuery queryWithClassName:@"Merchants"];
+    [queryMerchants whereKey:@"city" equalTo:_cityName];
     queryMerchants.limit = _limitNum;
     [queryMerchants findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         [SVProgressHUD dismiss];
         if (error) {
-            NSLog(@"================");
-            NSLog(@"%@", error);
             [self initForNoNetView];
         }else{
             _dataListArray = [NSMutableArray array];
@@ -143,6 +168,7 @@
 //上拉加载调用
 - (void)initForNewData{
     AVQuery * queryMerchants = [AVQuery queryWithClassName:@"Merchants"];
+    [queryMerchants whereKey:@"city" equalTo:_cityName];
     queryMerchants.limit = LIMIT;
     queryMerchants.skip = _limitNum;
     [queryMerchants findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {

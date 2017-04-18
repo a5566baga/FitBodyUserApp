@@ -10,7 +10,7 @@
 
 #define MARGIN 15.0
 #define HEIGHT 40.0
-#define FONT [UIFont systemFontOfSize:16]
+#define FONT [UIFont systemFontOfSize:15]
 #define FONT_COLOR [UIColor colorWithRed:0.64 green:0.64 blue:0.64 alpha:1.00]
 
 @interface ZZQAddNewAddressViewController ()
@@ -40,13 +40,20 @@
 @property(nonatomic, strong)UILabel * phoneLabel;
 //手机textField
 @property(nonatomic, strong)UITextField * phoneTextField;
-
 //收货地址view
+@property(nonatomic, strong)UIView * addressView;
 //收货地址label
+@property(nonatomic, strong)UILabel * addressLabel;
 //城市label
+@property(nonatomic, strong)UILabel * cityLabel;
 //城市TextField
+@property(nonatomic, strong)UITextField * cityTextField;
 //楼层label
+@property(nonatomic, strong)UILabel * streetLabel;
 //楼层textField
+@property(nonatomic, strong)UITextField * streetTextFeild;
+@property(nonatomic, assign)BOOL manFlag;
+@property(nonatomic, assign)BOOL womanFlag;
 
 @end
 
@@ -73,7 +80,41 @@
     self.navigationItem.rightBarButtonItem = _saveItem;
 }
 - (void)saveAction:(UIButton *)btn{
-    
+    __weak typeof(self)myself = self;
+    NSString * name = _userTextField.text;
+    NSString * sex ;
+    if (_manFlag) {
+        sex = @"先生";
+    }else if(_womanFlag){
+        sex = @"女士";
+    }
+    NSString * phone = _phoneTextField.text;
+    NSString * city = _cityTextField.text;
+    NSString * street = _streetTextFeild.text;
+    if (![name isEqualToString:@""] && ![sex isEqualToString:@""] && ![city isEqualToString:@""] && ![phone isEqualToString:@""] && ![street isEqualToString:@""]) {
+        AVObject * address;
+        if (_address != nil) {
+            address = [AVObject objectWithClassName:@"Addresses" objectId:_address.objId];
+        }else{
+            address = [[AVObject alloc] initWithClassName:@"Addresses"];
+        }
+        [address setObject:name forKey:@"consigneeName"];
+        [address setObject:sex forKey:@"sex"];
+        [address setObject:phone forKey:@"consigneePhone"];
+        [address setObject:city forKey:@"address"];
+        [address setObject:[NSString stringWithFormat:@"%@ %@", city, street] forKey:@"address"];
+        [address setObject:[[AVUser currentUser] objectId] forKey:@"userId"];
+        [address saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                [ProgressHUD showSuccess];
+                [myself.navigationController popViewControllerAnimated:YES];
+            }else{
+                [ProgressHUD showError:@"请重试"];
+            }
+        }];
+    }else{
+        [ProgressHUD showError:@"请检查内容"];
+    }
 }
 
 #pragma mark
@@ -108,12 +149,12 @@
     _manChoicePic.layer.masksToBounds = YES;
     [_manChoicePic setUserInteractionEnabled:YES];
     [_userView addSubview:_manChoicePic];
-    __block BOOL manFlag = NO;
-    __block BOOL womanFlag = NO;
+    _manFlag = NO;
+    _womanFlag = NO;
     UITapGestureRecognizer * tapMan = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-        manFlag = !manFlag;
-        womanFlag = !manFlag;
-        if (manFlag) {
+        _manFlag = !_manFlag;
+        _womanFlag = !_manFlag;
+        if (_manFlag) {
             [UIView animateWithDuration:0.4 animations:^{
                 _manChoicePic.transform = CGAffineTransformMakeScale(-1.0, 1.0);
                 _womanChoicPic.transform = CGAffineTransformMakeScale(-1.0, 1.0);
@@ -153,9 +194,9 @@
     [_womanChoicPic setUserInteractionEnabled:YES];
     [_userView addSubview:_womanChoicPic];
     UITapGestureRecognizer * tapWoman = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-        womanFlag = !womanFlag;
-        manFlag = !womanFlag;
-        if (womanFlag) {
+        _womanFlag = !_womanFlag;
+        _manFlag = !_womanFlag;
+        if (_womanFlag) {
             [UIView animateWithDuration:0.4 animations:^{
                 _manChoicePic.transform = CGAffineTransformMakeScale(-1.0, 1.0);
                 _womanChoicPic.transform = CGAffineTransformMakeScale(-1.0, 1.0);
@@ -205,7 +246,55 @@
 
 //TODO:收货地址填写
 - (void)initForAddressView{
+    _addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(MARGIN, CGRectGetMaxY(_userView.frame)+MARGIN, SCREEN_WIDTH/2, HEIGHT)];
+    _addressLabel.text = @"收货地址";
+    _addressLabel.font = FONT;
+    [self.view addSubview:_addressLabel];
     
+    _addressView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_addressLabel.frame), SCREEN_WIDTH, HEIGHT*2)];
+    _addressView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_addressView];
+    
+    CGFloat W = (SCREEN_WIDTH-2*MARGIN) / 3;
+    _cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(MARGIN, 0, W, HEIGHT)];
+    _cityLabel.font = FONT;
+    _cityLabel.text = @"省/市/区:";
+    [_addressView addSubview:_cityLabel];
+    
+    _cityTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_cityLabel.frame), 0, W*2, HEIGHT)];
+    _cityTextField.font = FONT;
+    _cityTextField.placeholder = @"请填写";
+    _cityTextField.textColor = FONT_COLOR;
+    _cityTextField.tintColor = FONT_COLOR;
+    [_addressView addSubview:_cityTextField];
+    
+    [self setLine:CGRectMake(MARGIN, CGRectGetMaxY(_cityLabel.frame), SCREEN_WIDTH-2*MARGIN, 0.5) view:_addressView];
+    
+    _streetLabel = [[UILabel alloc] initWithFrame:CGRectMake(MARGIN, CGRectGetMaxY(_cityTextField.frame), _cityLabel.width, HEIGHT)];
+    _streetLabel.text = @"门号/楼层号";
+    _streetLabel.font = FONT;
+    [_addressView addSubview:_streetLabel];
+    
+    _streetTextFeild = [[UITextField alloc] initWithFrame:CGRectMake(_cityTextField.origin.x, _streetLabel.origin.y, _cityTextField.width, HEIGHT)];
+    _streetTextFeild.font = FONT;
+    _streetTextFeild.placeholder = @"请填写";
+    _streetTextFeild.textColor = FONT_COLOR;
+    _streetTextFeild.tintColor = FONT_COLOR;
+    [_addressView addSubview:_streetTextFeild];
+    
+    if(_address != nil){
+        _userTextField.text = _address.consigneeName;
+        _phoneTextField.text = _address.consigneePhone;
+        if ([_address.sex isEqualToString:@"先生"]) {
+            _manFlag = YES;
+            _manChoicePic.image = [UIImage imageNamed:@"btn_checkbox_sel"];
+        }else{
+            _womanFlag = YES;
+            _womanChoicPic.image = [UIImage imageNamed:@"btn_checkbox_sel"];
+        }
+        _cityTextField.text = [_address.address componentsSeparatedByString:@" "][0];
+        _streetTextFeild.text = [_address.address componentsSeparatedByString:@" "][1];
+    }
 }
 
 - (void)setLine:(CGRect)frame view:(UIView *)view{
@@ -217,7 +306,8 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [_userTextField resignFirstResponder];
     [_phoneTextField resignFirstResponder];
-    
+    [_cityTextField resignFirstResponder];
+    [_streetTextFeild resignFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

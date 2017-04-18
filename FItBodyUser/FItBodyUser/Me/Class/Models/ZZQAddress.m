@@ -16,6 +16,7 @@
     address.sex = [obj objectForKey:@"sex"];
     address.consigneePhone = [obj objectForKey:@"consigneePhone"];
     address.consigneeName = [obj objectForKey:@"consigneeName"];
+    address.objId = [obj objectForKey:@"objectId"];
     return address;
 }
 

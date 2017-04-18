@@ -143,8 +143,9 @@
         [myself.navigationController pushViewController:editAddress animated:YES];
     }];
     
-    
     [_cell setDeleteBlock:^(NSIndexPath * index) {
+        AVObject * delAdd = [AVObject objectWithClassName:@"Addresses" objectId:[myself.dataList[indexPath.row] objId]];
+        [delAdd deleteInBackground];
         [myself.dataList removeObjectAtIndex:indexPath.row];
         [myself.tableView reloadData];
     }];
