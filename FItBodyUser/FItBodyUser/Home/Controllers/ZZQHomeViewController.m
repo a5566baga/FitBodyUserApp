@@ -90,20 +90,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initForLocation];
-    [SVProgressHUD show];
+//    [SVProgressHUD show];
+    //设置tableview
+//    [self initTableView];
     //设置nav
     [self initNavView];
     //初始化数据
     [self initForData];
-    
-    //设置tableview
-    [self initTableView];
-    
-    //设置未开通错误页面
-//    [self initForNoOnlineView];
-    
-    //设置无网络错误页面
-//    [self initForNoNetView];
 }
 #pragma mark
 #pragma mark ============== 定位
@@ -116,6 +109,7 @@
     [self.navigationItem setLeftBarButtonItem:self.cityItem];
     [self.navigationItem setRightBarButtonItem:self.searchItem];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
+    [_cityBtn setTitle:_cityName forState:UIControlStateNormal];
     [_cityBtn addTarget:self action:@selector(cityAction:) forControlEvents:UIControlEventTouchUpInside];
     [_searchBtn addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -126,6 +120,7 @@
     [cityVC setCityBlock:^(NSString * cityName) {
         [myself.cityBtn setTitle:cityName forState:UIControlStateNormal];
         myself.cityName = cityName;
+//        [myself initTableView];
         [myself initForData];
     }];
 }
@@ -139,6 +134,8 @@
 #pragma mark ============== 初始化数据
 //下拉刷新
 - (void)initForData{
+    [SVProgressHUD show];
+    __weak typeof(self)myself = self;
     _limitNum = LIMIT;
     //model模型，通过回调加载tableview还是errorView
     AVQuery * queryMerchants = [AVQuery queryWithClassName:@"Merchants"];
@@ -149,46 +146,48 @@
         if (error) {
             [self initForNoNetView];
         }else{
-            _dataListArray = [NSMutableArray array];
+            myself.dataListArray = [NSMutableArray array];
             for (AVObject * obj in objects) {
-                _merchant = [[ZZQMerchant alloc] init];
-                _merchant = [_merchant setMerchantDetail:obj];
-                [self.dataListArray addObject:_merchant];
+                myself.merchant = [[ZZQMerchant alloc] init];
+                myself.merchant = [myself.merchant setMerchantDetail:obj];
+                [myself.dataListArray addObject:myself.merchant];
             }
-            if (self.dataListArray.count == 0) {
-                [self initForNoOnlineView];
+            if (myself.dataListArray.count == 0) {
+                [myself initForNoOnlineView];
             }else{
-                [_tableView reloadData];
-                _limitNum += LIMIT;
+                [myself.noOnlineView removeFromSuperview];
+                [myself.noNetView removeFromSuperview];
+                [myself initTableView];
+                [myself.tableView reloadData];
+                myself.limitNum += LIMIT;
+                [myself.tableView.mj_header endRefreshing];
             }
-            [_tableView.mj_header endRefreshing];
         }
     }];
 }
 //上拉加载调用
 - (void)initForNewData{
+    __weak typeof(self)myself = self;
     AVQuery * queryMerchants = [AVQuery queryWithClassName:@"Merchants"];
     [queryMerchants whereKey:@"city" equalTo:_cityName];
     queryMerchants.limit = LIMIT;
     queryMerchants.skip = _limitNum;
     [queryMerchants findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (error) {
-            NSLog(@"================");
-            NSLog(@"%@", error);
             [self initForNoNetView];
         }else{
             for (AVObject * obj in objects) {
-                _merchant = [[ZZQMerchant alloc] init];
-                _merchant = [_merchant setMerchantDetail:obj];
-                [self.dataListArray addObject:_merchant];
+                myself.merchant = [[ZZQMerchant alloc] init];
+                myself.merchant = [myself.merchant setMerchantDetail:obj];
+                [myself.dataListArray addObject:myself.merchant];
             }
-            if (self.dataListArray.count == 0) {
-                [self initForNoOnlineView];
+            if (myself.dataListArray.count == 0) {
+                [myself initForNoOnlineView];
             }else{
-                [_tableView reloadData];
-                _limitNum += LIMIT;
+                [myself.tableView reloadData];
+                myself.limitNum += LIMIT;
             }
-            [_tableView.mj_footer endRefreshing];
+            [myself.tableView.mj_footer endRefreshing];
         }
     }];
 }
@@ -215,6 +214,7 @@
 #pragma mark
 #pragma mark ============== 设置tableview
 - (void)initTableView{
+    [_tableView removeFromSuperview];
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -294,6 +294,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.1;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
