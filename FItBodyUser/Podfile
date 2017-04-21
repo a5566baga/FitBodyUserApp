@@ -19,5 +19,6 @@ pod 'AVOSCloudCrashReporting' # 错误报告模块
 pod 'CTAssetsPickerController',  '~> 3.3.0'
 pod 'SVProgressHUD'
 pod 'UITableView+FDTemplateLayoutCell', '~> 1.5.beta'
+pod 'SDCycleScrollView','~> 1.64'
 
 end

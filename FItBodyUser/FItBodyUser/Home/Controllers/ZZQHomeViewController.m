@@ -16,6 +16,7 @@
 #import "ZZQMerchantDetailViewController.h"
 #import "ZZQCitysViewController.h"
 #import "ZZQSearchViewController.h"
+#import "ZZQHot.h"
 
 #define CELL_ID @"homeCell"
 #define LIMIT 10
@@ -49,6 +50,7 @@
 @property(nonatomic, assign)NSUInteger limitNum;
 //城市名
 @property(nonatomic, copy)NSString * cityName;
+@property(nonatomic, strong)NSMutableArray * hotImageArray;
 
 @end
 
@@ -135,6 +137,7 @@
 //下拉刷新
 - (void)initForData{
     [SVProgressHUD show];
+    _hotImageArray = [NSMutableArray array];
     __weak typeof(self)myself = self;
     _limitNum = LIMIT;
     //model模型，通过回调加载tableview还是errorView
@@ -162,6 +165,18 @@
                 myself.limitNum += LIMIT;
                 [myself.tableView.mj_header endRefreshing];
             }
+        }
+    }];
+    
+    AVQuery * hotQuery = [AVQuery queryWithClassName:@"Hot"];
+    [hotQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (!error) {
+            for (AVObject * obj in objects) {
+                ZZQHot * hot = [[ZZQHot alloc] init];
+                hot = [hot setHotWithObj:obj];
+                [myself.hotImageArray addObject:hot];
+            }
+            [myself.tableView reloadData];
         }
     }];
 }
@@ -275,7 +290,8 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     _headerView = [[ZZQHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
-    _headerView.backgroundColor = [UIColor orangeColor];
+//    _headerView.backgroundColor = [UIColor orangeColor];
+    [_headerView setImageArray:_hotImageArray];
     return _headerView;
 }
 

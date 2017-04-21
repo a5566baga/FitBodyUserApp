@@ -10,6 +10,8 @@
 
 @interface ZZQNoCommentsViewController ()
 
+
+
 @end
 
 @implementation ZZQNoCommentsViewController
@@ -21,9 +23,16 @@
     self.navigationItem.title = @"待评论";
 }
 
+
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tabBarController.tabBar setHidden:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -10,4 +10,6 @@
 
 @interface ZZQHomeHeaderView : UIView
 
+- (void)setImageArray:(NSArray *)imageArray;
+
 @end

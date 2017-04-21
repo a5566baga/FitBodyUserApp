@@ -25,6 +25,7 @@
 #import "CTAssetsPickerController.h"
 #import "SVProgressHUD.h"
 #import <UITableView+FDTemplateLayoutCell.h>
+#import "SDCycleScrollView.h"
 
 //字体名字
 #define TITLE_FONT @"Songti SC"

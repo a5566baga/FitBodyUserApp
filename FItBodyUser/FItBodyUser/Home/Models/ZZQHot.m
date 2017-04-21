@@ -12,6 +12,9 @@
 
 - (ZZQHot *)setHotWithObj:(AVObject *)obj{
     ZZQHot * hot = [[ZZQHot alloc] init];
+    hot.hotStr = [obj objectForKey:@"hotTitle"];
+    hot.imageData = [[obj objectForKey:@"hotImage"] getData];
+    hot.imageUrl = [obj objectForKey:@"imgUrl"];
     return hot;
 }
 

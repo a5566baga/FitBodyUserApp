@@ -10,6 +10,9 @@
 
 @interface ZZQHot : NSObject
 
+@property(nonatomic, copy)NSString * hotStr;
+@property(nonatomic, strong)NSData * imageData;
+@property(nonatomic, copy)NSString * imageUrl;
 
 - (ZZQHot *)setHotWithObj:(AVObject *)obj;
 
