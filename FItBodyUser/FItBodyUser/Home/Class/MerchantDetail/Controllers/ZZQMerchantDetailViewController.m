@@ -208,6 +208,7 @@
     CGFloat footerHeight = 40;
     _footerView = [[ZZQFooterView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-footerHeight, SCREEN_WIDTH, footerHeight)];
     [_footerView setFavNum:_merchant.favNum];
+    [_footerView setMerchantForView:_merchant];
 //    _tableview.tableFooterView = _footerView;
     [self.view addSubview:_footerView];
 }

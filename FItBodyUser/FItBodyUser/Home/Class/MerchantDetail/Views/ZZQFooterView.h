@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZQMerchant.h"
 
 @interface ZZQFooterView : UIView
 
 - (void)setFavNum:(NSString *)favNum;
 
 - (void)setMenuWithMenuName:(NSString *)menuName price:(NSString *)price;
+
+- (void)setMerchantForView:(ZZQMerchant *)merchant;
 
 @end

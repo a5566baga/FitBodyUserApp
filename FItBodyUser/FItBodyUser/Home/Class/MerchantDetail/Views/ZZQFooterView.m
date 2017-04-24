@@ -22,6 +22,7 @@
 @property(nonatomic, strong)UIButton * cartBtn;
 //购物车数量label
 @property(nonatomic, strong)UIButton * cartLabel;
+@property(nonatomic, strong)ZZQMerchant * merchant;
 
 @end
 
@@ -64,6 +65,19 @@
     _favLabel.font = [UIFont fontWithName:CONTENT_FONT size:11];
     _favLabel.text = @"0";
     [self addSubview:_favLabel];
+    //检查是否收藏过了
+    AVQuery * userFav = [AVQuery queryWithClassName:@"FavouriteMechants"];
+    [userFav whereKey:@"userID" equalTo:[[AVUser currentUser] objectId]];
+    NSArray * favArr = [userFav findObjects];
+    if(favArr.count != 0){
+        _favBtn.selected = YES;
+        AVQuery * merchantQuery = [AVQuery queryWithClassName:@"Merchants"];
+        [merchantQuery whereKey:@"objectId" equalTo:[favArr[0] objectForKey:@"favStoreName"]];
+        NSArray * merchants = [merchantQuery findObjects];
+        if (merchants.count != 0) {
+            _favLabel.text = [merchants[0] objectForKey:@"favouriteNum"];
+        }
+    }
     
     //先设计购物车按钮
     CGFloat cartWidth = 60;
@@ -108,7 +122,6 @@
     
 }
 
-#warning 未完
 //收藏按钮事件
 - (void)favouriteAction:(UIButton *)btn{
     btn.selected = !btn.selected;
@@ -119,9 +132,49 @@
     }];
     //操作保存用户的收藏内容
     if (btn.selected) {
+        AVObject * obj = [AVObject objectWithClassName:@"FavouriteMechants"];
         //保存了就插入数据
+        [obj setObject:[[AVUser currentUser] objectId] forKey:@"userID"];
+        [obj setObject:[_merchant name] forKey:@"favStoreName"];
+        if (![obj save]) {
+            [ProgressHUD showError:@"收藏失败"];
+        }else{
+            AVQuery * favQuery = [AVQuery queryWithClassName:@"Merchants"];
+            [favQuery whereKey:@"name" equalTo:_merchant.name];
+            NSArray * objs = [favQuery findObjects];
+            if (objs.count != 0) {
+                AVObject * obj = objs[0];
+                NSInteger favNum = [[obj objectForKey:@"favouriteNum"] integerValue] + 1;
+                [obj setObject:[NSString stringWithFormat:@"%ld", favNum] forKey:@"favouriteNum"];
+                [obj save];
+                _favLabel.text = [NSString stringWithFormat:@"%ld", favNum];
+            }
+        }
+        
     }else{
         //删除数据
+        AVQuery * userQuery = [AVQuery queryWithClassName:@"FavouriteMechants"];
+        [userQuery whereKey:@"userID" equalTo:[[AVUser currentUser] objectId]];
+        [userQuery whereKey:@"favStoreName" equalTo:[_merchant name]];
+        NSArray * objs = [userQuery findObjects];
+        AVObject * obj = [AVObject object];
+        if (objs.count > 0) {
+            obj = objs[0];
+        }
+        if (![obj delete]) {
+            [ProgressHUD showError:@"取消收藏失败"];
+        }else{
+            AVQuery * favQuery = [AVQuery queryWithClassName:@"Merchants"];
+            [favQuery whereKey:@"name" equalTo:_merchant.name];
+            NSArray * objs = [favQuery findObjects];
+            if (objs.count != 0) {
+                AVObject * obj = objs[0];
+                NSInteger favNum = [[obj objectForKey:@"favouriteNum"] integerValue] - 1;
+                [obj setObject:[NSString stringWithFormat:@"%ld", favNum] forKey:@"favouriteNum"];
+                [obj save];
+                _favLabel.text = [NSString stringWithFormat:@"%ld", favNum];
+            }
+        }
     }
 }
 //查看购物车事件
@@ -144,6 +197,9 @@
     //算好的内容给label赋值
 }
 
+- (void)setMerchantForView:(ZZQMerchant *)merchant{
+    _merchant = merchant;
+}
 
 - (void)layoutSubviews{
     [super layoutSubviews];
