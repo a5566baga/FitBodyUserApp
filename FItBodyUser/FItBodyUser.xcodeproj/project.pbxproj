@@ -71,6 +71,8 @@
 		B57072971EA66586003DE3F8 /* ZZQCity.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072961EA66586003DE3F8 /* ZZQCity.m */; };
 		B570729A1EA79676003DE3F8 /* ZZQSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B57072991EA79676003DE3F8 /* ZZQSearchTableViewCell.m */; };
 		B58FB3221EAA2691005D3395 /* ZZQOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = B58FB3211EAA2691005D3395 /* ZZQOrder.m */; };
+		B58FB3251EAE2002005D3395 /* ZZQOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = B58FB3241EAE2002005D3395 /* ZZQOrders.m */; };
+		B58FB3281EAE20E5005D3395 /* ZZQOrderTemp.m in Sources */ = {isa = PBXBuildFile; fileRef = B58FB3271EAE20E5005D3395 /* ZZQOrderTemp.m */; };
 		B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B4FA4D1E6BF7DD0020D9B6 /* main.m */; };
 		B5B4FA591E6BF7DD0020D9B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */; };
 		B5B4FA5C1E6BF7DD0020D9B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4FA5A1E6BF7DD0020D9B6 /* LaunchScreen.storyboard */; };
@@ -197,6 +199,10 @@
 		B57072991EA79676003DE3F8 /* ZZQSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQSearchTableViewCell.m; sourceTree = "<group>"; };
 		B58FB3201EAA2691005D3395 /* ZZQOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQOrder.h; sourceTree = "<group>"; };
 		B58FB3211EAA2691005D3395 /* ZZQOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQOrder.m; sourceTree = "<group>"; };
+		B58FB3231EAE2002005D3395 /* ZZQOrders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQOrders.h; sourceTree = "<group>"; };
+		B58FB3241EAE2002005D3395 /* ZZQOrders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQOrders.m; sourceTree = "<group>"; };
+		B58FB3261EAE20E5005D3395 /* ZZQOrderTemp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQOrderTemp.h; sourceTree = "<group>"; };
+		B58FB3271EAE20E5005D3395 /* ZZQOrderTemp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQOrderTemp.m; sourceTree = "<group>"; };
 		B5B4FA491E6BF7DD0020D9B6 /* FItBodyUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FItBodyUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4FA4D1E6BF7DD0020D9B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5B4FA581E6BF7DD0020D9B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -540,6 +546,10 @@
 				B57072511E9398F9003DE3F8 /* ZZQMenu.m */,
 				B57072771E9BCB28003DE3F8 /* ZZQComments.h */,
 				B57072781E9BCB28003DE3F8 /* ZZQComments.m */,
+				B58FB3231EAE2002005D3395 /* ZZQOrders.h */,
+				B58FB3241EAE2002005D3395 /* ZZQOrders.m */,
+				B58FB3261EAE20E5005D3395 /* ZZQOrderTemp.h */,
+				B58FB3271EAE20E5005D3395 /* ZZQOrderTemp.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -917,9 +927,11 @@
 				B56D8AD91E78062E000085E6 /* ZZQHeaderView.m in Sources */,
 				B570728E1EA3901A003DE3F8 /* ZZQAddress.m in Sources */,
 				B570728B1EA38F90003DE3F8 /* ZZQAddressTableViewCell.m in Sources */,
+				B58FB3251EAE2002005D3395 /* ZZQOrders.m in Sources */,
 				B570726D1E99D086003DE3F8 /* ZZQMerchantDetailTableViewCell.m in Sources */,
 				B570729A1EA79676003DE3F8 /* ZZQSearchTableViewCell.m in Sources */,
 				B570725C1E939B63003DE3F8 /* ProgressHUD.m in Sources */,
+				B58FB3281EAE20E5005D3395 /* ZZQOrderTemp.m in Sources */,
 				B57072701E99D702003DE3F8 /* ZZQSectionHeaderView.m in Sources */,
 				B57072791E9BCB28003DE3F8 /* ZZQComments.m in Sources */,
 				B57072971EA66586003DE3F8 /* ZZQCity.m in Sources */,

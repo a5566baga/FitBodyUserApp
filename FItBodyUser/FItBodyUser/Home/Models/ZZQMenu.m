@@ -21,7 +21,7 @@
     menu.type = [obj objectForKey:@"type"];
     menu.context = [obj objectForKey:@"context"];
     menu.favNum = [obj objectForKey:@"favouriteNum"];
-    menu.menuID = [obj objectForKey:@"objectId"];
+    menu.menuID = [obj objectId];
     menu.owner = [[obj objectForKey:@"owner"] objectId];
     menu.merchantID = [obj objectForKey:@"merchantID"];
     return menu;
