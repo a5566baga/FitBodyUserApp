@@ -7,6 +7,7 @@
 //
 
 #import "ZZQFooterView.h"
+#import "ZZQOrderTemp.h"
 
 @interface ZZQFooterView ()
 
@@ -23,6 +24,8 @@
 //购物车数量label
 @property(nonatomic, strong)UIButton * cartLabel;
 @property(nonatomic, strong)ZZQMerchant * merchant;
+//orderId
+@property(nonatomic, copy)NSString * orderID;
 
 @end
 
@@ -94,7 +97,7 @@
     [_cartBtn setAdjustsImageWhenHighlighted:NO];
     [self addSubview:_cartBtn];
     
-    [self setCartLabelAndPriceLabel];
+//    [self setCartLabelAndPriceLabel];
 }
 //购物车数量和价格视图设置
 - (void)setCartLabelAndPriceLabel{
@@ -107,14 +110,14 @@
     _cartLabel.contentHorizontalAlignment = NSTextLayoutOrientationHorizontal;
     _cartLabel.titleLabel.font = [UIFont systemFontOfSize:10];
     _cartLabel.titleLabel.textColor = [UIColor whiteColor];
-    [_cartLabel setTitle:@"1" forState:UIControlStateNormal];
+//    [_cartLabel setTitle:@"1" forState:UIControlStateNormal];
     [self addSubview:_cartLabel];
     
     _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_cartBtn.frame)-120, 10, 100, 20)];
     _priceLabel.font = [UIFont fontWithName:LITTER_TITLE_FONT size:18];
     _priceLabel.textColor = [UIColor colorWithRed:0.93 green:0.35 blue:0.32 alpha:1.00];
     _priceLabel.textAlignment = NSTextAlignmentRight;
-    _priceLabel.text = @"￥20";
+//    _priceLabel.text = @"￥20";
     [self addSubview:_priceLabel];
 }
 //分享按钮事件
@@ -188,17 +191,56 @@
 - (void)setFavNum:(NSString *)favNum{
     _favLabel.text = favNum;
 }
-- (void)setMenuWithMenuName:(NSString *)menuName price:(NSString *)price{
-    [self setCartLabelAndPriceLabel];
-    //数组接收一下
-    //菜品名数组
-    //价格数组
-    //字典保存数量
-    //算好的内容给label赋值
+
+#warning
+- (void)setOrderID:(NSString *)orderID{
+    _orderID = orderID;
+    if (_cartLabel == nil) {
+        [self setCartLabelAndPriceLabel];
+    }
+    //通过id查找子订单的内容
+    __block NSInteger orderNum = 0;
+    __block double price = 0;
+    __weak typeof(self)myself = self;
+    NSMutableArray * tempArr = [NSMutableArray array];
+    AVQuery * orderTempQuery = [AVQuery queryWithClassName:@"OrderTemp"];
+    [orderTempQuery whereKey:@"ordersID" equalTo:_orderID];
+    [orderTempQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (!error) {
+            for (AVObject * obj in objects) {
+                ZZQOrderTemp * temp = [[ZZQOrderTemp alloc] init];
+                temp = [temp setOrderTempForObj:obj];
+                [tempArr addObject:temp];
+                orderNum += 1;
+                price += [temp.menuPrice doubleValue];
+            }
+            [myself.cartLabel setTitle:[NSString stringWithFormat:@"%ld",orderNum] forState:UIControlStateNormal];
+            myself.priceLabel.text = [NSString stringWithFormat:@"￥%.2lf", price];
+        }
+    }];
+    
 }
 
 - (void)setMerchantForView:(ZZQMerchant *)merchant{
     _merchant = merchant;
+}
+
+- (void)setAnimal{
+    __weak typeof(self)myself = self;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        myself.cartLabel.transform = CGAffineTransformMakeScale(1.3, 1.3);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            myself.cartLabel.transform = CGAffineTransformIdentity;
+        }completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:15 options:UIViewAnimationOptionOverrideInheritedDuration animations:^{
+                myself.cartBtn.transform = CGAffineTransformMakeRotation(M_PI/10);
+            } completion:^(BOOL finished) {
+                myself.cartBtn.transform = CGAffineTransformIdentity;
+            }];
+        }];
+    }];
 }
 
 - (void)layoutSubviews{

@@ -11,6 +11,8 @@
 
 @interface ZZQMerchantDetailTableViewCell : UITableViewCell
 
+@property(nonatomic, copy)void(^orderBlock)(NSString * orderId);
+
 - (void)setCellModelMenu:(ZZQMenu *)menu;
 
 @end

@@ -13,8 +13,10 @@
 
 - (void)setFavNum:(NSString *)favNum;
 
-- (void)setMenuWithMenuName:(NSString *)menuName price:(NSString *)price;
+- (void)setOrderID:(NSString *)orderID;
 
 - (void)setMerchantForView:(ZZQMerchant *)merchant;
+
+- (void)setAnimal;
 
 @end

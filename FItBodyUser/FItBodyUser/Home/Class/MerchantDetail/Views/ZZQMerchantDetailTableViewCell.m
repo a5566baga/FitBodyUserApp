@@ -257,10 +257,12 @@
     if (!flag) {
         [ProgressHUD showError:@"添加失败"];
     }
+    self.orderBlock(objID);
 }
 //减少数量
 - (void)orderLessAction:(UIButton *)btn{
     //TODO:减少数量，先查再减，如果为0了，购物车也要操作
+    
 }
 
 - (void)layoutSubviews{

@@ -211,6 +211,11 @@
     [_footerView setMerchantForView:_merchant];
 //    _tableview.tableFooterView = _footerView;
     [self.view addSubview:_footerView];
+    
+    NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+    if ([userDefault objectForKey:@"objectId"]) {
+        [_footerView setOrderID:[userDefault objectForKey:@"objectId"]];
+    }
 }
 
 #pragma mark
@@ -241,7 +246,12 @@
         if (_cell == nil) {
             _cell = [[ZZQMerchantDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
         }
+        __weak typeof(self)myself = self;
         [_cell setCellModelMenu:self.dataListArray[indexPath.row]];
+        [_cell setOrderBlock:^(NSString * orderId) {
+            [myself.footerView setOrderID:orderId];
+            [myself.footerView setAnimal];
+        }];
         return _cell;
     }else{
         _commentCell = [tableView dequeueReusableCellWithIdentifier:COMMENT_CELL_ID];
