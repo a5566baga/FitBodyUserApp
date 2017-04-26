@@ -9,10 +9,18 @@
 #import <Foundation/Foundation.h>
 
 @interface ZZQOrders : NSObject
-
+/**主键*/
 @property(nonatomic, copy)NSString * objId;
+/**用户id*/
 @property(nonatomic, copy)NSString * userId;
+/**订单生成随机编号*/
 @property(nonatomic, copy)NSString * orderUniqeNum;
+/**评价*/
+@property(nonatomic, copy)NSString * evaluateStr;
+/**打分*/
+@property(nonatomic, copy)NSString * stars;
+/**配图1*/
+@property(nonatomic, strong)NSData * illustratingPicOne;
 
 - (ZZQOrders *)setOrdersForObj:(AVObject *)obj;
 

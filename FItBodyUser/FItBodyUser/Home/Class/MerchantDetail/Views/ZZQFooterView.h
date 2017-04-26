@@ -11,6 +11,8 @@
 
 @interface ZZQFooterView : UIView
 
+@property(nonatomic, copy)void(^footerBlock)(NSString * orderId);
+
 - (void)setFavNum:(NSString *)favNum;
 
 - (void)setOrderID:(NSString *)orderID type:(NSString *)type;

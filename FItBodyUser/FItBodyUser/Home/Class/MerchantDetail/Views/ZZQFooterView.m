@@ -183,7 +183,13 @@
 //查看购物车事件
 - (void)cartAction:(UIButton *)btn{
     //判断购物车内是否有内容
-    
+    NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+    if([userDefault objectForKey:@"objectId"]){
+        //创建view，传入参数
+        self.footerBlock([userDefault objectForKey:@"objectId"]);
+    }else{
+        //不作为
+    }
 }
 
 #pragma mark
@@ -282,7 +288,6 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    //    [self initForView];
 }
 
 @end

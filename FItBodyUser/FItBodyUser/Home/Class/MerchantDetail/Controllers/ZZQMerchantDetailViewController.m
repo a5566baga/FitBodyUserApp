@@ -14,6 +14,7 @@
 #import "ZZQMerchantHeaderView.h"
 #import "ZZQFooterView.h"
 #import "ZZQCommentsTableViewCell.h"
+#import "ZZQShopCartView.h"
 
 #define CELL_ID @"MERCHANT_CELL"
 #define COMMENT_CELL_ID @"COMMENT_CELL"
@@ -41,6 +42,8 @@
 @property(nonatomic, strong)NSMutableArray<NSNumber *> * commentsHeightArray;
 //菜品的cell高度
 @property(nonatomic, strong)NSMutableArray<NSNumber *> * menuHeightArray;
+//购物车内容
+@property(nonatomic, strong)ZZQShopCartView * shopCartView;
 
 @end
 
@@ -212,10 +215,24 @@
 //    _tableview.tableFooterView = _footerView;
     [self.view addSubview:_footerView];
     
+    //赋初值
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
     if ([userDefault objectForKey:@"objectId"]) {
         [_footerView setOrderID:[userDefault objectForKey:@"objectId"] type:@"init"];
     }
+    
+    __weak typeof(self)myself = self;
+    [_footerView setFooterBlock:^(NSString * orderId) {
+        //设置购物车页面
+        [myself initForShopCartView:orderId];
+    }];
+}
+
+- (void)initForShopCartView:(NSString *)orderId{
+    _shopCartView = [[ZZQShopCartView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    _shopCartView.backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.18 alpha:0.20];
+    [_shopCartView setOrderById:orderId];
+    [self.view addSubview:_shopCartView];
 }
 
 #pragma mark
