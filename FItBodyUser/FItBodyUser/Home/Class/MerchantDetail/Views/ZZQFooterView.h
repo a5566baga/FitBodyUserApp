@@ -13,10 +13,11 @@
 
 - (void)setFavNum:(NSString *)favNum;
 
-- (void)setOrderID:(NSString *)orderID;
+- (void)setOrderID:(NSString *)orderID type:(NSString *)type;
 
 - (void)setMerchantForView:(ZZQMerchant *)merchant;
 
 - (void)setAnimal;
+- (void)setDelAnimal;
 
 @end

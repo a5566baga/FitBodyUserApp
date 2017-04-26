@@ -33,7 +33,7 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    _cycleView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.width, self.height) delegate:self placeholderImage:[UIImage imageNamed:@"ic_no_comment"]];
+    _cycleView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.width, self.height) delegate:self placeholderImage:[UIImage imageNamed:@"pic_phelder"]];
     _cycleView.autoScrollTimeInterval = 5;
 //    _cycleView.imageURLStringsGroup = _imaArray;
     _cycleView.imageURLStringsGroup = _imageUrlArray;

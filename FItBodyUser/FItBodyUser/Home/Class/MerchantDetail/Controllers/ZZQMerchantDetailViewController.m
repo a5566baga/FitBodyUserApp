@@ -214,7 +214,7 @@
     
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
     if ([userDefault objectForKey:@"objectId"]) {
-        [_footerView setOrderID:[userDefault objectForKey:@"objectId"]];
+        [_footerView setOrderID:[userDefault objectForKey:@"objectId"] type:@"init"];
     }
 }
 
@@ -248,9 +248,11 @@
         }
         __weak typeof(self)myself = self;
         [_cell setCellModelMenu:self.dataListArray[indexPath.row]];
-        [_cell setOrderBlock:^(NSString * orderId) {
-            [myself.footerView setOrderID:orderId];
-            [myself.footerView setAnimal];
+        [_cell setOrderBlock:^(NSString * orderId, NSString * add) {
+            [myself.footerView setOrderID:orderId type:add];
+        }];
+        [_cell setOrderDelBlock:^(NSString * orderId, NSString * del) {
+            [myself.footerView setOrderID:orderId type:del];
         }];
         return _cell;
     }else{

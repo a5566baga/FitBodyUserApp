@@ -252,6 +252,8 @@
     }];
     header.lastUpdatedTimeLabel.hidden = YES;
     header.stateLabel.hidden = YES;
+    [header setImages:_picArray forState:MJRefreshStateIdle];
+    [header setImages:_picArray forState:MJRefreshStatePulling];
     [header setImages:_picArray forState:MJRefreshStateRefreshing];
     _tableView.mj_header = header;
     

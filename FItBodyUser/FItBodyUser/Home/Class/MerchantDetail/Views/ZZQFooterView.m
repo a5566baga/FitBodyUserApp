@@ -97,7 +97,7 @@
     [_cartBtn setAdjustsImageWhenHighlighted:NO];
     [self addSubview:_cartBtn];
     
-//    [self setCartLabelAndPriceLabel];
+    //    [self setCartLabelAndPriceLabel];
 }
 //购物车数量和价格视图设置
 - (void)setCartLabelAndPriceLabel{
@@ -110,14 +110,14 @@
     _cartLabel.contentHorizontalAlignment = NSTextLayoutOrientationHorizontal;
     _cartLabel.titleLabel.font = [UIFont systemFontOfSize:10];
     _cartLabel.titleLabel.textColor = [UIColor whiteColor];
-//    [_cartLabel setTitle:@"1" forState:UIControlStateNormal];
+    //    [_cartLabel setTitle:@"1" forState:UIControlStateNormal];
     [self addSubview:_cartLabel];
     
     _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_cartBtn.frame)-120, 10, 100, 20)];
     _priceLabel.font = [UIFont fontWithName:LITTER_TITLE_FONT size:18];
     _priceLabel.textColor = [UIColor colorWithRed:0.93 green:0.35 blue:0.32 alpha:1.00];
     _priceLabel.textAlignment = NSTextAlignmentRight;
-//    _priceLabel.text = @"￥20";
+    //    _priceLabel.text = @"￥20";
     [self addSubview:_priceLabel];
 }
 //分享按钮事件
@@ -192,8 +192,8 @@
     _favLabel.text = favNum;
 }
 
-#warning
-- (void)setOrderID:(NSString *)orderID{
+//计算金额和数量
+- (void)setOrderID:(NSString *)orderID type:(NSString *)type{
     _orderID = orderID;
     if (_cartLabel == nil) {
         [self setCartLabelAndPriceLabel];
@@ -206,7 +206,12 @@
     AVQuery * orderTempQuery = [AVQuery queryWithClassName:@"OrderTemp"];
     [orderTempQuery whereKey:@"ordersID" equalTo:_orderID];
     [orderTempQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (!error) {
+        if (objects.count != 0) {
+            if ([type isEqualToString:@"add"]) {
+                [myself setAnimal];
+            }else if([type isEqualToString:@"del"]){
+                [myself setDelAnimal];
+            }
             for (AVObject * obj in objects) {
                 ZZQOrderTemp * temp = [[ZZQOrderTemp alloc] init];
                 temp = [temp setOrderTempForObj:obj];
@@ -216,6 +221,28 @@
             }
             [myself.cartLabel setTitle:[NSString stringWithFormat:@"%ld",orderNum] forState:UIControlStateNormal];
             myself.priceLabel.text = [NSString stringWithFormat:@"￥%.2lf", price];
+        }else{
+            [UIView animateWithDuration:0.4 animations:^{
+                myself.cartLabel.transform = CGAffineTransformMakeScale(0.1, 0.1);
+                myself.priceLabel.transform = CGAffineTransformMakeScale(0.1, 0.1);
+            } completion:^(BOOL finished) {
+                myself.cartLabel.transform = CGAffineTransformIdentity;
+                myself.priceLabel.transform = CGAffineTransformIdentity;
+                [myself.cartLabel removeFromSuperview];
+                [myself.priceLabel removeFromSuperview];
+                _cartLabel = nil;
+                _priceLabel = nil;
+                //删除userDefault中的键值和数据库内容
+                NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+                [userDefault removeObjectForKey:@"objectId"];
+                AVQuery * query = [AVQuery queryWithClassName:@"Orders"];
+                [query whereKey:@"objectId" equalTo:orderID];
+                [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                    for (AVObject * obj in objects) {
+                        [obj delete];
+                    }
+                }];
+            }];
         }
     }];
     
@@ -235,7 +262,7 @@
             myself.cartLabel.transform = CGAffineTransformIdentity;
         }completion:^(BOOL finished) {
             [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:15 options:UIViewAnimationOptionOverrideInheritedDuration animations:^{
-                myself.cartBtn.transform = CGAffineTransformMakeRotation(M_PI/10);
+                myself.cartBtn.transform = CGAffineTransformMakeRotation(-M_PI/10);
             } completion:^(BOOL finished) {
                 myself.cartBtn.transform = CGAffineTransformIdentity;
             }];
@@ -243,9 +270,19 @@
     }];
 }
 
+- (void)setDelAnimal{
+    __weak typeof(self)myself = self;
+    
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:15 options:UIViewAnimationOptionOverrideInheritedDuration animations:^{
+        myself.cartBtn.transform = CGAffineTransformMakeRotation(M_PI/10);
+    } completion:^(BOOL finished) {
+        myself.cartBtn.transform = CGAffineTransformIdentity;
+    }];
+}
+
 - (void)layoutSubviews{
     [super layoutSubviews];
-//    [self initForView];
+    //    [self initForView];
 }
 
 @end
