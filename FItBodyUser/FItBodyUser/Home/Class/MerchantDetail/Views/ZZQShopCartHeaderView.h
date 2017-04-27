@@ -10,4 +10,6 @@
 
 @interface ZZQShopCartHeaderView : UIView
 
+@property(nonatomic, copy)void(^dismissBlock)();
+
 @end

@@ -249,7 +249,7 @@
     //卡路里总数
     [tempOrder setObject:[NSString stringWithFormat:@"%.1lf", calorieSum] forKey:@"calorieSum"];
     //卡路里单个数量
-    [tempOrder setObject:[NSString stringWithFormat:@"%.1lf", [_menu.calorie doubleValue]] forKey:@"calorieSingle"];
+    [tempOrder setObject:_menu.calorie forKey:@"calorieSingle"];
     //用户ID
     [tempOrder setObject:[[AVUser currentUser] objectId] forKey:@"userID"];
     BOOL flag = [tempOrder save];

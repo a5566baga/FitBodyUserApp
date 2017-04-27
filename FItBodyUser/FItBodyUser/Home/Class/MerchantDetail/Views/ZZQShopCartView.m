@@ -8,9 +8,14 @@
 
 #import "ZZQShopCartView.h"
 #import "ZZQOrderTemp.h"
+#import "ZZQShopCartHeaderView.h"
+#import "ZZQShopCartFootView.h"
+#import "ZZQOrederTempTableViewCell.h"
 
 #define CELL_ID @"cellID"
-#define cellH 80
+#define cellH 60
+#define headerH 40
+#define footerH 40
 
 @interface ZZQShopCartView ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -19,6 +24,12 @@
 @property(nonatomic, strong)UITableView * tableView;
 //数据内容
 @property(nonatomic, strong)NSMutableArray<ZZQOrderTemp *> * dataList;
+//头视图
+@property(nonatomic, strong)ZZQShopCartHeaderView * headerView;
+//尾视图
+@property(nonatomic, strong)ZZQShopCartFootView * footView;
+//cell
+@property(nonatomic, strong)ZZQOrederTempTableViewCell * cell;
 
 @end
 
@@ -43,14 +54,17 @@
 }
 
 - (void)initForView{
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:UITableViewStylePlain];
     if (_dataList.count > 3) {
-        _tableView.frame = CGRectMake(0, SCREEN_HEIGHT-240, SCREEN_WIDTH, cellH * 3);
+        CGFloat H = cellH * 3 + footerH + headerH;
+        _tableView.frame = CGRectMake(0, SCREEN_HEIGHT-H, SCREEN_WIDTH, H);
     }else{
-        _tableView.frame = CGRectMake(0, SCREEN_HEIGHT-cellH * _dataList.count, SCREEN_WIDTH, cellH * _dataList.count);
+        CGFloat H = cellH * _dataList.count + footerH + headerH;
+        _tableView.frame = CGRectMake(0, SCREEN_HEIGHT-H, SCREEN_WIDTH, H);
     }
     _tableView.showsVerticalScrollIndicator = NO;
     _tableView.showsHorizontalScrollIndicator = NO;
+    _tableView.bounces = NO;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self addSubview:_tableView];
@@ -67,12 +81,29 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
+    _cell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
+    if (_cell == nil) {
+        _cell = [[ZZQOrederTempTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_ID];
     }
-    cell.textLabel.text = [_dataList[indexPath.row] menuName];
-    return  cell;
+    [_cell setOrderTemp:_dataList[indexPath.row] index:indexPath];
+    __weak typeof(self)myself = self;
+    [_cell setOrderTempBlock:^(NSString * orderId, NSString * type, NSIndexPath * index) {
+        if ([type isEqualToString:@"del"]) {
+            [myself.dataList removeObjectAtIndex:index.row];
+            if (myself.dataList.count == 0) {
+                [UIView animateWithDuration:0.4 animations:^{
+                    myself.alpha = 0;
+                }completion:^(BOOL finished) {
+                    [myself removeFromSuperview];
+                }];
+            }
+            myself.updateBlock();
+            CGRect rect = myself.tableView.frame;
+            [myself.tableView setFrame:CGRectMake(0, rect.origin.y+cellH, rect.size.width, rect.size.height-cellH)];
+            [myself.tableView reloadData];
+        }
+    }];
+    return  _cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -83,12 +114,33 @@
     [tableView clearSelectedRowsAnimated:YES];
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    _headerView = [[ZZQShopCartHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, headerH)];
+    __weak typeof(self)myself = self;
+    [_headerView setDismissBlock:^{
+        [UIView animateWithDuration:0.4 animations:^{
+            myself.alpha = 0;
+        }completion:^(BOOL finished) {
+            myself.updateBlock();
+            [myself removeFromSuperview];
+        }];
+    }];
+    return _headerView;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0.1;
+    return headerH;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    _footView = [[ZZQShopCartFootView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, footerH)];
+    _footView.backgroundColor = [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1.00];
+    [_footView setDataList:_dataList];
+    return _footView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0.1;
+    return footerH;
 }
 
 - (void)layoutSubviews{
@@ -96,7 +148,13 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self removeFromSuperview];
+    __weak typeof(self)myself = self;
+    [UIView animateWithDuration:0.4 animations:^{
+        myself.alpha = 0;
+    }completion:^(BOOL finished) {
+        myself.updateBlock();
+        [myself removeFromSuperview];
+    }];
 }
 
 @end

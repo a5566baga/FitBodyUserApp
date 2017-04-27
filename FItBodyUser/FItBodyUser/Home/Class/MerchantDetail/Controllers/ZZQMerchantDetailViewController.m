@@ -229,10 +229,15 @@
 }
 
 - (void)initForShopCartView:(NSString *)orderId{
+    __weak typeof(self)myself = self;
     _shopCartView = [[ZZQShopCartView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     _shopCartView.backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.18 alpha:0.20];
     [_shopCartView setOrderById:orderId];
     [self.view addSubview:_shopCartView];
+    [_shopCartView setUpdateBlock:^{
+        NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+        [myself.footerView setOrderID:[userDefault objectForKey:@"objectId"] type:@"init"];
+    }];
 }
 
 #pragma mark

@@ -10,6 +10,7 @@
 
 @interface ZZQShopCartView : UIView
 
+@property(nonatomic, copy)void(^updateBlock)();
 - (void)setOrderById:(NSString *)orderId;
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZQOrderTemp.h"
 
 @interface ZZQShopCartFootView : UIView
+
+- (void)setDataList:(NSArray *)array;
 
 @end
