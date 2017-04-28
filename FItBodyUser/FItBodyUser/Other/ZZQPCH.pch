@@ -44,4 +44,6 @@ CGSize size = [content boundingRectWithSize:mySize options:NSStringDrawingUsesLi
 return size.height;\
 }
 
+#define ORDER_ID @"objectId"
+
 #endif /* ZZQPCH_pch */

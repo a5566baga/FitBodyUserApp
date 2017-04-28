@@ -87,6 +87,8 @@
     }
     [_cell setOrderTemp:_dataList[indexPath.row] index:indexPath];
     __weak typeof(self)myself = self;
+    
+    //全部删除完了
     [_cell setOrderTempBlock:^(NSString * orderId, NSString * type, NSIndexPath * index) {
         if ([type isEqualToString:@"del"]) {
             [myself.dataList removeObjectAtIndex:index.row];
@@ -102,6 +104,16 @@
             [myself.tableView setFrame:CGRectMake(0, rect.origin.y+cellH, rect.size.width, rect.size.height-cellH)];
             [myself.tableView reloadData];
         }
+    }];
+    
+    [_cell setOrderAdd:^{
+        myself.updateBlock();
+        [myself.footView updateFooterPrice];
+    }];
+    
+    [_cell setOrderDel:^{
+        myself.updateBlock();
+        [myself.footView updateFooterPrice];
     }];
     return  _cell;
 }
@@ -133,9 +145,13 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    __weak typeof(self)myself = self;
     _footView = [[ZZQShopCartFootView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, footerH)];
     _footView.backgroundColor = [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1.00];
     [_footView setDataList:_dataList];
+    [_footView setSureOrderBlock:^{
+        myself.sureOrderBlock();
+    }];
     return _footView;
 }
 

@@ -38,6 +38,8 @@
     _priceLabel.text = [NSString stringWithFormat:@"￥%.2lf", price];
 }
 
+#pragma mark
+#pragma mark =========== 初始化视图
 - (void)initForView{
     CGFloat margin = 10;
     _leftStrLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin, 0, 80, self.height)];
@@ -58,7 +60,34 @@
     [_sureButton setTitle:@"确认订单" forState:UIControlStateNormal];
     [_sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _sureButton.titleLabel.font = [UIFont fontWithName:FANGZHENG_FONT size:13];
+    [_sureButton addTarget:self action:@selector(sureOrderAction:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_sureButton];
+}
+
+//确认订单按钮
+- (void)sureOrderAction:(UIButton *)btn{
+    self.sureOrderBlock();
+}
+
+#pragma mark
+#pragma mark ================ 更新价格内容
+- (void)updateFooterPrice{
+    __weak typeof(self)myself = self;
+    NSUserDefaults * order = [NSUserDefaults standardUserDefaults];
+    NSString * orderID = [order objectForKey:ORDER_ID];
+    AVQuery * query = [AVQuery queryWithClassName:@"OrderTemp"];
+    [query whereKey:@"ordersID" equalTo:orderID];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (objects.count != 0) {
+            double price = 0;
+            for (AVObject * obj in objects) {
+                ZZQOrderTemp * temp = [[ZZQOrderTemp alloc] init];
+                temp = [temp setOrderTempForObj:obj];
+                price += [temp.menuPrice doubleValue];
+            }
+            myself.priceLabel.text = [NSString stringWithFormat:@"￥%.2lf", price];
+        }
+    }];
 }
 
 @end

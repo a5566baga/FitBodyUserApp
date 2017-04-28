@@ -12,6 +12,10 @@
 @interface ZZQOrederTempTableViewCell : UITableViewCell
 
 @property(nonatomic, copy)void(^orderTempBlock)(NSString * orderId, NSString * type, NSIndexPath * index);
+//添加新商品
+@property(nonatomic, copy)void(^orderAdd)();
+//减少商品
+@property(nonatomic, copy)void(^orderDel)();
 
 - (void)setOrderTemp:(ZZQOrderTemp *)orderTemp index:(NSIndexPath*)index;
 

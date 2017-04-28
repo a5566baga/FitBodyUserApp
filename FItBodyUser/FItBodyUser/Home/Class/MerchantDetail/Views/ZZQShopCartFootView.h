@@ -11,6 +11,12 @@
 
 @interface ZZQShopCartFootView : UIView
 
+
+@property(nonatomic, copy)void(^sureOrderBlock)();
+
 - (void)setDataList:(NSArray *)array;
+
+//更新
+- (void)updateFooterPrice;
 
 @end

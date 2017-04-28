@@ -15,6 +15,7 @@
 #import "ZZQFooterView.h"
 #import "ZZQCommentsTableViewCell.h"
 #import "ZZQShopCartView.h"
+#import "ZZQSureOrderViewController.h"
 
 #define CELL_ID @"MERCHANT_CELL"
 #define COMMENT_CELL_ID @"COMMENT_CELL"
@@ -226,6 +227,8 @@
         //设置购物车页面
         [myself initForShopCartView:orderId];
     }];
+    
+    
 }
 
 - (void)initForShopCartView:(NSString *)orderId{
@@ -237,6 +240,11 @@
     [_shopCartView setUpdateBlock:^{
         NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
         [myself.footerView setOrderID:[userDefault objectForKey:@"objectId"] type:@"init"];
+    }];
+    
+    [_shopCartView setSureOrderBlock:^{
+        ZZQSureOrderViewController * suerVC = [[ZZQSureOrderViewController alloc] init];
+        [myself.navigationController pushViewController:suerVC animated:YES];
     }];
 }
 

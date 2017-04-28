@@ -7,8 +7,34 @@
 //
 
 #import "ZZQFavouriteViewController.h"
+#import "ZZQFavouriteTableViewCell.h"
+#import "ZZQFavouriteMenuTableViewCell.h"
+#import "ZZQFavouriteHeaderView.h"
+#import "ZZQFavMenu.h"
+#import "ZZQFavMenchant.h"
 
+#define MENCHANT_CELL @"MenchantCell"
+#define MENU_CELL @"MenuCell"
 @interface ZZQFavouriteViewController ()
+
+//商家的cell
+@property(nonatomic, strong)ZZQFavouriteTableViewCell * menchantCell;
+//菜品的cell
+@property(nonatomic, strong)ZZQFavouriteMenuTableViewCell * menuCell;
+//头视图
+@property(nonatomic, strong)ZZQFavouriteHeaderView * headerView;
+//商家收藏的数据数组
+@property(nonatomic, strong)ZZQFavMenchant * favMenchant;
+@property(nonatomic, strong)NSMutableArray<ZZQFavMenchant *> * menchantArray;
+//菜品收藏的数据数组
+@property(nonatomic, strong)ZZQFavMenu * favMenu;
+@property(nonatomic, strong)NSMutableArray<ZZQFavMenu *> * menuArray;
+//商家收藏tableview
+@property(nonatomic, strong)UITableView * menchantTableView;
+//菜品收藏的tableview
+@property(nonatomic, strong)UITableView * menuTableView;
+//ScrollView
+@property(nonatomic, strong)UIScrollView * scrollView;
 
 @end
 
@@ -16,7 +42,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.navigationItem.title = @"收藏";
+    [self initForView];
+}
+
+#pragma mark
+#pragma mark ============= 设置scrollView和tableView
+- (void)initForView{
+    
+}
+
+#pragma mark
+#pragma mark ============= 设置其它内容
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {

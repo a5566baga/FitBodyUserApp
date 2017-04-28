@@ -84,9 +84,17 @@
         AVObject * obj = [AVObject objectWithClassName:@"OrderTemp" objectId:_orderTemp.objectId];
         [obj setObject:_orderTemp.menuNum forKey:@"menuNum"];
         if([obj save]){
-            _menuNumLabel.text = _orderTemp.menuNum;
-            double price = [_priceLabel.text doubleValue] - [_orderTemp.menuSinglePrice doubleValue];
-            #warning 回调到footer中计算内容
+            double price = [_orderTemp.menuPrice doubleValue] - [_orderTemp.menuSinglePrice doubleValue];
+            _orderTemp.menuNum = [NSString stringWithFormat:@"%ld", num];
+            _orderTemp.menuPrice = [NSString stringWithFormat:@"%.2lf", price];
+            [obj setObject:_orderTemp.menuNum forKey:@"menuNum"];
+            [obj setObject:_orderTemp.menuPrice forKey:@"menuPrice"];
+            if([obj save]){
+                self.orderDel();
+                //更新UI
+                _menuNumLabel.text = _orderTemp.menuNum;
+                _priceLabel.text = [NSString stringWithFormat:@"￥%.2lf", price];
+            }
         }
     }else{
         AVObject * obj = [AVObject objectWithClassName:@"OrderTemp" objectId:_orderTemp.objectId];
@@ -105,9 +113,16 @@
     AVObject * obj = [AVObject objectWithClassName:@"OrderTemp" objectId:_orderTemp.objectId];
     [obj setObject:_orderTemp.menuNum forKey:@"menuNum"];
     if([obj save]){
-        _menuNumLabel.text = _orderTemp.menuNum;
-        double price = [_priceLabel.text doubleValue] + [_orderTemp.menuSinglePrice doubleValue];
-        _priceLabel.text = [NSString stringWithFormat:@"￥%.2lf", price];
+        double price = [_orderTemp.menuPrice doubleValue] + [_orderTemp.menuSinglePrice doubleValue];
+        _orderTemp.menuNum = [NSString stringWithFormat:@"%ld", num];
+        _orderTemp.menuPrice = [NSString stringWithFormat:@"%.2lf", price];
+        [obj setObject:_orderTemp.menuNum forKey:@"menuNum"];
+        [obj setObject:_orderTemp.menuPrice forKey:@"menuPrice"];
+        if([obj save]){
+            _menuNumLabel.text = _orderTemp.menuNum;
+            _priceLabel.text = [NSString stringWithFormat:@"￥%.2lf", price];
+            self.orderAdd();
+        }
     }
 }
 

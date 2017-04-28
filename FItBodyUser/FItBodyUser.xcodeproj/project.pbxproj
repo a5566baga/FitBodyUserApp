@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		8FD533C02720F25CA9E09D9D /* libPods-FItBodyUser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B285C9AA5078F9A9B857F3 /* libPods-FItBodyUser.a */; };
+		B505129F1EB371F200482DB1 /* ZZQSureOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B505129E1EB371F200482DB1 /* ZZQSureOrderViewController.m */; };
+		B50512A61EB3774B00482DB1 /* ZZQFavouriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512A51EB3774B00482DB1 /* ZZQFavouriteTableViewCell.m */; };
+		B50512A91EB3776C00482DB1 /* ZZQFavouriteHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512A81EB3776C00482DB1 /* ZZQFavouriteHeaderView.m */; };
+		B50512AC1EB377B500482DB1 /* ZZQFavouriteMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512AB1EB377B500482DB1 /* ZZQFavouriteMenuTableViewCell.m */; };
+		B50512AF1EB379E600482DB1 /* ZZQFavMenchant.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512AE1EB379E600482DB1 /* ZZQFavMenchant.m */; };
+		B50512B21EB379FD00482DB1 /* ZZQFavMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512B11EB379FD00482DB1 /* ZZQFavMenu.m */; };
 		B5052A5B1EB0DF2F000B74B6 /* ZZQShopCartView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A5A1EB0DF2F000B74B6 /* ZZQShopCartView.m */; };
 		B5052A5E1EB0EC03000B74B6 /* ZZQShopCartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A5D1EB0EC03000B74B6 /* ZZQShopCartHeaderView.m */; };
 		B5052A611EB0EC17000B74B6 /* ZZQShopCartFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A601EB0EC17000B74B6 /* ZZQShopCartFootView.m */; };
@@ -93,6 +99,18 @@
 /* Begin PBXFileReference section */
 		2F1F185F020DF61A801B4B71 /* Pods-FItBodyUser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FItBodyUser.release.xcconfig"; path = "Pods/Target Support Files/Pods-FItBodyUser/Pods-FItBodyUser.release.xcconfig"; sourceTree = "<group>"; };
 		56BB214572E1F85A4E0DB7D8 /* Pods-FItBodyUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FItBodyUser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FItBodyUser/Pods-FItBodyUser.debug.xcconfig"; sourceTree = "<group>"; };
+		B505129D1EB371F200482DB1 /* ZZQSureOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQSureOrderViewController.h; sourceTree = "<group>"; };
+		B505129E1EB371F200482DB1 /* ZZQSureOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQSureOrderViewController.m; sourceTree = "<group>"; };
+		B50512A41EB3774B00482DB1 /* ZZQFavouriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQFavouriteTableViewCell.h; sourceTree = "<group>"; };
+		B50512A51EB3774B00482DB1 /* ZZQFavouriteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFavouriteTableViewCell.m; sourceTree = "<group>"; };
+		B50512A71EB3776C00482DB1 /* ZZQFavouriteHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQFavouriteHeaderView.h; sourceTree = "<group>"; };
+		B50512A81EB3776C00482DB1 /* ZZQFavouriteHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFavouriteHeaderView.m; sourceTree = "<group>"; };
+		B50512AA1EB377B500482DB1 /* ZZQFavouriteMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQFavouriteMenuTableViewCell.h; sourceTree = "<group>"; };
+		B50512AB1EB377B500482DB1 /* ZZQFavouriteMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFavouriteMenuTableViewCell.m; sourceTree = "<group>"; };
+		B50512AD1EB379E600482DB1 /* ZZQFavMenchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQFavMenchant.h; sourceTree = "<group>"; };
+		B50512AE1EB379E600482DB1 /* ZZQFavMenchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFavMenchant.m; sourceTree = "<group>"; };
+		B50512B01EB379FD00482DB1 /* ZZQFavMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQFavMenu.h; sourceTree = "<group>"; };
+		B50512B11EB379FD00482DB1 /* ZZQFavMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFavMenu.m; sourceTree = "<group>"; };
 		B5052A591EB0DF2F000B74B6 /* ZZQShopCartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQShopCartView.h; sourceTree = "<group>"; };
 		B5052A5A1EB0DF2F000B74B6 /* ZZQShopCartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQShopCartView.m; sourceTree = "<group>"; };
 		B5052A5C1EB0EC03000B74B6 /* ZZQShopCartHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQShopCartHeaderView.h; sourceTree = "<group>"; };
@@ -193,8 +211,8 @@
 		B570727E1E9E5ACE003DE3F8 /* ZZQFavouriteBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFavouriteBtn.m; sourceTree = "<group>"; };
 		B57072801EA35238003DE3F8 /* ZZQAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAddressViewController.h; sourceTree = "<group>"; };
 		B57072811EA35238003DE3F8 /* ZZQAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAddressViewController.m; sourceTree = "<group>"; };
-		B57072831EA35253003DE3F8 /* ZZQFavouriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQFavouriteViewController.h; sourceTree = "<group>"; };
-		B57072841EA35253003DE3F8 /* ZZQFavouriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFavouriteViewController.m; sourceTree = "<group>"; };
+		B57072831EA35253003DE3F8 /* ZZQFavouriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZQFavouriteViewController.h; path = ../../Controllers/ZZQFavouriteViewController.h; sourceTree = "<group>"; };
+		B57072841EA35253003DE3F8 /* ZZQFavouriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQFavouriteViewController.m; path = ../../Controllers/ZZQFavouriteViewController.m; sourceTree = "<group>"; };
 		B57072861EA35267003DE3F8 /* ZZQCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQCommentViewController.h; sourceTree = "<group>"; };
 		B57072871EA35267003DE3F8 /* ZZQCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQCommentViewController.m; sourceTree = "<group>"; };
 		B57072891EA38F8F003DE3F8 /* ZZQAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAddressTableViewCell.h; sourceTree = "<group>"; };
@@ -273,10 +291,87 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B50512961EB3717000482DB1 /* SuerOrder */ = {
+			isa = PBXGroup;
+			children = (
+				B50512971EB3717000482DB1 /* Controllers */,
+				B50512981EB3717000482DB1 /* Modles */,
+				B50512991EB3717000482DB1 /* Views */,
+			);
+			path = SuerOrder;
+			sourceTree = "<group>";
+		};
+		B50512971EB3717000482DB1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B505129D1EB371F200482DB1 /* ZZQSureOrderViewController.h */,
+				B505129E1EB371F200482DB1 /* ZZQSureOrderViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B50512981EB3717000482DB1 /* Modles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modles;
+			sourceTree = "<group>";
+		};
+		B50512991EB3717000482DB1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B50512A01EB3771C00482DB1 /* Favourite */ = {
+			isa = PBXGroup;
+			children = (
+				B50512A11EB3771C00482DB1 /* Controllers */,
+				B50512A21EB3771C00482DB1 /* Modles */,
+				B50512A31EB3771C00482DB1 /* Views */,
+			);
+			path = Favourite;
+			sourceTree = "<group>";
+		};
+		B50512A11EB3771C00482DB1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B57072831EA35253003DE3F8 /* ZZQFavouriteViewController.h */,
+				B57072841EA35253003DE3F8 /* ZZQFavouriteViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B50512A21EB3771C00482DB1 /* Modles */ = {
+			isa = PBXGroup;
+			children = (
+				B50512AD1EB379E600482DB1 /* ZZQFavMenchant.h */,
+				B50512AE1EB379E600482DB1 /* ZZQFavMenchant.m */,
+				B50512B01EB379FD00482DB1 /* ZZQFavMenu.h */,
+				B50512B11EB379FD00482DB1 /* ZZQFavMenu.m */,
+			);
+			path = Modles;
+			sourceTree = "<group>";
+		};
+		B50512A31EB3771C00482DB1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B50512A41EB3774B00482DB1 /* ZZQFavouriteTableViewCell.h */,
+				B50512A51EB3774B00482DB1 /* ZZQFavouriteTableViewCell.m */,
+				B50512A71EB3776C00482DB1 /* ZZQFavouriteHeaderView.h */,
+				B50512A81EB3776C00482DB1 /* ZZQFavouriteHeaderView.m */,
+				B50512AA1EB377B500482DB1 /* ZZQFavouriteMenuTableViewCell.h */,
+				B50512AB1EB377B500482DB1 /* ZZQFavouriteMenuTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B506AE441E75331C00B39731 /* Class */ = {
 			isa = PBXGroup;
 			children = (
 				B57072641E99C395003DE3F8 /* MerchantDetail */,
+				B50512961EB3717000482DB1 /* SuerOrder */,
 				B57072601E99C395003DE3F8 /* MenuDetail */,
 				B506AE451E75331C00B39731 /* Citys */,
 				B506AE491E75331C00B39731 /* Search */,
@@ -371,6 +466,7 @@
 		B56D8AFE1E784497000085E6 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				B50512A01EB3771C00482DB1 /* Favourite */,
 				B56D8AFF1E784497000085E6 /* Controllers */,
 				B56D8B001E784497000085E6 /* Models */,
 				B56D8B011E784497000085E6 /* Views */,
@@ -391,8 +487,6 @@
 				B56D8B0C1E794F8F000085E6 /* ZZQEditMeViewController.m */,
 				B57072801EA35238003DE3F8 /* ZZQAddressViewController.h */,
 				B57072811EA35238003DE3F8 /* ZZQAddressViewController.m */,
-				B57072831EA35253003DE3F8 /* ZZQFavouriteViewController.h */,
-				B57072841EA35253003DE3F8 /* ZZQFavouriteViewController.m */,
 				B57072861EA35267003DE3F8 /* ZZQCommentViewController.h */,
 				B57072871EA35267003DE3F8 /* ZZQCommentViewController.m */,
 				B57072921EA3B1C9003DE3F8 /* ZZQAddNewAddressViewController.h */,
@@ -962,6 +1056,7 @@
 				B56D8B321E79827B000085E6 /* ZZQPwdLoginViewController.m in Sources */,
 				B5B4FA941E740BD40020D9B6 /* ZZQBaseNavViewController.m in Sources */,
 				B5B4FA841E7402BE0020D9B6 /* ZZQBaseTabBar.m in Sources */,
+				B505129F1EB371F200482DB1 /* ZZQSureOrderViewController.m in Sources */,
 				B58FB3221EAA2691005D3395 /* ZZQOrder.m in Sources */,
 				B57072821EA35238003DE3F8 /* ZZQAddressViewController.m in Sources */,
 				B56D8B071E7844CD000085E6 /* ZZQNoCommentsViewController.m in Sources */,
@@ -976,10 +1071,13 @@
 				B56D8AFD1E7830F5000085E6 /* ZZQMeCellButton.m in Sources */,
 				B57070A41E864AAB003DE3F8 /* ZZQNickNameView.m in Sources */,
 				B5052A641EB22C5D000B74B6 /* ZZQOrederTempTableViewCell.m in Sources */,
+				B50512AC1EB377B500482DB1 /* ZZQFavouriteMenuTableViewCell.m in Sources */,
 				B56D8AD61E76E336000085E6 /* ZZQSearchViewController.m in Sources */,
 				B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */,
+				B50512AF1EB379E600482DB1 /* ZZQFavMenchant.m in Sources */,
 				B570724F1E9398B3003DE3F8 /* ZZQHomeTableViewCell.m in Sources */,
 				B56D8B3E1E814C5C000085E6 /* ZZQSexBtn.m in Sources */,
+				B50512A91EB3776C00482DB1 /* ZZQFavouriteHeaderView.m in Sources */,
 				B57072881EA35267003DE3F8 /* ZZQCommentViewController.m in Sources */,
 				B57072851EA35253003DE3F8 /* ZZQFavouriteViewController.m in Sources */,
 				B56D8B3B1E814A92000085E6 /* ZZQSettingSexView.m in Sources */,
@@ -987,6 +1085,8 @@
 				B57070AD1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m in Sources */,
 				B56D8AFA1E781EEA000085E6 /* ZZQMeTableViewCell.m in Sources */,
 				B570727F1E9E5ACE003DE3F8 /* ZZQFavouriteBtn.m in Sources */,
+				B50512B21EB379FD00482DB1 /* ZZQFavMenu.m in Sources */,
+				B50512A61EB3774B00482DB1 /* ZZQFavouriteTableViewCell.m in Sources */,
 				B57072941EA3B1C9003DE3F8 /* ZZQAddNewAddressViewController.m in Sources */,
 				B57072551E93990A003DE3F8 /* ZZQHot.m in Sources */,
 				B506AE521E75472200B39731 /* ZZQNetAlertView.m in Sources */,

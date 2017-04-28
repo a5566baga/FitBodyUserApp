@@ -129,8 +129,8 @@
         AVUser * user = [AVUser currentUser];
         if (user != nil) {
             AVObject * favObj = [AVObject objectWithClassName:@"FavoutiteMenus"];
-            [favObj setObject:@"userId" forKey:user.objectId];
-            [favObj setObject:@"menuId" forKey:_menu.menuID];
+            [favObj setObject:user.objectId forKey:@"userId"];
+            [favObj setObject:_menu.menuID forKey:@"menuId"];
             [favObj saveInBackground];
         }
         _menu.favNum = [NSString stringWithFormat:@"%ld", (long)favNum];
@@ -189,7 +189,6 @@
     _menuNumLabel.text = @"1";
     [_menuAddOrLessView addSubview:_menuNumLabel];
 }
-//TODO:想怎么暂时存储对应的菜品和数量
 //添加一个菜品的
 - (void)orderAddAction:(UIButton *)btn{
     NSString * objID;
@@ -231,7 +230,8 @@
     if (menuArr.count != 0) {
         menuNum = [[menuArr[0] objectForKey:@"menuNum"] integerValue] + 1;
         menuPrice = menuNum * [_menu.price doubleValue];
-        calorieSum = menuNum * [_menu.calorie doubleValue];
+        NSArray * calarioArr = [_menu.calorie componentsSeparatedByString:@"大卡"];
+        calorieSum = menuNum * [calarioArr[0] doubleValue];
         tempOrder = menuArr[0];
     }
     //菜品名称
