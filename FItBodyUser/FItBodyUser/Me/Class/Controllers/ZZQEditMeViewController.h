@@ -16,5 +16,5 @@
  */
 - (void)setUserName:(NSString *)userName;
 
-- (void)serUserObj:(ZZQUser *)user;
+- (void)setUserObj:(ZZQUser *)user;
 @end

@@ -16,6 +16,8 @@
 @property(nonatomic, strong)UILabel * contentLabel;
 //title内容
 @property(nonatomic, strong)NSString * titleString;
+//context
+@property(nonatomic, copy)NSString * context;
 
 @end
 
@@ -34,11 +36,16 @@
     _contentLabel.font = [UIFont fontWithName:CONTENT_FONT size:15];
     _contentLabel.textColor = [UIColor grayColor];
     _contentLabel.textAlignment = NSTextAlignmentRight;
-    _contentLabel.text = @"未填写";
+    if (_context.length != 0 || _context != nil) {
+        _contentLabel.text = _context;
+    }else{
+        _contentLabel.text = @"未填写";
+    }
     [self.contentView addSubview:_contentLabel];
 }
 
 - (void)setContentLabelString:(NSString *)content{
+    _context = content;
     _contentLabel.text = content;
 }
 

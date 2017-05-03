@@ -98,9 +98,17 @@
 //头像视图
 - (ZZQHeaderPicView *)headerView{
     if(!_headerView){
+        __weak typeof(self) myself = self;
         _headerView = [[ZZQHeaderPicView alloc] initWithFrame:CGRectMake(0, 80, SCREEN_WIDTH, 125)];
         [_headerView initViewWithPicUrl:_user.userProtait];
-        _headerView.userInteractionEnabled = NO;
+        [_headerView setHeaderUser:_user];
+//        _headerView.userInteractionEnabled = NO;
+        [_headerView setHeadImgBlock:^(ZZQUser * user) {
+            myself.user = user;
+        }];
+        [_headerView setUploadBlock:^(CTAssetsPickerController *picker) {
+            [myself presentViewController:picker animated:YES completion:nil];
+        }];
     }
     return _headerView;
 }
@@ -125,13 +133,37 @@
     [_saveBtn.titleLabel setFont:[UIFont fontWithName:CONTENT_FONT size:14]];
     [_saveBtn addTarget:self action:@selector(savaAction:) forControlEvents:UIControlEventTouchUpInside];
     _saveBtn.frame = CGRectMake(0, 0, 60, 30);
+    
+    _saveItem = [[UIBarButtonItem alloc] initWithCustomView:_saveBtn];
+    self.navigationItem.rightBarButtonItem = _saveItem;
 }
 //保存操作
 //TODO:保存操作，提交到远程数据，保存到本地
 - (void)savaAction:(UIButton *)btn{
+    AVObject * obj = [AVObject objectWithClassName:@"Users" objectId:_user.objectId];
+    [obj setObject:_user.userName forKey:@"userName"];
+    [obj setObject:_user.sex forKey:@"sex"];
+    [obj setObject:_user.age forKey:@"age"];
+    [obj setObject:_user.userPhone forKey:@"userPhone"];
+    [obj setObject:_user.type forKey:@"type"];
+    [obj setObject:_user.calorieNeed forKey:@"calorieNeed"];
+    [obj setObject:_user.userPassword forKey:@"userPassword"];
+    AVFile * file = [AVFile fileWithData:_user.userProtait];
+    [obj setObject:file forKey:@"userProtait"];
     
-    //添加到数据库，头像和昵称传值
-    [self.navigationController popViewControllerAnimated:YES];
+    AVUser * user = [AVUser currentUser];
+    AVObject * userObj = [AVObject objectWithClassName:@"_User" objectId:[user objectId]];
+    [userObj setObject:_user.userName forKey:@"username"];
+    [userObj setObject:_user.userPhone forKey:@"mobilePhoneNumber"];
+    [userObj setObject:_user.userPassword forKey:@"password"];
+    
+    if ([obj save] && [user save]) {
+        [ProgressHUD showSuccess];
+        //添加到数据库，头像和昵称传值
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [ProgressHUD showError:@"保存失败"];
+    }
 }
 #pragma mark
 #pragma mark ============= 添加tableview
@@ -161,7 +193,23 @@
     [_cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     [_cell setTitleLabelValue:self.titlesArray[indexPath.row]];
     if (indexPath.row == 0) {
-        
+        [_cell setContentLabelString:_user.userName];
+    }else if(indexPath.row == 1){
+        [_cell setContentLabelString:_user.sex];
+    }else if(indexPath.row == 2){
+        [_cell setContentLabelString:_user.age];
+    }else if(indexPath.row == 3){
+        [_cell setContentLabelString:_user.userPhone];
+    }else if(indexPath.row == 4){
+        [_cell setContentLabelString:_user.type];
+    }else if(indexPath.row == 5){
+        [_cell setContentLabelString:[NSString stringWithFormat:@"%@大卡",_user.calorieNeed]];
+    }else if(indexPath.row == 6){
+        if (_user.userPassword.length != 0) {
+            [_cell setContentLabelString:@"已设置"];
+        }else{
+            [_cell setContentLabelString:@"	未设置"];
+        }
     }
     return _cell;
 }
@@ -170,12 +218,12 @@
 }
 //TODO:设置头像内容，尚未完成
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    __weak typeof(self)myself = self;
-    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-        //打开图库
-        
-    }];
-    [self.headerView addGestureRecognizer:tap];
+//    __weak typeof(self)myself = self;
+//    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+//        //打开图库
+//        
+//    }];
+//    [self.headerView addGestureRecognizer:tap];
     return self.headerView;
 }
 
@@ -225,6 +273,7 @@
         [_nickView setNickNameBlock:^(NSString * nickName) {
             if (![nickName isEqualToString:@""]) {
                 [myself.cell setContentLabelString:nickName];
+                myself.user.userName = nickName;
             }
             [myself delDetailViewAnimal:bgView];
         }];
@@ -239,6 +288,7 @@
             if (![str isEqualToString:@"关闭"]) {
                 //保存性别
                 [myself.cell setContentLabelString:str];
+                myself.user.sex = str;
             }
             [myself delDetailViewAnimal:bgView];
         }];
@@ -252,20 +302,23 @@
         [_ageGroipView setAgeGroupBlack:^(NSString * string) {
             if(![string isEqualToString:@"关闭"]){
                 [myself.cell setContentLabelString:string];
+                myself.user.age = string;
             }
             [myself delDetailViewAnimal:bgView];
         }];
         
     }else if (3 == indexPath.row){
-        
+        //手机号修改
     }else if (4 == indexPath.row){
-        
+        //健身目标
     }else if (5 == indexPath.row){
-        
+        //卡路里设置
+    }else if(6 == indexPath.row){
+        //密码设置
     }
 }
 
-- (void)serUserObj:(ZZQUser *)user{
+- (void)setUserObj:(ZZQUser *)user{
     _user = user;
 }
 
@@ -288,6 +341,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tabBarController.tabBar setHidden:YES];
+    [_tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

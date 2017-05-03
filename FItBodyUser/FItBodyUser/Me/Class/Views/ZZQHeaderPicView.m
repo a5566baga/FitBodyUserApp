@@ -7,12 +7,19 @@
 //
 
 #import "ZZQHeaderPicView.h"
+#import <CTAssetsPickerController/CTAssetsGridSelectedView.h>
 
-@interface ZZQHeaderPicView ()
+@interface ZZQHeaderPicView ()<CTAssetsPickerControllerDelegate>
 
 @property(nonatomic, strong)UIButton * headerBtn;
 
 @property(nonatomic, strong)UILabel * label;
+
+@property(nonatomic, strong)ZZQUser * user;
+
+//上传图片相关
+@property (nonatomic, strong) PHImageRequestOptions *requestOptions;
+@property (nonatomic, strong)CTAssetsPickerController * picker;
 
 @end
 
@@ -39,8 +46,74 @@
     
 }
 
+#pragma mark
+#pragma mark =========== 图片选择相关
 - (void)headerPicAction:(UIButton *)btn{
+    [self uploadPicWithTitle:@"选择头像"];
+}
+//上传图片方法
+- (void)uploadPicWithTitle:(NSString *)titile{
+    __weak typeof(self)myself = self;
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            myself.picker = [[CTAssetsPickerController alloc] init];
+            
+            myself.picker.delegate = self;
+            
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+                myself.picker.modalPresentationStyle = UIModalPresentationFormSheet;
+            
+            [myself.picker setShowsNumberOfAssets:NO];
+            [myself.picker setDoneButtonTitle:@"选好了"];
+            [myself.picker setShowsSelectionIndex:YES];
+            [myself.picker setShowsCancelButton:YES];
+            myself.picker.title = titile;
+            myself.uploadBlock(myself.picker);
+        });
+    }];
+}
+
+- (BOOL)assetsPickerController:(CTAssetsPickerController *)picker shouldSelectAsset:(PHAsset *)asset
+{
+    NSInteger max = 1;
     
+    if (picker.selectedAssets.count >= max)
+    {
+        UIAlertController *alert =
+        [UIAlertController alertControllerWithTitle:@"注意"
+                                            message:[NSString stringWithFormat:@"请选择不要超过 %ld 张图片", (long)max]
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *action =
+        [UIAlertAction actionWithTitle:@"好的"
+                                 style:UIAlertActionStyleDefault
+                               handler:nil];
+        
+        [alert addAction:action];
+        
+        [picker presentViewController:alert animated:YES completion:nil];
+    }
+    
+    return (picker.selectedAssets.count < max);
+}
+- (void)assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
+{
+    __weak typeof(self)myself = self;
+    [picker dismissViewControllerAnimated:YES completion:^{
+        PHAsset *asset = [assets objectAtIndex:0];
+        PHImageManager *manager = [PHImageManager defaultManager];
+        [manager requestImageDataForAsset:asset options:self.requestOptions resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+            myself.user.userProtait = imageData;
+            [myself.headerBtn setImage:[UIImage imageWithData:imageData] forState:UIControlStateNormal];
+            self.headImgBlock(myself.user);
+        }];
+        
+    }];
+    
+}
+
+- (void)setHeaderUser:(ZZQUser *)user{
+    _user = user;
 }
 
 - (void)layoutSubviews{
@@ -51,8 +124,6 @@
     _headerBtn.layer.cornerRadius = width/2;
     
     [_label setFrame:CGRectMake((SCREEN_WIDTH-width)/2, CGRectGetMaxY(_headerBtn.frame)+10, width, width/3)];
-    
-    
 }
 
 @end

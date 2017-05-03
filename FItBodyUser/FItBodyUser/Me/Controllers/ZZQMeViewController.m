@@ -91,7 +91,7 @@
     if([AVUser currentUser]){
         //视图层跳转,登录状态
         ZZQEditMeViewController * editVC = [[ZZQEditMeViewController alloc] init];
-        [editVC setUserName:[AVUser currentUser].objectId];
+        [editVC setUserObj:_user];
         [self.navigationController pushViewController:editVC animated:YES];
     }else{
         ZZQClearCacheView * noLoginView = [[ZZQClearCacheView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 30)];
@@ -256,8 +256,9 @@
     if([AVUser currentUser]){
         //登录状态
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+//            [myself checkLogin];
+            [myself.editViewController setUserObj:_user];
             [myself.navigationController pushViewController:myself.editViewController animated:YES];
-            //TODO:显示信息
         }];
         [self.headerView setTitleName:self.user.userName smallTitle:@"点击编辑个人信息" headImgUrl:_user.userProtait];
         self.navigationItem.title = self.user.userName;
@@ -266,12 +267,14 @@
         //创建点击事件,未登录
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
             [myself.navigationController pushViewController:myself.loginViewController animated:YES];
+            
             [myself.loginViewController setLoginBlock:^(NSString * phone) {
+//                [myself checkLogin];
                 [myself.headerView setTitleName:[NSString stringWithFormat:@"%@",myself.user.userName] smallTitle:@"点击编辑个人信息" headImgUrl:[myself.user userProtait]];
                 myself.navigationItem.title = myself.user.userName;
             }];
             [myself.loginViewController.pwdLoginVC setLoginBlock:^(NSString * name) {
-                [myself checkLogin];
+//                [myself checkLogin];
                 [myself.headerView setTitleName:[NSString stringWithFormat:@"%@",myself.user.userName] smallTitle:@"点击编辑个人信息" headImgUrl:[myself.user userProtait]];
                 myself.navigationItem.title = myself.user.userName;
             }];

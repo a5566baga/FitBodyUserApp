@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZQUser.h"
 
 @interface ZZQHeaderPicView : UIView
+
+@property(nonatomic, copy)void(^headImgBlock)(ZZQUser * user);
+@property(nonatomic, copy)void(^uploadBlock)(CTAssetsPickerController * pick);
+
+- (void)setHeaderUser:(ZZQUser *)user;
 
 - (void)initViewWithPicUrl:(NSData *)picUrl;
 
