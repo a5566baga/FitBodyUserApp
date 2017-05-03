@@ -13,6 +13,6 @@
 /*
  * 设置头信息
  */
-- (void)setTitleName:(NSString*)titleName smallTitle:(NSString *)smallTitle headImgUrl:(NSString *)headImgUrl;
+- (void)setTitleName:(NSString*)titleName smallTitle:(NSString *)smallTitle headImgUrl:(NSData *)headImg;
 
 @end

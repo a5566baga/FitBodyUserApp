@@ -68,17 +68,19 @@
     _favLabel.font = [UIFont fontWithName:CONTENT_FONT size:11];
     _favLabel.text = @"0";
     [self addSubview:_favLabel];
-    //检查是否收藏过了
-    AVQuery * userFav = [AVQuery queryWithClassName:@"FavouriteMechants"];
-    [userFav whereKey:@"userID" equalTo:[[AVUser currentUser] objectId]];
-    NSArray * favArr = [userFav findObjects];
-    if(favArr.count != 0){
-        _favBtn.selected = YES;
-        AVQuery * merchantQuery = [AVQuery queryWithClassName:@"Merchants"];
-        [merchantQuery whereKey:@"objectId" equalTo:[favArr[0] objectForKey:@"favStoreName"]];
-        NSArray * merchants = [merchantQuery findObjects];
-        if (merchants.count != 0) {
-            _favLabel.text = [merchants[0] objectForKey:@"favouriteNum"];
+    if ([AVUser currentUser]) {
+        //检查是否收藏过了
+        AVQuery * userFav = [AVQuery queryWithClassName:@"FavouriteMechants"];
+        [userFav whereKey:@"userID" equalTo:[[AVUser currentUser] objectId]];
+        NSArray * favArr = [userFav findObjects];
+        if(favArr.count != 0){
+            _favBtn.selected = YES;
+            AVQuery * merchantQuery = [AVQuery queryWithClassName:@"Merchants"];
+            [merchantQuery whereKey:@"objectId" equalTo:[favArr[0] objectForKey:@"favStoreName"]];
+            NSArray * merchants = [merchantQuery findObjects];
+            if (merchants.count != 0) {
+                _favLabel.text = [merchants[0] objectForKey:@"favouriteNum"];
+            }
         }
     }
     
@@ -133,49 +135,51 @@
     }completion:^(BOOL finished) {
         btn.transform = CGAffineTransformIdentity;
     }];
-    //操作保存用户的收藏内容
-    if (btn.selected) {
-        AVObject * obj = [AVObject objectWithClassName:@"FavouriteMechants"];
-        //保存了就插入数据
-        [obj setObject:[[AVUser currentUser] objectId] forKey:@"userID"];
-        [obj setObject:[_merchant name] forKey:@"favStoreName"];
-        if (![obj save]) {
-            [ProgressHUD showError:@"收藏失败"];
-        }else{
-            AVQuery * favQuery = [AVQuery queryWithClassName:@"Merchants"];
-            [favQuery whereKey:@"name" equalTo:_merchant.name];
-            NSArray * objs = [favQuery findObjects];
-            if (objs.count != 0) {
-                AVObject * obj = objs[0];
-                NSInteger favNum = [[obj objectForKey:@"favouriteNum"] integerValue] + 1;
-                [obj setObject:[NSString stringWithFormat:@"%ld", favNum] forKey:@"favouriteNum"];
-                [obj save];
-                _favLabel.text = [NSString stringWithFormat:@"%ld", favNum];
+    if ([AVUser currentUser]) {
+        //操作保存用户的收藏内容
+        if (btn.selected) {
+            AVObject * obj = [AVObject objectWithClassName:@"FavouriteMechants"];
+            //保存了就插入数据
+            [obj setObject:[[AVUser currentUser] objectId] forKey:@"userID"];
+            [obj setObject:[_merchant name] forKey:@"favStoreName"];
+            if (![obj save]) {
+                [ProgressHUD showError:@"收藏失败"];
+            }else{
+                AVQuery * favQuery = [AVQuery queryWithClassName:@"Merchants"];
+                [favQuery whereKey:@"name" equalTo:_merchant.name];
+                NSArray * objs = [favQuery findObjects];
+                if (objs.count != 0) {
+                    AVObject * obj = objs[0];
+                    NSInteger favNum = [[obj objectForKey:@"favouriteNum"] integerValue] + 1;
+                    [obj setObject:[NSString stringWithFormat:@"%ld", favNum] forKey:@"favouriteNum"];
+                    [obj save];
+                    _favLabel.text = [NSString stringWithFormat:@"%ld", favNum];
+                }
             }
-        }
-        
-    }else{
-        //删除数据
-        AVQuery * userQuery = [AVQuery queryWithClassName:@"FavouriteMechants"];
-        [userQuery whereKey:@"userID" equalTo:[[AVUser currentUser] objectId]];
-        [userQuery whereKey:@"favStoreName" equalTo:[_merchant name]];
-        NSArray * objs = [userQuery findObjects];
-        AVObject * obj = [AVObject object];
-        if (objs.count > 0) {
-            obj = objs[0];
-        }
-        if (![obj delete]) {
-            [ProgressHUD showError:@"取消收藏失败"];
+            
         }else{
-            AVQuery * favQuery = [AVQuery queryWithClassName:@"Merchants"];
-            [favQuery whereKey:@"name" equalTo:_merchant.name];
-            NSArray * objs = [favQuery findObjects];
-            if (objs.count != 0) {
-                AVObject * obj = objs[0];
-                NSInteger favNum = [[obj objectForKey:@"favouriteNum"] integerValue] - 1;
-                [obj setObject:[NSString stringWithFormat:@"%ld", favNum] forKey:@"favouriteNum"];
-                [obj save];
-                _favLabel.text = [NSString stringWithFormat:@"%ld", favNum];
+            //删除数据
+            AVQuery * userQuery = [AVQuery queryWithClassName:@"FavouriteMechants"];
+            [userQuery whereKey:@"userID" equalTo:[[AVUser currentUser] objectId]];
+            [userQuery whereKey:@"favStoreName" equalTo:[_merchant name]];
+            NSArray * objs = [userQuery findObjects];
+            AVObject * obj = [AVObject object];
+            if (objs.count > 0) {
+                obj = objs[0];
+            }
+            if (![obj delete]) {
+                [ProgressHUD showError:@"取消收藏失败"];
+            }else{
+                AVQuery * favQuery = [AVQuery queryWithClassName:@"Merchants"];
+                [favQuery whereKey:@"name" equalTo:_merchant.name];
+                NSArray * objs = [favQuery findObjects];
+                if (objs.count != 0) {
+                    AVObject * obj = objs[0];
+                    NSInteger favNum = [[obj objectForKey:@"favouriteNum"] integerValue] - 1;
+                    [obj setObject:[NSString stringWithFormat:@"%ld", favNum] forKey:@"favouriteNum"];
+                    [obj save];
+                    _favLabel.text = [NSString stringWithFormat:@"%ld", favNum];
+                }
             }
         }
     }
@@ -183,12 +187,14 @@
 //查看购物车事件
 - (void)cartAction:(UIButton *)btn{
     //判断购物车内是否有内容
-    NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
-    if([userDefault objectForKey:@"objectId"]){
-        //创建view，传入参数
-        self.footerBlock([userDefault objectForKey:@"objectId"]);
-    }else{
-        //不作为
+    if([AVUser currentUser]){
+        NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+        if([userDefault objectForKey:@"objectId"]){
+            //创建view，传入参数
+            self.footerBlock([userDefault objectForKey:@"objectId"]);
+        }else{
+            //不作为
+        }        
     }
 }
 
@@ -204,54 +210,55 @@
     if (_cartLabel == nil) {
         [self setCartLabelAndPriceLabel];
     }
-    //通过id查找子订单的内容
-    __block NSInteger orderNum = 0;
-    __block double price = 0;
-    __weak typeof(self)myself = self;
-    NSMutableArray * tempArr = [NSMutableArray array];
-    AVQuery * orderTempQuery = [AVQuery queryWithClassName:@"OrderTemp"];
-    [orderTempQuery whereKey:@"ordersID" equalTo:_orderID];
-    [orderTempQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (objects.count != 0) {
-            if ([type isEqualToString:@"add"]) {
-                [myself setAnimal];
-            }else if([type isEqualToString:@"del"]){
-                [myself setDelAnimal];
-            }
-            for (AVObject * obj in objects) {
-                ZZQOrderTemp * temp = [[ZZQOrderTemp alloc] init];
-                temp = [temp setOrderTempForObj:obj];
-                [tempArr addObject:temp];
-                orderNum += 1;
-                price += [temp.menuPrice doubleValue];
-            }
-            [myself.cartLabel setTitle:[NSString stringWithFormat:@"%ld",orderNum] forState:UIControlStateNormal];
-            myself.priceLabel.text = [NSString stringWithFormat:@"￥%.2lf", price];
-        }else{
-            [UIView animateWithDuration:0.4 animations:^{
-                myself.cartLabel.transform = CGAffineTransformMakeScale(0.1, 0.1);
-                myself.priceLabel.transform = CGAffineTransformMakeScale(0.1, 0.1);
-            } completion:^(BOOL finished) {
-                myself.cartLabel.transform = CGAffineTransformIdentity;
-                myself.priceLabel.transform = CGAffineTransformIdentity;
-                [myself.cartLabel removeFromSuperview];
-                [myself.priceLabel removeFromSuperview];
-                _cartLabel = nil;
-                _priceLabel = nil;
-                //删除userDefault中的键值和数据库内容
-                NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
-                [userDefault removeObjectForKey:@"objectId"];
-                AVQuery * query = [AVQuery queryWithClassName:@"Orders"];
-                [query whereKey:@"objectId" equalTo:orderID];
-                [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-                    for (AVObject * obj in objects) {
-                        [obj delete];
-                    }
+    if ([AVUser currentUser]) {
+        //通过id查找子订单的内容
+        __block NSInteger orderNum = 0;
+        __block double price = 0;
+        __weak typeof(self)myself = self;
+        NSMutableArray * tempArr = [NSMutableArray array];
+        AVQuery * orderTempQuery = [AVQuery queryWithClassName:@"OrderTemp"];
+        [orderTempQuery whereKey:@"ordersID" equalTo:_orderID];
+        [orderTempQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (objects.count != 0) {
+                if ([type isEqualToString:@"add"]) {
+                    [myself setAnimal];
+                }else if([type isEqualToString:@"del"]){
+                    [myself setDelAnimal];
+                }
+                for (AVObject * obj in objects) {
+                    ZZQOrderTemp * temp = [[ZZQOrderTemp alloc] init];
+                    temp = [temp setOrderTempForObj:obj];
+                    [tempArr addObject:temp];
+                    orderNum += 1;
+                    price += [temp.menuPrice doubleValue];
+                }
+                [myself.cartLabel setTitle:[NSString stringWithFormat:@"%ld",orderNum] forState:UIControlStateNormal];
+                myself.priceLabel.text = [NSString stringWithFormat:@"￥%.2lf", price];
+            }else{
+                [UIView animateWithDuration:0.4 animations:^{
+                    myself.cartLabel.transform = CGAffineTransformMakeScale(0.1, 0.1);
+                    myself.priceLabel.transform = CGAffineTransformMakeScale(0.1, 0.1);
+                } completion:^(BOOL finished) {
+                    myself.cartLabel.transform = CGAffineTransformIdentity;
+                    myself.priceLabel.transform = CGAffineTransformIdentity;
+                    [myself.cartLabel removeFromSuperview];
+                    [myself.priceLabel removeFromSuperview];
+                    _cartLabel = nil;
+                    _priceLabel = nil;
+                    //删除userDefault中的键值和数据库内容
+                    NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+                    [userDefault removeObjectForKey:@"objectId"];
+                    AVQuery * query = [AVQuery queryWithClassName:@"Orders"];
+                    [query whereKey:@"objectId" equalTo:orderID];
+                    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                        for (AVObject * obj in objects) {
+                            [obj delete];
+                        }
+                    }];
                 }];
-            }];
-        }
-    }];
-    
+            }
+        }];
+    }
 }
 
 - (void)setMerchantForView:(ZZQMerchant *)merchant{

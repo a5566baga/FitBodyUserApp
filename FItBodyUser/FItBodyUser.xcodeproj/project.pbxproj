@@ -14,6 +14,7 @@
 		B50512AC1EB377B500482DB1 /* ZZQFavouriteMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512AB1EB377B500482DB1 /* ZZQFavouriteMenuTableViewCell.m */; };
 		B50512AF1EB379E600482DB1 /* ZZQFavMenchant.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512AE1EB379E600482DB1 /* ZZQFavMenchant.m */; };
 		B50512B21EB379FD00482DB1 /* ZZQFavMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512B11EB379FD00482DB1 /* ZZQFavMenu.m */; };
+		B50512B51EB9744A00482DB1 /* ZZQUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512B41EB9744A00482DB1 /* ZZQUser.m */; };
 		B5052A5B1EB0DF2F000B74B6 /* ZZQShopCartView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A5A1EB0DF2F000B74B6 /* ZZQShopCartView.m */; };
 		B5052A5E1EB0EC03000B74B6 /* ZZQShopCartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A5D1EB0EC03000B74B6 /* ZZQShopCartHeaderView.m */; };
 		B5052A611EB0EC17000B74B6 /* ZZQShopCartFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A601EB0EC17000B74B6 /* ZZQShopCartFootView.m */; };
@@ -111,6 +112,8 @@
 		B50512AE1EB379E600482DB1 /* ZZQFavMenchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFavMenchant.m; sourceTree = "<group>"; };
 		B50512B01EB379FD00482DB1 /* ZZQFavMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQFavMenu.h; sourceTree = "<group>"; };
 		B50512B11EB379FD00482DB1 /* ZZQFavMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFavMenu.m; sourceTree = "<group>"; };
+		B50512B31EB9744A00482DB1 /* ZZQUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQUser.h; sourceTree = "<group>"; };
+		B50512B41EB9744A00482DB1 /* ZZQUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQUser.m; sourceTree = "<group>"; };
 		B5052A591EB0DF2F000B74B6 /* ZZQShopCartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQShopCartView.h; sourceTree = "<group>"; };
 		B5052A5A1EB0DF2F000B74B6 /* ZZQShopCartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQShopCartView.m; sourceTree = "<group>"; };
 		B5052A5C1EB0EC03000B74B6 /* ZZQShopCartHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQShopCartHeaderView.h; sourceTree = "<group>"; };
@@ -821,6 +824,8 @@
 		B5B4FA6C1E73FC540020D9B6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B50512B31EB9744A00482DB1 /* ZZQUser.h */,
+				B50512B41EB9744A00482DB1 /* ZZQUser.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1087,6 +1092,7 @@
 				B570727F1E9E5ACE003DE3F8 /* ZZQFavouriteBtn.m in Sources */,
 				B50512B21EB379FD00482DB1 /* ZZQFavMenu.m in Sources */,
 				B50512A61EB3774B00482DB1 /* ZZQFavouriteTableViewCell.m in Sources */,
+				B50512B51EB9744A00482DB1 /* ZZQUser.m in Sources */,
 				B57072941EA3B1C9003DE3F8 /* ZZQAddNewAddressViewController.m in Sources */,
 				B57072551E93990A003DE3F8 /* ZZQHot.m in Sources */,
 				B506AE521E75472200B39731 /* ZZQNetAlertView.m in Sources */,

@@ -18,11 +18,16 @@
 
 @implementation ZZQHeaderPicView
 
-- (void)initViewWithPicUrl:(NSString *)picUrl{
+- (void)initViewWithPicUrl:(NSData *)picUrl{
     
     _headerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_headerBtn sd_setImageWithURL:[NSURL URLWithString:picUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"ic_user_header_small"]];
+    if (picUrl) {
+        [_headerBtn setImage:[UIImage imageWithData:picUrl] forState:UIControlStateNormal];
+    }else{
+        [_headerBtn setImage:[UIImage imageNamed:@"ic_user_header_small"] forState:UIControlStateNormal];
+    }
     [_headerBtn setAdjustsImageWhenHighlighted:NO];
+    [_headerBtn addTarget:self action:@selector(headerPicAction:) forControlEvents:UIControlEventTouchUpInside];
     _headerBtn.layer.masksToBounds = YES;
     [self addSubview:_headerBtn];
     
@@ -31,6 +36,10 @@
     _label.text = @"编辑头像";
     _label.textColor = [UIColor grayColor];
     [self addSubview:_label];
+    
+}
+
+- (void)headerPicAction:(UIButton *)btn{
     
 }
 

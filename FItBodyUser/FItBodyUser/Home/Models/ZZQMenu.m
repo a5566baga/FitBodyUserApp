@@ -22,7 +22,7 @@
     menu.context = [obj objectForKey:@"context"];
     menu.favNum = [obj objectForKey:@"favouriteNum"];
     menu.menuID = [obj objectId];
-    menu.owner = [[obj objectForKey:@"owner"] objectId];
+    menu.owner = [obj objectForKey:@"owner"];
     menu.merchantID = [obj objectForKey:@"merchantID"];
     return menu;
 }

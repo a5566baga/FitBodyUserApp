@@ -73,21 +73,23 @@
 #pragma mark ================ 更新价格内容
 - (void)updateFooterPrice{
     __weak typeof(self)myself = self;
-    NSUserDefaults * order = [NSUserDefaults standardUserDefaults];
-    NSString * orderID = [order objectForKey:ORDER_ID];
-    AVQuery * query = [AVQuery queryWithClassName:@"OrderTemp"];
-    [query whereKey:@"ordersID" equalTo:orderID];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (objects.count != 0) {
-            double price = 0;
-            for (AVObject * obj in objects) {
-                ZZQOrderTemp * temp = [[ZZQOrderTemp alloc] init];
-                temp = [temp setOrderTempForObj:obj];
-                price += [temp.menuPrice doubleValue];
+    if ([AVUser currentUser]) {
+        NSUserDefaults * order = [NSUserDefaults standardUserDefaults];
+        NSString * orderID = [order objectForKey:ORDER_ID];
+        AVQuery * query = [AVQuery queryWithClassName:@"OrderTemp"];
+        [query whereKey:@"ordersID" equalTo:orderID];
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (objects.count != 0) {
+                double price = 0;
+                for (AVObject * obj in objects) {
+                    ZZQOrderTemp * temp = [[ZZQOrderTemp alloc] init];
+                    temp = [temp setOrderTempForObj:obj];
+                    price += [temp.menuPrice doubleValue];
+                }
+                myself.priceLabel.text = [NSString stringWithFormat:@"￥%.2lf", price];
             }
-            myself.priceLabel.text = [NSString stringWithFormat:@"￥%.2lf", price];
-        }
-    }];
+        }];        
+    }
 }
 
 @end

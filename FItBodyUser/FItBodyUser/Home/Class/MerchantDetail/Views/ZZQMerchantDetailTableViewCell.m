@@ -47,7 +47,7 @@
 @implementation ZZQMerchantDetailTableViewCell
 
 - (void)initForCell{
-//    __weak typeof(self) myself= self;
+    //    __weak typeof(self) myself= self;
     CGFloat margin = 10;
     _imagePic = [[UIImageView alloc] initWithFrame:CGRectMake(margin, margin, SCREEN_WIDTH-2*margin, (SCREEN_WIDTH-2*margin)/4*2.5)];
     _imagePic.layer.cornerRadius = 10;
@@ -112,30 +112,34 @@
 }
 
 - (void)favoutiteAction:(UIButton *)btn{
-    btn.selected = !btn.selected;
-    [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
-        btn.imageView.transform = CGAffineTransformMakeScale(0.5, 0.5);
-    } completion:^(BOOL finished) {
-        btn.imageView.transform = CGAffineTransformIdentity;
-        NSInteger favNum = [_menu.favNum integerValue];
-        if (btn.selected) {
-            favNum += 1;
-        }else{
-            favNum -= 1;
-        }
-        AVObject * menuObj = [AVObject objectWithClassName:@"Menus" objectId:_menu.menuID];
-        [menuObj setObject:[NSString stringWithFormat:@"%ld", (long)favNum] forKey:@"favouriteNum"];
-        [menuObj saveInBackground];
-        AVUser * user = [AVUser currentUser];
-        if (user != nil) {
-            AVObject * favObj = [AVObject objectWithClassName:@"FavoutiteMenus"];
-            [favObj setObject:user.objectId forKey:@"userId"];
-            [favObj setObject:_menu.menuID forKey:@"menuId"];
-            [favObj saveInBackground];
-        }
-        _menu.favNum = [NSString stringWithFormat:@"%ld", (long)favNum];
-        [btn setTitle:[NSString stringWithFormat:@"%ld", (long)favNum] forState:UIControlStateNormal];
-    }];
+    if([AVUser currentUser]){
+        btn.selected = !btn.selected;
+        [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
+            btn.imageView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+        } completion:^(BOOL finished) {
+            btn.imageView.transform = CGAffineTransformIdentity;
+            NSInteger favNum = [_menu.favNum integerValue];
+            if (btn.selected) {
+                favNum += 1;
+            }else{
+                favNum -= 1;
+            }
+            AVObject * menuObj = [AVObject objectWithClassName:@"Menus" objectId:_menu.menuID];
+            [menuObj setObject:[NSString stringWithFormat:@"%ld", (long)favNum] forKey:@"favouriteNum"];
+            [menuObj saveInBackground];
+            AVUser * user = [AVUser currentUser];
+            if (user != nil) {
+                AVObject * favObj = [AVObject objectWithClassName:@"FavoutiteMenus"];
+                [favObj setObject:user.objectId forKey:@"userId"];
+                [favObj setObject:_menu.menuID forKey:@"menuId"];
+                [favObj saveInBackground];
+            }
+            _menu.favNum = [NSString stringWithFormat:@"%ld", (long)favNum];
+            [btn setTitle:[NSString stringWithFormat:@"%ld", (long)favNum] forState:UIControlStateNormal];
+        }];
+    }else{
+        [ProgressHUD showError:@"请先登录"];
+    }
 }
 
 //检查本菜品用户是否收藏了
@@ -170,7 +174,6 @@
     _addBtn.adjustsImageWhenHighlighted = NO;
     _addBtn.frame = CGRectMake(_menuAddOrLessView.width-height, 0, height, height);
     [_menuAddOrLessView addSubview:_addBtn];
-    [_addBtn addTarget:self action:@selector(orderAddAction:) forControlEvents:UIControlEventTouchUpInside];
     
     _lessBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _lessBtn.layer.cornerRadius = height/2;
@@ -180,6 +183,8 @@
     _lessBtn.adjustsImageWhenHighlighted = NO;
     _lessBtn.frame = CGRectMake(0, 0, height, height);
     [_menuAddOrLessView addSubview:_lessBtn];
+    
+    [_addBtn addTarget:self action:@selector(orderAddAction:) forControlEvents:UIControlEventTouchUpInside];
     [_lessBtn addTarget:self action:@selector(orderLessAction:) forControlEvents:UIControlEventTouchUpInside];
     
     _menuNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(height, 0, _menuAddOrLessView.width-2*height, height)];
@@ -191,128 +196,136 @@
 }
 //添加一个菜品的
 - (void)orderAddAction:(UIButton *)btn{
-    NSString * objID;
-    NSUserDefaults * orders = [NSUserDefaults standardUserDefaults];
-    AVObject * obj = [AVObject objectWithClassName:@"Orders"];
-    NSString * uniqueStr = [NSString stringWithFormat:@"%@%ld", [NSDate date] ,random()/1000];
-    AVQuery * query = [AVQuery queryWithClassName:@"Orders"];
-    AVObject * tempOrder = [AVObject objectWithClassName:@"OrderTemp"];
-    
-    //1.查看是否有订单存在
-    if ([orders objectForKey:@"objectId"]) {
-        objID = [orders objectForKey:@"objectId"];
-    }else{
-        [obj setObject:[[AVUser currentUser] objectId] forKey:@"userId"];
-        [obj setObject:uniqueStr forKey:@"orderUniqeNum"];
-        //保存总订单成功
-        if ([obj save]) {
-            [query whereKey:@"orderUniqeNum" equalTo:uniqueStr];
-            NSArray * orderTemp = [query findObjects];
-            if(orderTemp){
-                objID = [orderTemp[0] objectId];
-                [orders setObject:objID forKey:@"objectId"];
+    if([AVUser currentUser]){
+        NSString * objID;
+        NSUserDefaults * orders = [NSUserDefaults standardUserDefaults];
+        AVObject * obj = [AVObject objectWithClassName:@"Orders"];
+        NSString * uniqueStr = [NSString stringWithFormat:@"%@%ld", [NSDate date] ,random()/1000];
+        AVQuery * query = [AVQuery queryWithClassName:@"Orders"];
+        AVObject * tempOrder = [AVObject objectWithClassName:@"OrderTemp"];
+        
+        //1.查看是否有订单存在
+        if ([orders objectForKey:@"objectId"]) {
+            objID = [orders objectForKey:@"objectId"];
+        }else{
+            [obj setObject:[[AVUser currentUser] objectId] forKey:@"userId"];
+            [obj setObject:uniqueStr forKey:@"orderUniqeNum"];
+            //保存总订单成功
+            if ([obj save]) {
+                [query whereKey:@"orderUniqeNum" equalTo:uniqueStr];
+                NSArray * orderTemp = [query findObjects];
+                if(orderTemp){
+                    objID = [orderTemp[0] objectId];
+                    [orders setObject:objID forKey:@"objectId"];
+                }else{
+                    [ProgressHUD showError:@"添加失败"];
+                }
             }else{
                 [ProgressHUD showError:@"添加失败"];
             }
-        }else{
+        }
+        //2.添加菜品的数量和名称id
+        AVQuery * orderTempQuery = [AVQuery queryWithClassName:@"OrderTemp"];
+        [orderTempQuery whereKey:@"ordersID" equalTo:objID];
+        [orderTempQuery whereKey:@"menuID" equalTo:_menu.menuID];
+        //已经添加的内容
+        NSInteger menuNum = 1;
+        double menuPrice = [_menu.price doubleValue];
+        double calorieSum = 0;
+        NSArray * menuArr = [orderTempQuery findObjects];
+        if (menuArr.count != 0) {
+            menuNum = [[menuArr[0] objectForKey:@"menuNum"] integerValue] + 1;
+            menuPrice = menuNum * [_menu.price doubleValue];
+            NSArray * calarioArr = [_menu.calorie componentsSeparatedByString:@"大卡"];
+            calorieSum = menuNum * [calarioArr[0] doubleValue];
+            tempOrder = menuArr[0];
+        }
+        //菜品名称
+        [tempOrder setObject:_menu.name forKey:@"menuName"];
+        //菜品ID
+        [tempOrder setObject:_menu.menuID forKey:@"menuID"];
+        //菜品数量
+        [tempOrder setObject:[NSString stringWithFormat:@"%ld", menuNum] forKey:@"menuNum"];
+        //菜品单价
+        [tempOrder setObject:_menu.price forKey:@"menuSinglePrice"];
+        //菜品总价
+        [tempOrder setObject:[NSString stringWithFormat:@"%.1lf", menuPrice] forKey:@"menuPrice"];
+        //总订单ID
+        [tempOrder setObject:objID forKey:@"ordersID"];
+        //卡路里总数
+        [tempOrder setObject:[NSString stringWithFormat:@"%.1lf", calorieSum] forKey:@"calorieSum"];
+        //卡路里单个数量
+        [tempOrder setObject:_menu.calorie forKey:@"calorieSingle"];
+        //用户ID
+        [tempOrder setObject:[[AVUser currentUser] objectId] forKey:@"userID"];
+        BOOL flag = [tempOrder save];
+        if (!flag) {
             [ProgressHUD showError:@"添加失败"];
         }
+        self.orderBlock(objID, @"add");
+    }else{
+        [ProgressHUD showError:@"请先登录"];
     }
-    //2.添加菜品的数量和名称id
-    AVQuery * orderTempQuery = [AVQuery queryWithClassName:@"OrderTemp"];
-    [orderTempQuery whereKey:@"ordersID" equalTo:objID];
-    [orderTempQuery whereKey:@"menuID" equalTo:_menu.menuID];
-    //已经添加的内容
-    NSInteger menuNum = 1;
-    double menuPrice = [_menu.price doubleValue];
-    double calorieSum = 0;
-    NSArray * menuArr = [orderTempQuery findObjects];
-    if (menuArr.count != 0) {
-        menuNum = [[menuArr[0] objectForKey:@"menuNum"] integerValue] + 1;
-        menuPrice = menuNum * [_menu.price doubleValue];
-        NSArray * calarioArr = [_menu.calorie componentsSeparatedByString:@"大卡"];
-        calorieSum = menuNum * [calarioArr[0] doubleValue];
-        tempOrder = menuArr[0];
-    }
-    //菜品名称
-    [tempOrder setObject:_menu.name forKey:@"menuName"];
-    //菜品ID
-    [tempOrder setObject:_menu.menuID forKey:@"menuID"];
-    //菜品数量
-    [tempOrder setObject:[NSString stringWithFormat:@"%ld", menuNum] forKey:@"menuNum"];
-    //菜品单价
-    [tempOrder setObject:_menu.price forKey:@"menuSinglePrice"];
-    //菜品总价
-    [tempOrder setObject:[NSString stringWithFormat:@"%.1lf", menuPrice] forKey:@"menuPrice"];
-    //总订单ID
-    [tempOrder setObject:objID forKey:@"ordersID"];
-    //卡路里总数
-    [tempOrder setObject:[NSString stringWithFormat:@"%.1lf", calorieSum] forKey:@"calorieSum"];
-    //卡路里单个数量
-    [tempOrder setObject:_menu.calorie forKey:@"calorieSingle"];
-    //用户ID
-    [tempOrder setObject:[[AVUser currentUser] objectId] forKey:@"userID"];
-    BOOL flag = [tempOrder save];
-    if (!flag) {
-        [ProgressHUD showError:@"添加失败"];
-    }
-    self.orderBlock(objID, @"add");
 }
 //减少数量
 - (void)orderLessAction:(UIButton *)btn{
-    //TODO:减少数量，先查再减，如果为0了，购物车也要操作
-    NSString * objID;
-    NSUserDefaults * orders = [NSUserDefaults standardUserDefaults];
-    AVObject * tempOrder = [AVObject objectWithClassName:@"OrderTemp"];
-    
-    //1.查看是否有订单存在
-    if ([orders objectForKey:@"objectId"]) {
-        objID = [orders objectForKey:@"objectId"];
-    }else{
-        [ProgressHUD showError:@"添加失败"];
-    }
-    //2.添加菜品的数量和名称id
-    AVQuery * orderTempQuery = [AVQuery queryWithClassName:@"OrderTemp"];
-    [orderTempQuery whereKey:@"ordersID" equalTo:objID];
-    [orderTempQuery whereKey:@"menuID" equalTo:_menu.menuID];
-    //已经添加的内容
-    NSInteger menuNum = 1;
-    double menuPrice = [_menu.price doubleValue];
-    double calorieSum = 0;
-    NSArray * menuArr = [orderTempQuery findObjects];
-    if (menuArr.count != 0) {
-        menuNum = [[menuArr[0] objectForKey:@"menuNum"] integerValue] - 1;
-        menuPrice = menuNum * [_menu.price doubleValue];
-        calorieSum = menuNum * [_menu.calorie doubleValue];
-        tempOrder = menuArr[0];
-        if (menuNum > 0) {
-            //菜品名称
-            [tempOrder setObject:_menu.name forKey:@"menuName"];
-            //菜品ID
-            [tempOrder setObject:_menu.menuID forKey:@"menuID"];
-            //菜品数量
-            [tempOrder setObject:[NSString stringWithFormat:@"%ld", menuNum] forKey:@"menuNum"];
-            //菜品单价
-            [tempOrder setObject:_menu.price forKey:@"menuSinglePrice"];
-            //菜品总价
-            [tempOrder setObject:[NSString stringWithFormat:@"%.1lf", menuPrice] forKey:@"menuPrice"];
-            //总订单ID
-            [tempOrder setObject:objID forKey:@"ordersID"];
-            //卡路里总数
-            [tempOrder setObject:[NSString stringWithFormat:@"%.1lf", calorieSum] forKey:@"calorieSum"];
-            //卡路里单个数量
-            [tempOrder setObject:[NSString stringWithFormat:@"%.1lf", [_menu.calorie doubleValue]] forKey:@"calorieSingle"];
-            //用户ID
-            [tempOrder setObject:[[AVUser currentUser] objectId] forKey:@"userID"];
-            BOOL flag = [tempOrder save];
-            if (!flag) {
-                [ProgressHUD showError:@"添加失败"];
-            }
+    if([AVUser currentUser]){
+        //TODO:减少数量，先查再减，如果为0了，购物车也要操作
+        NSString * objID;
+        NSUserDefaults * orders = [NSUserDefaults standardUserDefaults];
+        AVObject * tempOrder = [AVObject objectWithClassName:@"OrderTemp"];
+        
+        //1.查看是否有订单存在
+        if ([orders objectForKey:@"objectId"]) {
+            objID = [orders objectForKey:@"objectId"];
         }else{
-            [menuArr[0] delete];
+            [ProgressHUD showError:@"添加失败"];
         }
+        //2.添加菜品的数量和名称id
+        AVQuery * orderTempQuery = [AVQuery queryWithClassName:@"OrderTemp"];
+        [orderTempQuery whereKey:@"ordersID" equalTo:objID];
+        [orderTempQuery whereKey:@"menuID" equalTo:_menu.menuID];
+        //已经添加的内容
+        NSInteger menuNum = 1;
+        double menuPrice = [_menu.price doubleValue];
+        double calorieSum = 0;
+        NSArray * menuArr = [orderTempQuery findObjects];
+        if (menuArr.count != 0) {
+            menuNum = [[menuArr[0] objectForKey:@"menuNum"] integerValue] - 1;
+            menuPrice = menuNum * [_menu.price doubleValue];
+            calorieSum = menuNum * [_menu.calorie doubleValue];
+            tempOrder = menuArr[0];
+            if (menuNum > 0) {
+                //菜品名称
+                [tempOrder setObject:_menu.name forKey:@"menuName"];
+                //菜品ID
+                [tempOrder setObject:_menu.menuID forKey:@"menuID"];
+                //菜品数量
+                [tempOrder setObject:[NSString stringWithFormat:@"%ld", menuNum] forKey:@"menuNum"];
+                //菜品单价
+                [tempOrder setObject:_menu.price forKey:@"menuSinglePrice"];
+                //菜品总价
+                [tempOrder setObject:[NSString stringWithFormat:@"%.1lf", menuPrice] forKey:@"menuPrice"];
+                //总订单ID
+                [tempOrder setObject:objID forKey:@"ordersID"];
+                //卡路里总数
+                [tempOrder setObject:[NSString stringWithFormat:@"%.1lf", calorieSum] forKey:@"calorieSum"];
+                //卡路里单个数量
+                [tempOrder setObject:[NSString stringWithFormat:@"%.1lf", [_menu.calorie doubleValue]] forKey:@"calorieSingle"];
+                //用户ID
+                [tempOrder setObject:[[AVUser currentUser] objectId] forKey:@"userID"];
+                BOOL flag = [tempOrder save];
+                if (!flag) {
+                    [ProgressHUD showError:@"添加失败"];
+                }
+            }else{
+                [menuArr[0] delete];
+            }
+        }
+        self.orderDelBlock(objID, @"del");
+    }else{
+        [ProgressHUD showError:@"请先登录"];
     }
-    self.orderDelBlock(objID, @"del");
 }
 
 - (void)layoutSubviews{

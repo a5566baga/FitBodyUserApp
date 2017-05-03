@@ -7,6 +7,7 @@
 //
 
 #import "ZZQBaseViewController.h"
+#import "ZZQUser.h"
 
 @interface ZZQEditMeViewController : ZZQBaseViewController
 
@@ -15,4 +16,5 @@
  */
 - (void)setUserName:(NSString *)userName;
 
+- (void)serUserObj:(ZZQUser *)user;
 @end

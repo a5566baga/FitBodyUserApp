@@ -33,7 +33,7 @@
         _titleLabel.font = [UIFont fontWithName:TITLE_FONT size:30];
         _titleLabel.textColor = [UIColor blackColor];
         _titleLabel.text = @"未登录";
-        [self addSubview:_titleLabel];
+        [self addSubview:_titleLabel];	
         
         _smallLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin, 60, self.width-2*margin-imgWidth, 20)];
         _smallLabel.font = [UIFont fontWithName:LITTER_TITLE_FONT size:17];
@@ -54,10 +54,14 @@
     return self;
 }
 
-- (void)setTitleName:(NSString *)titleName smallTitle:(NSString *)smallTitle headImgUrl:(NSString *)headImgUrl{
+- (void)setTitleName:(NSString *)titleName smallTitle:(NSString *)smallTitle headImgUrl:(NSData *)headImg{
     _titleLabel.text = titleName;
     _smallLabel.text = smallTitle;
-    [_headImgView sd_setImageWithURL:[NSURL URLWithString:headImgUrl] placeholderImage:[UIImage imageNamed:@"ic_user_header_small"]];
+    if (headImg) {
+        [_headImgView setImage:[UIImage imageWithData:headImg]];
+    }else{
+        [_headImgView setImage:[UIImage imageNamed:@"ic_user_header_small"]];
+    }
 }
 
 

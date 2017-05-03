@@ -19,6 +19,7 @@
 #import "ZZQAddressViewController.h"
 #import "ZZQFavouriteViewController.h"
 #import "ZZQCommentViewController.h"
+#import "ZZQUser.h"
 
 #define CELL_ID @"meCell"
 
@@ -39,6 +40,8 @@
 @property(nonatomic, strong)ZZQEditMeViewController * editViewController;
 //登录页面
 @property(nonatomic, strong)ZZQLoginViewController * loginViewController;
+//用户模型
+@property(nonatomic, strong)ZZQUser * user;
 
 @end
 
@@ -47,7 +50,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    self.view.backgroundColor = [UIColor blueColor];
+    //    self.view.backgroundColor = [UIColor blueColor];
     
     //设置右边的编辑item
     [self initNavView];
@@ -122,7 +125,7 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
-
+    
     [_tableView setShowsVerticalScrollIndicator:NO];
     _tableView.bounces = NO;
     [self.view addSubview:_tableView];
@@ -144,32 +147,6 @@
 
 //TODO:判断是否登录，跳转不同页面，一个登录页面，一个个人设置页面
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    __weak typeof(self) myself = self;
-    //TODO:判断是否登录
-    if([AVUser currentUser]){
-        //登录状态
-        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-            [myself.navigationController pushViewController:myself.editViewController animated:YES];
-            //TODO:显示信息
-//            [myself.headerView setTitleName:@"" smallTitle:@"" headImgUrl:@""];
-            
-        }];
-        [myself.headerView addGestureRecognizer:tap];
-    }else{
-        //创建点击事件,未登录
-        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-            [myself.navigationController pushViewController:myself.loginViewController animated:YES];
-            [myself.loginViewController setLoginBlock:^(NSString * phone) {
-                [myself.headerView setTitleName:[NSString stringWithFormat:@"%@",phone] smallTitle:@"点击编辑个人信息" headImgUrl:@""];
-            }];
-            [myself.loginViewController.pwdLoginVC setLoginBlock:^(NSString * name) {
-                [myself.headerView setTitleName:[NSString stringWithFormat:@"%@",name] smallTitle:@"点击编辑个人信息" headImgUrl:@""];
-            }];
-        }];
-        [myself.headerView addGestureRecognizer:tap];
-        myself.navigationItem.title = @"未登录";
-    }
-    
     return self.headerView;
 }
 
@@ -245,7 +222,7 @@
         [self setViewAnimal:clearCacheView];
         [self.view addSubview:clearCacheView];
     }
-
+    
 }
 
 - (void)setViewAnimal:(UIView *)view{
@@ -260,9 +237,55 @@
     }];
 }
 
+- (void)checkLogin{
+    //对是否登录的内容做设置
+    if ([AVUser currentUser]) {
+        NSString * userId = [[AVUser currentUser] objectId];
+        AVQuery * userQuery = [AVQuery queryWithClassName:@"Users"];
+        [userQuery whereKey:@"owner" equalTo:userId];
+        NSArray * objects =[userQuery findObjects];
+        if (objects.count == 1) {
+            _user = [[ZZQUser alloc] init];
+            _user = [_user setUserForObj:objects[0]];
+        }
+//        AVFile * file = [objects[0] objectForKey:@"userProtait"];
+//        NSLog(@"%@", file.url);
+    }
+    __weak typeof(self) myself = self;
+    //TODO:判断是否登录
+    if([AVUser currentUser]){
+        //登录状态
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+            [myself.navigationController pushViewController:myself.editViewController animated:YES];
+            //TODO:显示信息
+        }];
+        [self.headerView setTitleName:self.user.userName smallTitle:@"点击编辑个人信息" headImgUrl:_user.userProtait];
+        self.navigationItem.title = self.user.userName;
+        [self.headerView addGestureRecognizer:tap];
+    }else{
+        //创建点击事件,未登录
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+            [myself.navigationController pushViewController:myself.loginViewController animated:YES];
+            [myself.loginViewController setLoginBlock:^(NSString * phone) {
+                [myself.headerView setTitleName:[NSString stringWithFormat:@"%@",myself.user.userName] smallTitle:@"点击编辑个人信息" headImgUrl:[myself.user userProtait]];
+                myself.navigationItem.title = myself.user.userName;
+            }];
+            [myself.loginViewController.pwdLoginVC setLoginBlock:^(NSString * name) {
+                [myself checkLogin];
+                [myself.headerView setTitleName:[NSString stringWithFormat:@"%@",myself.user.userName] smallTitle:@"点击编辑个人信息" headImgUrl:[myself.user userProtait]];
+                myself.navigationItem.title = myself.user.userName;
+            }];
+        }];
+        [self.headerView addGestureRecognizer:tap];
+        [self.headerView setTitleName:[NSString stringWithFormat:@"未登录"] smallTitle:@"点击登录 创造更好的身材吧" headImgUrl:nil];
+        self.navigationItem.title = @"未登录";
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tabBarController.tabBar setHidden:NO];
+    [self checkLogin];
 }
 
 

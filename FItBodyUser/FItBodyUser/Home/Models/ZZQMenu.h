@@ -31,7 +31,7 @@
 //菜单id
 @property(nonatomic, copy)NSString * menuID;
 //所属店铺
-@property(nonatomic, copy)NSString * owner;
+@property(nonatomic, strong)AVUser * owner;
 @property(nonatomic, copy)NSString * merchantID;
 
 - (ZZQMenu *)getMenuWithObject:(AVObject *)obj;

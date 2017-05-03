@@ -107,7 +107,7 @@
     self.dataListArray = [NSMutableArray array];
     self.menuHeightArray = [NSMutableArray array];
     AVQuery * query = [AVQuery queryWithClassName:@"Menus"];
-    [query whereKey:@"owner" equalTo:_merchant.owner];
+    [query whereKey:@"owner" equalTo:[_merchant owner]];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (error) {
             //加载无数据视图
@@ -129,7 +129,7 @@
 - (void)initForMenuData{
     self.dataListArray = [NSMutableArray array];
     AVQuery * query = [AVQuery queryWithClassName:@"Menus"];
-    [query whereKey:@"owner" equalTo:_merchant.owner];
+    [query whereKey:@"owner" equalTo:[_merchant owner]];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (error) {
             //加载无数据视图
@@ -216,19 +216,19 @@
 //    _tableview.tableFooterView = _footerView;
     [self.view addSubview:_footerView];
     
-    //赋初值
-    NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
-    if ([userDefault objectForKey:@"objectId"]) {
-        [_footerView setOrderID:[userDefault objectForKey:@"objectId"] type:@"init"];
+    if ([AVUser currentUser]) {
+        //赋初值
+        NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+        if ([userDefault objectForKey:@"objectId"]) {
+            [_footerView setOrderID:[userDefault objectForKey:@"objectId"] type:@"init"];
+        }
+        
+        __weak typeof(self)myself = self;
+        [_footerView setFooterBlock:^(NSString * orderId) {
+            //设置购物车页面
+            [myself initForShopCartView:orderId];
+        }];
     }
-    
-    __weak typeof(self)myself = self;
-    [_footerView setFooterBlock:^(NSString * orderId) {
-        //设置购物车页面
-        [myself initForShopCartView:orderId];
-    }];
-    
-    
 }
 
 - (void)initForShopCartView:(NSString *)orderId{

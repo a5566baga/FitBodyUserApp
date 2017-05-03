@@ -10,6 +10,6 @@
 
 @interface ZZQHeaderPicView : UIView
 
-- (void)initViewWithPicUrl:(NSString *)picUrl;
+- (void)initViewWithPicUrl:(NSData *)picUrl;
 
 @end

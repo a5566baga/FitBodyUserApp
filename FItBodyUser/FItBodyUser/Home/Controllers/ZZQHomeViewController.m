@@ -115,14 +115,13 @@
     [_cityBtn addTarget:self action:@selector(cityAction:) forControlEvents:UIControlEventTouchUpInside];
     [_searchBtn addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
 }
-- (void)cityAction:(UIButton *)btn{
+- (void)cityAction:(UIButton *)btn{	
     __weak typeof(self)myself = self;
     ZZQCitysViewController * cityVC = [[ZZQCitysViewController alloc] init];
     [self.navigationController pushViewController:cityVC animated:YES];
     [cityVC setCityBlock:^(NSString * cityName) {
         [myself.cityBtn setTitle:cityName forState:UIControlStateNormal];
         myself.cityName = cityName;
-//        [myself initTableView];
         [myself initForData];
     }];
 }

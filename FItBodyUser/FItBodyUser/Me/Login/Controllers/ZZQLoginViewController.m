@@ -8,6 +8,7 @@
 
 #import "ZZQLoginViewController.h"
 #import "ZZQClearCacheView.h"
+#import "ZZQUser.h"
 
 @interface ZZQLoginViewController ()
 
@@ -21,6 +22,8 @@
 @property(nonatomic, strong)UIButton * loginBtn;
 //切换密码登录按钮
 @property(nonatomic, strong)UIButton * changePwdLoginBtn;
+//用户模型
+@property(nonatomic, strong)ZZQUser * user;
 
 @end
 
@@ -87,6 +90,7 @@
     }else{
         //发送验证码
         __weak typeof(self)myself = self;
+        
         [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:_phoneNumField.text zone:@"86" customIdentifier:nil result:^(NSError *error) {
             if (error) {
                 [alertView setMessageErrorWithMsg:@"短信请求失败"];
@@ -164,10 +168,25 @@
                 [myself.view addSubview:alertView];
                 [myself setAlertViewAnimal:alertView];
             }else{
-                //TODO:查询数据库，发送请求，返回需要更改成为字典
-                myself.LoginBlock(_phoneNumField.text);
-                [myself.navigationController popViewControllerAnimated:YES];
-                
+                //登录操作
+                //查询Users表，把用户和密码查出来，登录
+                AVQuery * userQuery = [AVQuery queryWithClassName:@"Users"];
+                [userQuery whereKey:@"userPhone" equalTo:_phoneNumField.text];
+                NSArray * phoneArray = [userQuery findObjects];
+                if (phoneArray.count == 1) {
+                    _user = [[ZZQUser alloc] init];
+                    _user = [_user setUserForObj:phoneArray[0]];
+                    [AVUser logInWithMobilePhoneNumberInBackground:_user.userPhone password:_user.userPassword block:^(AVUser * _Nullable user, NSError * _Nullable error) {
+                        if (error) {
+                            [ProgressHUD showError:@"登录失败"];
+                        }else{
+                            [ProgressHUD showSuccess];
+                            myself.LoginBlock(_phoneNumField.text);
+                            [myself.navigationController popViewControllerAnimated:YES];
+                        }
+                    }];
+                    
+                }
             }
         }];
     }

@@ -38,6 +38,8 @@
 @property(nonatomic, strong)ZZQSettingSexView * sexView;
 //年龄段视图
 @property(nonatomic, strong)ZZQAgeGroup * ageGroipView;
+//用户模型
+@property(nonatomic, strong)ZZQUser * user;
 
 @end
 
@@ -97,8 +99,7 @@
 - (ZZQHeaderPicView *)headerView{
     if(!_headerView){
         _headerView = [[ZZQHeaderPicView alloc] initWithFrame:CGRectMake(0, 80, SCREEN_WIDTH, 125)];
-        [_headerView initViewWithPicUrl:nil];
-//        _headerView.backgroundColor = [UIColor orangeColor];
+        [_headerView initViewWithPicUrl:_user.userProtait];
         _headerView.userInteractionEnabled = NO;
     }
     return _headerView;
@@ -128,6 +129,7 @@
 //保存操作
 //TODO:保存操作，提交到远程数据，保存到本地
 - (void)savaAction:(UIButton *)btn{
+    
     //添加到数据库，头像和昵称传值
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -158,6 +160,9 @@
     }
     [_cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     [_cell setTitleLabelValue:self.titlesArray[indexPath.row]];
+    if (indexPath.row == 0) {
+        
+    }
     return _cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -187,7 +192,7 @@
 
 - (void)logOutAction:(UIButton *)btn{
     //TODO:登出操作，删除数据库，pop到页面
-    [AVUser logOut];
+    [AVUser logOut];	
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -258,6 +263,10 @@
     }else if (5 == indexPath.row){
         
     }
+}
+
+- (void)serUserObj:(ZZQUser *)user{
+    _user = user;
 }
 
 #pragma mark

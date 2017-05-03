@@ -44,6 +44,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"收藏";
     [self initForView];
+    
 }
 
 #pragma mark
