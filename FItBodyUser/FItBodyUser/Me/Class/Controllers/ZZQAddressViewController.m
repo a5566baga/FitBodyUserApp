@@ -11,6 +11,7 @@
 #import "ZZQAddress.h"
 #import "ZZQAddNewAddressBtnView.h"
 #import "ZZQAddNewAddressViewController.h"
+#import "ZZQSureOrderViewController.h"
 
 #define CELL_ID @"ADDRESS_CELL"
 @interface ZZQAddressViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -155,6 +156,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView clearSelectedRowsAnimated:YES];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

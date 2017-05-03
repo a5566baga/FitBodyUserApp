@@ -20,6 +20,8 @@
 @property(nonatomic, copy)NSString * owner;
 @property(nonatomic, copy)NSString * userName;
 @property(nonatomic, copy)NSString * calorieNeed;
+@property(nonatomic, copy)NSString * payWay;
+@property(nonatomic, copy)NSString * addressId;
 
 - (ZZQUser *)setUserForObj:(AVObject *)obj;
 

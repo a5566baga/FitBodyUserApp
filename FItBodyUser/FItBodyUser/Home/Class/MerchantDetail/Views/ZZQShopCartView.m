@@ -146,11 +146,31 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     __weak typeof(self)myself = self;
+    __block double price = 0;
+    __block double calorie = 0;
     _footView = [[ZZQShopCartFootView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, footerH)];
     _footView.backgroundColor = [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1.00];
     [_footView setDataList:_dataList];
     [_footView setSureOrderBlock:^{
-        myself.sureOrderBlock();
+        NSUserDefaults * orderDefault = [NSUserDefaults standardUserDefaults];
+        NSString * orderID = [orderDefault objectForKey:ORDER_ID];
+        AVObject * order = [AVObject objectWithClassName:@"Orders" objectId:orderID];
+        AVQuery * tempQuery = [AVQuery queryWithClassName:@"OrderTemp"];
+        [tempQuery whereKey:@"ordersID" equalTo:orderID];
+        [tempQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (objects.count > 0) {
+                for (AVObject * obj in objects) {
+                    ZZQOrderTemp * temp = [[ZZQOrderTemp alloc] init];
+                    temp = [temp setOrderTempForObj:obj];
+                    price += [[temp menuPrice] doubleValue];
+                    calorie += [[temp calorieSum] doubleValue];
+                }
+                [order setObject:[NSString stringWithFormat:@"%.2lf", price] forKey:@"orderPrice"];
+                [order setObject:[NSString stringWithFormat:@"%.2lf", calorie] forKey:@"orderCalorie"];
+                [order save];
+                myself.sureOrderBlock();
+            }
+        }];
     }];
     return _footView;
 }

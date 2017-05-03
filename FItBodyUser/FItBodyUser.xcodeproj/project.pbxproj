@@ -15,6 +15,12 @@
 		B50512AF1EB379E600482DB1 /* ZZQFavMenchant.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512AE1EB379E600482DB1 /* ZZQFavMenchant.m */; };
 		B50512B21EB379FD00482DB1 /* ZZQFavMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512B11EB379FD00482DB1 /* ZZQFavMenu.m */; };
 		B50512B51EB9744A00482DB1 /* ZZQUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512B41EB9744A00482DB1 /* ZZQUser.m */; };
+		B50512B81EB9D27D00482DB1 /* ZZQPayOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512B71EB9D27D00482DB1 /* ZZQPayOrderView.m */; };
+		B50512BB1EB9D2A300482DB1 /* ZZQPayWayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512BA1EB9D2A300482DB1 /* ZZQPayWayView.m */; };
+		B50512BE1EB9DB8700482DB1 /* ZZQPayAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512BD1EB9DB8600482DB1 /* ZZQPayAddressView.m */; };
+		B50512C11EB9DBFB00482DB1 /* ZZQPayOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512C01EB9DBFB00482DB1 /* ZZQPayOrderViewController.m */; };
+		B50512C41EBA141A00482DB1 /* ZZQPayOrdersDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512C31EBA141A00482DB1 /* ZZQPayOrdersDetailView.m */; };
+		B50512C71EBA170B00482DB1 /* ZZQPayAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512C61EBA170B00482DB1 /* ZZQPayAddressTableViewCell.m */; };
 		B5052A5B1EB0DF2F000B74B6 /* ZZQShopCartView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A5A1EB0DF2F000B74B6 /* ZZQShopCartView.m */; };
 		B5052A5E1EB0EC03000B74B6 /* ZZQShopCartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A5D1EB0EC03000B74B6 /* ZZQShopCartHeaderView.m */; };
 		B5052A611EB0EC17000B74B6 /* ZZQShopCartFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A601EB0EC17000B74B6 /* ZZQShopCartFootView.m */; };
@@ -114,6 +120,18 @@
 		B50512B11EB379FD00482DB1 /* ZZQFavMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQFavMenu.m; sourceTree = "<group>"; };
 		B50512B31EB9744A00482DB1 /* ZZQUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQUser.h; sourceTree = "<group>"; };
 		B50512B41EB9744A00482DB1 /* ZZQUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQUser.m; sourceTree = "<group>"; };
+		B50512B61EB9D27D00482DB1 /* ZZQPayOrderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQPayOrderView.h; sourceTree = "<group>"; };
+		B50512B71EB9D27D00482DB1 /* ZZQPayOrderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQPayOrderView.m; sourceTree = "<group>"; };
+		B50512B91EB9D2A300482DB1 /* ZZQPayWayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQPayWayView.h; sourceTree = "<group>"; };
+		B50512BA1EB9D2A300482DB1 /* ZZQPayWayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQPayWayView.m; sourceTree = "<group>"; };
+		B50512BC1EB9DB8600482DB1 /* ZZQPayAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQPayAddressView.h; sourceTree = "<group>"; };
+		B50512BD1EB9DB8600482DB1 /* ZZQPayAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQPayAddressView.m; sourceTree = "<group>"; };
+		B50512BF1EB9DBFB00482DB1 /* ZZQPayOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQPayOrderViewController.h; sourceTree = "<group>"; };
+		B50512C01EB9DBFB00482DB1 /* ZZQPayOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQPayOrderViewController.m; sourceTree = "<group>"; };
+		B50512C21EBA141A00482DB1 /* ZZQPayOrdersDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQPayOrdersDetailView.h; sourceTree = "<group>"; };
+		B50512C31EBA141A00482DB1 /* ZZQPayOrdersDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQPayOrdersDetailView.m; sourceTree = "<group>"; };
+		B50512C51EBA170B00482DB1 /* ZZQPayAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQPayAddressTableViewCell.h; sourceTree = "<group>"; };
+		B50512C61EBA170B00482DB1 /* ZZQPayAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQPayAddressTableViewCell.m; sourceTree = "<group>"; };
 		B5052A591EB0DF2F000B74B6 /* ZZQShopCartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQShopCartView.h; sourceTree = "<group>"; };
 		B5052A5A1EB0DF2F000B74B6 /* ZZQShopCartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQShopCartView.m; sourceTree = "<group>"; };
 		B5052A5C1EB0EC03000B74B6 /* ZZQShopCartHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQShopCartHeaderView.h; sourceTree = "<group>"; };
@@ -309,6 +327,8 @@
 			children = (
 				B505129D1EB371F200482DB1 /* ZZQSureOrderViewController.h */,
 				B505129E1EB371F200482DB1 /* ZZQSureOrderViewController.m */,
+				B50512BF1EB9DBFB00482DB1 /* ZZQPayOrderViewController.h */,
+				B50512C01EB9DBFB00482DB1 /* ZZQPayOrderViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -323,6 +343,16 @@
 		B50512991EB3717000482DB1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B50512BC1EB9DB8600482DB1 /* ZZQPayAddressView.h */,
+				B50512BD1EB9DB8600482DB1 /* ZZQPayAddressView.m */,
+				B50512C51EBA170B00482DB1 /* ZZQPayAddressTableViewCell.h */,
+				B50512C61EBA170B00482DB1 /* ZZQPayAddressTableViewCell.m */,
+				B50512C21EBA141A00482DB1 /* ZZQPayOrdersDetailView.h */,
+				B50512C31EBA141A00482DB1 /* ZZQPayOrdersDetailView.m */,
+				B50512B61EB9D27D00482DB1 /* ZZQPayOrderView.h */,
+				B50512B71EB9D27D00482DB1 /* ZZQPayOrderView.m */,
+				B50512B91EB9D2A300482DB1 /* ZZQPayWayView.h */,
+				B50512BA1EB9D2A300482DB1 /* ZZQPayWayView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1042,6 +1072,7 @@
 				B56D8B0A1E7844DB000085E6 /* ZZQAlreadyViewController.m in Sources */,
 				B5B4FA8E1E7407000020D9B6 /* ZZQTabBarViewController.m in Sources */,
 				B56D8B1D1E7965E7000085E6 /* ZZQClearCacheView.m in Sources */,
+				B50512B81EB9D27D00482DB1 /* ZZQPayOrderView.m in Sources */,
 				B5B4FA9D1E74D5360020D9B6 /* ZZQOrderViewController.m in Sources */,
 				B56D8AD91E78062E000085E6 /* ZZQHeaderView.m in Sources */,
 				B570728E1EA3901A003DE3F8 /* ZZQAddress.m in Sources */,
@@ -1064,7 +1095,9 @@
 				B505129F1EB371F200482DB1 /* ZZQSureOrderViewController.m in Sources */,
 				B58FB3221EAA2691005D3395 /* ZZQOrder.m in Sources */,
 				B57072821EA35238003DE3F8 /* ZZQAddressViewController.m in Sources */,
+				B50512C41EBA141A00482DB1 /* ZZQPayOrdersDetailView.m in Sources */,
 				B56D8B071E7844CD000085E6 /* ZZQNoCommentsViewController.m in Sources */,
+				B50512BE1EB9DB8700482DB1 /* ZZQPayAddressView.m in Sources */,
 				B5B4FA801E73FC540020D9B6 /* AppDelegate.m in Sources */,
 				B56D8ACD1E755B97000085E6 /* ZZQNoOnlineView.m in Sources */,
 				B5052A5B1EB0DF2F000B74B6 /* ZZQShopCartView.m in Sources */,
@@ -1076,15 +1109,18 @@
 				B56D8AFD1E7830F5000085E6 /* ZZQMeCellButton.m in Sources */,
 				B57070A41E864AAB003DE3F8 /* ZZQNickNameView.m in Sources */,
 				B5052A641EB22C5D000B74B6 /* ZZQOrederTempTableViewCell.m in Sources */,
+				B50512C11EB9DBFB00482DB1 /* ZZQPayOrderViewController.m in Sources */,
 				B50512AC1EB377B500482DB1 /* ZZQFavouriteMenuTableViewCell.m in Sources */,
 				B56D8AD61E76E336000085E6 /* ZZQSearchViewController.m in Sources */,
 				B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */,
 				B50512AF1EB379E600482DB1 /* ZZQFavMenchant.m in Sources */,
 				B570724F1E9398B3003DE3F8 /* ZZQHomeTableViewCell.m in Sources */,
 				B56D8B3E1E814C5C000085E6 /* ZZQSexBtn.m in Sources */,
+				B50512C71EBA170B00482DB1 /* ZZQPayAddressTableViewCell.m in Sources */,
 				B50512A91EB3776C00482DB1 /* ZZQFavouriteHeaderView.m in Sources */,
 				B57072881EA35267003DE3F8 /* ZZQCommentViewController.m in Sources */,
 				B57072851EA35253003DE3F8 /* ZZQFavouriteViewController.m in Sources */,
+				B50512BB1EB9D2A300482DB1 /* ZZQPayWayView.m in Sources */,
 				B56D8B3B1E814A92000085E6 /* ZZQSettingSexView.m in Sources */,
 				B57072911EA3AAFA003DE3F8 /* ZZQAddNewAddressBtnView.m in Sources */,
 				B57070AD1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m in Sources */,

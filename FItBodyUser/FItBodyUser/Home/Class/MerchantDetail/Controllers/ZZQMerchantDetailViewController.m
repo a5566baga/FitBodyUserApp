@@ -244,6 +244,8 @@
     
     [_shopCartView setSureOrderBlock:^{
         ZZQSureOrderViewController * suerVC = [[ZZQSureOrderViewController alloc] init];
+        NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+        [suerVC setOrderId:[userDefault objectForKey:@"objectId"]];
         [myself.navigationController pushViewController:suerVC animated:YES];
     }];
 }

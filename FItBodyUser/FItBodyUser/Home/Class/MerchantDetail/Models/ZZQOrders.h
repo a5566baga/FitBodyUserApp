@@ -19,8 +19,12 @@
 @property(nonatomic, copy)NSString * evaluateStr;
 /**打分*/
 @property(nonatomic, copy)NSString * stars;
-/**配图1*/
-@property(nonatomic, strong)NSData * illustratingPicOne;
+/**订单总价*/
+@property(nonatomic, copy)NSString * orderPrice;
+/**总的卡路里*/
+@property(nonatomic, copy)NSString * orderCalorie;
+//商家id
+@property(nonatomic, copy)NSString * merchantId;
 
 - (ZZQOrders *)setOrdersForObj:(AVObject *)obj;
 

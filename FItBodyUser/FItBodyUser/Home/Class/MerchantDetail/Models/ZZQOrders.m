@@ -15,6 +15,9 @@
     order.objId = [obj objectId];
     order.userId = [obj objectForKey:@"userId"];
     order.orderUniqeNum = [obj objectForKey:@"orderUniqeNum"];
+    order.orderCalorie = [obj objectForKey:@"orderCalorie"];
+    order.orderPrice = [obj objectForKey:@"orderPrice"];
+    order.merchantId = [obj objectForKey:@"merchantId"];
     return order;
 }
 

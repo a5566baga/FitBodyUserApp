@@ -22,6 +22,8 @@
     user.owner = [obj objectForKey:@"owner"];
     user.userName = [obj objectForKey:@"userName"];
     user.calorieNeed = [obj objectForKey:@"calorieNeed"];
+    user.payWay = [obj objectForKey:@"payWay"];
+    user.addressId = [obj objectForKey:@"addressId"];
     return user;
 }
 

@@ -7,7 +7,11 @@
 //
 
 #import "ZZQBaseViewController.h"
+@class ZZQAddress;
 
 @interface ZZQSureOrderViewController : ZZQBaseViewController
 
+- (void)setOrderId:(NSString *)orderId;
+
+- (void)setSelectAddress:(ZZQAddress *)address;
 @end
