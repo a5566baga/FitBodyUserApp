@@ -59,6 +59,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    __weak typeof(self)myself = self;
     _cell = [tableView dequeueReusableCellWithIdentifier:ADD_CELL];
     if (_cell == nil) {
         _cell = [[ZZQPayAddressTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ADD_CELL];
@@ -70,8 +71,10 @@
         [_cell setNewAddress:_address];
     }else if(indexPath.section == 1){
         
-    }else if(indexPath.section == 1){
-        
+    }else if(indexPath.section == 2){
+        [_cell setPayWayBlock:^(NSString * payWay) {
+            myself.payWayBlock(payWay);
+        }];
     }
     return _cell;
 }

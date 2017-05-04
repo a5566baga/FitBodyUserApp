@@ -12,8 +12,9 @@
 #import "ZZQPayAddressView.h"
 #import "ZZQPayOrdersDetailView.h"
 #import "ZZQAddressViewController.h"
+#import "ZZQPayOrderViewController.h"
 
-#define ONEH 230
+#define ONEH 210
 #define TWOH 500
 @interface ZZQSureOrderViewController ()
 
@@ -28,6 +29,10 @@
 @property(nonatomic, strong)ZZQPayAddressView * payAddressView;
 //第二个tableview，订单的详情内容
 @property(nonatomic, strong)ZZQPayOrdersDetailView * payOrdersDetailView;
+//底部支付视图
+@property(nonatomic, strong)UIView * payView;
+@property(nonatomic, strong)UILabel * payPriceLabel;
+@property(nonatomic, strong)UIButton * payButton;
 
 @end
 
@@ -37,10 +42,12 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"确认订单";
-    //创建订单展示视图
-    [self initForOrderView];
     //地址视图
     [self initForAddress];
+    //创建订单展示视图
+    [self initForOrderView];
+    //创建底部支付视图
+    [self initForPayView];
 }
 
 #pragma mark
@@ -52,17 +59,52 @@
     [_payAddressView setOrderIdStr:_orderId];
     [self.view addSubview:_payAddressView];
     [_payAddressView setAddressBlock:^(ZZQAddressViewController * addressVC) {
+        //TODO:传值没有形成
         [myself.navigationController pushViewController:addressVC animated:YES];
     }];
-}
-- (void)setSelectAddress:(ZZQAddress *)address{
-    
-}
-//订单展示内容
-- (void)initForOrderView{
-    
+    [_payAddressView setPayWayBlock:^(NSString * payWay) {
+        [myself.payButton setTitle:payWay forState:UIControlStateNormal];
+    }];
 }
 
+//订单展示内容
+- (void)initForOrderView{
+    __weak typeof(self)myself = self;
+    _payOrdersDetailView = [[ZZQPayOrdersDetailView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_payAddressView.frame), SCREEN_WIDTH, TWOH)];
+    [_payOrdersDetailView setOrderIdStr:_orderId];
+    [self.view addSubview:_payOrdersDetailView];
+    _payOrdersDetailView.backgroundColor = [UIColor orangeColor];
+    [_payOrdersDetailView setPayOrderHeighblock:^(CGFloat orderNum) {
+        myself.payOrdersDetailView.height = 40*orderNum+60;
+    }];
+    [_payOrdersDetailView setPayPriceBlock:^(NSString * payPrice) {
+        myself.payPriceLabel.text = [NSString stringWithFormat:@"   待支付￥%@", payPrice];
+    }];
+}
+
+- (void)initForPayView{
+    _payView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-45, SCREEN_WIDTH, 45)];
+    _payView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_payView];
+    
+    _payPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3*2, _payView.height)];
+    _payPriceLabel.backgroundColor = [UIColor colorWithRed:0.34 green:0.34 blue:0.34 alpha:1.00];
+    _payPriceLabel.textColor = [UIColor whiteColor];
+    [_payView addSubview:_payPriceLabel];
+    
+    _payButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _payButton.frame = CGRectMake(SCREEN_WIDTH/3*2, 0, SCREEN_WIDTH/3, _payView.height);
+    _payButton.backgroundColor = [UIColor colorWithRed:0.94 green:0.45 blue:0.26 alpha:1.00];
+    [_payButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_payView addSubview:_payButton];
+    [_payButton addTarget:self action:@selector(payBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)payBtnAction:(UIButton *)btn{
+    ZZQPayOrderViewController * payOrderVC = [[ZZQPayOrderViewController alloc] init];
+    [payOrderVC setOrderId:_orderId];
+    [self.navigationController pushViewController:payOrderVC animated:YES];
+}
 #pragma mark
 #pragma mark ============ 其它内容
 - (void)viewWillAppear:(BOOL)animated{

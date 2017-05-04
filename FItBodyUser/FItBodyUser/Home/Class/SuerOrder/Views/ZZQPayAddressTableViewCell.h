@@ -11,6 +11,9 @@
 
 @interface ZZQPayAddressTableViewCell : UITableViewCell
 
+/**付款方式字符串*/
+@property(nonatomic, copy)void(^payWayBlock)(NSString * payWay);
+
 - (void)setCellIndexPath:(NSIndexPath *)indexPath orderId:(NSString *)orderId;
 
 /**设置新地址*/

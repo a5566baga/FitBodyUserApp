@@ -239,50 +239,47 @@
 
 - (void)checkLogin{
     //对是否登录的内容做设置
+    __weak typeof(self) myself = self;
     if ([AVUser currentUser]) {
         NSString * userId = [[AVUser currentUser] objectId];
         AVQuery * userQuery = [AVQuery queryWithClassName:@"Users"];
         [userQuery whereKey:@"owner" equalTo:userId];
-        NSArray * objects =[userQuery findObjects];
-        if (objects.count == 1) {
-            _user = [[ZZQUser alloc] init];
-            _user = [_user setUserForObj:objects[0]];
-        }
-//        AVFile * file = [objects[0] objectForKey:@"userProtait"];
-//        NSLog(@"%@", file.url);
-    }
-    __weak typeof(self) myself = self;
-    //TODO:判断是否登录
-    if([AVUser currentUser]){
-        //登录状态
-        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-//            [myself checkLogin];
-            [myself.editViewController setUserObj:_user];
-            [myself.navigationController pushViewController:myself.editViewController animated:YES];
+        [userQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (objects.count == 1) {
+                myself.user = [[ZZQUser alloc] init];
+                myself.user = [_user setUserForObj:objects[0]];
+            }
+            //登录状态
+            UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+                //            [myself checkLogin];
+                [myself.editViewController setUserObj:_user];
+                [myself.navigationController pushViewController:myself.editViewController animated:YES];
+            }];
+            [myself.headerView setTitleName:myself.user.userName smallTitle:@"点击编辑个人信息" headImgUrl:_user.userProtait];
+            myself.navigationItem.title = myself.user.userName;
+            [myself.headerView addGestureRecognizer:tap];
         }];
-        [self.headerView setTitleName:self.user.userName smallTitle:@"点击编辑个人信息" headImgUrl:_user.userProtait];
-        self.navigationItem.title = self.user.userName;
-        [self.headerView addGestureRecognizer:tap];
     }else{
         //创建点击事件,未登录
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
             [myself.navigationController pushViewController:myself.loginViewController animated:YES];
             
             [myself.loginViewController setLoginBlock:^(NSString * phone) {
-//                [myself checkLogin];
+                //                [myself checkLogin];
                 [myself.headerView setTitleName:[NSString stringWithFormat:@"%@",myself.user.userName] smallTitle:@"点击编辑个人信息" headImgUrl:[myself.user userProtait]];
                 myself.navigationItem.title = myself.user.userName;
             }];
             [myself.loginViewController.pwdLoginVC setLoginBlock:^(NSString * name) {
-//                [myself checkLogin];
+                //                [myself checkLogin];
                 [myself.headerView setTitleName:[NSString stringWithFormat:@"%@",myself.user.userName] smallTitle:@"点击编辑个人信息" headImgUrl:[myself.user userProtait]];
                 myself.navigationItem.title = myself.user.userName;
             }];
         }];
-        [self.headerView addGestureRecognizer:tap];
-        [self.headerView setTitleName:[NSString stringWithFormat:@"未登录"] smallTitle:@"点击登录 创造更好的身材吧" headImgUrl:nil];
-        self.navigationItem.title = @"未登录";
+        [myself.headerView addGestureRecognizer:tap];
+        [myself.headerView setTitleName:[NSString stringWithFormat:@"未登录"] smallTitle:@"点击登录 创造更好的身材吧" headImgUrl:nil];
+        myself.navigationItem.title = @"未登录";
     }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{

@@ -156,6 +156,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView clearSelectedRowsAnimated:YES];
+    //把当前的选择的
     
     [self.navigationController popViewControllerAnimated:YES];
 }

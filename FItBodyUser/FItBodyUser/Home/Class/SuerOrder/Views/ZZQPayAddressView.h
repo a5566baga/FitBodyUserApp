@@ -14,6 +14,8 @@
 
 /**选择地址的vc*/
 @property(nonatomic, copy)void(^addressBlock)(ZZQAddressViewController * addressVC);
+/**付款方式字符串*/
+@property(nonatomic, copy)void(^payWayBlock)(NSString * payWay);
 
 - (void)setOrderIdStr:(NSString *)orderId;
 - (void)setNewAddress:(ZZQAddress *)address;

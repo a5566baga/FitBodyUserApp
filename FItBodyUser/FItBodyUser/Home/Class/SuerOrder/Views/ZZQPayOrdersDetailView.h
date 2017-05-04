@@ -10,6 +10,9 @@
 
 @interface ZZQPayOrdersDetailView : UIView
 
+@property(nonatomic, copy)void(^payOrderHeighblock)(CGFloat heigh);
+@property(nonatomic, copy)void(^payPriceBlock)(NSString * payPrice);
+
 - (void)setOrderIdStr:(NSString *)orderId;
 
 @end
