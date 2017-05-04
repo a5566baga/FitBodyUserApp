@@ -33,6 +33,12 @@
 @property(nonatomic, strong)UIView * payView;
 @property(nonatomic, strong)UILabel * payPriceLabel;
 @property(nonatomic, strong)UIButton * payButton;
+//价格
+@property(nonatomic, copy)NSString * price;
+//店家名
+@property(nonatomic, copy)NSString * storeName;
+//支付方式
+@property(nonatomic, copy)NSString * payWay;
 
 @end
 
@@ -64,6 +70,7 @@
     }];
     [_payAddressView setPayWayBlock:^(NSString * payWay) {
         [myself.payButton setTitle:payWay forState:UIControlStateNormal];
+        myself.payWay = payWay;
     }];
 }
 
@@ -79,6 +86,10 @@
     }];
     [_payOrdersDetailView setPayPriceBlock:^(NSString * payPrice) {
         myself.payPriceLabel.text = [NSString stringWithFormat:@"   待支付￥%@", payPrice];
+        myself.price = payPrice;
+    }];
+    [_payOrdersDetailView setPayStroeNameBlock:^(NSString * stroeName) {
+        myself.storeName = stroeName;
     }];
 }
 
@@ -102,8 +113,16 @@
 
 - (void)payBtnAction:(UIButton *)btn{
     ZZQPayOrderViewController * payOrderVC = [[ZZQPayOrderViewController alloc] init];
-    [payOrderVC setOrderId:_orderId];
+    //传支付方式、店家名称、价格
+    [payOrderVC setOrderId:_orderId price:_price payWay:_payWay storeName:_storeName];
     [self.navigationController pushViewController:payOrderVC animated:YES];
+    //更改订单状态
+#warning 待修改
+//    AVObject * order = [AVObject objectWithClassName:@"Orders" objectId:_orderId];
+//    [order setObject:@"待支付" forKey:@"orderStatus"];
+//    [order saveInBackground];
+//    NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+//    [userDefault removeObjectForKey:ORDER_ID];
 }
 #pragma mark
 #pragma mark ============ 其它内容

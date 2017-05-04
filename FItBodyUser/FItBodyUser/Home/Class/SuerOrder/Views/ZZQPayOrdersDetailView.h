@@ -12,6 +12,7 @@
 
 @property(nonatomic, copy)void(^payOrderHeighblock)(CGFloat heigh);
 @property(nonatomic, copy)void(^payPriceBlock)(NSString * payPrice);
+@property(nonatomic, copy)void(^payStroeNameBlock)(NSString * storeName);
 
 - (void)setOrderIdStr:(NSString *)orderId;
 

@@ -10,6 +10,6 @@
 
 @interface ZZQPayOrderViewController : ZZQBaseViewController
 
-- (void)setOrderId:(NSString *)orderId;
+- (void)setOrderId:(NSString *)orderId price:(NSString *)price payWay:(NSString *)payWay storeName:(NSString *)storeName;
 
 @end

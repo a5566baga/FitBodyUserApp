@@ -16,6 +16,9 @@
 
 //订单id
 @property(nonatomic, copy)NSString * orderId;
+@property(nonatomic, copy)NSString * price;
+@property(nonatomic, copy)NSString * storeName;
+@property(nonatomic, copy)NSString * payWay;
 //总订单
 @property(nonatomic, strong)NSArray * orderArray;
 @property(nonatomic, strong)ZZQOrders * order;
@@ -99,8 +102,11 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 }
 
-- (void)setOrderId:(NSString *)orderId{
+- (void)setOrderId:(NSString *)orderId price:(NSString *)price payWay:(NSString *)payWay storeName:(NSString *)storeName{
     _orderId = orderId;
+    _payWay = payWay;
+    _price = price;
+    _storeName = storeName;
 }
 
 - (void)didReceiveMemoryWarning {

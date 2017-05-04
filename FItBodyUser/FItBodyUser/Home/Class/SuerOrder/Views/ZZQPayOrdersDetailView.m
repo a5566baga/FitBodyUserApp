@@ -84,6 +84,7 @@
                             myself.payOrderHeighblock(myself.dataList.count);
                             [myself.tableView reloadData];
                             myself.payPriceBlock(myself.priceStr);
+                            myself.payStroeNameBlock(myself.storeName);
                         }
                     }];
                 }
