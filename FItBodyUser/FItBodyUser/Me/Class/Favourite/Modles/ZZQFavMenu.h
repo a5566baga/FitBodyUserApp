@@ -10,4 +10,6 @@
 
 @interface ZZQFavMenu : NSObject
 
+
+
 @end
