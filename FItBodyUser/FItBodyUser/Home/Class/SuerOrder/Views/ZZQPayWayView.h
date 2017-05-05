@@ -10,4 +10,6 @@
 
 @interface ZZQPayWayView : UIView
 
+- (void)setPayWay:(NSString *)payWay;
+
 @end

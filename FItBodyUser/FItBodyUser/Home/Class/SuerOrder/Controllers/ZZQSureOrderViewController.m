@@ -118,11 +118,11 @@
     [self.navigationController pushViewController:payOrderVC animated:YES];
     //更改订单状态
 #warning 待修改
-//    AVObject * order = [AVObject objectWithClassName:@"Orders" objectId:_orderId];
-//    [order setObject:@"待支付" forKey:@"orderStatus"];
-//    [order saveInBackground];
-//    NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
-//    [userDefault removeObjectForKey:ORDER_ID];
+    AVObject * order = [AVObject objectWithClassName:@"Orders" objectId:_orderId];
+    [order setObject:@"待支付" forKey:@"orderStatus"];
+    [order saveInBackground];
+    NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault removeObjectForKey:ORDER_ID];
 }
 #pragma mark
 #pragma mark ============ 其它内容
@@ -134,7 +134,6 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.tabBarController.tabBar setHidden:NO];
-    [self.tabBarController.tabBar setHidden:YES];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 }
 

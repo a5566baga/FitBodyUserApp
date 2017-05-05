@@ -28,6 +28,9 @@
 @property(nonatomic, strong)ZZQPayOrderView * orderView;
 //支付方式视图
 @property(nonatomic, strong)ZZQPayWayView * payWayView;
+//支付按钮
+@property(nonatomic, strong)UIButton * payButton;
+
 @end
 
 @implementation ZZQPayOrderViewController
@@ -36,30 +39,55 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"在线支付";
+    self.view.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1.00];
     [self initForOrderData];
-    //创建订单展示视图
+    //创建订单时间展示视图
     [self initForOrderView];
     //支付的选择视图
     [self initForPayView];
+    //支付按钮
+    [self initForBootmView];
 }
 
 #pragma mark
 #pragma mark ============ 订单展示视图
 - (void)initForOrderView{
-    _orderView = [[ZZQPayOrderView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 200)];
-    [_orderView setOrderId:_orderId];
-    //    _orderView.backgroundColor = [UIColor orangeColor];
+    _orderView = [[ZZQPayOrderView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 130)];
+    [_orderView setOrderId:_orderId storeName:_storeName price:_price];
     [self.view addSubview:_orderView];
 }
 
 //支付选择视图
 - (void)initForPayView{
-    _payWayView = [[ZZQPayWayView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_orderView.frame), SCREEN_WIDTH, SCREEN_HEIGHT-64-_orderView.height)];
-    _payWayView.backgroundColor = [UIColor blueColor];
+    _payWayView = [[ZZQPayWayView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_orderView.frame), SCREEN_WIDTH, 120)];
+    [_payWayView setPayWay:_payWay];
     [self.view addSubview:_payWayView];
+    _payWayView.backgroundColor = [UIColor redColor];
 }
 
-
+//底部支付按钮
+- (void)initForBootmView{
+    _payButton = [[UIButton alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-40, SCREEN_WIDTH, 40)];
+    _payButton.backgroundColor = [UIColor colorWithRed:0.93 green:0.35 blue:0.32 alpha:1.00];
+    [_payButton setTitle:@"确认支付" forState:UIControlStateNormal];
+    [_payButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _payButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:_payButton];
+    
+    [_payButton addTarget:self action:@selector(payAction:) forControlEvents:UIControlEventTouchUpInside];
+}
+- (void)payAction:(UIButton *)btn{
+    AVObject * order = [AVObject objectWithClassName:@"Orders" objectId:_orderId];
+    [order setObject:@"已支付" forKey:@"orderStatus"];
+    [order saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            [ProgressHUD showSuccess:@"支付成功"];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+            [ProgressHUD showError:@"支付失败"];
+        }
+    }];
+}
 #pragma mark
 #pragma mark ============ 请求数据
 - (void)initForOrderData{
@@ -98,7 +126,6 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.tabBarController.tabBar setHidden:NO];
-    [self.tabBarController.tabBar setHidden:YES];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 }
 
