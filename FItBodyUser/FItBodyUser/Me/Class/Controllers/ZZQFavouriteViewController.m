@@ -15,7 +15,7 @@
 #define MENCHANT_CELL @"MenchantCell"
 #define MENU_CELL @"MenuCell"
 #define BTN_H 50
-@interface ZZQFavouriteViewController ()<UIScrollViewDelegate>
+@interface ZZQFavouriteViewController ()<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 //商家的cell
 @property(nonatomic, strong)ZZQFavouriteTableViewCell * menchantCell;
@@ -122,15 +122,27 @@
 //收藏菜品的tableview
 - (void)initMenuFavView{
     _menuTableView = [[UITableView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, _scrollView.height) style:UITableViewStyleGrouped];
-    _menuTableView.backgroundColor = [UIColor redColor];
+    _menuTableView.showsHorizontalScrollIndicator = NO;
+    _menuTableView.showsVerticalScrollIndicator = NO;
+    _menuTableView.bounces = NO;
+    _menuTableView.delegate = self;
+    _menuTableView.dataSource = self;
+    _menuTableView.tag = 1001;
     [_scrollView addSubview:_menuTableView];
+//    _menuTableView.backgroundColor = [UIColor redColor];
 }
 
 //收藏店铺的tableview
 - (void)initForStoreFavView{
     _menchantTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, _scrollView.height) style:UITableViewStyleGrouped];
-    _menchantTableView.backgroundColor = [UIColor blueColor];
+    _menchantTableView.showsHorizontalScrollIndicator = NO;
+    _menchantTableView.showsVerticalScrollIndicator = NO;
+    _menchantTableView.bounces = NO;
+    _menchantTableView.delegate = self;
+    _menchantTableView.dataSource = self;
+    _menchantTableView.tag = 1000;
     [_scrollView addSubview:_menchantTableView];
+//    _menchantTableView.backgroundColor = [UIColor blueColor];
 }
 
 #pragma mark
@@ -144,6 +156,7 @@
         [stroeQuery whereKey:@"userID" equalTo:[user objectId]];
         [stroeQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             if (objects.count != 0) {
+                NSInteger numSum = objects.count;
                 for (AVObject * obj in objects) {
                     NSString * storeName = [obj objectForKey:@"favStoreName"];
                     AVQuery * query = [AVQuery queryWithClassName:@"Merchants"];
@@ -153,6 +166,9 @@
                             myself.favMenchant = [[ZZQMerchant alloc] init];
                             myself.favMenchant = [myself.favMenchant setMerchantDetail:objects[0]];
                             [myself.menchantArray addObject:myself.favMenchant];
+                            if (myself.menchantArray.count == numSum) {
+                                [myself.menchantTableView reloadData];
+                            }
                         }
                     }];
                 }
@@ -170,6 +186,7 @@
         [menuQuery whereKey:@"userId" equalTo:[user objectId]];
         [menuQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             if (objects.count != 0) {
+                NSInteger numSum = objects.count;
                 for (AVObject * obj in objects) {
                     NSString * menuId = [obj objectForKey:@"menuId"];
                     AVQuery * query = [AVQuery queryWithClassName:@"Menus"];
@@ -179,6 +196,9 @@
                             myself.favMenu = [[ZZQMenu alloc] init];
                             myself.favMenu = [myself.favMenu getMenuWithObject:objects[0]];
                             [myself.menuArray addObject:myself.favMenu];
+                            if (myself.menuArray.count == numSum) {
+                                [myself.menuTableView reloadData];
+                            }
                         }
                     }];
                 }
@@ -190,6 +210,55 @@
 #pragma mark
 #pragma mark ============== 代理
 //tableView代理
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (tableView.tag == 1000) {
+        //点店铺收藏
+        return _menchantArray.count;
+    }else{
+        return _menuArray.count;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 120;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView.tag == 1000) {
+        _menchantCell = [tableView dequeueReusableCellWithIdentifier:MENCHANT_CELL];
+        if (_menchantCell == nil) {
+            _menchantCell = [[ZZQFavouriteTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:MENCHANT_CELL];
+        }
+        _menchantCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [_menchantCell setCellForModle:_menchantArray[indexPath.row]];
+        return _menchantCell;
+    }else{
+        _menuCell = [tableView dequeueReusableCellWithIdentifier:MENU_CELL];
+        if (_menuCell == nil) {
+            _menuCell = [[ZZQFavouriteMenuTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                                             reuseIdentifier:MENU_CELL];
+        }
+        _menuCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [_menuCell setCellForModle:_menuArray[indexPath.row]];
+        return _menuCell;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView clearSelectedRowsAnimated:YES];
+}
 
 //scrollView代理
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
@@ -201,16 +270,16 @@
             myself.line.frame = rect;
             myself.menuBtn.selected = NO;
             myself.storeBtn.selected = YES;
-            [myself initForStoreData];
+//            [myself initForStoreData];
         }];
-    }else{
+    }else if(_scrollView.contentOffset.x / SCREEN_WIDTH == 1){
         [UIView animateWithDuration:0.5 animations:^{
             CGRect rect = myself.line.frame;
             rect.origin.x = SCREEN_WIDTH/2;
             myself.line.frame = rect;
             myself.menuBtn.selected = YES;
             myself.storeBtn.selected = NO;
-            [myself initForMenuData];
+//            [myself initForMenuData];
         }];
     }
 }

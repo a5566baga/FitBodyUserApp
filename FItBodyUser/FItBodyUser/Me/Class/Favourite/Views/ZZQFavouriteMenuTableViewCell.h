@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZQMenu.h"
 
 @interface ZZQFavouriteMenuTableViewCell : UITableViewCell
+
+- (void)setCellForModle:(ZZQMenu *)menu;
 
 @end

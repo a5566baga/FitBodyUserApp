@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZQMerchant.h"
 
 @interface ZZQFavouriteTableViewCell : UITableViewCell
+
+- (void)setCellForModle:(ZZQMerchant *)merchant;
 
 @end
