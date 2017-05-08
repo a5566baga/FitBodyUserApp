@@ -53,6 +53,7 @@
     _dataList = [[NSMutableArray alloc] init];
     AVQuery * query = [AVQuery queryWithClassName:@"Orders"];
     [query whereKey:@"userId" equalTo:[[AVUser currentUser] objectId]];
+    [query whereKey:@"orderStatus" equalTo:@"已支付"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects.count != 0) {
             for (AVObject * obj in objects) {
@@ -63,6 +64,7 @@
             [myself.tableView reloadData];
         }else{
             [myself initForNotDataView];
+            [myself.tableView reloadData];
         }
     }];
 }
@@ -86,8 +88,34 @@
     if (_cell == nil) {
         _cell = [[ZZQDoingTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:DOING_CELL];
     }
+    [_cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [_cell setCellForOrder:_dataList[indexPath.section] indexPath:indexPath];
     
+    __weak typeof(self)myself = self;
+    [_cell setReciveBlock:^(NSString * orderId, NSIndexPath * index) {
+        AVObject * obj = [AVObject objectWithClassName:@"Orders" objectId:orderId];
+        [obj setObject:@"已收货" forKey:@"orderStatus"];
+        [obj saveInBackground];
+        [myself.dataList removeObjectAtIndex:index.section];
+        [myself.tableView reloadData];
+    }];
     return _cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 150;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 15;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView clearSelectedRowsAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

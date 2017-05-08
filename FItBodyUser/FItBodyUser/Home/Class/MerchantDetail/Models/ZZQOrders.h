@@ -25,6 +25,12 @@
 @property(nonatomic, copy)NSString * orderCalorie;
 //商家id
 @property(nonatomic, copy)NSString * merchantId;
+/**订单状态*/
+@property(nonatomic, copy)NSString * orderStatus;
+/**创建时间*/
+@property(nonatomic, strong)NSDate * createdAt;
+/**更新时间*/
+@property(nonatomic, strong)NSDate * updatedAt;
 
 - (ZZQOrders *)setOrdersForObj:(AVObject *)obj;
 

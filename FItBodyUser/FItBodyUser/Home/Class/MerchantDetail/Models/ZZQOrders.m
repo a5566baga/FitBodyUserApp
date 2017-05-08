@@ -18,6 +18,9 @@
     order.orderCalorie = [obj objectForKey:@"orderCalorie"];
     order.orderPrice = [obj objectForKey:@"orderPrice"];
     order.merchantId = [obj objectForKey:@"merchantId"];
+    order.orderStatus = [obj objectForKey:@"orderStatus"];
+    order.createdAt = [obj objectForKey:@"createdAt"];
+    order.updatedAt = [obj objectForKey:@"updatedAt"];
     return order;
 }
 

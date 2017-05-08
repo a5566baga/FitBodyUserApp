@@ -11,6 +11,8 @@
 
 @interface ZZQDoingTableViewCell : UITableViewCell
 
-- (void)setCellForOrder:(ZZQOrders *)order;
+@property(nonatomic, copy)void(^reciveBlock)(NSString * orderID, NSIndexPath * index);
+
+- (void)setCellForOrder:(ZZQOrders *)order indexPath:(NSIndexPath *)index;
 
 @end

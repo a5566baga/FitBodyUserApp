@@ -182,8 +182,8 @@
 		B56D8AFC1E7830F5000085E6 /* ZZQMeCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMeCellButton.m; sourceTree = "<group>"; };
 		B56D8B021E7844B7000085E6 /* ZZQDoingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZQDoingViewController.h; path = Controllers/ZZQDoingViewController.h; sourceTree = "<group>"; };
 		B56D8B031E7844B7000085E6 /* ZZQDoingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQDoingViewController.m; path = Controllers/ZZQDoingViewController.m; sourceTree = "<group>"; };
-		B56D8B051E7844CD000085E6 /* ZZQNoCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQNoCommentsViewController.h; sourceTree = "<group>"; };
-		B56D8B061E7844CD000085E6 /* ZZQNoCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQNoCommentsViewController.m; sourceTree = "<group>"; };
+		B56D8B051E7844CD000085E6 /* ZZQNoCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZQNoCommentsViewController.h; path = Controllers/ZZQNoCommentsViewController.h; sourceTree = "<group>"; };
+		B56D8B061E7844CD000085E6 /* ZZQNoCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQNoCommentsViewController.m; path = Controllers/ZZQNoCommentsViewController.m; sourceTree = "<group>"; };
 		B56D8B081E7844DB000085E6 /* ZZQAlreadyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAlreadyViewController.h; sourceTree = "<group>"; };
 		B56D8B091E7844DB000085E6 /* ZZQAlreadyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAlreadyViewController.m; sourceTree = "<group>"; };
 		B56D8B0B1E794F8F000085E6 /* ZZQEditMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQEditMeViewController.h; sourceTree = "<group>"; };
@@ -450,6 +450,31 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		B50512DD1EC0AD2500482DB1 /* NoComment */ = {
+			isa = PBXGroup;
+			children = (
+				B50512DE1EC0AD3500482DB1 /* Controllers */,
+				B50512DF1EC0AD3E00482DB1 /* Views */,
+			);
+			name = NoComment;
+			sourceTree = "<group>";
+		};
+		B50512DE1EC0AD3500482DB1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B56D8B051E7844CD000085E6 /* ZZQNoCommentsViewController.h */,
+				B56D8B061E7844CD000085E6 /* ZZQNoCommentsViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B50512DF1EC0AD3E00482DB1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		B506AE441E75331C00B39731 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +574,7 @@
 		B56D8AFE1E784497000085E6 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				B50512DD1EC0AD2500482DB1 /* NoComment */,
 				B50512D71EC0628A00482DB1 /* Doing */,
 				B50512A01EB3771C00482DB1 /* Favourite */,
 				B56D8AFF1E784497000085E6 /* Controllers */,
@@ -561,8 +587,6 @@
 		B56D8AFF1E784497000085E6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B56D8B051E7844CD000085E6 /* ZZQNoCommentsViewController.h */,
-				B56D8B061E7844CD000085E6 /* ZZQNoCommentsViewController.m */,
 				B56D8B081E7844DB000085E6 /* ZZQAlreadyViewController.h */,
 				B56D8B091E7844DB000085E6 /* ZZQAlreadyViewController.m */,
 				B56D8B0B1E794F8F000085E6 /* ZZQEditMeViewController.h */,
