@@ -210,6 +210,7 @@
         }else{
             [obj setObject:[[AVUser currentUser] objectId] forKey:@"userId"];
             [obj setObject:uniqueStr forKey:@"orderUniqeNum"];
+            [obj setObject:_menu.merchantID forKey:@"merchantId"];
             //保存总订单成功
             if ([obj save]) {
                 [query whereKey:@"orderUniqeNum" equalTo:uniqueStr];
@@ -232,6 +233,8 @@
         NSInteger menuNum = 1;
         double menuPrice = [_menu.price doubleValue];
         double calorieSum = 0;
+        NSArray * calarioArr = [_menu.calorie componentsSeparatedByString:@"大卡"];
+        calorieSum = menuNum * [calarioArr[0] doubleValue];
         NSArray * menuArr = [orderTempQuery findObjects];
         if (menuArr.count != 0) {
             menuNum = [[menuArr[0] objectForKey:@"menuNum"] integerValue] + 1;
@@ -293,7 +296,8 @@
         if (menuArr.count != 0) {
             menuNum = [[menuArr[0] objectForKey:@"menuNum"] integerValue] - 1;
             menuPrice = menuNum * [_menu.price doubleValue];
-            calorieSum = menuNum * [_menu.calorie doubleValue];
+            NSArray * calarioArr = [_menu.calorie componentsSeparatedByString:@"大卡"];
+            calorieSum = menuNum * [calarioArr[0] doubleValue];
             tempOrder = menuArr[0];
             if (menuNum > 0) {
                 //菜品名称

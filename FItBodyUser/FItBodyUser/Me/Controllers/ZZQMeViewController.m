@@ -162,15 +162,12 @@
             __weak typeof(self)weakself = self;
             [weakself.cell setBlock:^(NSString * title) {
                 if([title isEqualToString:@"进行中"]){
-                    NSLog(@"%@", title);
                     ZZQDoingViewController * doingVC = [[ZZQDoingViewController alloc] init];
                     [weakself.navigationController pushViewController:doingVC animated:YES];
                 }else if([title isEqualToString:@"待评论"]){
-                    NSLog(@"%@", title);
                     ZZQNoCommentsViewController * noCommentVC = [[ZZQNoCommentsViewController alloc] init];
                     [weakself.navigationController pushViewController:noCommentVC animated:YES];
                 }else if([title isEqualToString:@"已完成"]){
-                    NSLog(@"%@", title);
                     ZZQAlreadyViewController * alreayVC = [[ZZQAlreadyViewController alloc] init];
                     [weakself.navigationController pushViewController:alreayVC animated:YES];
                 }

@@ -112,14 +112,12 @@
     _cartLabel.contentHorizontalAlignment = NSTextLayoutOrientationHorizontal;
     _cartLabel.titleLabel.font = [UIFont systemFontOfSize:10];
     _cartLabel.titleLabel.textColor = [UIColor whiteColor];
-    //    [_cartLabel setTitle:@"1" forState:UIControlStateNormal];
     [self addSubview:_cartLabel];
     
     _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_cartBtn.frame)-120, 10, 100, 20)];
     _priceLabel.font = [UIFont fontWithName:LITTER_TITLE_FONT size:18];
     _priceLabel.textColor = [UIColor colorWithRed:0.93 green:0.35 blue:0.32 alpha:1.00];
     _priceLabel.textAlignment = NSTextAlignmentRight;
-    //    _priceLabel.text = @"￥20";
     [self addSubview:_priceLabel];
 }
 //分享按钮事件

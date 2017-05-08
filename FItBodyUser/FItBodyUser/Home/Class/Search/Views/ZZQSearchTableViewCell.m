@@ -32,7 +32,7 @@
 - (void)initForCell{
     CGFloat margin = 15;
     CGFloat width = 120;
-    _imagePic = [[UIImageView alloc] initWithFrame:CGRectMake(margin, margin, width, width)];
+    _imagePic = [[UIImageView alloc] initWithFrame:CGRectMake(margin, margin, width*1.3, width)];
     _imagePic.layer.cornerRadius = 10;
     _imagePic.layer.masksToBounds = YES;
     _imagePic.image = [UIImage imageWithData:_menu.portrait];
@@ -59,7 +59,7 @@
     AVQuery * query = [AVQuery queryWithClassName:@"Merchants"];
     [query whereKey:@"objectId" equalTo:_menu.merchantID];
     NSString * storeName = [[query findObjects][0] objectForKey:@"name"];
-    _storeLabel = [[UILabel alloc] initWithFrame:CGRectMake(_favNumLabel.origin.x, _favNumLabel.origin.y-5, _priceLabel.width, 30)];
+    _storeLabel = [[UILabel alloc] initWithFrame:CGRectMake(_favNumLabel.origin.x, _favNumLabel.origin.y-5, self.width-_favNumLabel.origin.x-margin, 30)];
     _storeLabel.font = [UIFont fontWithName:CONTENT_FONT size:15];
     _storeLabel.textColor = [UIColor colorWithRed:0.34 green:0.34 blue:0.34 alpha:1.00];
     _storeLabel.text = [NSString stringWithFormat:@"来自 %@",storeName];

@@ -25,6 +25,7 @@
 		B50512D01EBB139900482DB1 /* ZZQPayOrderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512CF1EBB139900482DB1 /* ZZQPayOrderFooterView.m */; };
 		B50512D31EBC262C00482DB1 /* ZZQPayWayFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512D21EBC262C00482DB1 /* ZZQPayWayFooterView.m */; };
 		B50512D61EBC267300482DB1 /* ZZQPayWayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512D51EBC267300482DB1 /* ZZQPayWayTableViewCell.m */; };
+		B50512DC1EC0642500482DB1 /* ZZQDoingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512DB1EC0642500482DB1 /* ZZQDoingTableViewCell.m */; };
 		B5052A5B1EB0DF2F000B74B6 /* ZZQShopCartView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A5A1EB0DF2F000B74B6 /* ZZQShopCartView.m */; };
 		B5052A5E1EB0EC03000B74B6 /* ZZQShopCartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A5D1EB0EC03000B74B6 /* ZZQShopCartHeaderView.m */; };
 		B5052A611EB0EC17000B74B6 /* ZZQShopCartFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A601EB0EC17000B74B6 /* ZZQShopCartFootView.m */; };
@@ -144,6 +145,8 @@
 		B50512D21EBC262C00482DB1 /* ZZQPayWayFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQPayWayFooterView.m; sourceTree = "<group>"; };
 		B50512D41EBC267300482DB1 /* ZZQPayWayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQPayWayTableViewCell.h; sourceTree = "<group>"; };
 		B50512D51EBC267300482DB1 /* ZZQPayWayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQPayWayTableViewCell.m; sourceTree = "<group>"; };
+		B50512DA1EC0642500482DB1 /* ZZQDoingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZQDoingTableViewCell.h; path = Views/ZZQDoingTableViewCell.h; sourceTree = "<group>"; };
+		B50512DB1EC0642500482DB1 /* ZZQDoingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQDoingTableViewCell.m; path = Views/ZZQDoingTableViewCell.m; sourceTree = "<group>"; };
 		B5052A591EB0DF2F000B74B6 /* ZZQShopCartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQShopCartView.h; sourceTree = "<group>"; };
 		B5052A5A1EB0DF2F000B74B6 /* ZZQShopCartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQShopCartView.m; sourceTree = "<group>"; };
 		B5052A5C1EB0EC03000B74B6 /* ZZQShopCartHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQShopCartHeaderView.h; sourceTree = "<group>"; };
@@ -177,8 +180,8 @@
 		B56D8AF91E781EEA000085E6 /* ZZQMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMeTableViewCell.m; sourceTree = "<group>"; };
 		B56D8AFB1E7830F5000085E6 /* ZZQMeCellButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQMeCellButton.h; sourceTree = "<group>"; };
 		B56D8AFC1E7830F5000085E6 /* ZZQMeCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQMeCellButton.m; sourceTree = "<group>"; };
-		B56D8B021E7844B7000085E6 /* ZZQDoingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQDoingViewController.h; sourceTree = "<group>"; };
-		B56D8B031E7844B7000085E6 /* ZZQDoingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQDoingViewController.m; sourceTree = "<group>"; };
+		B56D8B021E7844B7000085E6 /* ZZQDoingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZQDoingViewController.h; path = Controllers/ZZQDoingViewController.h; sourceTree = "<group>"; };
+		B56D8B031E7844B7000085E6 /* ZZQDoingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQDoingViewController.m; path = Controllers/ZZQDoingViewController.m; sourceTree = "<group>"; };
 		B56D8B051E7844CD000085E6 /* ZZQNoCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQNoCommentsViewController.h; sourceTree = "<group>"; };
 		B56D8B061E7844CD000085E6 /* ZZQNoCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQNoCommentsViewController.m; sourceTree = "<group>"; };
 		B56D8B081E7844DB000085E6 /* ZZQAlreadyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAlreadyViewController.h; sourceTree = "<group>"; };
@@ -420,6 +423,33 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B50512D71EC0628A00482DB1 /* Doing */ = {
+			isa = PBXGroup;
+			children = (
+				B50512D81EC0629900482DB1 /* Controllers */,
+				B50512D91EC062A200482DB1 /* Views */,
+			);
+			name = Doing;
+			sourceTree = "<group>";
+		};
+		B50512D81EC0629900482DB1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B56D8B021E7844B7000085E6 /* ZZQDoingViewController.h */,
+				B56D8B031E7844B7000085E6 /* ZZQDoingViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B50512D91EC062A200482DB1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B50512DA1EC0642500482DB1 /* ZZQDoingTableViewCell.h */,
+				B50512DB1EC0642500482DB1 /* ZZQDoingTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		B506AE441E75331C00B39731 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -519,6 +549,7 @@
 		B56D8AFE1E784497000085E6 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				B50512D71EC0628A00482DB1 /* Doing */,
 				B50512A01EB3771C00482DB1 /* Favourite */,
 				B56D8AFF1E784497000085E6 /* Controllers */,
 				B56D8B001E784497000085E6 /* Models */,
@@ -530,8 +561,6 @@
 		B56D8AFF1E784497000085E6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B56D8B021E7844B7000085E6 /* ZZQDoingViewController.h */,
-				B56D8B031E7844B7000085E6 /* ZZQDoingViewController.m */,
 				B56D8B051E7844CD000085E6 /* ZZQNoCommentsViewController.h */,
 				B56D8B061E7844CD000085E6 /* ZZQNoCommentsViewController.m */,
 				B56D8B081E7844DB000085E6 /* ZZQAlreadyViewController.h */,
@@ -1145,6 +1174,7 @@
 				B56D8B3B1E814A92000085E6 /* ZZQSettingSexView.m in Sources */,
 				B57072911EA3AAFA003DE3F8 /* ZZQAddNewAddressBtnView.m in Sources */,
 				B57070AD1E866040003DE3F8 /* ZZQAgeGroupTableViewCell.m in Sources */,
+				B50512DC1EC0642500482DB1 /* ZZQDoingTableViewCell.m in Sources */,
 				B56D8AFA1E781EEA000085E6 /* ZZQMeTableViewCell.m in Sources */,
 				B570727F1E9E5ACE003DE3F8 /* ZZQFavouriteBtn.m in Sources */,
 				B50512CD1EBB138800482DB1 /* ZZQPayOrderHeaderView.m in Sources */,
