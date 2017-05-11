@@ -54,7 +54,17 @@
     AVQuery * query = [AVQuery queryWithClassName:@"Orders"];
     [query whereKey:@"userId" equalTo:[[AVUser currentUser] objectId]];
     [query whereKey:@"orderStatus" equalTo:@"已支付"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+    
+    AVQuery * query1 = [AVQuery queryWithClassName:@"Orders"];
+    [query1 whereKey:@"userId" equalTo:[[AVUser currentUser] objectId]];
+    [query1 whereKey:@"orderStatus" equalTo:@"已接单"];
+    AVQuery * query2 = [AVQuery queryWithClassName:@"Orders"];
+    [query2 whereKey:@"userId" equalTo:[[AVUser currentUser] objectId]];
+    [query2 whereKey:@"orderStatus" equalTo:@"取消订单"];
+    
+    AVQuery * query3 = [AVQuery orQueryWithSubqueries:[NSArray arrayWithObjects:query, query1, query2, nil]];
+    
+    [query3 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects.count != 0) {
             for (AVObject * obj in objects) {
                 ZZQOrders * order = [[ZZQOrders alloc] init];
