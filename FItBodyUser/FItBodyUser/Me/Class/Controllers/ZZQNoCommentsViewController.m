@@ -98,6 +98,7 @@
     [_cell setCommentBlock:^(NSString * orderId, NSIndexPath * index) {
         //跳转控制器
         ZZQCommentDetailViewController * vc = [[ZZQCommentDetailViewController alloc] init];
+        [vc setOrder:myself.dataList[index.section]];
         [myself.navigationController pushViewController:vc animated:YES];
     }];
     return _cell;

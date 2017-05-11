@@ -28,6 +28,8 @@
 		B50512DC1EC0642500482DB1 /* ZZQDoingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512DB1EC0642500482DB1 /* ZZQDoingTableViewCell.m */; };
 		B50512E81EC4637700482DB1 /* ZZQNoCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512E71EC4637700482DB1 /* ZZQNoCommentsTableViewCell.m */; };
 		B50512EB1EC4681400482DB1 /* ZZQCommentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512EA1EC4681400482DB1 /* ZZQCommentDetailViewController.m */; };
+		B50512EE1EC49AED00482DB1 /* ZZQCommentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512ED1EC49AED00482DB1 /* ZZQCommentHeaderView.m */; };
+		B50512F41EC4B99900482DB1 /* ZZQCommentDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B50512F31EC4B99900482DB1 /* ZZQCommentDetailTableViewCell.m */; };
 		B5052A5B1EB0DF2F000B74B6 /* ZZQShopCartView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A5A1EB0DF2F000B74B6 /* ZZQShopCartView.m */; };
 		B5052A5E1EB0EC03000B74B6 /* ZZQShopCartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A5D1EB0EC03000B74B6 /* ZZQShopCartHeaderView.m */; };
 		B5052A611EB0EC17000B74B6 /* ZZQShopCartFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A601EB0EC17000B74B6 /* ZZQShopCartFootView.m */; };
@@ -153,6 +155,10 @@
 		B50512E71EC4637700482DB1 /* ZZQNoCommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQNoCommentsTableViewCell.m; path = Views/ZZQNoCommentsTableViewCell.m; sourceTree = "<group>"; };
 		B50512E91EC4681400482DB1 /* ZZQCommentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZQCommentDetailViewController.h; path = Controllers/ZZQCommentDetailViewController.h; sourceTree = "<group>"; };
 		B50512EA1EC4681400482DB1 /* ZZQCommentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQCommentDetailViewController.m; path = Controllers/ZZQCommentDetailViewController.m; sourceTree = "<group>"; };
+		B50512EC1EC49AED00482DB1 /* ZZQCommentHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZQCommentHeaderView.h; path = Views/ZZQCommentHeaderView.h; sourceTree = "<group>"; };
+		B50512ED1EC49AED00482DB1 /* ZZQCommentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQCommentHeaderView.m; path = Views/ZZQCommentHeaderView.m; sourceTree = "<group>"; };
+		B50512F21EC4B99900482DB1 /* ZZQCommentDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZQCommentDetailTableViewCell.h; path = Views/ZZQCommentDetailTableViewCell.h; sourceTree = "<group>"; };
+		B50512F31EC4B99900482DB1 /* ZZQCommentDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQCommentDetailTableViewCell.m; path = Views/ZZQCommentDetailTableViewCell.m; sourceTree = "<group>"; };
 		B5052A591EB0DF2F000B74B6 /* ZZQShopCartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQShopCartView.h; sourceTree = "<group>"; };
 		B5052A5A1EB0DF2F000B74B6 /* ZZQShopCartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQShopCartView.m; sourceTree = "<group>"; };
 		B5052A5C1EB0EC03000B74B6 /* ZZQShopCartHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQShopCartHeaderView.h; sourceTree = "<group>"; };
@@ -481,6 +487,10 @@
 			children = (
 				B50512E61EC4637700482DB1 /* ZZQNoCommentsTableViewCell.h */,
 				B50512E71EC4637700482DB1 /* ZZQNoCommentsTableViewCell.m */,
+				B50512EC1EC49AED00482DB1 /* ZZQCommentHeaderView.h */,
+				B50512ED1EC49AED00482DB1 /* ZZQCommentHeaderView.m */,
+				B50512F21EC4B99900482DB1 /* ZZQCommentDetailTableViewCell.h */,
+				B50512F31EC4B99900482DB1 /* ZZQCommentDetailTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1221,6 +1231,7 @@
 				B57070A41E864AAB003DE3F8 /* ZZQNickNameView.m in Sources */,
 				B5052A641EB22C5D000B74B6 /* ZZQOrederTempTableViewCell.m in Sources */,
 				B50512C11EB9DBFB00482DB1 /* ZZQPayOrderViewController.m in Sources */,
+				B50512F41EC4B99900482DB1 /* ZZQCommentDetailTableViewCell.m in Sources */,
 				B50512AC1EB377B500482DB1 /* ZZQFavouriteMenuTableViewCell.m in Sources */,
 				B56D8AD61E76E336000085E6 /* ZZQSearchViewController.m in Sources */,
 				B5B4FA911E74070F0020D9B6 /* ZZQBaseViewController.m in Sources */,
@@ -1229,6 +1240,7 @@
 				B56D8B3E1E814C5C000085E6 /* ZZQSexBtn.m in Sources */,
 				B50512C71EBA170B00482DB1 /* ZZQPayAddressTableViewCell.m in Sources */,
 				B57072881EA35267003DE3F8 /* ZZQCommentViewController.m in Sources */,
+				B50512EE1EC49AED00482DB1 /* ZZQCommentHeaderView.m in Sources */,
 				B57072851EA35253003DE3F8 /* ZZQFavouriteViewController.m in Sources */,
 				B50512BB1EB9D2A300482DB1 /* ZZQPayWayView.m in Sources */,
 				B56D8B3B1E814A92000085E6 /* ZZQSettingSexView.m in Sources */,
