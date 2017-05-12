@@ -65,7 +65,7 @@
     
     CGFloat starWidth = 42*5*0.4;
     CGFloat starHeight = 30*0.4;
-    _startView = [[UIView alloc] initWithFrame:CGRectMake(allLeft, CGRectGetMaxY(_userLabel.frame), starWidth, starHeight)];
+    _startView = [[UIView alloc] initWithFrame:CGRectMake(allLeft, CGRectGetMaxY(_userLabel.frame)+5, starWidth, starHeight)];
     [self.contentView addSubview:_startView];
     for (NSInteger i = 0; i < 5; i++) {
         UIImageView * star = [[UIImageView alloc] initWithFrame:CGRectMake(starWidth/5*i, 0, starWidth/5, starHeight)];

@@ -23,6 +23,7 @@
     comment.createDate = [obj objectForKey:@"createdAt"];
     comment.updateDate = [obj objectForKey:@"updatedAt"];
     comment.userComment = [obj objectForKey:@"userComment"];
+    comment.menuNames = [obj objectForKey:@"menuNames"];
     return comment;
 }
 

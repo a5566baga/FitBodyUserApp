@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ZZQOrderTemp.h"
+@class ZZQComments;
 
 @interface ZZQCommentDetailTableViewCell : UITableViewCell
 
-- (void)setCellModel:(ZZQOrderTemp *)temp;
+@property(nonatomic, copy)void(^commentBlock)(ZZQComments * comment, NSIndexPath * index);
+
+- (void)setCellModel:(ZZQOrderTemp *)temp indexPath:(NSIndexPath *)index;
+- (void)setMerchantID:(NSString *)merchantID;
 
 @end

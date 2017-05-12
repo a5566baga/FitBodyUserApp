@@ -26,6 +26,7 @@
 #import "SVProgressHUD.h"
 #import <UITableView+FDTemplateLayoutCell.h>
 #import "SDCycleScrollView.h"
+#import "HCSStarRatingView.h"
 
 //字体名字
 #define TITLE_FONT @"Songti SC"

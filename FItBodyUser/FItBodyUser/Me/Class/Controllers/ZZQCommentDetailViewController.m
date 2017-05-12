@@ -10,7 +10,7 @@
 #import "ZZQOrderTemp.h"
 #import "ZZQCommentHeaderView.h"
 #import "ZZQCommentDetailTableViewCell.h"
-
+#import "ZZQComments.h"
 
 #define COMMENT_CELL_ID @"COMMENTCELL_ID"
 @interface ZZQCommentDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
@@ -26,6 +26,10 @@
 @property(nonatomic, strong)ZZQCommentHeaderView * headerView;
 //cell
 @property(nonatomic, strong)ZZQCommentDetailTableViewCell * cell;
+//提交评价订单
+@property(nonatomic, strong)UIButton * subCommentBtn;
+//订单数组
+@property(nonatomic, strong)NSMutableArray<ZZQComments *> * commentArray;
 
 @end
 
@@ -36,6 +40,7 @@
     self.navigationItem.title = @"评价";
     [self initForData];
     [self initForTableView];
+    [self initForSureView];
 }
 
 #pragma mark
@@ -79,6 +84,42 @@
 }
 
 #pragma mark
+#pragma mark =========== 设置确认按钮
+- (void)initForSureView{
+    _commentArray = [NSMutableArray array];
+    
+    _subCommentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _subCommentBtn.frame = CGRectMake(0, SCREEN_HEIGHT-30, SCREEN_WIDTH, 30);
+    [_subCommentBtn setBackgroundColor:[UIColor colorWithRed:0.97 green:0.36 blue:0.33 alpha:1.00]];
+    [_subCommentBtn setTitle:@"提交评价" forState:UIControlStateNormal];
+    _subCommentBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+    [_subCommentBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_subCommentBtn addTarget:self action:@selector(subAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_subCommentBtn];
+}
+- (void)subAction:(UIButton *)btn{
+    if (_commentArray.count == _orderList.count) {
+        for (NSInteger i=0; i<_commentArray.count; i++) {
+            AVFile * file = [AVFile fileWithData:_commentArray[i].portrait];
+            AVObject * commObj = [AVObject objectWithClassName:@"Comments"];
+            [commObj setObject:_commentArray[i].userName forKey:@"userName"];
+            [commObj setObject:_commentArray[i].userComment forKey:@"userComment"];
+            [commObj setObject:_commentArray[i].menuObjId forKey:@"menuId"];
+            [commObj setObject:_commentArray[i].menuNames forKey:@"menuNames"];
+            [commObj setObject:file forKey:@"userPortrait"];
+            [commObj setObject:_commentArray[i].startNum forKey:@"startNum"];
+            [commObj setObject:_commentArray[i].storeName forKey:@"storeName"];
+            [commObj saveInBackground];
+        }
+        AVObject * obj = [AVObject objectWithClassName:@"Orders" objectId:_order.objId];
+        [obj setObject:@"已评价" forKey:@"orderStatus"];
+        [obj saveInBackground];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else{
+        [ProgressHUD showError:@"请填写评价"];
+    }
+}
+#pragma mark
 #pragma mark =========== 代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -91,7 +132,17 @@
     if (_cell == nil) {
         _cell = [[ZZQCommentDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:COMMENT_CELL_ID];
     }
-    [_cell setCellModel:_orderList[indexPath.row]];
+    _cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [_cell setCellModel:_orderList[indexPath.row] indexPath:indexPath];
+    [_cell setMerchantID:_order.merchantId];
+    __weak typeof(self)myself = self;
+    [_cell setCommentBlock:^(ZZQComments * comment, NSIndexPath * index) {
+        if (myself.commentArray.count > index.row) {
+            [myself.commentArray replaceObjectAtIndex:index.row withObject:comment];
+        }else{
+            [myself.commentArray insertObject:comment atIndex:index.row];
+        }
+    }];
     return _cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
