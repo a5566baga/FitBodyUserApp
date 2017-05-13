@@ -130,8 +130,10 @@
     btn.selected = !btn.selected;
     [UIView animateWithDuration:0.4 animations:^{
         btn.transform = CGAffineTransformMakeScale(1.2, 1.2);
+        btn.userInteractionEnabled = NO;
     }completion:^(BOOL finished) {
         btn.transform = CGAffineTransformIdentity;
+        btn.userInteractionEnabled = YES;
     }];
     if ([AVUser currentUser]) {
         //操作保存用户的收藏内容

@@ -292,7 +292,9 @@
         if (_commentCell == nil) {
             _commentCell = [[ZZQCommentsTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:COMMENT_CELL_ID];
         }
-        [_commentCell setCommentModel:self.dataListArray[indexPath.row]];
+        if (self.dataListArray.count != 0) {
+            [_commentCell setCommentModel:self.dataListArray[indexPath.row]];
+        }
         return _commentCell;
     }
 }

@@ -116,6 +116,7 @@
         btn.selected = !btn.selected;
         [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
             btn.imageView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+            btn.userInteractionEnabled = NO;
         } completion:^(BOOL finished) {
             btn.imageView.transform = CGAffineTransformIdentity;
             NSInteger favNum = [_menu.favNum integerValue];
@@ -132,7 +133,11 @@
                 AVObject * favObj = [AVObject objectWithClassName:@"FavoutiteMenus"];
                 [favObj setObject:user.objectId forKey:@"userId"];
                 [favObj setObject:_menu.menuID forKey:@"menuId"];
-                [favObj saveInBackground];
+                [favObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (succeeded) {
+                        btn.userInteractionEnabled = YES;
+                    }
+                }];
             }
             _menu.favNum = [NSString stringWithFormat:@"%ld", (long)favNum];
             [btn setTitle:[NSString stringWithFormat:@"%ld", (long)favNum] forState:UIControlStateNormal];

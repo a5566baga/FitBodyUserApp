@@ -90,8 +90,32 @@
     }else{
         //发送验证码
         __weak typeof(self)myself = self;
-        
+        /*
         [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:_phoneNumField.text zone:@"86" customIdentifier:nil result:^(NSError *error) {
+            if (error) {
+                [alertView setMessageErrorWithMsg:@"短信请求失败"];
+                [myself.view addSubview:alertView];
+                [myself setAlertViewAnimal:alertView];
+                btn.userInteractionEnabled = YES;
+                [btn setTitle:@"重新获取" forState:UIControlStateNormal];
+            }else{
+                //开始倒计时
+                __block NSUInteger time = 60;
+                [NSTimer scheduledTimerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
+                    if(time > 0){
+                        time--;
+                        [btn setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)time] forState:UIControlStateNormal];
+                        btn.userInteractionEnabled = NO;
+                    }else{
+                        [timer setFireDate:[NSDate distantFuture]];
+                        btn.userInteractionEnabled = YES;
+                        [btn setTitle:@"重新获取" forState:UIControlStateNormal];
+                    }
+                } repeats:YES];
+            }
+        }];
+        */
+        [AVOSCloud requestSmsCodeWithPhoneNumber:_phoneNumField.text callback:^(BOOL succeeded, NSError *error) {
             if (error) {
                 [alertView setMessageErrorWithMsg:@"短信请求失败"];
                 [myself.view addSubview:alertView];
@@ -163,6 +187,31 @@
         [self setAlertViewAnimal:alertView];
     }else{
         __weak typeof(self)myself = self;
+        [AVUser signUpOrLoginWithMobilePhoneNumberInBackground:_phoneNumField.text smsCode:_codeField.text block:^(AVUser *user, NSError *error) {
+            if(error){
+                [myself.view addSubview:alertView];
+                [myself setAlertViewAnimal:alertView];
+            }else{
+                //登录操作
+                AVQuery * userQuery = [AVQuery queryWithClassName:@"Users"];
+                [userQuery whereKey:@"userPhone" equalTo:_phoneNumField.text];
+                [userQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                    if (objects == 0) {
+                        AVObject * obj = [AVObject objectWithClassName:@"Users"];
+                        [obj setObject:myself.phoneNumField.text forKey:@"userName"];
+                        [obj setObject:myself.phoneNumField.text forKey:@"userPhone"];
+                        [obj setObject:@"" forKey:@"userPassword"];
+                        [obj setObject:[[AVUser currentUser] objectId] forKey:@"owner"];
+                        [obj saveInBackground];
+                    }
+                    [ProgressHUD showSuccess];
+                    myself.LoginBlock(_phoneNumField.text);
+                    [myself.navigationController popViewControllerAnimated:YES];
+                }];
+            }
+        }];
+        
+        /*
         [SMSSDK commitVerificationCode:_codeField.text phoneNumber:_phoneNumField.text zone:@"86" result:^(SMSSDKUserInfo *userInfo, NSError *error) {
             if(error){
                 [myself.view addSubview:alertView];
@@ -185,10 +234,30 @@
                             [myself.navigationController popViewControllerAnimated:YES];
                         }
                     }];
-                    
+                }else{
+                    AVUser * user = [[AVUser alloc] init];
+                    user.mobilePhoneNumber = myself.phoneNumField.text;
+                    user.username = myself.phoneNumField.text;
+                    user.password = @"";
+                    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                        if (succeeded) {
+                            [AVUser logInWithUsernameInBackground:myself.phoneNumField.text password:@"" block:^(AVUser * _Nullable user, NSError * _Nullable error) {
+                                if (!error) {
+                                    AVObject * obj = [AVObject objectWithClassName:@"Users"];
+                                    [obj setObject:myself.phoneNumField.text forKey:@"userName"];
+                                    [obj setObject:myself.phoneNumField.text forKey:@"userPhone"];
+                                    [obj setObject:@"" forKey:@"userPassword"];
+                                    [obj setObject:[[AVUser currentUser] objectId] forKey:@"owner"];
+                                    [obj saveInBackground];
+                                }
+                            }];
+                        }else{
+                            [ProgressHUD showError:@"注册失败"];
+                        }
+                    }];
                 }
             }
-        }];
+        }];*/
     }
 }
 

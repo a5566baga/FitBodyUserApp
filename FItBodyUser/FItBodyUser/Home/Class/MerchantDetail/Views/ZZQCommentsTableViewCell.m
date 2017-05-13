@@ -118,7 +118,7 @@
     _returnLabel = [[UILabel alloc] initWithFrame:CGRectMake(allLeft, CGRectGetMaxY(_lineLabel.frame)+marin, SCREEN_WIDTH/2, 20)];
     _returnLabel.font = [UIFont fontWithName:FANGZHENG_FONT size:16];
     _returnLabel.textColor = [UIColor colorWithRed:0.94 green:0.38 blue:0.37 alpha:1.00];
-    _returnLabel.text = [NSString stringWithFormat:@"%@回复", _comment.storeName];
+    _returnLabel.text = [NSString stringWithFormat:@"商家%@回复", _comment.storeName];
     [self.contentView addSubview:_returnLabel];
     
     _returnTimeLabel = [[UILabel alloc] initWithFrame:_userTimeLabel.frame];
