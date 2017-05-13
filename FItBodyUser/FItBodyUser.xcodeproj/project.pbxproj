@@ -36,6 +36,8 @@
 		B5052A641EB22C5D000B74B6 /* ZZQOrederTempTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5052A631EB22C5D000B74B6 /* ZZQOrederTempTableViewCell.m */; };
 		B506AE4F1E7534C800B39731 /* ZZQCityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B506AE4E1E7534C800B39731 /* ZZQCityButton.m */; };
 		B506AE521E75472200B39731 /* ZZQNetAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B506AE511E75472200B39731 /* ZZQNetAlertView.m */; };
+		B52302C71EC6FC2B00DF7424 /* ZZQAlreadyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B52302C61EC6FC2B00DF7424 /* ZZQAlreadyTableViewCell.m */; };
+		B52302CD1EC6FE5D00DF7424 /* ZZQAllCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B52302CC1EC6FE5D00DF7424 /* ZZQAllCommentTableViewCell.m */; };
 		B56D8ACD1E755B97000085E6 /* ZZQNoOnlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8ACC1E755B97000085E6 /* ZZQNoOnlineView.m */; };
 		B56D8AD01E755BA8000085E6 /* ZZQNoNetView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8ACF1E755BA8000085E6 /* ZZQNoNetView.m */; };
 		B56D8AD31E76E230000085E6 /* ZZQCitysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D8AD21E76E230000085E6 /* ZZQCitysViewController.m */; };
@@ -171,6 +173,10 @@
 		B506AE4E1E7534C800B39731 /* ZZQCityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQCityButton.m; sourceTree = "<group>"; };
 		B506AE501E75472200B39731 /* ZZQNetAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQNetAlertView.h; sourceTree = "<group>"; };
 		B506AE511E75472200B39731 /* ZZQNetAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQNetAlertView.m; sourceTree = "<group>"; };
+		B52302C51EC6FC2B00DF7424 /* ZZQAlreadyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZQAlreadyTableViewCell.h; path = Views/ZZQAlreadyTableViewCell.h; sourceTree = "<group>"; };
+		B52302C61EC6FC2B00DF7424 /* ZZQAlreadyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQAlreadyTableViewCell.m; path = Views/ZZQAlreadyTableViewCell.m; sourceTree = "<group>"; };
+		B52302CB1EC6FE5D00DF7424 /* ZZQAllCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZQAllCommentTableViewCell.h; path = Views/ZZQAllCommentTableViewCell.h; sourceTree = "<group>"; };
+		B52302CC1EC6FE5D00DF7424 /* ZZQAllCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQAllCommentTableViewCell.m; path = Views/ZZQAllCommentTableViewCell.m; sourceTree = "<group>"; };
 		B56D8ACB1E755B97000085E6 /* ZZQNoOnlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQNoOnlineView.h; sourceTree = "<group>"; };
 		B56D8ACC1E755B97000085E6 /* ZZQNoOnlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQNoOnlineView.m; sourceTree = "<group>"; };
 		B56D8ACE1E755BA8000085E6 /* ZZQNoNetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQNoNetView.h; sourceTree = "<group>"; };
@@ -261,8 +267,8 @@
 		B57072811EA35238003DE3F8 /* ZZQAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAddressViewController.m; sourceTree = "<group>"; };
 		B57072831EA35253003DE3F8 /* ZZQFavouriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZQFavouriteViewController.h; path = ../../Controllers/ZZQFavouriteViewController.h; sourceTree = "<group>"; };
 		B57072841EA35253003DE3F8 /* ZZQFavouriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQFavouriteViewController.m; path = ../../Controllers/ZZQFavouriteViewController.m; sourceTree = "<group>"; };
-		B57072861EA35267003DE3F8 /* ZZQCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQCommentViewController.h; sourceTree = "<group>"; };
-		B57072871EA35267003DE3F8 /* ZZQCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQCommentViewController.m; sourceTree = "<group>"; };
+		B57072861EA35267003DE3F8 /* ZZQCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZQCommentViewController.h; path = Controllers/ZZQCommentViewController.h; sourceTree = "<group>"; };
+		B57072871EA35267003DE3F8 /* ZZQCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZQCommentViewController.m; path = Controllers/ZZQCommentViewController.m; sourceTree = "<group>"; };
 		B57072891EA38F8F003DE3F8 /* ZZQAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAddressTableViewCell.h; sourceTree = "<group>"; };
 		B570728A1EA38F8F003DE3F8 /* ZZQAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZQAddressTableViewCell.m; sourceTree = "<group>"; };
 		B570728C1EA3901A003DE3F8 /* ZZQAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZQAddress.h; sourceTree = "<group>"; };
@@ -516,6 +522,8 @@
 		B50512E21EC462BF00482DB1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B52302C51EC6FC2B00DF7424 /* ZZQAlreadyTableViewCell.h */,
+				B52302C61EC6FC2B00DF7424 /* ZZQAlreadyTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -602,6 +610,33 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B52302C81EC6FE1A00DF7424 /* AllComment */ = {
+			isa = PBXGroup;
+			children = (
+				B52302C91EC6FE2F00DF7424 /* Controllers */,
+				B52302CA1EC6FE3B00DF7424 /* Views */,
+			);
+			name = AllComment;
+			sourceTree = "<group>";
+		};
+		B52302C91EC6FE2F00DF7424 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B57072861EA35267003DE3F8 /* ZZQCommentViewController.h */,
+				B57072871EA35267003DE3F8 /* ZZQCommentViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B52302CA1EC6FE3B00DF7424 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B52302CB1EC6FE5D00DF7424 /* ZZQAllCommentTableViewCell.h */,
+				B52302CC1EC6FE5D00DF7424 /* ZZQAllCommentTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		B56D8AE91E7816E1000085E6 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +654,7 @@
 		B56D8AFE1E784497000085E6 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				B52302C81EC6FE1A00DF7424 /* AllComment */,
 				B50512D71EC0628A00482DB1 /* Doing */,
 				B50512DD1EC0AD2500482DB1 /* NoComment */,
 				B50512E01EC462AC00482DB1 /* Finally */,
@@ -637,8 +673,6 @@
 				B56D8B0C1E794F8F000085E6 /* ZZQEditMeViewController.m */,
 				B57072801EA35238003DE3F8 /* ZZQAddressViewController.h */,
 				B57072811EA35238003DE3F8 /* ZZQAddressViewController.m */,
-				B57072861EA35267003DE3F8 /* ZZQCommentViewController.h */,
-				B57072871EA35267003DE3F8 /* ZZQCommentViewController.m */,
 				B57072921EA3B1C9003DE3F8 /* ZZQAddNewAddressViewController.h */,
 				B57072931EA3B1C9003DE3F8 /* ZZQAddNewAddressViewController.m */,
 			);
@@ -1192,6 +1226,7 @@
 				B50512B81EB9D27D00482DB1 /* ZZQPayOrderView.m in Sources */,
 				B5B4FA9D1E74D5360020D9B6 /* ZZQOrderViewController.m in Sources */,
 				B56D8AD91E78062E000085E6 /* ZZQHeaderView.m in Sources */,
+				B52302C71EC6FC2B00DF7424 /* ZZQAlreadyTableViewCell.m in Sources */,
 				B570728E1EA3901A003DE3F8 /* ZZQAddress.m in Sources */,
 				B570728B1EA38F90003DE3F8 /* ZZQAddressTableViewCell.m in Sources */,
 				B5052A611EB0EC17000B74B6 /* ZZQShopCartFootView.m in Sources */,
@@ -1265,6 +1300,7 @@
 				B57072761E99EC51003DE3F8 /* ZZQFooterView.m in Sources */,
 				B57072521E9398F9003DE3F8 /* ZZQMenu.m in Sources */,
 				B57072731E99D711003DE3F8 /* ZZQMerchantHeaderView.m in Sources */,
+				B52302CD1EC6FE5D00DF7424 /* ZZQAllCommentTableViewCell.m in Sources */,
 				B56D8B351E7AD3CA000085E6 /* ZZQHeaderPicView.m in Sources */,
 				B5B4FA4E1E6BF7DD0020D9B6 /* main.m in Sources */,
 			);

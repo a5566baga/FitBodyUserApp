@@ -10,4 +10,6 @@
 
 @interface ZZQCommentViewController : ZZQBaseViewController
 
+- (void)setCommentVCWithUserName:(NSString *)userName;
+
 @end

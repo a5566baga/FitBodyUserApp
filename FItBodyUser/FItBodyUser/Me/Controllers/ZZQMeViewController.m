@@ -205,6 +205,7 @@
         }else if (3 == indexPath.row){
             NSLog(@"评价");
             ZZQCommentViewController * commentVC = [[ZZQCommentViewController alloc] init];
+            [commentVC setCommentVCWithUserName:_user.userName];
             [self.navigationController pushViewController:commentVC animated:YES];
         }
     }
