@@ -11,6 +11,7 @@
 #import "ZZQComments.h"
 
 #define ALLCOMMENT_ID @"ALLCOMMENT_CELL"
+#define LIMITE 10
 @interface ZZQCommentViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 //评论模型
@@ -23,6 +24,8 @@
 @property(nonatomic, strong)ZZQAllCommentTableViewCell * cell;
 //用户名
 @property(nonatomic, copy)NSString * userName;
+//limit
+@property(nonatomic, assign)NSInteger limit;
 
 @end
 
@@ -41,7 +44,9 @@
 - (void)initForData{
     __weak typeof(self)myself = self;
     _dataList = [NSMutableArray array];
+    _limit = LIMITE;
     AVQuery * query = [AVQuery queryWithClassName:@"Comments"];
+    query.limit = _limit;
     [query whereKey:@"userName" equalTo:_userName];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects.count > 0) {
@@ -50,13 +55,37 @@
                 comment = [comment setCommentWithObj:obj];
                 [myself.dataList addObject:comment];
             }
+            myself.limit += LIMITE;
+            [myself.tableView reloadData];
+            
+        }else{
+            [myself initForNoDataView];
+        }
+        [myself.tableView.mj_header endRefreshing];
+    }];
+}
+//更多的数据
+- (void)initForMoreData{
+    __weak typeof(self)myself = self;
+    AVQuery * query = [AVQuery queryWithClassName:@"Comments"];
+    query.limit = _limit;
+    query.skip = _limit - LIMITE;
+    [query whereKey:@"userName" equalTo:_userName];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (objects.count > 0) {
+            for (AVObject * obj in objects) {
+                ZZQComments * comment = [[ZZQComments alloc] init];
+                comment = [comment setCommentWithObj:obj];
+                [myself.dataList addObject:comment];
+            }
+            myself.limit += LIMITE;
             [myself.tableView reloadData];
         }else{
             [myself initForNoDataView];
         }
+        [myself.tableView.mj_footer endRefreshing];
     }];
 }
-
 #pragma mark
 #pragma mark =========== 设置tableview
 - (void)initForTableView{
@@ -67,9 +96,25 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
+    [self initForRefush];
 }
 - (void)initForNoDataView{
     
+}
+
+#pragma mark
+#pragma mark =========== 设置刷新
+- (void)initForRefush{
+    __weak typeof(self)myself = self;
+    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [myself initForData];
+    }];
+    
+    _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [myself initForMoreData];
+    }];
+    
+    [_tableView.mj_header beginRefreshing];
 }
 
 #pragma mark
@@ -88,7 +133,31 @@
         _cell = [[ZZQAllCommentTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ALLCOMMENT_ID];
     }
     [_cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if (_dataList.count > 0) {
+        [_cell setCellForComment:_dataList[indexPath.row]];
+    }
     return _cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UIFont * font = [UIFont systemFontOfSize:15];
+    CGFloat height = [self rowHeightByString:_dataList[indexPath.row].userComment font:font width:SCREEN_WIDTH-90];
+    height += [self rowHeightByString:_dataList[indexPath.row].menuNames font:font width:SCREEN_WIDTH-120];
+    height += [self rowHeightByString:_dataList[indexPath.row].storeReturn font:font width:SCREEN_WIDTH-90];
+    height += 150;
+    return height;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView clearSelectedRowsAnimated:YES];
 }
 
 #pragma mark
@@ -96,7 +165,12 @@
 - (void)setCommentVCWithUserName:(NSString *)userName{
     _userName = userName;
 }
-
+//工具，自动计算高度
+-(float)rowHeightByString:(NSString *)content font:(UIFont *)font width:(CGFloat)width{
+    CGSize mySize = CGSizeMake(width, CGFLOAT_MAX);
+    CGSize size = [content boundingRectWithSize:mySize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
+    return size.height;
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tabBarController.tabBar setHidden:YES];
@@ -109,17 +183,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
