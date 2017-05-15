@@ -67,7 +67,7 @@
 
 //底部支付按钮
 - (void)initForBootmView{
-    _payButton = [[UIButton alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-40, SCREEN_WIDTH, 40)];
+    _payButton = [[UIButton alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-45, SCREEN_WIDTH, 45)];
     _payButton.backgroundColor = [UIColor colorWithRed:0.93 green:0.35 blue:0.32 alpha:1.00];
     [_payButton setTitle:@"确认支付" forState:UIControlStateNormal];
     [_payButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

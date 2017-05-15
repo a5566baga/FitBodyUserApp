@@ -93,6 +93,9 @@
                 addressAuery.limit = 1;
                 [addressAuery whereKey:@"userId" equalTo:userId];
             }
+            AVObject * obj = [AVObject objectWithClassName:@"Orders" objectId:_orderId];
+            [obj setObject:addressId forKey:@"addressId"];
+            [obj saveInBackground];
             [addressAuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
                 if (!error) {
                     ZZQAddress * address = [[ZZQAddress alloc] init];
