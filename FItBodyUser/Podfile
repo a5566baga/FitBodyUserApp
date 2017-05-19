@@ -21,5 +21,6 @@ pod 'SVProgressHUD'
 pod 'UITableView+FDTemplateLayoutCell', '~> 1.5.beta'
 pod 'SDCycleScrollView','~> 1.64'
 pod 'HCSStarRatingView','~> 1.4.5’
+pod 'AMapLocation', '~> 2.1.1'
 
 end

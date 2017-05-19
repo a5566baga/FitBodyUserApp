@@ -122,7 +122,7 @@
 }
 //分享按钮事件
 - (void)shareAction:(UIButton *)btn{
-    
+    [ProgressHUD showError:@"暂未开放"];
 }
 
 //收藏按钮事件

@@ -66,6 +66,7 @@
 #pragma mark ===========第三方内容
 - (void)initThirdSDK{
     [SMSSDK registerApp:@"1c1f152fc5012" withSecret:@"84f696da3ae6856a957d43ca7f62c461"];
+    [AMapServices sharedServices].apiKey =@"52f576984a548e7391b5f0820d88c22c";
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

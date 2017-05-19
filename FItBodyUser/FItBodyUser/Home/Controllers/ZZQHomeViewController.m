@@ -18,9 +18,10 @@
 #import "ZZQSearchViewController.h"
 #import "ZZQHot.h"
 
+
 #define CELL_ID @"homeCell"
 #define LIMIT 10
-@interface ZZQHomeViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface ZZQHomeViewController ()<UITableViewDelegate, UITableViewDataSource, AMapLocationManagerDelegate>
 
 //选择城市按钮
 @property(nonatomic, strong)ZZQCityButton * cityBtn;
@@ -51,6 +52,9 @@
 //城市名
 @property(nonatomic, copy)NSString * cityName;
 @property(nonatomic, strong)NSMutableArray * hotImageArray;
+
+//定位
+@property(nonatomic, strong)AMapLocationManager *locationManager;
 
 @end
 
@@ -91,20 +95,51 @@
 #pragma mark ============= 加载视图
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [SVProgressHUD show];
     [self initForLocation];
 //    [SVProgressHUD show];
     //设置tableview
 //    [self initTableView];
     //设置nav
-    [self initNavView];
+//    [self initNavView];
     //初始化数据
-    [self initForData];
+//    [self initForData];
 }
 #pragma mark
 #pragma mark ============== 定位
 - (void)initForLocation{
-    _cityName = @"济南";
+//    _cityName = @"济南";
+    
+    self.locationManager = [[AMapLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    // 带逆地理信息的一次定位（返回坐标和地址信息）
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+    //   定位超时时间，最低2s，此处设置为2s
+    self.locationManager.locationTimeout =2;
+    //   逆地理请求超时时间，最低2s，此处设置为2s
+    self.locationManager.reGeocodeTimeout = 2;
+    
+    
+    __weak typeof(self)myself = self;
+    [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+        if (error)
+        {
+            if (error.code == AMapLocationErrorLocateFailed)
+            {
+                return;
+            }
+        }
+        
+        if (regeocode)
+        {
+            NSString * city = [regeocode.city componentsSeparatedByString:@"市"][0];
+            myself.cityName = city;
+            [self initNavView];
+            [myself initForData];
+        }
+    }];
 }
+
 #pragma mark
 #pragma mark ============== 设置nav
 - (void)initNavView{
@@ -135,7 +170,6 @@
 #pragma mark ============== 初始化数据
 //下拉刷新
 - (void)initForData{
-    [SVProgressHUD show];
     _hotImageArray = [NSMutableArray array];
     __weak typeof(self)myself = self;
     _limitNum = LIMIT;
