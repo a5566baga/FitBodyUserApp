@@ -11,6 +11,7 @@
 #import "ZZQOrders.h"
 #import "ZZQPayWayView.h"
 #import "ZZQPayOrderView.h"
+#import "ZZQMenu.h"
 
 @interface ZZQPayOrderViewController ()
 
@@ -82,6 +83,23 @@
     [order saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             [ProgressHUD showSuccess:@"支付成功"];
+            for (ZZQOrderTemp * temp in _tempArray) {
+                AVQuery * query = [AVQuery queryWithClassName:@"Menus"];
+                [query whereKey:@"objectId" equalTo:temp.menuID];
+                [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                    if (objects.count > 0) {
+                        ZZQMenu * menu = [[ZZQMenu alloc] init];
+                        menu = [menu getMenuWithObject:objects[0]];
+                        AVObject * obj = [AVObject objectWithClassName:@"Menus" objectId:temp.menuID];
+                        NSInteger left = [[menu left] integerValue] - [temp.menuNum integerValue];
+                        NSInteger ordered = [[menu orderedNum] integerValue] + [temp.menuNum integerValue];
+                        [obj setObject:[NSString stringWithFormat:@"%ld", ordered] forKey:@"orderedNum"];
+                        [obj setObject:[NSString stringWithFormat:@"%ld", left] forKey:@"left"];
+                        [obj saveInBackground];
+                    }
+                    
+                }];
+            }
             [self.navigationController popToRootViewControllerAnimated:YES];
         }else{
             [ProgressHUD showError:@"支付失败"];

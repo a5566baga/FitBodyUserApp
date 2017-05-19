@@ -31,6 +31,7 @@
     self.navigationItem.title = @"进行中";
     [self initForData];
     [self initForTableView];
+    [SVProgressHUD show];
 }
 
 #pragma mark
@@ -76,6 +77,7 @@
             [myself initForNotDataView];
             [myself.tableView reloadData];
         }
+        [SVProgressHUD dismiss];
     }];
 }
 

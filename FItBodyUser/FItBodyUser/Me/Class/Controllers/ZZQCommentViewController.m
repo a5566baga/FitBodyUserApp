@@ -37,6 +37,7 @@
     self.navigationItem.title = @"我的评价";
     [self initForData];
     [self initForTableView];
+    [SVProgressHUD show];
 }
 
 #pragma mark 
@@ -61,6 +62,7 @@
         }else{
             [myself initForNoDataView];
         }
+        [SVProgressHUD dismiss];
         [myself.tableView.mj_header endRefreshing];
     }];
 }

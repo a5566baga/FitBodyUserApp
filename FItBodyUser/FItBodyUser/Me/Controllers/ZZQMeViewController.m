@@ -284,6 +284,9 @@
     [super viewWillAppear:animated];
     [self.tabBarController.tabBar setHidden:NO];
     [self checkLogin];
+    if (_tableView != nil) {
+        [_tableView reloadData];
+    }
 }
 
 
